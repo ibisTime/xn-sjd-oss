@@ -1,0 +1,6 @@
+.home-wrap {
+    width: calc(100% + 48px);
+    height: 100%;
+    background-color: #f0f2f5;
+    margin: -24px 0 0 -24px;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import ModalDetail from 'common/js/build-modal-detail';
 
-class PostAdd extends React.Component {
+export default class PostAdd extends React.Component {
   render() {
     let that = this;
     const options = {
@@ -50,5 +50,3 @@ class PostAdd extends React.Component {
     );
   }
 }
-
-export default PostAdd;

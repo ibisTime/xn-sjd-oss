@@ -10,7 +10,7 @@ import { PIC_PREFIX, DATE_FORMAT, MONTH_FORMAT, DATETIME_FORMAT } from './config
  */
 export function setUser({userId, token}) {
   cookies.set('userId', userId);
-  cookies.set('token', token);
+  // cookies.set('token', token);
 }
 
 // 删除用户登录信息

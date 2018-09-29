@@ -18,7 +18,7 @@ class UpDown extends React.Component {
           value: '普通'
         }, {
           key: '1',
-          value: '首页推荐'
+          value: '热门'
         }],
         keyName: 'key',
         valueName: 'value',

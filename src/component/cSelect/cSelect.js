@@ -51,7 +51,7 @@ export default class CSelect extends React.Component {
       mode: multiple ? 'multiple' : '',
       showSearch: true,
       allowClear: true,
-      style: { maxWidth: 350 },
+      style: { maxWidth: 400 },
       optionFilterProp: 'children',
       filterOption: (input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
       placeholder: '请选择'

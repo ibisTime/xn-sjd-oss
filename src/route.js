@@ -73,22 +73,6 @@ const ROUTES = [
     component: asyncComponent(() => import('container/public/aboutus-addedit/aboutus-addedit'))
   },
   {
-    path: '/public/hotLine_addedit',
-    component: asyncComponent(() => import('container/public/hotLine-addedit/hotLine-addedit'))
-  },
-  {
-    path: '/public/time_addedit',
-    component: asyncComponent(() => import('container/public/time-addedit/time-addedit'))
-  },
-  {
-    path: '/public/notice',
-    component: asyncComponent(() => import('container/public/notice/notice'))
-  },
-  {
-    path: '/public/notice/addedit',
-    component: asyncComponent(() => import('container/public/notice-addedit/notice-addedit'))
-  },
-  {
     path: '/public/banner',
     component: asyncComponent(() => import('container/public/banner/banner'))
   },
@@ -154,6 +138,76 @@ const ROUTES = [
   {
     path: '/finance/enchashments/addedit',
     component: asyncComponent(() => import('container/finance/enchashments-addedit/enchashments-addedit'))
+  },
+  // 业务管理 -- 产权方管理 -- 产权方管理
+  {
+    path: '/property/property',
+    component: asyncComponent(() => import('container/biz/property/property/property'))
+  },
+  // 业务管理 -- 产权方管理 -- 产权方管理 -- 待申请
+  {
+    path: '/property/property/addedit',
+    component: asyncComponent(() => import('container/biz/property/property/property-addedit'))
+  },
+  // 业务管理 -- 产权方管理 -- 产品分类管理
+  {
+    path: '/property/types',
+    component: asyncComponent(() => import('container/biz/property/types/types'))
+  },
+  // 业务管理 -- 产权方管理 -- 产品分类管理
+  {
+    path: '/property/types/addedit',
+    component: asyncComponent(() => import('container/biz/property/types/types-addedit'))
+  },
+  // 业务管理 -- 产权方管理 -- 产品管理
+  {
+    path: '/property/products',
+    component: asyncComponent(() => import('container/biz/property/products/products'))
+  },
+  // 业务管理 -- 产权方管理 -- 产品管理 -- 审核、详情
+  {
+    path: '/property/products/addedit',
+    component: asyncComponent(() => import('container/biz/property/products/products-addedit'))
+  },
+  // 业务管理 -- 产权方管理 -- 古树管理
+  {
+    path: '/property/trees',
+    component: asyncComponent(() => import('container/biz/property/trees/trees'))
+  },
+  // 业务管理 -- 养护方管理 -- 养护方管理
+  {
+    path: '/conserve/conserve',
+    component: asyncComponent(() => import('container/biz/conserve/conserve/conserve'))
+  },
+  // 业务管理 -- 养护方管理 -- 养护方管理 -- 待申请
+  {
+    path: '/conserve/conserve/addedit',
+    component: asyncComponent(() => import('container/biz/conserve/conserve/conserve-addedit'))
+  },
+  // 产权端管理 -- 业务管理 -- 产品管理
+  {
+    path: '/own/products',
+    component: asyncComponent(() => import('container/own/products/products'))
+  },
+  // 产权端管理 -- 业务管理 -- 产品管理 -- 编辑/详情
+  {
+    path: '/own/products/addedit',
+    component: asyncComponent(() => import('container/own/productEdit/productEdit'))
+  },
+  // 产权端管理 -- 业务管理 -- 多棵产品编辑
+  {
+    path: '/own/productEdit',
+    component: asyncComponent(() => import('container/own/productEdit/productEdit'))
+  },
+  // 产权端管理 -- 业务管理 -- 认养权管理
+  {
+    path: '/own/claimOrders',
+    component: asyncComponent(() => import('container/own/claimOrders/claimOrders'))
+  },
+  // 产权端管理 -- 业务管理 -- 认养权管理 -- 详情
+  {
+    path: '/own/claimOrders/addedit',
+    component: asyncComponent(() => import('container/own/claimOrders/claimOrders-addedit'))
   }
 ];
 

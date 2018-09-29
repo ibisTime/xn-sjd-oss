@@ -3,16 +3,8 @@ import { getUserName, getUserId } from 'common/js/util';
 import { PIC_PREFIX } from 'common/js/config';
 
 export function setRoleMenus(menuCodeList, roleCode) {
-  return fetch(630020, {
+  return fetch(630027, {
     menuCodeList,
-    roleCode,
-    updater: getUserId()
-  });
-}
-//  保存节点
-export function setNodeMenus(nodeList, roleCode) {
-  return fetch(630160, {
-    nodeList,
     roleCode,
     updater: getUserId()
   });
@@ -23,7 +15,7 @@ export function activateSysUser(userId) {
 }
 // 注销激活c端用户
 export function activateUser(userId) {
-  return fetch(805091, { userId, updater: getUserId() });
+  return fetch(805084, { userId, updater: getUserId() });
 }
 
 // 获取用户详情
@@ -46,8 +38,4 @@ export function setUserPost(params) {
 // 列表查询平台用户
 export function getSysUsers() {
   return fetch(630066, { status: '0' });
-}
-// 列表获取
-export function getListUserArchive(params) {
-    return fetch(632805, params);
 }

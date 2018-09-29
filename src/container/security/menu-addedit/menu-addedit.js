@@ -16,7 +16,7 @@ class MenuAddEdit extends DetailUtil {
       field: 'parentCode',
       required: true,
       type: 'select',
-      listCode: '630016',
+      listCode: '630017',
       params: { type: 1 },
       keyName: 'code',
       valueName: '{{code.DATA}} {{name.DATA}}'
@@ -59,7 +59,7 @@ class MenuAddEdit extends DetailUtil {
       fields,
       code: this.code,
       view: this.view,
-      detailCode: 630017,
+      detailCode: 630016,
       addCode: 630010,
       editCode: 630012
     });

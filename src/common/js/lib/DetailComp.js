@@ -673,10 +673,10 @@ export default class DetailComp extends React.Component {
         return;
       }
       let code = this.options.code ? this.options.editCode : this.options.addCode;
-
+      this.doFetching();
       fetch(code, params).then((data) => {
+        this.cancelFetching();
         showSucMsg('操作成功');
-        this.doFetching();
         if (this.options.onOk) {
           this.options.onOk(data);
         } else {

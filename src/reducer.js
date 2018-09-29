@@ -9,7 +9,6 @@ import { securityDataDict } from './redux/security/dataDict';
 import { securityCompConstruct } from './redux/security/compConstruct';
 import { securityPost } from './redux/security/post';
 import { publicBanner } from './redux/public/banner';
-import { publicNotice } from './redux/public/notice';
 /** ***** 财务管理start ***** **/
 // 会员账户--账户查询
 import { financeUserAccount } from './redux/finance/user-account';
@@ -22,6 +21,18 @@ import { financePlatformLedger } from '@redux/finance/platform-ledger';
 import { financeEnchashmentRule } from '@redux/finance/enchashmentRule';
 import { financeUnderEnchashment } from '@redux/finance/underEnchashment';
 import { financeEnchashments } from '@redux/finance/enchashments';
+// 业务管理--产权方管理
+import { propertyProperty } from './redux/biz/property/property';
+import { propertyTypes } from './redux/biz/property/types';
+import { propertyProducts } from './redux/biz/property/products';
+import { propertyTrees } from './redux/biz/property/trees';
+// 业务管理--养护方管理
+import { conserveConserve } from './redux/biz/conserve/conserve';
+// 业务管理--用户管理
+import { userUsers } from './redux/biz/user/users';
+// 产权端管理--业务管理
+import { ownProducts } from './redux/own/products';
+import { ownClaimOrders } from './redux/own/claimOrders';
 
 export default combineReducers({
   user,
@@ -34,12 +45,19 @@ export default combineReducers({
   securityCompConstruct,
   securityPost,
   publicBanner,
-  publicNotice,
   financeUserAccount,
   financeUserFlows,
   financeAccount,
   financePlatformLedger,
   financeEnchashmentRule,
   financeUnderEnchashment,
-  financeEnchashments
+  financeEnchashments,
+  propertyProperty,
+  propertyTypes,
+  propertyProducts,
+  propertyTrees,
+  conserveConserve,
+  userUsers,
+  ownProducts,
+  ownClaimOrders
 });

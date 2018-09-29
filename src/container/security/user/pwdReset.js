@@ -21,11 +21,8 @@ class PwdReset extends DetailUtil {
       readonly: true
     }, {
       title: '新密码',
-      field: 'loginPwd',
+      field: 'newLoginPwd',
       type: 'password'
-    }, {
-      title: '备注',
-      field: 'remark'
     }];
     return this.buildDetail({
       fields,

@@ -4,7 +4,7 @@ import { getQueryString } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 
 @Form.create()
-class Assign extends React.Component {
+class Assign extends DetailUtil {
   constructor(props) {
     super(props);
     this.code = getQueryString('userId', this.props.location.search);
@@ -24,7 +24,7 @@ class Assign extends React.Component {
       field: 'roleCode',
       type: 'select',
       required: true,
-      listCode: 630006,
+      listCode: 630007,
       keyName: 'code',
       valueName: 'name'
     }, {

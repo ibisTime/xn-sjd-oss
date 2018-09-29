@@ -15,14 +15,14 @@ class AboutusAddEdit extends DetailUtil {
       value: '关于我们',
       hidden: true
     }, {
-      title: '角色名称',
+      title: '关于我们',
       field: 'cvalue',
       type: 'textarea',
       required: true
     }];
     return this.buildDetail({
       fields,
-      key: 'key',
+      key: 'ckey',
       code: 'about_us',
       detailCode: 630047,
       buttons: [{

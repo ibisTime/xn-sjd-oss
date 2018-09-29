@@ -14,6 +14,10 @@ export default class CTreeSelect extends React.Component {
       treeData: []
     };
   }
+  componentDidMount() {
+    const { list, isLoaded } = this.props;
+    this.buildTreeData(list, isLoaded);
+  }
   componentDidUpdate() {
     const { list, isLoaded } = this.props;
     this.buildTreeData(list, isLoaded);

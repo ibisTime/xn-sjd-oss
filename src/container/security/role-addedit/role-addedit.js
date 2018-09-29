@@ -21,12 +21,6 @@ class RoleAddEdit extends DetailUtil {
       required: true,
       maxlength: 30
     }, {
-      title: '角色等级',
-      field: 'level',
-      required: true,
-      type: 'select',
-      key: 'role_level'
-    }, {
       title: '备注',
       field: 'remark',
       maxlength: 250
@@ -35,7 +29,7 @@ class RoleAddEdit extends DetailUtil {
       fields,
       code: this.code,
       view: this.view,
-      detailCode: 630007,
+      detailCode: 630006,
       addCode: 630000,
       editCode: 630002
     });

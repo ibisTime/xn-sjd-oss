@@ -67,6 +67,7 @@ export default class CCitySelect extends React.Component {
     let props = {
       placeholder: '请选择',
       options: cityData,
+      style: { maxWidth: 400 },
       showSearch: {
         filter: (inputValue, path) => {
           return (path.some(option => (option.label).toLowerCase().indexOf(inputValue.toLowerCase()) > -1));

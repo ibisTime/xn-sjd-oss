@@ -1,6 +1,6 @@
 import React from 'react';
-import {getWorkbook} from 'common/js/xlsx-util';
-import {Form, Select, DatePicker, Input, Button, Table} from 'antd';
+import { getWorkbook } from 'common/js/xlsx-util';
+import { Form, Select, DatePicker, Input, Button, Table } from 'antd';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 import {
@@ -8,9 +8,9 @@ import {
     showWarnMsg, showSucMsg, showDelConfirm, getUserId,
     dateListFormat
 } from 'common/js/util';
-import {PIC_PREFIX} from 'common/js/config';
-import {getOwnerBtns} from 'api/menu';
-import {getDictList} from 'api/dict';
+import { PIC_PREFIX } from 'common/js/config';
+import { getOwnerBtns } from 'api/menu';
+import { getDictList } from 'api/dict';
 import fetch from 'common/js/fetch';
 import locale from './date-locale';
 import cityData from './city';
@@ -18,7 +18,7 @@ import cityData from './city';
 moment.locale('zh-cn');
 const FormItem = Form.Item;
 const Option = Select.Option;
-const {RangePicker} = DatePicker;
+const { RangePicker } = DatePicker;
 const DATE_FORMAT = 'YYYY-MM-DD';
 const DATETIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';
 
@@ -135,7 +135,7 @@ export default class ListComponent extends React.Component {
             }
             this.addRender(f, (val) => this.renderSelect(val, f));
         } else if (f.type === 'img') {
-            obj.render = (value) => <img src={PIC_PREFIX + value}/>;
+            obj.render = (value) => <img style={{maxWidth: 40, maxHeight: 40}} src={PIC_PREFIX + value}/>;
         }
         if (f.amount) {
             obj.render = (v, d) => <span style={{whiteSpace: 'nowrap'}}>{moneyFormat(v, d)}</span>;
@@ -186,29 +186,23 @@ export default class ListComponent extends React.Component {
                 this.props.cancelFetching();
                 showWarnMsg('暂无数据');
             } else {
-                let operator = getUserId();
-                fetch(632090, {
-                    url,
-                    operator
-                }).then(info => {
-                    let titles = [];
-                    let bodys = [];
-                    data.list.forEach((d, i) => {
-                        let temp = [];
-                        this.options.fields.forEach(f => {
-                            if (i === 0) {
-                                titles.push(f.title);
-                            }
-                            temp.push(f.render(d[f.field], d));
-                        });
-                        bodys.push(temp);
+                let titles = [];
+                let bodys = [];
+                data.list.forEach((d, i) => {
+                    let temp = [];
+                    this.options.fields.forEach(f => {
+                        if (i === 0) {
+                            titles.push(f.title);
+                        }
+                        temp.push(f.render(d[f.field], d));
                     });
-                    let result = [titles].concat(bodys);
-                    const wb = getWorkbook();
-                    wb.getSheet(result, 'SheetJS');
-                    wb.downloadXls(info);
-                    this.props.cancelFetching();
+                    bodys.push(temp);
                 });
+                let result = [titles].concat(bodys);
+                const wb = getWorkbook();
+                wb.getSheet(result, 'SheetJS');
+                wb.downloadXls('表格导出');
+                this.props.cancelFetching();
             }
         }).catch(this.props.cancelFetching);
     }

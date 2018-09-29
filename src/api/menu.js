@@ -8,7 +8,7 @@ import { ROOT_MENU_CODE } from 'common/js/config';
  */
 export function getOwnerBtns(parentCode) {
   // 805026
-  return fetch(630025, {
+  return fetch(630020, {
     parentCode,
     roleCode: getRoleCode(),
     type: 2
@@ -19,14 +19,7 @@ export function getOwnerBtns(parentCode) {
  * 列表获取菜单和按钮
  */
 export function getMenuBtnList() {
-  return fetch(630016);
-}
-
-/**
- * 列表获取节点
- */
-export function getNodeList() {
-  return fetch(630147);
+  return fetch(630017);
 }
 
 /**
@@ -34,7 +27,7 @@ export function getNodeList() {
  */
 export function getRoleMenuList() {
   // 805026
-  return fetch(630025, {
+  return fetch(630020, {
     type: 1,
     roleCode: getRoleCode()
   });
@@ -45,13 +38,5 @@ export function getRoleMenuList() {
  */
 export function getRoleMenuBtnList(roleCode) {
   roleCode = roleCode || getRoleCode();
-  return fetch(630025, { roleCode });
-}
-
-/**
- * 根据角色列表获取节点和按钮
- */
-export function getRoleCodeBtnList(roleCode) {
-  roleCode = roleCode || getRoleCode();
-  return fetch(630167, { roleCode });
+  return fetch(630020, { roleCode });
 }

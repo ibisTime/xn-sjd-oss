@@ -1,4 +1,4 @@
-export const SYSTEM_CODE = 'CD-CWZCD000020';
+export const SYSTEM_CODE = 'CD-SJD0000025';
 // 七牛上传地址
 export const UPLOAD_URL = 'http://up-z2.qiniup.com';
 // 七牛图片前缀
@@ -11,7 +11,7 @@ export const SYS_USER = 'SYS_USER_ZXZX';
 export const SYS_USER_TG = 'SYS_USER_ZXZX_TG';
 
 // 系统根菜单编号
-export const ROOT_MENU_CODE = 'HTWTSM201800000000000000';
+export const ROOT_MENU_CODE = 'COINSM201700000000000000';
 
 export const formItemLayout = {
   labelCol: {

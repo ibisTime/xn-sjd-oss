@@ -17,31 +17,11 @@ class BannerAddEdit extends DetailUtil {
       hidden: true,
       value: 1
     }, {
-      field: 'companyCode',
-      hidden: true,
-      value: SYSTEM_CODE
-    }, {
-      field: 'systemCode',
-      hidden: true,
-      value: SYSTEM_CODE
-    }, {
       field: 'type',
       value: 2,
       hidden: true
     }, {
-      field: 'belong',
-      value: 1,
-      hidden: true
-    }, {
       field: 'parentCode',
-      value: 0,
-      hidden: true
-    }, {
-      field: 'contentType',
-      value: 1,
-      hidden: true
-    }, {
-      field: 'isCompanyEdit',
       value: 0,
       hidden: true
     }, {
@@ -69,6 +49,7 @@ class BannerAddEdit extends DetailUtil {
       title: 'banner图片',
       field: 'pic',
       type: 'img',
+      help: '690*300',
       required: true,
       single: true
     }, {
@@ -83,9 +64,9 @@ class BannerAddEdit extends DetailUtil {
       fields,
       code: this.code,
       view: this.view,
-      addCode: 805800,
-      editCode: 805802,
-      detailCode: 805807
+      addCode: 630500,
+      editCode: 630502,
+      detailCode: 630507
     });
   }
 }

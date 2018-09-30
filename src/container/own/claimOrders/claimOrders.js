@@ -26,63 +26,32 @@ class ClaimOrders extends React.Component {
   render() {
     const fields = [{
       title: '认养订单编号',
-      field: 'adoptOrderCode'
+      field: 'orderCode'
     }, {
-      title: '订单金额',
+      title: '树木编号',
+      field: 'treeNumber'
+    }, {
+      title: '当前持有人',
+      field: 'currentHolder'
+    }, {
+      title: '认养开始时间',
+      field: 'startDatetime',
+      type: 'date'
+    }, {
+      title: '认养结束时间',
+      field: 'endDatetime',
+      type: 'date'
+    }, {
+      title: '认养金额',
       field: 'amount',
       amount: true
     }, {
-      title: '认养人',
-      field: 'currentHolder'
-    }, {
-      title: '订单剩余时间',
+      title: '状态',
       field: 'status'
-    }, {
-      title: '养护方',
-      field: 'scientificName1'
-    }, {
-      title: '订单生成时间',
-      field: 'variety1'
     }];
     return this.props.buildList({
       fields,
-      pageCode: 629205,
-      btnEvent: {
-        // 0草稿/1已提交待审核/2审核不通过/3审核通过待上架/4已上架待认养/5已锁定/6已认养/7已下架
-        edit: (keys, items) => {
-          if (!keys || !keys.length) {
-            showWarnMsg('请选择记录');
-          } else if (keys.length > 1) {
-            showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '0') {
-            showWarnMsg('该记录不可编辑');
-          } else {
-            this.props.history.push(`/own/products/addedit?code=${keys[0]}`);
-          }
-        },
-        up: (keys, items) => {
-          if (!keys || !keys.length) {
-            showWarnMsg('请选择记录');
-          } else if (keys.length > 1) {
-            showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '0') {
-            showWarnMsg('该记录不是待上架状态');
-          } else {
-            this.upDown(keys[0]);
-          }
-        },
-        down: (keys, items) => {
-          if (!keys || !keys.length) {
-            showWarnMsg('请选择记录');
-          } else if (keys.length > 1) {
-            showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '4') {
-            showWarnMsg('该记录不是待下架状态');
-          } else {
-            this.upDown(keys[0]);
-          }
-        }
-      }
+      pageCode: 629205
     });
   }
 }

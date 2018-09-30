@@ -11,12 +11,28 @@ class ProductEdit extends DetailUtil {
     this.code = getQueryString('code', this.props.location.search);
     this.view = !!getQueryString('v', this.props.location.search);
   }
+  addBtns(config) {
+    config.buttons = [{
+      title: '保存编辑',
+      type: 'primary',
+      check: true,
+      handler: (params) => {
+        this.doFetching();
+        params.ownerId = getUserId();
+        fetch(629010, params).then(() => {
+          showSucMsg('操作成功');
+          this.cancelFetching();
+        }).catch(this.cancelFetching);
+      }
+    }, {
+      title: '重置',
+      handler: (params) => {
+        this.props.form.resetFields();
+      }
+    }];
+  }
   render() {
     const fields = [{
-      field: 'ownerId',
-      value: getUserId(),
-      hidden: true
-    }, {
       title: '产品分类',
       field: 'categoryCode',
       type: 'select',
@@ -92,13 +108,13 @@ class ProductEdit extends DetailUtil {
       valueName: 'dvalue',
       required: true
     }, {
-      title: '募集总数',
-      field: 'raiseCount'
-    }, {
       title: '募集时间',
       field: 'raiseStartDatetime',
       type: 'date',
       rangedate: ['raiseStartDatetime', 'raiseEndDatetime']
+    }, {
+      title: '募集总数',
+      field: 'raiseCount'
     }, {
       title: '产品规格列表',
       field: 'productSpecsList',
@@ -169,14 +185,21 @@ class ProductEdit extends DetailUtil {
       field: 'remark',
       maxlength: 250
     }];
-    return this.buildDetail({
+    let config = {
       fields,
       code: this.code,
       view: this.view,
       detailCode: 629026,
       addCode: 629010,
-      editCode: 629011
-    });
+      editCode: 629011,
+      beforeSubmit: (params) => {
+        params.ownerId = getUserId();
+      }
+    };
+    if (!this.code) {
+      this.addBtns(config);
+    }
+    return this.buildDetail(config);
   }
 }
 

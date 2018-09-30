@@ -17,6 +17,9 @@ const store = createStore(reducers, compose(
 ));
 const Login = asyncComponent(() => import('container/login/login'));
 const Dashboard = asyncComponent(() => import('component/dashboard/dashboard'));
+const Supplement = asyncComponent(() => import('container/supplement/supplement'));
+const Register = asyncComponent(() => import('container/register/register'));
+const Illegal = asyncComponent(() => import('container/illegal/illegal'));
 
 ReactDOM.render(
   <Provider store={store}>
@@ -25,6 +28,9 @@ ReactDOM.render(
         <AuthRoute></AuthRoute>
         <Switch>
           <Route path='/login' component={Login}></Route>
+          <Route path='/register' component={Register}></Route>
+          <Route path='/supplement' component={Supplement}></Route>
+          <Route path='/illegal' component={Illegal}></Route>
           <Route component={Dashboard}></Route>
         </Switch>
         <BackTop />

@@ -1,5 +1,6 @@
 import fetch from 'common/js/fetch';
-import { setUser, getUserId, setRoleInfo, getRoleCode, getUserName } from 'common/js/util';
+import { setUser, getUserId, setRoleInfo, getRoleCode,
+  getUserName, judgeStatus } from 'common/js/util';
 
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOGOUT = 'LOGOUT';
@@ -22,7 +23,7 @@ export function user (state = initState, action) {
     case LOGIN_SUCCESS:
       return {...state, msg: ''};
     case LOAD_DATA:
-      return {...state, ...action.payload, redirectTo: '/'};
+      return {...state, ...action.payload, redirectTo: action.redirectTo};
     case LOGOUT:
       return {...initState, redirectTo: '/login'};
     case LOADING:
@@ -48,22 +49,9 @@ export function cancelFetching() {
 }
 
 // 获取用户信息成功
-export function loadData(data) {
+export function loadData(data, redirectTo = '/') {
   setRoleInfo(data);
-  return { type: LOAD_DATA, payload: data };
-}
-
-// 获取用户信息
-export function getUser() {
-  return dispatch => {
-    dispatch(doFetching());
-    _getUser().then(data => {
-      dispatch(cancelFetching());
-      dispatch(loadData(data));
-    }).catch(msg => {
-      dispatch(cancelFetching());
-    });
-  };
+  return { type: LOAD_DATA, payload: data, redirectTo };
 }
 
 // 登录
@@ -72,15 +60,15 @@ export function login({ loginName, loginPwd, type = 'P' }) {
     dispatch(doFetching());
     fetch(630051, {
       loginName,
-      loginPwd,
-      type
+      loginPwd
     }).then(data => {
       setUser(data);
       dispatch(loginSuccess());
     }).then(() => {
       return _getUser().then(data => {
         dispatch(cancelFetching());
-        dispatch(loadData(data));
+        let url = judgeStatus(data.status) || '/';
+        dispatch(loadData(data, url));
       });
     }).catch(msg => {
       dispatch(cancelFetching());

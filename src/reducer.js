@@ -34,9 +34,13 @@ import { conserveBinds } from './redux/biz/conserve/conserve-binds';
 import { conserveUsers } from './redux/biz/conserve/users';
 // 业务管理--用户管理
 import { userUsers } from './redux/biz/user/users';
+// 业务管理--认养管理
+import { claimGroupOrders } from './redux/biz/claim/groupOrders';
+import { claimPersonOrders } from './redux/biz/claim/personOrders';
 // 产权端管理--业务管理
 import { ownProducts } from './redux/own/products';
 import { ownClaimOrders } from './redux/own/claimOrders';
+import { ownTrees } from './redux/own/trees';
 // 产权端管理--个人设置
 import { ownNotices } from './redux/own/notices';
 // 养护端--业务管理
@@ -71,9 +75,12 @@ export default combineReducers({
   conserveBinds,
   conserveUsers,
   userUsers,
+  claimGroupOrders,
+  claimPersonOrders,
   ownProducts,
   ownClaimOrders,
   ownNotices,
+  ownTrees,
   curingProjects,
   curingUsers
 });

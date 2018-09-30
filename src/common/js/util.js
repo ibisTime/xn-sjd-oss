@@ -8,7 +8,7 @@ import { PIC_PREFIX, DATE_FORMAT, MONTH_FORMAT, DATETIME_FORMAT } from './config
  * @param userId
  * @param token
  */
-export function setUser({userId, token}) {
+export function setUser({ userId, token }) {
   cookies.set('userId', userId);
   // cookies.set('token', token);
 }
@@ -633,4 +633,20 @@ function getRangeDateVal(rangedate, keys, result, format, fn, pageData, readonly
 // 获取checkbox的真实值
 function getRealCheckboxVal(result) {
     return result ? result.split(',') : [];
+}
+
+// 判断养护方、产权方用户是否审核通过
+export function judgeStatus(status) {
+  // 0 待审核 1 审核不通过 2 合伙中 3 已解除合伙 4 已注销 5 正常 6 待填写公司资料
+  switch(status) {
+    case '0':
+    case '1':
+    case '6':
+      return '/supplement';
+    case '3':
+    case '4':
+      return '/illegal';
+    default:
+      return '';
+  }
 }

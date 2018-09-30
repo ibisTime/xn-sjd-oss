@@ -2,7 +2,6 @@ import React from 'react';
 import { Form } from 'antd';
 import { getQueryString, showSucMsg, getUserId } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
-import fetch from 'common/js/fetch';
 
 @Form.create()
 class Aboutus extends DetailUtil {
@@ -52,11 +51,7 @@ class Aboutus extends DetailUtil {
       key: 'userId',
       code: this.code,
       detailCode: 630067,
-      editCode: 630302,
-      beforeSubmit: (params) => {
-        params.updater = 'U201809282101491006096';
-        return params;
-      }
+      editCode: 630302
     });
   }
 }

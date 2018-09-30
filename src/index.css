@@ -120,3 +120,6 @@ li {
   margin-top: 20px;
   text-align: center;
 }
+.cform-item-btn .ant-form-item-label label {
+  visibility: hidden;
+}

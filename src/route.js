@@ -217,6 +217,26 @@ const ROUTES = [
     path: '/conserve/users',
     component: asyncComponent(() => import('container/biz/conserve/users/users'))
   },
+  // 业务管理 -- 认养管理 -- 集体认养订单管理
+  {
+    path: '/claim/groupOrders',
+    component: asyncComponent(() => import('container/biz/claim/groupOrders/groupOrders'))
+  },
+  // 业务管理 -- 认养管理 -- 集体认养订单管理 -- 详情
+  {
+    path: '/claim/groupOrders/addedit',
+    component: asyncComponent(() => import('container/biz/claim/groupOrders/groupOrders-addedit'))
+  },
+  // 业务管理 -- 认养管理 -- 个人认养订单管理
+  {
+    path: '/claim/personOrders',
+    component: asyncComponent(() => import('container/biz/claim/personOrders/personOrders'))
+  },
+  // 业务管理 -- 认养管理 -- 个人认养订单管理 -- 详情
+  {
+    path: '/claim/personOrders/addedit',
+    component: asyncComponent(() => import('container/biz/claim/personOrders/personOrders-addedit'))
+  },
   // 产权端管理 -- 业务管理 -- 产品管理
   {
     path: '/own/products',
@@ -226,6 +246,16 @@ const ROUTES = [
   {
     path: '/own/products/addedit',
     component: asyncComponent(() => import('container/own/productEdit/productEdit'))
+  },
+  // 产权端管理 -- 业务管理 -- 产品管理
+  {
+    path: '/own/trees',
+    component: asyncComponent(() => import('container/own/trees/trees'))
+  },
+  // 产权端管理 -- 业务管理 -- 产品管理 -- 编辑/详情
+  {
+    path: '/own/trees/addedit',
+    component: asyncComponent(() => import('container/own/trees/trees-addedit'))
   },
   // 产权端管理 -- 业务管理 -- 多棵产品编辑
   {

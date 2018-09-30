@@ -7,7 +7,7 @@ import {
   isUndefined, showSucMsg, showErrMsg, showWarnMsg, getUserId,
   moneyParse, getRules, getRealValue } from 'common/js/util';
 import fetch from 'common/js/fetch';
-import { UPLOAD_URL, PIC_PREFIX, PIC_BASEURL_L, tailFormItemLayout, tailFormItemLayout1,
+import { UPLOAD_URL, PIC_PREFIX, PIC_BASEURL_L, formItemLayout,
   validateFieldsAndScrollOption, DATE_FORMAT, MONTH_FORMAT, DATETIME_FORMAT } from 'common/js/config';
 import cityData from 'common/js/lib/city';
 import CInput from 'component/cInput/cInput';
@@ -116,6 +116,9 @@ export default class DetailComp extends React.Component {
               f.onChange(initVal);
             }
           });
+        }
+        if (this.options.afterDetail) {
+          this.options.afterDetail();
         }
       });
     }).catch(() => {});
@@ -541,8 +544,8 @@ export default class DetailComp extends React.Component {
   // 获取页面按钮
   getBtns(buttons) {
     return (
-      <FormItem key='btns' {...this.getBtnItemProps()}>
-        {buttons && buttons.length
+      <FormItem className="cform-item-btn" key='btns' {...formItemLayout} label="&nbsp;">
+        {buttons
           ? buttons.map((b, i) => (
             <Button
               style={{marginRight: 20}}
@@ -553,7 +556,7 @@ export default class DetailComp extends React.Component {
             </Button>
           ))
           : this.options.view
-            ? <Button style={{marginLeft: 20}} onClick={this.onCancel}>返回</Button>
+            ? <Button onClick={this.onCancel}>返回</Button>
             : (
               <div>
                 <Button type="primary" htmlType="submit">{this.options.okText || '保存'}</Button>
@@ -573,10 +576,6 @@ export default class DetailComp extends React.Component {
           {item.help ? <Tooltip title={item.help}><Icon type="question-circle-o"/></Tooltip> : null}
       </span>
     );
-  }
-  // 获取button的props
-  getBtnItemProps() {
-    return this.options.moreBtns ? tailFormItemLayout1 : tailFormItemLayout;
   }
   // 返回
   onCancel = () => {

@@ -1,5 +1,5 @@
 import fetch from 'common/js/fetch';
-import { getUserName, getUserId } from 'common/js/util';
+import { getUserName, getUserId, judgeStatus } from 'common/js/util';
 import { PIC_PREFIX } from 'common/js/config';
 
 export function setRoleMenus(menuCodeList, roleCode) {
@@ -38,4 +38,11 @@ export function setUserPost(params) {
 // 列表查询平台用户
 export function getSysUsers() {
   return fetch(630066, { status: '0' });
+}
+
+// 判断养护方、产权方用户是否审核通过
+export function isFullUser() {
+  return getUser().then(data => {
+    return judgeStatus(data.status);
+  });
 }

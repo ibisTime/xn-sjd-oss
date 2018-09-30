@@ -38,10 +38,6 @@ class Products extends React.Component {
   setModalVisible = (updownVisible) => {
     this.setState({ updownVisible });
   }
-  handleOk() {
-    this.setModalVisible(false);
-    this.props.getPageData();
-  }
   downProduct(code) {
     Modal.confirm({
       okText: '确认',
@@ -150,6 +146,7 @@ class Products extends React.Component {
       title: '已募集数量',
       field: 'nowCount'
     }];
+    let that = this;
     return (
       <div>
         {this.props.buildList({
@@ -204,7 +201,10 @@ class Products extends React.Component {
           setModalVisible={this.setModalVisible}
           biz={this.state.biz}
           code={this.state.code}
-          onOk={this.handleOk} />
+          onOk={() => {
+            that.setModalVisible(false);
+            that.props.getPageData();
+          }} />
       </div>
     );
   }

@@ -101,10 +101,10 @@ class ClaimBind extends React.Component {
       <Spin spinning={fetching}>
         <Form className="detail-form-wrapper" onSubmit={this.handleSubmit}>
           {this.getSearchSelectItem()}
-          <FormItem className="claim-bind-item" key='btns' {...formItemLayout} label="&nbsp;">
+          <FormItem className="cform-item-btn" key='btns' {...formItemLayout} label="&nbsp;">
             <Button type="primary" htmlType="submit">申请绑定</Button>
           </FormItem>
-          <FormItem className={`claim-bind-item ${bindInfo.code ? '' : 'hidden'}`} key='card' {...formItemLayout} label="&nbsp;">
+          <FormItem className={`cform-item-btn ${bindInfo.code ? '' : 'hidden'}`} key='card' {...formItemLayout} label="&nbsp;">
             <Card title="养护方信息" extra={this.getStatus()} style={{ width: 300, marginLeft: -62, marginTop: 36 }}>
               <p>帐&nbsp;&nbsp;&nbsp;&nbsp;号：</p>
               <p>名&nbsp;&nbsp;&nbsp;&nbsp;称：</p>

@@ -9,28 +9,28 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/public/notice';
+} from '@redux/biz/property/types';
 import { listWrapper } from 'common/js/build-list';
-import fetch from 'common/js/fetch';
 import { showWarnMsg, showSucMsg, getUserId } from 'common/js/util';
+import fetch from 'common/js/fetch';
 
 @listWrapper(
   state => ({
-    ...state.publicNotice,
+    ...state.propertyTypes,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
-class Notice extends React.Component {
-  back(code) {
+class Types extends React.Component {
+  upDown(bizCode, code) {
     Modal.confirm({
       okText: '确认',
       cancelText: '取消',
-      content: `确认回撤该条公告吗？`,
+      content: `确认${bizCode === 629002 ? '上架' : '下架'}该分类吗？`,
       onOk: () => {
         this.props.doFetching();
-        return fetch(805302, { code, updater: getUserId() }).then(data => {
+        return fetch(bizCode, { code, updater: getUserId() }).then(() => {
           this.props.getPageData();
           showSucMsg('操作成功');
         }).catch(() => this.props.cancelFetching());
@@ -39,57 +39,74 @@ class Notice extends React.Component {
   }
   render() {
     const fields = [{
-      title: '标题',
-      field: 'title'
+      title: '名称',
+      field: 'name'
+    }, {
+    //   title: '上级编号',
+    //   field: 'parentCode',
+    //   type: 'select',
+    //   listCode: '629007',
+    //   keyName: 'code',
+    //   valueName: 'name'
+    // }, {
+      title: '图片',
+      field: 'pic',
+      type: 'img'
+    }, {
+      title: '次序',
+      field: 'orderNo'
     }, {
       title: '状态',
       field: 'status',
       type: 'select',
       data: [{
         dkey: '0',
-        dvalue: '待发布'
+        dvalue: '待上架'
       }, {
         dkey: '1',
-        dvalue: '已发布'
-      }, {
-        dkey: '2',
-        dvalue: '已撤回'
+        dvalue: '已上架'
       }],
       keyName: 'dkey',
-      valueName: 'dvalue',
-      search: true
+      valueName: 'dvalue'
     }, {
-      title: '最新修改人',
-      field: 'updater'
-    }, {
-      title: '最新更新时间',
-      field: 'updateDatetime',
-      type: 'datetime'
+      title: '备注',
+      field: 'remark'
     }];
     return this.props.buildList({
       fields,
-      pageCode: '805305',
+      pageCode: '629005',
       btnEvent: {
         edit: (keys, items) => {
           if (!keys || !keys.length) {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '0' && items[0].status !== '2') {
-            showWarnMsg('该记录不是待发布状态');
+          } else if (items[0].status !== '0') {
+            showWarnMsg('该记录不是待上架状态，无法修改');
           } else {
-            this.props.history.push(`/public/notice/addedit?code=${keys[0]}`);
+            this.props.history.push(`/property/types/addedit?code=${keys[0]}`);
           }
         },
-        back: (keys, items) => {
+        up: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else if (items[0].status !== '0') {
+            showWarnMsg('该记录不是待上架状态');
+          } else {
+            this.upDown(629002, keys[0]);
+          }
+        },
+        down: (keys, items) => {
           if (!keys || !keys.length) {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
           } else if (items[0].status !== '1') {
-            showWarnMsg('该记录不是已发布状态');
+            showWarnMsg('该记录不是已上架状态');
           } else {
-            this.back(keys[0]);
+            this.upDown(629003, keys[0]);
           }
         }
       }
@@ -97,4 +114,4 @@ class Notice extends React.Component {
   }
 }
 
-export default Notice;
+export default Types;

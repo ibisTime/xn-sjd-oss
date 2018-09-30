@@ -88,7 +88,7 @@ export default class CSearchSelect extends React.Component {
       mode: 'combobox',
       showArrow: false,
       filterOption: false,
-      style: { maxWidth: 400 },
+      style: { minWidth: 200, maxWidth: 400 },
       onSearch: this.searchSelectChange,
       optionLabelProp: 'children',
       notFoundContent: this.state.selectFetch ? <Spin size="small"/> : '暂无数据',

@@ -12,6 +12,7 @@ import { PIC_PREFIX } from 'common/js/config';
 import { getOwnerBtns } from 'api/menu';
 import { getDictList } from 'api/dict';
 import fetch from 'common/js/fetch';
+import CSearchSelect from 'component/cSearchSelect/cSearchSelect';
 import locale from './date-locale';
 import cityData from './city';
 
@@ -480,13 +481,17 @@ export default class ListComponent extends React.Component {
         const {getFieldDecorator} = this.props.form;
         const children = [];
         fields.forEach(v => {
-            children.push(
-                <FormItem key={v.field} label={v.title}>
-                    {getFieldDecorator(`${v.field}`, {initialValue: this.props.searchParam[v.field]})(
-                        this.getItemByType(v.type, v)
-                    )}
-                </FormItem>
-            );
+            if (v.type === 'select' && v.pageCode) {
+              children.push(this.getItemByType(v.type, v));
+            } else {
+              children.push(
+                  <FormItem key={v.field} label={v.title}>
+                      {getFieldDecorator(`${v.field}`, {initialValue: this.props.searchParam[v.field]})(
+                          this.getItemByType(v.type, v)
+                      )}
+                  </FormItem>
+              );
+            }
         });
         children.push(
             <FormItem key='searchBtn'>
@@ -528,21 +533,42 @@ export default class ListComponent extends React.Component {
         </Select>;
     }
 
+    // getSearchSelectItem(item) {
+    //     return <Select
+    //         mode="combobox"
+    //         showArrow={false}
+    //         filterOption={false}
+    //         onSearch={v => this.searchSelectChange(v, item)}
+    //         optionLabelProp="children"
+    //         style={{width: 200}}
+    //         placeholder="请输入关键字搜索">
+    //         {item.data ? item.data.map(d => (
+    //             <Option key={d[item.keyName]} value={d[item.keyName]}>
+    //                 {d[item.valueName] ? d[item.valueName] : tempString(item.valueName, d)}
+    //             </Option>
+    //         )) : null}
+    //     </Select>;
+    // }
+    // 获取搜索框类型的控件
     getSearchSelectItem(item) {
-        return <Select
-            mode="combobox"
-            showArrow={false}
-            filterOption={false}
-            onSearch={v => this.searchSelectChange(v, item)}
-            optionLabelProp="children"
-            style={{width: 200}}
-            placeholder="请输入关键字搜索">
-            {item.data ? item.data.map(d => (
-                <Option key={d[item.keyName]} value={d[item.keyName]}>
-                    {d[item.valueName] ? d[item.valueName] : tempString(item.valueName, d)}
-                </Option>
-            )) : null}
-        </Select>;
+      const props = {
+        initVal: this.props.searchParam[item.field],
+        params: item.params,
+        rules: [],
+        inline: true,
+        pageCode: item.pageCode,
+        searchName: item.searchName,
+        field: item.field,
+        label: item.title,
+        keyName: item.keyName,
+        valueName: item.valueName,
+        onChange: item.onChange,
+        getFieldDecorator: this.props.form.getFieldDecorator,
+        getFieldValue: this.props.form.getFieldValue,
+        getFieldError: this.props.form.getFieldError,
+        isLoaded: this.props.isLoaded
+      };
+      return <CSearchSelect key={item.field} {...props} />;
     }
 
     getDateItem(item, isTime = false) {

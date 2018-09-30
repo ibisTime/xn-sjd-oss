@@ -80,6 +80,14 @@ const ROUTES = [
     path: '/public/banner/addedit',
     component: asyncComponent(() => import('container/public/banner-addedit/banner-addedit'))
   },
+  {
+    path: '/public/notice',
+    component: asyncComponent(() => import('container/public/notice/notice'))
+  },
+  {
+    path: '/public/notice/addedit',
+    component: asyncComponent(() => import('container/public/notice-addedit/notice-addedit'))
+  },
   // 会员账户 -- 账户查询
   {
     path: '/finance/userAccount',
@@ -149,6 +157,16 @@ const ROUTES = [
     path: '/property/property/addedit',
     component: asyncComponent(() => import('container/biz/property/property/property-addedit'))
   },
+  // 业务管理 -- 产权方管理 -- 产权方管理
+  {
+    path: '/property/binds',
+    component: asyncComponent(() => import('container/biz/property/binds/binds'))
+  },
+  // 业务管理 -- 产权方管理 -- 产权方管理 -- 待申请
+  {
+    path: '/property/binds/addedit',
+    component: asyncComponent(() => import('container/biz/property/binds/binds-addedit'))
+  },
   // 业务管理 -- 产权方管理 -- 产品分类管理
   {
     path: '/property/types',
@@ -174,6 +192,11 @@ const ROUTES = [
     path: '/property/trees',
     component: asyncComponent(() => import('container/biz/property/trees/trees'))
   },
+  // 业务管理 -- 产权方管理 -- 古树管理 -- 详情
+  {
+    path: '/property/trees/addedit',
+    component: asyncComponent(() => import('container/biz/property/trees/trees-addedit'))
+  },
   // 业务管理 -- 养护方管理 -- 养护方管理
   {
     path: '/conserve/conserve',
@@ -183,6 +206,16 @@ const ROUTES = [
   {
     path: '/conserve/conserve/addedit',
     component: asyncComponent(() => import('container/biz/conserve/conserve/conserve-addedit'))
+  },
+  // 业务管理 -- 养护方管理 -- 养护方管理 -- 绑定产权方
+  {
+    path: '/conserve/conserve/binds',
+    component: asyncComponent(() => import('container/biz/conserve/conserve/conserve-binds'))
+  },
+  // 业务管理 -- 养护方管理 -- 养护人查看
+  {
+    path: '/conserve/users',
+    component: asyncComponent(() => import('container/biz/conserve/users/users'))
   },
   // 产权端管理 -- 业务管理 -- 产品管理
   {
@@ -208,6 +241,41 @@ const ROUTES = [
   {
     path: '/own/claimOrders/addedit',
     component: asyncComponent(() => import('container/own/claimOrders/claimOrders-addedit'))
+  },
+  // 产权端管理 -- 业务管理 -- 养护方绑定
+  {
+    path: '/own/claimBind',
+    component: asyncComponent(() => import('container/own/claimBind/claimBind'))
+  },
+  // 产权端管理 -- 个人设置 -- 系统公告
+  {
+    path: '/own/notices',
+    component: asyncComponent(() => import('container/own/notices/notices'))
+  },
+  // 产权端管理 -- 个人设置 -- 关于我们
+  {
+    path: '/own/aboutus',
+    component: asyncComponent(() => import('container/own/aboutus/aboutus'))
+  },
+  // 养护端管理 -- 业务管理 -- 养护项目管理
+  {
+    path: '/curing/projects',
+    component: asyncComponent(() => import('container/curing/projects/projects'))
+  },
+  // 产权端管理 -- 业务管理 -- 养护项目管理 -- 详情
+  {
+    path: '/curing/projects/addedit',
+    component: asyncComponent(() => import('container/curing/projects/projects-addedit'))
+  },
+  // 养护端管理 -- 业务管理 -- 养护项目管理
+  {
+    path: '/curing/users',
+    component: asyncComponent(() => import('container/curing/users/users'))
+  },
+  // 产权端管理 -- 业务管理 -- 养护项目管理 -- 详情
+  {
+    path: '/curing/users/addedit',
+    component: asyncComponent(() => import('container/curing/users/users-addedit'))
   }
 ];
 

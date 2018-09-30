@@ -4,7 +4,7 @@ import { getQueryString } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 
 @Form.create()
-class NoticeAddEdit extends DetailUtil {
+class TypesAddEdit extends DetailUtil {
   constructor(props) {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
@@ -12,35 +12,39 @@ class NoticeAddEdit extends DetailUtil {
   }
   render() {
     const fields = [{
-      field: 'type',
-      value: '1',
-      hidden: true
-    }, {
-      title: '标题',
-      field: 'title',
-      maxlength: 50,
+      title: '名称',
+      field: 'name',
       required: true
     }, {
-      title: '内容',
-      field: 'content',
-      type: 'textarea',
-      normalArea: true,
+      field: 'parentCode',
+      value: '',
+      hidden: true
+    }, {
+      title: '图片',
+      field: 'pic',
+      type: 'img',
+      single: true,
+      required: true
+    }, {
+      title: '次序',
+      field: 'orderNo',
+      help: '数字越小，排序越靠前',
+      integer: true,
       required: true
     }, {
       title: '备注',
       field: 'remark',
-      maxlength: 30
+      maxlength: 250
     }];
     return this.buildDetail({
       fields,
       code: this.code,
       view: this.view,
-      addCode: 805300,
-      editCode: 805301,
-      detailCode: 805307,
-      okText: this.code ? '发布' : '保存'
+      detailCode: 629006,
+      addCode: 629000,
+      editCode: 629001
     });
   }
 }
 
-export default NoticeAddEdit;
+export default TypesAddEdit;

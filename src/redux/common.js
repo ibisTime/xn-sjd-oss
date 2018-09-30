@@ -9,7 +9,8 @@ export const commListState = {
     current: 1,
     pageSize: 10,
     total: 0
-  }
+  },
+  isLoaded: false
 };
 
 export const commDetailState = {

@@ -1,6 +1,6 @@
-import { commListState } from '../common';
+import { commListState } from '../../common';
 
-const PREFIX = 'PUBLIC_NOTICE_';
+const PREFIX = 'CONSERVE_USERS_';
 const SET_BUTTON_LIST = PREFIX + 'SET_BUTTON_LIST';
 const LOADING = PREFIX + 'LOADING';
 const CANCEL_LOADING = PREFIX + 'CANCEL_LOADING';
@@ -11,12 +11,12 @@ const SET_SEARCH_PARAM = PREFIX + 'SET_SEARCH_PARAM';
 
 const initState = { ...commListState };
 
-export function publicNotice(state = initState, action) {
+export function conserveUsers(state = initState, action) {
   switch(action.type) {
     case SET_BUTTON_LIST:
       return {...state, btnList: action.payload};
     case SET_TABLE_DATA:
-      return {...state, msg: '', tableList: action.payload};
+      return {...state, msg: '', tableList: action.payload, isLoaded: true};
     case SET_SEARCH_DATA:
       return {...state, searchData: {...state.searchData, [action.payload.key]: action.payload.data}};
     case SET_PAGINATION:

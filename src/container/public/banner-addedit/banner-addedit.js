@@ -2,7 +2,6 @@ import React from 'react';
 import { Form } from 'antd';
 import { getQueryString } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
-import { SYSTEM_CODE } from 'common/js/config';
 
 @Form.create()
 class BannerAddEdit extends DetailUtil {

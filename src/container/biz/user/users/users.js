@@ -12,7 +12,7 @@ import {
 } from '@redux/biz/user/users';
 import { listWrapper } from 'common/js/build-list';
 import { showWarnMsg } from 'common/js/util';
-import { activateSysUser } from 'api/user';
+import { activateUser } from 'api/user';
 
 @listWrapper(
   state => ({
@@ -27,10 +27,10 @@ class Users extends React.Component {
     Modal.confirm({
       okText: '确认',
       cancelText: '取消',
-      content: `确认${status === '2' ? '注销' : '激活'}用户？`,
+      content: `确认${status === '0' ? '注销' : '激活'}用户？`,
       onOk: () => {
         this.props.doFetching();
-        return activateSysUser(code).then(() => {
+        return activateUser(code).then(() => {
           this.props.getPageData();
           showWarnMsg('操作成功');
         }).catch(() => {
@@ -41,26 +41,19 @@ class Users extends React.Component {
   }
   render() {
     const fields = [{
-      title: '用户名',
-      field: 'loginName'
-    }, {
       title: '手机号',
       field: 'mobile'
     }, {
-      title: '真实姓名',
+      title: '推荐人',
+      field: 'userReferee'
+    }, {
+      title: '姓名',
       field: 'realName'
-    }, {
-      title: '古树数量',
-      field: 'treeQuantity'
-    }, {
-      title: '古树市值',
-      field: 'treeValue',
-      amount: true
     }, {
       title: '状态',
       field: 'status',
       type: 'select',
-      key: 'sys_user_status',
+      key: 'user_status',
       search: true
     }, {
       title: '注册时间',
@@ -73,30 +66,14 @@ class Users extends React.Component {
     return this.props.buildList({
       fields,
       rowKey: 'userId',
-      pageCode: '630065',
-      searchParams: {
-        kind: 'O'
-      },
+      pageCode: 805120,
       btnEvent: {
-        check: (keys, items) => {
-          if (!keys || !keys.length) {
-            showWarnMsg('请选择记录');
-          } else if (keys.length > 1) {
-            showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '0') {
-            showWarnMsg('该用户不是待审核状态');
-          } else {
-            this.props.history.push(`/property/property/addedit?code=${keys[0]}&v=1&check=1`);
-          }
-        },
         // 注销
         rock: (keys, items) => {
           if (!keys || !keys.length) {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '2') {
-            showWarnMsg('该用户无法注销');
           } else {
             this.rockOrActive(items[0].status, keys[0]);
           }

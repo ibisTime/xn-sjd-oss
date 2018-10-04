@@ -299,6 +299,11 @@ const ROUTES = [
     path: '/conserve/flows',
     component: asyncComponent(() => import('container/biz/conserve/flows/flows'))
   },
+  // 业务管理 -- 养护方管理 -- 流水查询
+  {
+    path: '/user/users',
+    component: asyncComponent(() => import('container/biz/user/users/users'))
+  },
   // 业务管理 -- 认养管理 -- 集体认养订单管理
   {
     path: '/claim/groupOrders',

@@ -27,7 +27,7 @@ class GroupOrdersAddEdit extends DetailUtil {
       title: '状态',
       field: 'status',
       type: 'select',
-      key: 'sell_type'
+      key: 'group_adopt_order_status'
     }, {
       title: '下单时间',
       field: 'applyDatetime',

@@ -58,16 +58,16 @@ class Products extends React.Component {
       field: 'sellType',
       type: 'select',
       data: [{
-        dkey: '0',
+        dkey: '1',
         dvalue: '个人'
       }, {
-        dkey: '1',
+        dkey: '2',
         dvalue: '定向'
       }, {
-        dkey: '2',
+        dkey: '3',
         dvalue: '捐赠'
       }, {
-        dkey: '3',
+        dkey: '4',
         dvalue: '集体'
       }],
       keyName: 'dkey',

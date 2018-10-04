@@ -29,10 +29,16 @@ class Settlement extends React.Component {
       title: '认养人',
       field: 'applyUser'
     }, {
-      title: '状态',
+      title: '结算状态',
       field: 'settleStatus',
       type: 'select',
       key: 'adopt_settle_status',
+      search: true
+    }, {
+      title: '订单状态',
+      field: 'status',
+      type: 'select',
+      key: 'adopt_order_status',
       search: true
     }, {
       title: '下单时间',

@@ -46,6 +46,7 @@ class AgentsAddEdit extends DetailUtil {
     }, {
       type: 'o2m',
       field: 'settleList',
+      title: '代理结算清单',
       options: {
         fields: [{
           title: '代理商',
@@ -63,7 +64,7 @@ class AgentsAddEdit extends DetailUtil {
           title: '状态',
           field: 'status',
           type: 'select',
-          key: 'adopt_order_tree_status'
+          key: 'settle_status'
         }, {
           title: '备注',
           field: 'remark'

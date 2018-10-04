@@ -1,27 +1,74 @@
 import React from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Row, Col } from 'antd';
 import { Redirect, Link } from 'react-router-dom';
-import { showSucMsg } from 'common/js/util';
+import { showSucMsg, getKindByUrl, showWarnMsg } from 'common/js/util';
 import fetch from 'common/js/fetch';
 import '../login/login.css';
 
 const FormItem = Form.Item;
+let time = 0;
 
 class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       redirectTo: '',
-      fetching: false
+      fetching: false,
+      captText: '获取验证码',
+      disabled: false,
+      captFetching: false
     };
+    this.kind = getKindByUrl();
   }
+  // 获取验证码
+  getSmsCode = (e) => {
+    e.preventDefault();
+    this.props.form.validateFields(['mobile'], (err, values) => {
+      if (!err) {
+        this.setState({ captFetching: true, disabled: true });
+        // 根据当前url判断是注册哪种角色
+        let bizType = this.kind === 'D' ? 730070 : 630060;
+        values.bizType = bizType;
+        fetch(630090, values).then(() => {
+          this.setState({ captFetching: false });
+          this.sendSmsSuc();
+        }).catch(() => this.setState({ captFetching: false, disabled: false }));
+      }
+    });
+  }
+  // 验证码发送成功，进入60s倒计时
+  sendSmsSuc() {
+    time++;
+    this.timer = setTimeout(() => {
+      if (time === 60) {
+        time = 0;
+        clearTimeout(this.timer);
+        this.setState({ disabled: false, captText: '获取验证码' });
+      } else {
+        this.setState({ captText: `${60 - time}s` });
+        this.sendSmsSuc();
+      }
+    }, 1000);
+  }
+  // 注册
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         this.setState({ fetching: true });
-        values.kind = 'O';
-        fetch(630060, values).then(() => {
+        // 根据当前url判断是注册哪种角色
+        let bizCode = 630060;
+        if (this.kind === 'O') {
+          values.kind = 'O';
+        } else if (this.kind === 'M') {
+          values.kind = 'M';
+        } else if (this.kind === 'D') {
+          bizCode = 730070;
+        } else {
+          showWarnMsg('非常抱歉，您无法注册');
+          return;
+        }
+        fetch(bizCode, values).then(() => {
           this.setState({ fetching: false });
           showSucMsg('注册成功');
           setTimeout(() => {
@@ -33,10 +80,11 @@ class Register extends React.Component {
   }
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { captFetching, disabled, captText } = this.state;
     return (
       <div className="login-body">
         {this.state.redirectTo ? <Redirect to={this.state.redirectTo}/> : null}
-        <div className="login-wrap">
+        <div className="login-wrap register-wrap">
           <div className="login-img"></div>
           <div className="login-form">
             <div className="login-logo"></div>
@@ -53,6 +101,22 @@ class Register extends React.Component {
                 })(<Input placeholder="手机号"/>)}
               </FormItem>
               <FormItem className="form-item">
+                <Row gutter={8}>
+                  <Col span={12}>
+                    {getFieldDecorator('smsCaptcha', {
+                      rules: [{ required: true, message: '请输入验证码' }]
+                    })(<Input placeholder="验证码" />)}
+                  </Col>
+                  <Col span={12}>
+                    <Button
+                      className="smsCapt"
+                      onClick={this.getSmsCode}
+                      loading={captFetching}
+                      disabled={disabled} >{captText}</Button>
+                  </Col>
+                </Row>
+              </FormItem>
+              <FormItem className="form-item">
                 {getFieldDecorator('loginPwd', {
                   rules: [{
                     required: true,
@@ -65,11 +129,15 @@ class Register extends React.Component {
                         className="login-form-button">注册</Button>
               </FormItem>
             </Form>
-            <div className="bottom-tip">
-              <div className="tip-border"></div>
-              <div className="tip-text">已有帐号？<Link to='/login'>去登录</Link></div>
-              <div className="tip-border"></div>
-            </div>
+            {
+              this.kind === 'P' ? null : (
+                <div className="bottom-tip">
+                  <div className="tip-border"></div>
+                  <div className="tip-text">已有帐号？<Link to='/login'>去登录</Link></div>
+                  <div className="tip-border"></div>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>

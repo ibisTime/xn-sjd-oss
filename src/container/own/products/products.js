@@ -46,7 +46,7 @@ class Products extends React.Component {
       field: 'code',
       search: true
     }, {
-      title: '产品分类',
+      title: '分类',
       field: 'categoryCode',
       type: 'select',
       listCode: '629007',
@@ -73,6 +73,20 @@ class Products extends React.Component {
       keyName: 'dkey',
       valueName: 'dvalue',
       search: true
+    }, {
+      title: '募集总数',
+      field: 'raiseCount'
+    }, {
+      title: '已募集数量',
+      field: 'nowCount'
+    }, {
+      title: '募集开始时间',
+      field: 'raiseStartDatetime',
+      type: 'date'
+    }, {
+      title: '募集结束时间',
+      field: 'raiseEndDatetime',
+      type: 'date'
     }, {
       title: '状态',
       field: 'status',
@@ -105,15 +119,6 @@ class Products extends React.Component {
       keyName: 'dkey',
       valueName: 'dvalue',
       search: true
-    }, {
-      title: '认养价格',
-      field: 'scientificName1'
-    }, {
-      title: '认养年限',
-      field: 'variety1'
-    }, {
-      title: '备注',
-      field: 'remark'
     }];
     return this.props.buildList({
       fields,

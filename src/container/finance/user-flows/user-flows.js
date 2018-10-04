@@ -47,15 +47,15 @@ class UserFlows extends React.Component {
       search: true
     }, {
       title: '变动金额',
-      field: 'transAmount',
+      field: 'transAmountString',
       amount: true
     }, {
       title: '变动前金额',
-      field: 'preAmount',
+      field: 'preAmountString',
       amount: true
     }, {
       title: '变动后金额',
-      field: 'postAmount',
+      field: 'postAmountString',
       amount: true
     }, {
       title: '状态',

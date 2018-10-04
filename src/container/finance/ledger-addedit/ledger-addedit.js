@@ -27,7 +27,7 @@ class LedgerAddEdit extends DetailUtil {
       title: '币种',
       field: 'currency',
       type: 'select',
-      key: 'coin'
+      key: 'currency'
     }, {
       title: '渠道类型',
       field: 'channelType',
@@ -43,15 +43,15 @@ class LedgerAddEdit extends DetailUtil {
       field: 'bizNote'
     }, {
       title: '变动金额',
-      field: 'transAmount',
+      field: 'transAmountString',
       amount: true
     }, {
       title: '变动前金额',
-      field: 'preAmount',
+      field: 'preAmountString',
       amount: true
     }, {
       title: '变动后金额',
-      field: 'postAmount',
+      field: 'postAmountString',
       amount: true
     }, {
       title: '金额変动时间',

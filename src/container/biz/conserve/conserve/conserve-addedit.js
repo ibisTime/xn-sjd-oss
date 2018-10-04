@@ -15,7 +15,7 @@ class ConserveAddEdit extends DetailUtil {
   checkUser(approveResult, params) {
     this.doFetching();
     params.approveResult = approveResult;
-    fetch(630061, params).then(data => {
+    fetch(630062, params).then(data => {
       this.cancelFetching();
       showSucMsg('操作成功');
       setTimeout(() => {
@@ -26,23 +26,58 @@ class ConserveAddEdit extends DetailUtil {
   render() {
     const fields = [{
       field: 'kind',
-      value: 'M',
+      value: 'O',
       hidden: true
     }, {
       title: '用户名',
       field: 'loginName',
-      required: true,
+      hidden: !this.code,
       maxlength: 30
     }, {
       title: '真实姓名',
       field: 'realName',
-      required: true,
+      hidden: !this.code,
       maxlength: 30
     }, {
       title: '手机号',
       field: 'mobile',
       required: true,
       mobile: true
+    }, {
+      title: '公司名称',
+      field: 'companyName',
+      _keys: ['company', 'name'],
+      required: true
+    }, {
+      title: '公司负责人',
+      field: 'companyCharger',
+      _keys: ['company', 'charger'],
+      required: true
+    }, {
+      title: '负责人联系方式',
+      field: 'chargerMobile',
+      _keys: ['company', 'chargeMobile'],
+      mobile: true,
+      required: true
+    }, {
+      title: '公司地址',
+      field: 'companyAddress',
+      _keys: ['company', 'address'],
+      required: true
+    }, {
+      title: '简介',
+      field: 'description',
+      _keys: ['company', 'description'],
+      type: 'textarea',
+      normalArea: true,
+      required: true
+    }, {
+      title: '营业执照',
+      field: 'bussinessLicense',
+      _keys: ['company', 'bussinessLicense'],
+      type: 'img',
+      single: true,
+      required: true
     }, {
       title: '备注',
       field: 'remark',
@@ -54,7 +89,7 @@ class ConserveAddEdit extends DetailUtil {
       code: this.code,
       view: this.view,
       detailCode: 630067,
-      addCode: 630064
+      addCode: 630063
     };
     if (this.check) {
       config.buttons = [{

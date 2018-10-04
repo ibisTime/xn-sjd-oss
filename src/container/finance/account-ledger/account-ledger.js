@@ -8,13 +8,13 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/finance/platform-ledger';
+} from '@redux/finance/platform/flows';
 import { listWrapper } from 'common/js/build-list';
 import { getQueryString, getUserId, dateTimeFormat } from 'common/js/util';
 
 @listWrapper(
   state => ({
-    ...state.financePlatformLedger,
+    ...state.platformFlows,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
@@ -34,7 +34,7 @@ class AccountLedger extends React.Component {
       title: '币种',
       field: 'currency',
       type: 'select',
-      key: 'coin'
+      key: 'currency'
     }, {
       title: '渠道',
       field: 'channelType',
@@ -49,15 +49,15 @@ class AccountLedger extends React.Component {
       search: true
     }, {
       title: '变动金额',
-      field: 'transAmount',
+      field: 'transAmountString',
       amount: true
     }, {
       title: '变动前金额',
-      field: 'preAmount',
+      field: 'preAmountString',
       amount: true
     }, {
       title: '变动后金额',
-      field: 'postAmount',
+      field: 'postAmountString',
       amount: true
     }, {
       title: '状态',

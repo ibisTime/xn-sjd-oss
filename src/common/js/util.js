@@ -10,7 +10,7 @@ import { PIC_PREFIX, DATE_FORMAT, MONTH_FORMAT, DATETIME_FORMAT } from './config
  */
 export function setUser({ userId, token }) {
   cookies.set('userId', userId);
-  // cookies.set('token', token);
+  cookies.set('token', token);
 }
 
 // 删除用户登录信息
@@ -637,16 +637,37 @@ function getRealCheckboxVal(result) {
 
 // 判断养护方、产权方用户是否审核通过
 export function judgeStatus(status) {
-  // 0 待审核 1 审核不通过 2 合伙中 3 已解除合伙 4 已注销 5 正常 6 待填写公司资料
+  // TO_FILL("-1", "待填写资料"), TO_APPROVE("0", "待审核"), APPROVE_NO("1", "审核不通过"), NORMAL(
+  // "2", "审核通过/正常"), Li_Locked("3", "程序锁定"), Ren_Locked("4", "人工锁定");
   switch(status) {
+    case '-1':
     case '0':
     case '1':
-    case '6':
       return '/supplement';
     case '3':
     case '4':
       return '/illegal';
     default:
       return '';
+  }
+}
+
+// 根据当前url判断是哪种角色操作
+export function getKindByUrl() {
+  // 平台
+  if (location.origin === 'http://sjd.oss.hichengdai.com') {
+    return 'P';
+  }
+  // 产权
+  if (location.origin === 'http://sjd.owner.hichengdai.com') {
+    return 'O';
+  }
+  // 养护
+  if (location.origin === 'http://sjd.main.hichengdai.com') {
+    return 'M';
+  }
+  // 代理
+  if (location.origin === 'http://sjd.agent.hichengdai.com') {
+    return 'D';
   }
 }

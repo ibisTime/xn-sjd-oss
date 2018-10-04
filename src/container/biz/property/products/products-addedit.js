@@ -129,11 +129,6 @@ class ProductsAddEdit extends DetailUtil {
           amount: true,
           required: true
         }, {
-          title: '认养年限',
-          field: 'year',
-          'Z+': true,
-          required: true
-        }, {
           title: '认养时间',
           field: 'startDatetime',
           type: 'date',

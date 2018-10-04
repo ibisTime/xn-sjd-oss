@@ -22,8 +22,7 @@ class SysParamAddEdit extends DetailUtil {
       readonly: true
     }, {
       title: '参数值',
-      field: 'cvalue',
-      type: 'textarea'
+      field: 'cvalue'
     }, {
       title: '最近修改时间',
       field: 'updateDatetime',

@@ -8,19 +8,19 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/finance/platform-ledger';
+} from '@redux/proxy/flows';
 import { listWrapper } from 'common/js/build-list';
-import { getQueryString, getUserId, dateTimeFormat } from 'common/js/util';
+import { dateTimeFormat, getUserId } from 'common/js/util';
 
 @listWrapper(
   state => ({
-    ...state.financePlatformLedger,
+    ...state.proxyFlows,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
-class PlatformLedger extends React.Component {
+class ProxyFlows extends React.Component {
   render() {
     const fields = [{
       title: '户名',
@@ -30,7 +30,8 @@ class PlatformLedger extends React.Component {
       title: '币种',
       field: 'currency',
       type: 'select',
-      key: 'coin'
+      key: 'currency',
+      search: true
     }, {
       title: '渠道',
       field: 'channelType',
@@ -45,15 +46,15 @@ class PlatformLedger extends React.Component {
       search: true
     }, {
       title: '变动金额',
-      field: 'transAmount',
+      field: 'transAmountString',
       amount: true
     }, {
       title: '变动前金额',
-      field: 'preAmount',
+      field: 'preAmountString',
       amount: true
     }, {
       title: '变动后金额',
-      field: 'postAmount',
+      field: 'postAmountString',
       amount: true
     }, {
       title: '状态',
@@ -68,16 +69,18 @@ class PlatformLedger extends React.Component {
       rangedate: ['createDatetimeStart', 'createDatetimeEnd'],
       render: dateTimeFormat,
       search: true
+    }, {
+      title: '关联单号',
+      field: 'refNo'
     }];
     return this.props.buildList({
       fields,
-      pageCode: 802520,
       searchParams: {
-        type: 'P',
-        kind: 0
-      }
+        userId: getUserId()
+      },
+      pageCode: 802320
     });
   }
 }
 
-export default PlatformLedger;
+export default ProxyFlows;

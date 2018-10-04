@@ -133,11 +133,6 @@ class ProductEdit extends DetailUtil {
           amount: true,
           required: true
         }, {
-          title: '认养年限',
-          field: 'year',
-          'Z+': true,
-          required: true
-        }, {
           title: '认养时间',
           field: 'startDatetime',
           type: 'date',
@@ -181,6 +176,11 @@ class ProductEdit extends DetailUtil {
       },
       required: true
     }, {
+      title: '产品描述',
+      field: 'description',
+      type: 'textarea',
+      required: true
+    }, {
       title: '备注',
       field: 'remark',
       maxlength: 250
@@ -194,6 +194,7 @@ class ProductEdit extends DetailUtil {
       editCode: 629011,
       beforeSubmit: (params) => {
         params.ownerId = getUserId();
+        return params;
       }
     };
     if (!this.code) {

@@ -49,17 +49,17 @@
   border: 1px #979797 solid;
   font-size: 16px;
 }
-.login-wrap .login-form-wrapper .ant-row {
+.login-wrap .login-form-wrapper .ant-row.ant-form-item {
   margin-bottom: 34px;
 }
-.login-wrap .login-form-wrapper .ant-btn-primary {
+.login-wrap .login-form-wrapper .ant-btn-primary.login-form-button {
   height: 56px;
   width: 100%;
   font-size: 18px;
   border: 1px solid #23ad8c;
   background-color: #23ad8c;
 }
-.login-wrap .login-form-wrapper .ant-btn-primary:hover {
+.login-wrap .login-form-wrapper .ant-btn-primary.login-form-button:hover {
   border-color: #29be9b;
   background-color: #29be9b;
 }
@@ -86,5 +86,27 @@
   color: #23ad8c;
 }
 .login-wrap .login-form .bottom-tip .tip-text a:hover, .login-wrap .login-form .bottom-tip .tip-text a:active {
+  color: #29be9b;
+}
+
+/*注册*/
+.register-wrap.login-wrap .login-form-wrapper .ant-btn-primary,
+.register-wrap.login-wrap .login-form-wrapper .ant-input {
+  height: 50px;
+}
+.register-wrap.login-wrap .login-form-wrapper .ant-row.ant-form-item {
+  margin-bottom: 28px;
+}
+.login-wrap .has-error .ant-form-explain {
+  position: absolute;
+}
+.register-wrap.login-wrap .login-form-wrapper button.ant-btn.smsCapt {
+  height: 50px;
+  border: 1px solid #23ad8c;
+  color: #23ad8c;
+  min-width: 102px;
+}
+.login-wrap .login-form-wrapper button.ant-btn.smsCapt:hover {
+  border-color: #29be9b;
   color: #29be9b;
 }

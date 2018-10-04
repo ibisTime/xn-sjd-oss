@@ -37,7 +37,10 @@ class GroupOrders extends React.Component {
       field: 'applyUser'
     }, {
       title: '状态',
-      field: 'status'
+      field: 'status',
+      type: 'select',
+      key: 'sell_type',
+      search: true
     }, {
       title: '下单时间',
       field: 'applyDatetime',

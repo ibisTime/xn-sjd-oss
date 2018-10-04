@@ -23,15 +23,27 @@ class ProductsAddEdit extends DetailUtil {
       }, 1000);
     }).catch(this.cancelFetching);
   }
-  render() {
-    const fields = [{
+  getPageFields() {
+    return this.check ? [{
+      title: '产权方',
+      field: 'ownerId',
+      _keys: ['ownerUser', 'mobile']
+    }, {
+      title: '养护方',
+      field: 'maintainId',
+      _keys: ['maintainUser', 'mobile']
+    }, {
+      title: '备注',
+      field: 'remark',
+      maxlength: 30
+    }] : [{
       title: '产权方',
       field: 'ownerId',
       type: 'select',
       pageCode: 630065,
       params: { status: 2, kind: 'O' },
       keyName: 'userId',
-      valueName: '{{realName.DATA}}-{{mobile.DATA}}',
+      valueName: 'mobile',
       required: true
     }, {
       title: '养护方',
@@ -40,13 +52,16 @@ class ProductsAddEdit extends DetailUtil {
       pageCode: 630065,
       params: { status: 2, kind: 'M' },
       keyName: 'userId',
-      valueName: '{{realName.DATA}}-{{mobile.DATA}}',
+      valueName: 'mobile',
       required: true
     }, {
       title: '备注',
       field: 'remark',
       maxlength: 30
     }];
+  }
+  render() {
+    const fields = this.getPageFields();
     let config = {
       fields,
       code: this.code,

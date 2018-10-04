@@ -1,18 +1,18 @@
 import fetch from 'common/js/fetch';
+import { getUserId } from 'common/js/util';
 
 /**
- * 分页查询账号
- * @param start
- * @param limit
- * @param type
+ * 根据用户编号查询账户列表
+ * @param userId  用户编号
+ * @param currency 币种
  */
-export function getPageAccount({ start, limit, type }) {
-  return fetch(802500, {
-    start,
-    limit,
-    type
-  });
+export function getAccountsByUserId(userId, currency) {
+  return fetch(802301, { userId, currency });
 }
-export function getTotalAcount() {
-  return fetch(630900);
+/**
+ * 根据当前登录用户编号查询账户列表
+ * @param currency 币种
+ */
+export function getAccountsByCurUserId(currency) {
+  return getAccountsByUserId(getUserId(), currency);
 }

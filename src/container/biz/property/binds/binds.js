@@ -24,10 +24,14 @@ class Binds extends React.Component {
   render() {
     const fields = [{
       title: '产权方',
-      field: 'ownerId'
+      field: 'ownerId',
+      render: (v, d) => d.ownerUser ? d.ownerUser.mobile : '',
+      _keys: ['ownerUser', 'mobile']
     }, {
       title: '养护方',
-      field: 'maintainId'
+      field: 'maintainId',
+      render: (v, d) => d.maintainUser ? d.maintainUser.mobile : '',
+      _keys: ['maintainUser', 'mobile']
     }, {
       title: '状态',
       field: 'status',

@@ -35,7 +35,9 @@ class ClaimOrdersAddEdit extends DetailUtil {
       amount: true
     }, {
       title: '状态',
-      field: 'status'
+      field: 'status',
+      type: 'select',
+      key: 'adopt_order_tree_status'
     }];
     return this.buildDetail({
       fields,

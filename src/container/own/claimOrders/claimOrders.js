@@ -47,7 +47,10 @@ class ClaimOrders extends React.Component {
       amount: true
     }, {
       title: '状态',
-      field: 'status'
+      field: 'status',
+      type: 'select',
+      key: 'adopt_order_tree_status',
+      search: true
     }];
     return this.props.buildList({
       fields,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Alert, Card } from 'antd';
-import { getQueryString, getUserId } from 'common/js/util';
+import { getQueryString, getUserId, getKindByUrl, isUndefined } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 import fetch from 'common/js/fetch';
 
@@ -9,13 +9,17 @@ class Supplement extends DetailUtil {
   constructor(props) {
     super(props);
     this.code = getUserId();
+    this.kind = getKindByUrl();
     this.state = {
       ...this.state,
       readonly: false,
-      isFailed: false
+      isFailed: false,
+      isTop: false
     };
   }
   getExtra() {
+    // TO_FILL("-1", "待填写资料"), TO_APPROVE("0", "待审核"), APPROVE_NO("1", "审核不通过"), NORMAL(
+    // "2", "审核通过/正常"), Li_Locked("3", "程序锁定"), Ren_Locked("4", "人工锁定");
     let { pageData } = this.state;
     if (pageData) {
       return pageData.status === '0'
@@ -27,15 +31,14 @@ class Supplement extends DetailUtil {
   }
   addBtns(config) {
     let { pageData } = this.state;
-    if (pageData && (pageData.status === '1' || pageData.status === '6')) {
+    if (pageData && (pageData.status === '1' || pageData.status === '-1')) {
       config.buttons = [{
         title: '提交审核',
         type: 'primary',
         check: true,
         handler: (params) => {
           this.doFetching();
-          // 630300填写公司资料 630302修改公司信息
-          let bizCode = pageData.status === '1' ? 630302 : 630300;
+          let bizCode = this.kind === 'D' ? 730073 : 630061;
           fetch(bizCode, params).then(() => {
             this.setState({
               readonly: true,
@@ -52,56 +55,150 @@ class Supplement extends DetailUtil {
       config.buttons = [];
     }
   }
-  render() {
-    const fields = [{
-      title: '名称',
-      field: 'companyName',
+  getIsTop() {
+    let { pageData } = this.state;
+    return (isUndefined(pageData) || isUndefined(pageData.parentUserId) ||
+      pageData.parentUserId === '0') ? '1' : '0';
+  }
+  getFieldsByKind() {
+    return this.kind === 'D' ? [{
+      title: '是否顶级',
+      field: 'isTop',
+      type: 'select',
+      data: [{
+        dkey: '0',
+        dvalue: '否'
+      }, {
+        dkey: '1',
+        dvalue: '是'
+      }],
+      value: this.getIsTop(),
+      required: true,
+      onChange: (v) => {
+        this.setState({ isTop: v === '1' });
+      }
+    }, {
+      title: '上级代理手机号',
+      field: 'refUserMobile',
+      formatter: (v, d) => d.parentAgentUser ? d.parentAgentUser.mobile : '',
+      hidden: this.state.isTop,
+      required: !this.state.isTop
+    }, {
+      title: '辖区',
+      field: 'province',
+      type: 'citySelect',
+      formatter: (v, d) => {
+        let result = [];
+        if (d.company) {
+          let prov = d.company.province;
+          if (prov) {
+              let city = d.company.city ? d.company.city : '全部';
+              let area = d.company.area ? d.company.area : '全部';
+              result = [prov, city, area];
+          } else {
+              result = [];
+          }
+        }
+        return result;
+      },
       required: true
     }, {
-      title: '负责人',
-      field: 'companyCharger',
+      title: '公司名称',
+      field: 'name',
+      _keys: ['company', 'name'],
       required: true
     }, {
-      title: '联系方式',
-      field: 'chargerMobile',
+      title: '公司负责人',
+      field: 'charger',
+      _keys: ['company', 'charger'],
+      required: true
+    }, {
+      title: '负责人联系方式',
+      field: 'chargeMobile',
+      _keys: ['company', 'chargeMobile'],
       mobile: true,
       required: true
     }, {
-      title: '地址',
-      field: 'companyAddress',
+      title: '公司地址',
+      field: 'address',
+      _keys: ['company', 'address'],
       required: true
     }, {
       title: '简介',
       field: 'description',
+      _keys: ['company', 'description'],
       type: 'textarea',
-      normalArea: true
+      normalArea: true,
+      required: true
     }, {
       title: '营业执照',
       field: 'bussinessLicense',
+      _keys: ['company', 'bussinessLicense'],
       type: 'img',
-      single: true
+      single: true,
+      required: true
     }, {
-      title: '上传合同模版',
-      field: 'contractTemplate',
-      type: 'file'
+      title: '组织机构代码',
+      field: 'organizationCode',
+      _keys: ['company', 'organizationCode'],
+      required: true
+    }] : [{
+      title: '公司名称',
+      field: 'companyName',
+      _keys: ['company', 'name'],
+      required: true
     }, {
-      title: '上传证书模版',
-      field: 'certificateTemplate',
-      type: 'file'
+      title: '公司负责人',
+      field: 'companyCharger',
+      _keys: ['company', 'charger'],
+      required: true
+    }, {
+      title: '负责人联系方式',
+      field: 'chargerMobile',
+      _keys: ['company', 'chargeMobile'],
+      mobile: true,
+      required: true
+    }, {
+      title: '公司地址',
+      field: 'companyAddress',
+      _keys: ['company', 'address'],
+      required: true
+    }, {
+      title: '简介',
+      field: 'description',
+      _keys: ['company', 'description'],
+      type: 'textarea',
+      normalArea: true,
+      required: true
+    }, {
+      title: '营业执照',
+      field: 'bussinessLicense',
+      _keys: ['company', 'bussinessLicense'],
+      type: 'img',
+      single: true,
+      required: true
+    }, {
+      title: '组织机构代码',
+      field: 'organizationCode',
+      _keys: ['company', 'organizationCode'],
+      required: true
     }];
+  }
+  render() {
+    let fields = this.getFieldsByKind();
     let config = {
       fields,
       key: 'userId',
       code: this.code,
       view: this.state.readonly,
-      detailCode: 630067,
-      editCode: 630302,
+      detailCode: this.kind === 'D' ? 730086 : 630067,
       afterDetail: () => {
         let userInfo = this.state.pageData;
-        // 0 待审核 1 审核不通过 2 合伙中 3 已解除合伙 4 已注销 5 正常 6 待填写公司资料
+        // TO_FILL("-1", "待填写资料"), TO_APPROVE("0", "待审核"), APPROVE_NO("1", "审核不通过"), NORMAL(
+        // "2", "审核通过/正常"), Li_Locked("3", "程序锁定"), Ren_Locked("4", "人工锁定");
         if (userInfo.status === '0') {
           this.setState({ readonly: true });
-        } else if (userInfo.status === '1' && userInfo.status === '6') {
+        } else if (userInfo.status === '1' || userInfo.status === '-1') {
           this.setState({ isFailed: userInfo.status === '1' });
         } else {
           this.props.history.push('/');

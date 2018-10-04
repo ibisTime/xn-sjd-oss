@@ -5,13 +5,14 @@ export const UPLOAD_URL = 'http://up-z2.qiniup.com';
 export const PIC_PREFIX = 'http://ounm8iw2d.bkt.clouddn.com/';
 export const PIC_BASEURL_L = '?imageMogr2/auto-orient/thumbnail/!1000x1000r';
 
-// 系统userid
-export const SYS_USER = 'SYS_USER_ZXZX';
-// 系统托管userid
-export const SYS_USER_TG = 'SYS_USER_ZXZX_TG';
-
 // 系统根菜单编号
 export const ROOT_MENU_CODE = 'COINSM201700000000000000';
+
+// 系统userid
+export const SYS_USER = 'SYS_USER';
+
+// c端注册地址  USER("U", "普通用户"), AGENT("A", "代理商"), SALEMANS("S", "业务员");
+export const C_REGISTER_URL = 'http://sjd.front.hichengdai.com/#/register';
 
 export const formItemLayout = {
   labelCol: {

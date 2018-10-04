@@ -16,8 +16,8 @@ export default class CCitySelect extends React.Component {
       inline, getFieldError } = this.props;
     let nowValue = getFieldValue(field);
     let flag;
-    if (isUndefined(this.prevValue)) {
-      flag = !(isUndefined(nowValue) || !nowValue.length);
+    if (isUndefined(this.prevValue) || isUndefined(nowValue)) {
+      flag = !(isUndefined(this.prevValue) && isUndefined(nowValue));
     } else if (this.prevValue.length !== nowValue.length) {
       flag = true;
     } else {

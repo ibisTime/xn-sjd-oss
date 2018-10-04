@@ -1,6 +1,6 @@
 import fetch from 'common/js/fetch';
 import { setUser, getUserId, setRoleInfo, getRoleCode,
-  getUserName, judgeStatus } from 'common/js/util';
+  getUserName, judgeStatus, getKindByUrl } from 'common/js/util';
 
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOGOUT = 'LOGOUT';
@@ -58,7 +58,8 @@ export function loadData(data, redirectTo = '/') {
 export function login({ loginName, loginPwd, type = 'P' }) {
   return dispatch => {
     dispatch(doFetching());
-    fetch(630051, {
+    let bizCode = getKindByUrl() === 'D' ? 730071 : 630051;
+    fetch(bizCode, {
       loginName,
       loginPwd
     }).then(data => {
@@ -77,7 +78,6 @@ export function login({ loginName, loginPwd, type = 'P' }) {
 }
 
 function _getUser() {
-  return fetch(630067, {
-    userId: getUserId()
-  });
+  let bizCode = getKindByUrl() === 'D' ? 730086 : 630067;
+  return fetch(bizCode, { userId: getUserId() });
 }

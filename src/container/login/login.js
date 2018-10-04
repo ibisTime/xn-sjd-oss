@@ -3,6 +3,7 @@ import { Form, Input, Button } from 'antd';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '@redux/user';
+import { getKindByUrl } from 'common/js/util';
 import './login.css';
 
 const FormItem = Form.Item;
@@ -12,6 +13,10 @@ const FormItem = Form.Item;
   { login }
 )
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.kind = getKindByUrl();
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -54,11 +59,15 @@ class Login extends React.Component {
                         className="login-form-button">登录</Button>
               </FormItem>
             </Form>
-            <div className="bottom-tip">
-              <div className="tip-border"></div>
-              <div className="tip-text">没有帐号？<Link to='/register'>去注册</Link></div>
-              <div className="tip-border"></div>
-            </div>
+            {
+              this.kind === 'P' ? null : (
+                <div className="bottom-tip">
+                  <div className="tip-border"></div>
+                  <div className="tip-text">没有帐号？<Link to='/register'>去注册</Link></div>
+                  <div className="tip-border"></div>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>

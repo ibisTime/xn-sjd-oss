@@ -106,10 +106,10 @@ class ClaimBind extends React.Component {
           </FormItem>
           <FormItem className={`cform-item-btn ${bindInfo.code ? '' : 'hidden'}`} key='card' {...formItemLayout} label="&nbsp;">
             <Card title="养护方信息" extra={this.getStatus()} style={{ width: 300, marginLeft: -62, marginTop: 36 }}>
-              <p>帐&nbsp;&nbsp;&nbsp;&nbsp;号：</p>
-              <p>名&nbsp;&nbsp;&nbsp;&nbsp;称：</p>
-              <p>负&nbsp;责&nbsp;人：</p>
-              <p>联系方式：</p>
+              <p>帐&nbsp;&nbsp;&nbsp;&nbsp;号：{bindInfo.loginName}</p>
+              <p>名&nbsp;&nbsp;&nbsp;&nbsp;称：{bindInfo.company ? bindInfo.company.name : ''}</p>
+              <p>负&nbsp;责&nbsp;人：{bindInfo.company ? bindInfo.company.charger : ''}</p>
+              <p>联系方式：{bindInfo.company ? bindInfo.company.chargeMobile : ''}</p>
             </Card>
           </FormItem>
         </Form>

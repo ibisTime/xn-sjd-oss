@@ -133,30 +133,35 @@ const ROUTES = [
     path: '/recharge/recharges/addedit',
     component: asyncComponent(() => import('container/finance/recharge/recharges/recharges-addedit'))
   },
-  // 财务管理 -- 充值管理 -- 线下充值
+  // 财务管理 -- 充值管理 -- 充值查询
   {
     path: '/recharge/records',
     component: asyncComponent(() => import('container/finance/recharge/records/records'))
   },
-  // 财务管理 -- 充值管理 -- 线下充值 -- 详情
+  // 财务管理 -- 充值管理 -- 充值查询 -- 详情
   {
     path: '/recharge/records/addedit',
     component: asyncComponent(() => import('container/finance/recharge/recharges/recharges-addedit'))
   },
-  // 财务管理 -- 平台账户 -- 流水查询
+  // 财务管理 -- 取现管理 -- 取现规则
   {
-    path: '/finance/platform/flows',
-    component: asyncComponent(() => import('container/finance/platform/flows/flows'))
+    path: '/withdraw/rules',
+    component: asyncComponent(() => import('container/finance/withdraw/rules/rules'))
   },
-  // 会员账户 -- 账户查询
+  // 财务管理 -- 取现管理 -- 取现规则 -- 详情
   {
-    path: '/finance/userAccount',
-    component: asyncComponent(() => import('container/finance/user-account/user-account'))
+    path: '/withdraw/rules/addedit',
+    component: asyncComponent(() => import('container/security/sysParam-addedit/sysParam-addedit'))
   },
-  // 会员账户 -- 账户查询 -- 流水
+  // 财务管理 -- 取现管理 -- 线下取现
   {
-    path: '/finance/userAccount/flows',
-    component: asyncComponent(() => import('container/finance/user-flows/user-flows'))
+    path: '/withdraw/withdraw',
+    component: asyncComponent(() => import('container/finance/withdraw/withdraw/withdraw'))
+  },
+  // 财务管理 -- 取现管理 -- 线下取现 -- 详情
+  {
+    path: '/withdraw/withdraw/addedit',
+    component: asyncComponent(() => import('container/finance/withdraw/withdraw/withdraw-addedit'))
   },
   // 会员账户 -- 流水查询
   {
@@ -170,14 +175,6 @@ const ROUTES = [
   {
     path: '/finance/platform_ledger/addedit',
     component: asyncComponent(() => import('container/finance/ledger-addedit/ledger-addedit'))
-  },
-  {
-    path: '/finance/enchashmentRule',
-    component: asyncComponent(() => import('container/finance/enchashmentRule/enchashmentRule'))
-  },
-  {
-    path: '/finance/enchashmentRule/addedit',
-    component: asyncComponent(() => import('container/finance/enchashmentRule-addedit/enchashmentRule-addedit'))
   },
   {
     path: '/finance/underEnchashment',
@@ -324,6 +321,16 @@ const ROUTES = [
     path: '/claim/personOrders/addedit',
     component: asyncComponent(() => import('container/biz/claim/personOrders/personOrders-addedit'))
   },
+  // 业务管理 -- 业务规则 -- 好友排行权重设置
+  {
+    path: '/rules/weight',
+    component: asyncComponent(() => import('container/biz/rules/weight/weight'))
+  },
+  // 业务管理 -- 业务规则 -- 好友排行权重设置 -- 详情
+  {
+    path: '/rules/weight/addedit',
+    component: asyncComponent(() => import('container/biz/rules/weight/weight-addedit'))
+  },
   // 代理管理 -- 代理商管理 -- 代理商管理
   {
     path: '/agent/agents',
@@ -407,12 +414,27 @@ const ROUTES = [
   // 产权端管理 -- 资金管理 -- 账户流水 -- 详情
   {
     path: '/own/flows/addedit',
+    component: asyncComponent(() => import('container/finance/flows-addedit/flows-addedit'))
+  },
+  // 产权端管理 -- 资金管理 -- 账户流水 -- 详情
+  {
+    path: '/own/flows/addedit',
     component: asyncComponent(() => import('container/curing/flows/flows-addedit'))
+  },
+  // 产权端管理 -- 个人设置 -- 个人信息
+  {
+    path: '/own/infos',
+    component: asyncComponent(() => import('container/own/infos/infos'))
   },
   // 产权端管理 -- 个人设置 -- 系统公告
   {
     path: '/own/notices',
     component: asyncComponent(() => import('container/own/notices/notices'))
+  },
+  // 产权端管理 -- 个人设置 -- 安全管理
+  {
+    path: '/own/security',
+    component: asyncComponent(() => import('container/own/security/security'))
   },
   // 产权端管理 -- 个人设置 -- 关于我们
   {
@@ -469,12 +491,47 @@ const ROUTES = [
     path: '/curing/flows/addedit',
     component: asyncComponent(() => import('container/curing/flows/flows-addedit'))
   },
+  // 养护端管理 -- 个人设置 -- 个人信息
+  {
+    path: '/curing/infos',
+    component: asyncComponent(() => import('container/own/infos/infos'))
+  },
+  // 养护端管理 -- 个人设置 -- 系统公告
+  {
+    path: '/curing/notices',
+    component: asyncComponent(() => import('container/own/notices/notices'))
+  },
+  // 养护端管理 -- 个人设置 -- 安全管理
+  {
+    path: '/curing/security',
+    component: asyncComponent(() => import('container/own/security/security'))
+  },
   // 养护端管理 -- 个人设置 -- 关于我们
   {
     path: '/curing/aboutus',
     component: asyncComponent(() => import('container/curing/aboutus/aboutus'))
   },
-  // 代理商 -- 代理商 -- 业务员查询
+  // 代理商 -- 代理商 -- 用户查询
+  {
+    path: '/proxy/users',
+    component: asyncComponent(() => import('container/proxy/users/users'))
+  },
+  // 代理商 -- 代理商 -- 下级代理查询
+  {
+    path: '/proxy/subordinates',
+    component: asyncComponent(() => import('container/proxy/subordinates/subordinates'))
+  },
+  // 代理商 -- 代理商 -- 已结算佣金
+  {
+    path: '/proxy/settled',
+    component: asyncComponent(() => import('container/proxy/settled/settled'))
+  },
+  // 代理商 -- 代理商 -- 待结算佣金
+  {
+    path: '/proxy/unsettled',
+    component: asyncComponent(() => import('container/proxy/unsettled/unsettled'))
+  },
+  // 代理商 -- 代理商 -- 流水查询
   {
     path: '/proxy/flows',
     component: asyncComponent(() => import('container/proxy/flows/flows'))
@@ -488,6 +545,41 @@ const ROUTES = [
   {
     path: '/proxy/salesmen/addedit',
     component: asyncComponent(() => import('container/proxy/salesmen/salesmen-addedit'))
+  },
+  // 代理商 -- 个人设置 -- 个人信息
+  {
+    path: '/proxy/infos',
+    component: asyncComponent(() => import('container/proxy/infos/infos'))
+  },
+  // 代理商 -- 个人设置 -- 公告管理
+  {
+    path: '/proxy/notices',
+    component: asyncComponent(() => import('container/own/notices/notices'))
+  },
+  // 代理商 -- 个人设置 -- 安全管理
+  {
+    path: '/proxy/security',
+    component: asyncComponent(() => import('container/own/security/security'))
+  },
+  // 养护端管理 -- 个人设置 -- 关于我们
+  {
+    path: '/proxy/aboutus',
+    component: asyncComponent(() => import('container/proxy/aboutus/aboutus'))
+  },
+  // 业务员 -- 业务员 -- 我的用户
+  {
+    path: '/saleman/users',
+    component: asyncComponent(() => import('container/saleman/users/users'))
+  },
+  // 业务员 -- 业务员 -- 推荐链接
+  {
+    path: '/saleman/infos',
+    component: asyncComponent(() => import('container/saleman/infos/infos'))
+  },
+  // 业务员 -- 业务员 -- 公告
+  {
+    path: '/saleman/notices',
+    component: asyncComponent(() => import('container/own/notices/notices'))
   }
 ];
 

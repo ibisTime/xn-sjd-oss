@@ -8,12 +8,12 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/finance/enchashmentRule';
+} from '@redux/finance/withdraw/rules';
 import { listWrapper } from 'common/js/build-list';
 
 @listWrapper(
   state => ({
-    ...state.financeEnchashmentRule,
+    ...state.withdrawRules,
     parentCode: state.menu.subMenuCode
   }),
   {
@@ -21,34 +21,24 @@ import { listWrapper } from 'common/js/build-list';
     cancelFetching, setPagination, setSearchParam, setSearchData
   }
 )
-class EnchashmentRule extends React.Component {
+class Rules extends React.Component {
   render() {
     const fields = [{
       field: 'remark',
-      title: '规则名称'
-    }, {
-      field: 'ckey',
-      title: '参数'
+      title: '参数名'
     }, {
       field: 'cvalue',
-      title: '数值'
-    }, {
-      field: 'updater',
-      title: '最近修改人'
-    }, {
-      field: 'updateDatetime',
-      title: '最近修改时间',
-      type: 'datetime'
+      title: '参数值'
     }];
     return this.props.buildList({
       fields,
       pageCode: 630045,
       rowKey: 'id',
       searchParams: {
-        type: 3
+        type: 'WITH'
       }
     });
   }
 }
 
-export default EnchashmentRule;
+export default Rules;

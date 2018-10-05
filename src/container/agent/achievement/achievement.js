@@ -37,7 +37,7 @@ class Achievement extends React.Component {
       title: '状态',
       field: 'status',
       type: 'select',
-      key: 'agent_user_status',
+      key: 'settle_status',
       search: true
     }, {
       title: '下单时间',

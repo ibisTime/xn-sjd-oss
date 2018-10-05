@@ -176,7 +176,7 @@ class Dashboard extends React.Component {
       rightCls += ' full-right-content';
     }
     return (
-      <Layout className="dashboard-layout">
+      <Layout className="dashboard-layout" style={{minHeight: '100%'}}>
         {this.getHeader()}
         <Layout>
           <Sider

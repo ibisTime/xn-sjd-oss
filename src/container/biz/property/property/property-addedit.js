@@ -79,6 +79,11 @@ class PropertyAddEdit extends DetailUtil {
       single: true,
       required: true
     }, {
+      title: '组织机构代码',
+      field: 'organizationCode',
+      _keys: ['company', 'organizationCode'],
+      required: true
+    }, {
       title: '备注',
       field: 'remark',
       maxlength: 250

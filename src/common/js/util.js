@@ -119,15 +119,6 @@ export function dateFormat(date) {
 }
 
 /**
- * 日期格式转化 yymmdd
- * @param date
- * @param format
- */
-export function dateListFormat(date) {
-  return formatDate(date, 'yyMMdd');
-}
-
-/**
  * 日期格式转化 yyyy-MM
  * @param date
  * @param format
@@ -660,14 +651,17 @@ export function getKindByUrl() {
   }
   // 产权
   if (location.origin === 'http://sjd.owner.hichengdai.com') {
+  // if (location.origin === 'http://localhost:3001') {
     return 'O';
   }
   // 养护
   if (location.origin === 'http://sjd.main.hichengdai.com') {
+  // if (location.origin === 'http://localhost:3001') {
     return 'M';
   }
   // 代理
   if (location.origin === 'http://sjd.agent.hichengdai.com') {
+  // if (location.origin === 'http://localhost:3001') {
     return 'D';
   }
 }

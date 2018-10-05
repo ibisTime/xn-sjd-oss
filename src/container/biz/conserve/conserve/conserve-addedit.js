@@ -26,7 +26,7 @@ class ConserveAddEdit extends DetailUtil {
   render() {
     const fields = [{
       field: 'kind',
-      value: 'O',
+      value: 'M',
       hidden: true
     }, {
       title: '用户名',
@@ -77,6 +77,11 @@ class ConserveAddEdit extends DetailUtil {
       _keys: ['company', 'bussinessLicense'],
       type: 'img',
       single: true,
+      required: true
+    }, {
+      title: '组织机构代码',
+      field: 'organizationCode',
+      _keys: ['company', 'organizationCode'],
       required: true
     }, {
       title: '备注',

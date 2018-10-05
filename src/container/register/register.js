@@ -39,16 +39,16 @@ class Register extends React.Component {
   // 验证码发送成功，进入60s倒计时
   sendSmsSuc() {
     time++;
-    this.timer = setTimeout(() => {
-      if (time === 60) {
-        time = 0;
-        clearTimeout(this.timer);
-        this.setState({ disabled: false, captText: '获取验证码' });
-      } else {
-        this.setState({ captText: `${60 - time}s` });
+    if (time === 60) {
+      time = 0;
+      clearTimeout(this.timer);
+      this.setState({ disabled: false, captText: '获取验证码' });
+    } else {
+      this.setState({ captText: `${60 - time}s` });
+      this.timer = setTimeout(() => {
         this.sendSmsSuc();
-      }
-    }, 1000);
+      }, 1000);
+    }
   }
   // 注册
   handleSubmit = (e) => {

@@ -13,11 +13,10 @@ class DistributionRulesAddEdit extends DetailUtil {
   render() {
     const fields = [{
       field: 'remark',
-      title: '参数名',
       hidden: true
     }, {
       field: 'remark1',
-      title: '参数名',
+      title: '备注',
       _keys: ['remark'],
       readonly: true
     }, {

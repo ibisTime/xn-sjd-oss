@@ -20,10 +20,9 @@ import { platformFlows } from './redux/finance/platform/flows';
 // 财务管理--充值管理
 import { rechargeRecharges } from './redux/finance/recharge/recharges';
 import { rechargeRecords } from './redux/finance/recharge/records';
-// 会员账户--账户查询
-import { financeUserAccount } from './redux/finance/user-account';
-// 会员账户--账户查询--流水
-import { financeUserFlows } from './redux/finance/user-flows';
+// 财务管理--取现管理
+import { withdrawRules } from './redux/finance/withdraw/rules';
+import { withdrawWithdraw } from './redux/finance/withdraw/withdraw';
 // 会员账户--流水查询
 import { financeAllUserFlows } from './redux/finance/all-user-flows';
 import { financeEnchashmentRule } from '@redux/finance/enchashmentRule';
@@ -48,6 +47,8 @@ import { userUsers } from './redux/biz/user/users';
 // 业务管理--认养管理
 import { claimGroupOrders } from './redux/biz/claim/groupOrders';
 import { claimPersonOrders } from './redux/biz/claim/personOrders';
+// 业务管理--业务规则
+import { rulesWeight } from './redux/biz/rules/weight';
 // 代理管理--代理商管理
 import { agentAgents } from './redux/agent/agents';
 import { agentSettlement } from './redux/agent/settlement';
@@ -70,9 +71,15 @@ import { curingOwns } from './redux/curing/owns';
 // 养护端--资金管理
 import { curingFlows } from './redux/curing/flows';
 // 代理商--代理商
+import { proxyUsers } from './redux/proxy/users';
+import { proxySubordinates } from './redux/proxy/subordinates';
+import { proxySettled } from './redux/proxy/settled';
+import { proxyUnSettled } from './redux/proxy/unsettled';
 import { proxyFlows } from './redux/proxy/flows';
 // 代理商--业务员管理
 import { proxySalesmen } from './redux/proxy/salesmen';
+// 业务员--我的用户
+import { salemanUsers } from './redux/saleman/users';
 
 export default combineReducers({
   user,
@@ -93,8 +100,8 @@ export default combineReducers({
   platformFlows,
   rechargeRecharges,
   rechargeRecords,
-  financeUserAccount,
-  financeUserFlows,
+  withdrawRules,
+  withdrawWithdraw,
   financeEnchashmentRule,
   financeUnderEnchashment,
   financeEnchashments,
@@ -113,6 +120,7 @@ export default combineReducers({
   userUsers,
   claimGroupOrders,
   claimPersonOrders,
+  rulesWeight,
   agentAgents,
   agentSettlement,
   agentAchievement,
@@ -128,6 +136,11 @@ export default combineReducers({
   curingUsers,
   curingFlows,
   curingOwns,
+  proxyUsers,
+  proxySubordinates,
+  proxySettled,
+  proxyUnSettled,
   proxyFlows,
-  proxySalesmen
+  proxySalesmen,
+  salemanUsers
 });

@@ -50,7 +50,8 @@ class Aboutus extends DetailUtil {
       title: '组织机构代码',
       field: 'organizationCode',
       _keys: ['company', 'organizationCode'],
-      required: true
+      required: true,
+      readonly: true
     }, {
       title: '合同模版',
       field: 'contractTemplate',
@@ -60,7 +61,7 @@ class Aboutus extends DetailUtil {
     }, {
       title: '证书模版',
       field: 'certificateTemplate',
-      _keys: ['company', 'contractTemplate'],
+      _keys: ['company', 'certificateTemplate'],
       type: 'img',
       single: true,
       required: true

@@ -10,6 +10,12 @@ class ProductEdit extends DetailUtil {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
     this.view = !!getQueryString('v', this.props.location.search);
+    this.state = {
+      ...this.state,
+      direct: false,
+      directLevel: false,
+      directUser: false
+    };
   }
   addBtns(config) {
     config.buttons = [{
@@ -19,6 +25,11 @@ class ProductEdit extends DetailUtil {
       handler: (params) => {
         this.doFetching();
         params.ownerId = getUserId();
+        // 如果销售类型选择定向
+        if (params.sellType === '2') {
+          params.directObject = params.directType === '1'
+            ? params.directLevel : params.directUser;
+        }
         fetch(629010, params).then(() => {
           showSucMsg('操作成功');
           this.cancelFetching();
@@ -106,7 +117,53 @@ class ProductEdit extends DetailUtil {
       }],
       keyName: 'dkey',
       valueName: 'dvalue',
-      required: true
+      required: true,
+      onChange: (v) => {
+        let direct = v === '2';
+        if (direct !== this.state.direct) {
+          this.setState({ direct });
+        }
+      }
+    }, {
+      title: '定向类型',
+      field: 'directType',
+      type: 'select',
+      data: [{
+        dkey: '1',
+        dvalue: '针对某一等级用户'
+      }, {
+        dkey: '2',
+        dvalue: '针对个人用户'
+      }],
+      hidden: !this.state.direct,
+      required: this.state.direct,
+      onChange: (v) => {
+        if (v === '1' && !this.state.directLevel) {
+          this.setState({ directLevel: true, directUser: false });
+        } else if (v === '2' && !this.state.directUser) {
+          this.setState({ directUser: true, directLevel: false });
+        }
+      }
+    }, {
+      title: '针对等级',
+      field: 'directLevel',
+      _keys: ['directObject'],
+      type: 'select',
+      key: 'user_level',
+      hidden: !this.state.directLevel,
+      required: this.state.directLevel
+    }, {
+      title: '针对用户',
+      field: 'directUser',
+      _keys: ['directObject'],
+      type: 'select',
+      pageCode: 805120,
+      params: { status: '0' },
+      keyName: 'userId',
+      valueName: '{{mobile.DATA}}-{{nickname.DATA}}',
+      searchName: 'mobile',
+      hidden: !this.state.directUser,
+      required: this.state.directUser
     }, {
       title: '募集时间',
       field: 'raiseStartDatetime',
@@ -194,6 +251,11 @@ class ProductEdit extends DetailUtil {
       editCode: 629011,
       beforeSubmit: (params) => {
         params.ownerId = getUserId();
+        // 如果销售类型选择定向
+        if (params.sellType === '2') {
+          params.directObject = params.directType === '1'
+            ? params.directLevel : params.directUser;
+        }
         return params;
       }
     };

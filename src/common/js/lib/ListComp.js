@@ -5,8 +5,7 @@ import moment from 'moment';
 import 'moment/locale/zh-cn';
 import {
     moneyFormat, dateTimeFormat, dateFormat, tempString,
-    showWarnMsg, showSucMsg, showDelConfirm, getUserId,
-    dateListFormat
+    showWarnMsg, showSucMsg, showDelConfirm, getUserId
 } from 'common/js/util';
 import { PIC_PREFIX } from 'common/js/config';
 import { getOwnerBtns } from 'api/menu';
@@ -104,9 +103,9 @@ export default class ListComponent extends React.Component {
                 obj.render = f.render;
             } else {
                 obj.render = (v) => {
-                    return f.nowrap ? <span style={{whiteSpace: 'nowrap'}}>{dateListFormat(v)}</span> : dateListFormat(v);
+                    return f.nowrap ? <span style={{whiteSpace: 'nowrap'}}>{dateFormat(v)}</span> : dateFormat(v);
                 };
-                this.addRender(f, dateListFormat);
+                this.addRender(f, dateFormat);
             }
         } else if (f.type === 'select' || f.type === 'provSelect' || f.type === 'citySelect') {
             if (f.key) {
@@ -326,7 +325,7 @@ export default class ListComponent extends React.Component {
         switch (url) {
             case 'add':
                 btnEvent.add
-                    ? btnEvent.add()
+                    ? btnEvent.add(this.state.selectedRowKeys, this.state.selectedRows)
                     : this.props.history.push(`${this.props.location.pathname}/addedit`);
                 break;
             case 'edit':

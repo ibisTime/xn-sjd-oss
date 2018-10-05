@@ -13,7 +13,7 @@ class AgentsAddEdit extends DetailUtil {
     this.check = !!getQueryString('check', this.props.location.search);
     this.state = {
       ...this.state,
-      isTop: false
+      isTop: !this.code
     };
   }
   checkUser(approveResult, params) {
@@ -49,7 +49,7 @@ class AgentsAddEdit extends DetailUtil {
       onChange: (v) => {
         this.setState({ isTop: v === '1' });
       },
-      readonly: !this.check
+      readonly: this.code && !this.check
     }, {
       title: '上级代理',
       field: 'parentUserId',
@@ -64,7 +64,7 @@ class AgentsAddEdit extends DetailUtil {
       searchName: 'keyword',
       hidden: this.state.isTop,
       required: !this.state.isTop,
-      readonly: !this.check
+      readonly: this.code && !this.check
     }, {
       title: '用户名',
       field: 'loginName',
@@ -80,6 +80,22 @@ class AgentsAddEdit extends DetailUtil {
       field: 'mobile',
       required: true,
       mobile: true
+    }, {
+      title: '公司名称',
+      field: 'name',
+      _keys: ['company', 'name'],
+      required: true
+    }, {
+      title: '公司负责人',
+      field: 'charger',
+      _keys: ['company', 'charger'],
+      required: true
+    }, {
+      title: '负责人联系方式',
+      field: 'chargeMobile',
+      _keys: ['company', 'chargeMobile'],
+      mobile: true,
+      required: true
     }, {
       title: '辖区',
       field: 'province',
@@ -99,22 +115,6 @@ class AgentsAddEdit extends DetailUtil {
         }
         return result;
       }
-    }, {
-      title: '公司名称',
-      field: 'name',
-      _keys: ['company', 'name'],
-      required: true
-    }, {
-      title: '公司负责人',
-      field: 'charger',
-      _keys: ['company', 'charger'],
-      required: true
-    }, {
-      title: '负责人联系方式',
-      field: 'chargeMobile',
-      _keys: ['company', 'chargeMobile'],
-      mobile: true,
-      required: true
     }, {
       title: '公司地址',
       field: 'address',

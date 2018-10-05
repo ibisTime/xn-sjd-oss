@@ -10,7 +10,7 @@ import {
   setSearchData
 } from '@redux/curing/tasks';
 import { listWrapper } from 'common/js/build-list';
-import { getUserId } from 'common/js/util';
+import { getUserId, showWarnMsg } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -33,10 +33,7 @@ class Tasks extends React.Component {
       field: 'productCode'
     }, {
       title: '树龄',
-      field: 'productCode'
-    }, {
-      title: '销售分类',
-      field: 'scientificName'
+      field: 'age'
     }, {
       title: '状态',
       field: 'status',
@@ -51,24 +48,23 @@ class Tasks extends React.Component {
       keyName: 'key',
       valueName: 'value',
       search: true
-    }, {
-      title: '认养人',
-      field: 'ownerId'
-    }, {
-      title: '认养剩余时间',
-      field: 'createDatetime',
-      type: 'datetime'
-    }, {
-      title: '最新养护记录',
-      field: 'remark'
-    }, {
-      title: '养护人',
-      field: 'remark1'
     }];
     return this.props.buildList({
       fields,
       pageCode: '629035',
-      searchParams: { maintainId: getUserId() }
+      searchParams: { maintainId: getUserId() },
+      btnEvent: {
+        // 添加养护记录
+        add: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/curing/tasks/addedit?n=${items[0].treeNumber}`);
+          }
+        }
+      }
     });
   }
 }

@@ -13,8 +13,7 @@ class Supplement extends DetailUtil {
     this.state = {
       ...this.state,
       readonly: false,
-      isFailed: false,
-      isTop: false
+      isFailed: false
     };
   }
   getExtra() {
@@ -40,14 +39,14 @@ class Supplement extends DetailUtil {
           this.doFetching();
           let bizCode = this.kind === 'D' ? 730073 : 630061;
           fetch(bizCode, params).then(() => {
-            this.setState({
-              readonly: true,
-              pageData: {
-                ...pageData,
-                status: '0'
-              }
-            });
-            this.cancelFetching();
+            let code = this.kind === 'D' ? 730086 : 630067;
+            fetch(code, { userId: this.code }).then((data) => {
+              this.setState({
+                readonly: true,
+                pageData: data
+              });
+              this.cancelFetching();
+            }).then(this.cancelFetching);
           }).catch(this.cancelFetching);
         }
       }];
@@ -62,27 +61,26 @@ class Supplement extends DetailUtil {
   }
   getFieldsByKind() {
     return this.kind === 'D' ? [{
-      title: '是否顶级',
-      field: 'isTop',
-      type: 'select',
-      data: [{
-        dkey: '0',
-        dvalue: '否'
-      }, {
-        dkey: '1',
-        dvalue: '是'
-      }],
-      value: this.getIsTop(),
-      required: true,
-      onChange: (v) => {
-        this.setState({ isTop: v === '1' });
-      }
-    }, {
       title: '上级代理手机号',
       field: 'refUserMobile',
       formatter: (v, d) => d.parentAgentUser ? d.parentAgentUser.mobile : '',
-      hidden: this.state.isTop,
-      required: !this.state.isTop
+      required: false
+    }, {
+      title: '公司名称',
+      field: 'name',
+      _keys: ['company', 'name'],
+      required: true
+    }, {
+      title: '公司负责人',
+      field: 'charger',
+      _keys: ['company', 'charger'],
+      required: true
+    }, {
+      title: '负责人联系方式',
+      field: 'chargeMobile',
+      _keys: ['company', 'chargeMobile'],
+      mobile: true,
+      required: true
     }, {
       title: '辖区',
       field: 'province',
@@ -101,22 +99,6 @@ class Supplement extends DetailUtil {
         }
         return result;
       },
-      required: true
-    }, {
-      title: '公司名称',
-      field: 'name',
-      _keys: ['company', 'name'],
-      required: true
-    }, {
-      title: '公司负责人',
-      field: 'charger',
-      _keys: ['company', 'charger'],
-      required: true
-    }, {
-      title: '负责人联系方式',
-      field: 'chargeMobile',
-      _keys: ['company', 'chargeMobile'],
-      mobile: true,
       required: true
     }, {
       title: '公司地址',

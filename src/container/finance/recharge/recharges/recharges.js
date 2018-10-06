@@ -34,6 +34,12 @@ class Recharges extends React.Component {
       title: '充值金额',
       amount: true
     }, {
+      field: 'currency',
+      title: '币种',
+      type: 'select',
+      key: 'currency',
+      search: true
+    }, {
       field: 'status',
       title: '状态',
       type: 'select',

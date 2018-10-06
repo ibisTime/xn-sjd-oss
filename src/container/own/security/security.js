@@ -1,7 +1,6 @@
 import React from 'react';
-import { Form, Input, Button, Spin, Row, Col } from 'antd';
-import { getUser } from 'api/user';
-import { showSucMsg, getUserId } from 'common/js/util';
+import { Form, Input, Button, Spin, Row, Col, Card } from 'antd';
+import { showSucMsg, getUserId, getKindByUrl } from 'common/js/util';
 import { formItemLayout } from 'common/js/config';
 import fetch from 'common/js/fetch';
 
@@ -19,14 +18,21 @@ class Security extends React.Component {
       disabled: false,
       captFetching: false
     };
+    this.kind = getKindByUrl();
   }
   componentDidMount() {
-    getUser().then(userInfo => {
+    let bizCode = this.kind === 'A' ? 730086 : 630067;
+    fetch(bizCode, { userId: getUserId() }).then(userInfo => {
       this.setState({
         mobile: userInfo.mobile,
         fetching: false
       });
     }).catch(() => this.setState({ fetching: false }));
+  }
+  componentWillUnmount() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
   }
   // 设置交易密码
   handleSubmit = (e) => {
@@ -35,7 +41,8 @@ class Security extends React.Component {
       if (!err) {
         this.setState({ fetching: true });
         values.userId = getUserId();
-        fetch(805067, values).then((code) => {
+        let bizCode = this.kind === 'A' ? 730082 : 630070;
+        fetch(bizCode, values).then((code) => {
           showSucMsg('操作成功');
           this.setState({ fetching: false });
         }).catch(() => this.setState({ fetching: false }));
@@ -50,7 +57,7 @@ class Security extends React.Component {
         this.setState({ captFetching: true, disabled: true });
         fetch(630090, {
           mobile: this.state.mobile,
-          bizType: 805067
+          bizType: this.kind === 'A' ? 730082 : 630070
         }).then(() => {
           this.setState({ captFetching: false });
           this.sendSmsSuc();
@@ -77,38 +84,40 @@ class Security extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <Spin spinning={fetching}>
-        <Form className="detail-form-wrapper" onSubmit={this.handleSubmit}>
-          <FormItem key='mobile' {...formItemLayout} label='手机号'>
-            <div className="readonly-text">{mobile}</div>
-          </FormItem>
-          <FormItem key='smsCaptcha' {...formItemLayout} label='验证码'>
-            <Row gutter={8}>
-              <Col span={12}>
-                {getFieldDecorator('smsCaptcha', {
-                  rules: [{ required: true, message: '请输入验证码' }]
-                })(<Input placeholder="验证码" />)}
-              </Col>
-              <Col span={12}>
-                <Button
-                  style={{minWidth: 102}}
-                  onClick={this.getSmsCode}
-                  loading={captFetching}
-                  disabled={disabled} >{captText}</Button>
-              </Col>
-            </Row>
-          </FormItem>
-          <FormItem key='newTradePwd' {...formItemLayout} label='交易密码'>
-            {getFieldDecorator('newTradePwd', {
-              rules: [{
-                required: true,
-                message: '请输入交易密码!'
-              }]
-            })(<Input type="password" placeholder="交易密码"/>)}
-          </FormItem>
-          <FormItem className="cform-item-btn" key='btns' {...formItemLayout} label="&nbsp;">
-            <Button type="primary" htmlType="submit">保存</Button>
-          </FormItem>
-        </Form>
+        <Card title="交易密码设置">
+          <Form className="detail-form-wrapper" onSubmit={this.handleSubmit}>
+            <FormItem key='mobile' {...formItemLayout} label='手机号'>
+              <div className="readonly-text">{mobile}</div>
+            </FormItem>
+            <FormItem key='smsCaptcha' {...formItemLayout} label='验证码'>
+              <Row gutter={8}>
+                <Col span={12}>
+                  {getFieldDecorator('smsCaptcha', {
+                    rules: [{ required: true, message: '请输入验证码' }]
+                  })(<Input placeholder="验证码" />)}
+                </Col>
+                <Col span={12}>
+                  <Button
+                    style={{minWidth: 102}}
+                    onClick={this.getSmsCode}
+                    loading={captFetching}
+                    disabled={disabled} >{captText}</Button>
+                </Col>
+              </Row>
+            </FormItem>
+            <FormItem key='tradePwd' {...formItemLayout} label='交易密码'>
+              {getFieldDecorator('tradePwd', {
+                rules: [{
+                  required: true,
+                  message: '请输入交易密码!'
+                }]
+              })(<Input type="password" placeholder="交易密码"/>)}
+            </FormItem>
+            <FormItem className="cform-item-btn" key='btns' {...formItemLayout} label="&nbsp;">
+              <Button type="primary" htmlType="submit">保存</Button>
+            </FormItem>
+          </Form>
+        </Card>
       </Spin>
     );
   }

@@ -108,6 +108,26 @@ const ROUTES = [
     path: '/platform/gradationRules/addedit',
     component: asyncComponent(() => import('container/finance/platform/gradationRules/gradationRules-addedit'))
   },
+  // 财务管理 -- 平台账户 -- 积分规则
+  {
+    path: '/platform/integralRules',
+    component: asyncComponent(() => import('container/finance/platform/integralRules/integralRules'))
+  },
+  // 财务管理 -- 平台账户 -- 积分规则 -- 详情
+  {
+    path: '/platform/integralRules/addedit',
+    component: asyncComponent(() => import('container/security/sysParam-addedit/sysParam-addedit'))
+  },
+  // 财务管理 -- 平台账户 -- 碳泡泡规则
+  {
+    path: '/platform/tppRules',
+    component: asyncComponent(() => import('container/finance/platform/tppRules/tppRules'))
+  },
+  // 财务管理 -- 平台账户 -- 碳泡泡规则 -- 详情
+  {
+    path: '/platform/tppRules/addedit',
+    component: asyncComponent(() => import('container/security/sysParam-addedit/sysParam-addedit'))
+  },
   // 财务管理 -- 平台账户 -- 账户查询
   {
     path: '/platform/account',
@@ -163,38 +183,15 @@ const ROUTES = [
     path: '/withdraw/withdraw/addedit',
     component: asyncComponent(() => import('container/finance/withdraw/withdraw/withdraw-addedit'))
   },
-  // 会员账户 -- 流水查询
+  // 财务管理 -- 取现管理 -- 线下取现
   {
-    path: '/finance/userLedger',
-    component: asyncComponent(() => import('container/finance/all-user-flows/all-user-flows'))
+    path: '/withdraw/records',
+    component: asyncComponent(() => import('container/finance/withdraw/records/records'))
   },
+  // 财务管理 -- 取现管理 -- 线下取现
   {
-    path: '/finance/breakBalance/ledger',
-    component: asyncComponent(() => import('container/finance/account-ledger/account-ledger'))
-  },
-  {
-    path: '/finance/platform_ledger/addedit',
-    component: asyncComponent(() => import('container/finance/ledger-addedit/ledger-addedit'))
-  },
-  {
-    path: '/finance/underEnchashment',
-    component: asyncComponent(() => import('container/finance/underEnchashment/underEnchashment'))
-  },
-  {
-    path: '/finance/underEnchashment/addedit',
-    component: asyncComponent(() => import('container/finance/underEnchashment-addedit/underEnchashment-addedit'))
-  },
-  {
-    path: '/finance/underEnchashment/check',
-    component: asyncComponent(() => import('container/finance/underEnchashment-check/underEnchashment-check'))
-  },
-  {
-    path: '/finance/enchashments',
-    component: asyncComponent(() => import('container/finance/enchashments/enchashments'))
-  },
-  {
-    path: '/finance/enchashments/addedit',
-    component: asyncComponent(() => import('container/finance/enchashments-addedit/enchashments-addedit'))
+    path: '/withdraw/records/addedit',
+    component: asyncComponent(() => import('container/finance/withdraw/withdraw/withdraw-addedit'))
   },
   // 业务管理 -- 产权方管理 -- 产权方管理
   {
@@ -296,10 +293,55 @@ const ROUTES = [
     path: '/conserve/flows',
     component: asyncComponent(() => import('container/biz/conserve/flows/flows'))
   },
-  // 业务管理 -- 养护方管理 -- 流水查询
+  // 业务管理 -- 用户管理 -- 会员查询
   {
     path: '/user/users',
     component: asyncComponent(() => import('container/biz/user/users/users'))
+  },
+  // 业务管理 -- 用户管理 -- 会员查询 -- 详情
+  {
+    path: '/user/users/addedit',
+    component: asyncComponent(() => import('container/biz/user/users/users-addedit'))
+  },
+  // 业务管理 -- 用户管理 -- 签到记录
+  {
+    path: '/user/users/signIn',
+    component: asyncComponent(() => import('container/biz/user/users/user-signIn'))
+  },
+  // 业务管理 -- 用户管理 -- 分享记录
+  {
+    path: '/user/shares',
+    component: asyncComponent(() => import('container/biz/user/shares/shares'))
+  },
+  // 业务管理 -- 用户管理 -- 碳泡泡赠送记录
+  {
+    path: '/user/gives',
+    component: asyncComponent(() => import('container/biz/user/gives/gives'))
+  },
+  // 业务管理 -- 用户管理 -- 账户查询
+  {
+    path: '/user/accounts',
+    component: asyncComponent(() => import('container/biz/user/accounts/accounts'))
+  },
+  // 业务管理 -- 用户管理 -- 账户查询 -- 流水查询
+  {
+    path: '/user/accounts/flows',
+    component: asyncComponent(() => import('container/biz/user/accounts/account-flows'))
+  },
+  // 业务管理 -- 用户管理 -- 账户查询 -- 流水查询 -- 详情
+  {
+    path: '/user/accounts/flows/addedit',
+    component: asyncComponent(() => import('container/finance/flows-addedit/flows-addedit'))
+  },
+  // 业务管理 -- 用户管理 -- 流水查询
+  {
+    path: '/user/flows',
+    component: asyncComponent(() => import('container/biz/user/flows/flows'))
+  },
+  // 业务管理 -- 用户管理 -- 流水查询 -- 详情
+  {
+    path: '/user/flows/addedit',
+    component: asyncComponent(() => import('container/finance/flows-addedit/flows-addedit'))
   },
   // 业务管理 -- 认养管理 -- 集体认养订单管理
   {
@@ -320,6 +362,81 @@ const ROUTES = [
   {
     path: '/claim/personOrders/addedit',
     component: asyncComponent(() => import('container/biz/claim/personOrders/personOrders-addedit'))
+  },
+  // 业务管理 -- 认养管理 -- 认养权查询
+  {
+    path: '/claim/rights',
+    component: asyncComponent(() => import('container/biz/claim/rights/rights'))
+  },
+  // 业务管理 -- 认养管理 -- 认养权查询 -- 日志查看
+  {
+    path: '/claim/rights/logs',
+    component: asyncComponent(() => import('container/biz/claim/rights/rights-logs'))
+  },
+  // 业务管理 -- 认养管理 -- 认养权查询 -- 发放礼物
+  {
+    path: '/claim/rights/giveGift',
+    component: asyncComponent(() => import('container/biz/claim/rights/giveGift'))
+  },
+  // 业务管理 -- 认养管理 -- 认养权查询 -- 礼物订单
+  {
+    path: '/claim/rights/giftOrders',
+    component: asyncComponent(() => import('container/biz/claim/rights/giftOrders'))
+  },
+  // 业务管理 -- 认养管理 -- 认养权查询 -- 礼物订单 -- 详情
+  {
+    path: '/claim/rights/giftOrders/addedit',
+    component: asyncComponent(() => import('container/biz/claim/rights/giveGift'))
+  },
+  // 业务管理 -- 认养管理 -- 认养权查询 -- 转送记录
+  {
+    path: '/claim/rights/records',
+    component: asyncComponent(() => import('container/biz/claim/rights/records'))
+  },
+  // 业务管理 -- 认养管理 -- 认养权查询 -- 转送记录 -- 详情
+  {
+    path: '/claim/rights/records/addedit',
+    component: asyncComponent(() => import('container/biz/claim/rights/records-addedit'))
+  },
+  // 业务管理 -- 认养管理 -- 认养权查询 -- 对应文章
+  {
+    path: '/claim/rights/articles',
+    component: asyncComponent(() => import('container/biz/claim/rights/articles'))
+  },
+  // 业务管理 -- 认养管理 -- 认养权查询 -- 对应文章 -- 详情
+  {
+    path: '/claim/rights/articles/addedit',
+    component: asyncComponent(() => import('container/biz/claim/rights/articles-addedit'))
+  },
+  // 业务管理 -- 认养管理 -- 认养权查询 -- 碳泡泡产生订单
+  {
+    path: '/claim/rights/tppOrders',
+    component: asyncComponent(() => import('container/biz/claim/rights/tppOrders'))
+  },
+  // 业务管理 -- 认养管理 -- 认养权查询 -- 碳泡泡产生订单 -- 详情
+  {
+    path: '/claim/rights/tppOrders/addedit',
+    component: asyncComponent(() => import('container/biz/claim/rights/tppOrders-addedit'))
+  },
+  // 业务管理 -- 情感频道
+  {
+    path: '/emotion/articles',
+    component: asyncComponent(() => import('container/biz/emotion/articles/articles'))
+  },
+  // 业务管理 -- 情感频道 -- 详情
+  {
+    path: '/emotion/articles/addedit',
+    component: asyncComponent(() => import('container/biz/emotion/articles/articles-addedit'))
+  },
+  // 业务管理 -- 道具管理
+  {
+    path: '/prop/props',
+    component: asyncComponent(() => import('container/biz/prop/props/props'))
+  },
+  // 业务管理 -- 道具管理 -- 详情
+  {
+    path: '/prop/props/addedit',
+    component: asyncComponent(() => import('container/biz/prop/props/props-addedit'))
   },
   // 业务管理 -- 业务规则 -- 好友排行权重设置
   {
@@ -416,10 +533,20 @@ const ROUTES = [
     path: '/own/flows/addedit',
     component: asyncComponent(() => import('container/finance/flows-addedit/flows-addedit'))
   },
-  // 产权端管理 -- 资金管理 -- 账户流水 -- 详情
+  // 产权端管理 -- 资金管理 -- 提现
   {
-    path: '/own/flows/addedit',
-    component: asyncComponent(() => import('container/curing/flows/flows-addedit'))
+    path: '/own/withdraw',
+    component: asyncComponent(() => import('container/own/withdraw/withdraw'))
+  },
+  // 产权端管理 -- 资金管理 -- 提现 -- 详情
+  {
+    path: '/own/withdraw/addedit',
+    component: asyncComponent(() => import('container/own/withdraw/withdraw-addedit'))
+  },
+  // 产权端管理 -- 资金管理 -- 提现 -- 申请
+  {
+    path: '/own/withdraw/apply',
+    component: asyncComponent(() => import('container/own/withdraw/apply'))
   },
   // 产权端管理 -- 个人设置 -- 个人信息
   {
@@ -481,6 +608,21 @@ const ROUTES = [
     path: '/curing/owns/addedit',
     component: asyncComponent(() => import('container/curing/owns/owns-addedit'))
   },
+  // 养护端管理 -- 资金管理 -- 提现
+  {
+    path: '/curing/withdraw',
+    component: asyncComponent(() => import('container/own/withdraw/withdraw'))
+  },
+  // 养护端管理 -- 资金管理 -- 提现 -- 详情
+  {
+    path: '/curing/withdraw/addedit',
+    component: asyncComponent(() => import('container/own/withdraw/withdraw-addedit'))
+  },
+  // 养护端管理 -- 资金管理 -- 提现 -- 申请
+  {
+    path: '/curing/withdraw/apply',
+    component: asyncComponent(() => import('container/own/withdraw/apply'))
+  },
   // 养护端管理 -- 资金管理 -- 账户流水
   {
     path: '/curing/flows',
@@ -535,6 +677,21 @@ const ROUTES = [
   {
     path: '/proxy/flows',
     component: asyncComponent(() => import('container/proxy/flows/flows'))
+  },
+  // 代理商 -- 代理商 -- 提现
+  {
+    path: '/proxy/withdraw',
+    component: asyncComponent(() => import('container/own/withdraw/withdraw'))
+  },
+  // 代理商 -- 代理商 -- 提现 -- 详情
+  {
+    path: '/proxy/withdraw/addedit',
+    component: asyncComponent(() => import('container/own/withdraw/withdraw-addedit'))
+  },
+  // 代理商 -- 代理商 -- 提现 -- 申请
+  {
+    path: '/proxy/withdraw/apply',
+    component: asyncComponent(() => import('container/own/withdraw/apply'))
   },
   // 代理商 -- 业务员管理 -- 业务员查询
   {

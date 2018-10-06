@@ -45,10 +45,11 @@ class Users extends React.Component {
       field: 'mobile'
     }, {
       title: '推荐人',
-      field: 'userReferee'
+      field: 'userReferee',
+      render: (v, d) => d.refereeUser ? d.refereeUser.mobile : ''
     }, {
-      title: '姓名',
-      field: 'realName'
+      title: '昵称',
+      field: 'nickname'
     }, {
       title: '状态',
       field: 'status',
@@ -68,14 +69,48 @@ class Users extends React.Component {
       rowKey: 'userId',
       pageCode: 805120,
       btnEvent: {
+        // 账户查询
+        accounts: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/user/users/accounts?code=${keys[0]}`);
+          }
+        },
+        // 激活
+        active: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else if (items[0].status === '0') {
+            showWarnMsg('该用户已被激活');
+          } else {
+            this.rockOrActive(items[0].status, keys[0]);
+          }
+        },
         // 注销
         rock: (keys, items) => {
           if (!keys || !keys.length) {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
+          } else if (items[0].status !== '0') {
+            showWarnMsg('该用户已被注销');
           } else {
             this.rockOrActive(items[0].status, keys[0]);
+          }
+        },
+        // 签到记录
+        signIn: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/user/users/signIn?code=${keys[0]}`);
           }
         }
       }

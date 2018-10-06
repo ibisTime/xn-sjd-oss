@@ -662,6 +662,6 @@ export function getKindByUrl() {
   // 代理
   if (location.origin === 'http://sjd.agent.hichengdai.com') {
   // if (location.origin === 'http://localhost:3001') {
-    return 'D';
+    return 'A';
   }
 }

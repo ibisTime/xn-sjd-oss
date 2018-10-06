@@ -37,9 +37,9 @@ class Supplement extends DetailUtil {
         check: true,
         handler: (params) => {
           this.doFetching();
-          let bizCode = this.kind === 'D' ? 730073 : 630061;
+          let bizCode = this.kind === 'A' ? 730073 : 630061;
           fetch(bizCode, params).then(() => {
-            let code = this.kind === 'D' ? 730086 : 630067;
+            let code = this.kind === 'A' ? 730086 : 630067;
             fetch(code, { userId: this.code }).then((data) => {
               this.setState({
                 readonly: true,
@@ -60,7 +60,7 @@ class Supplement extends DetailUtil {
       pageData.parentUserId === '0') ? '1' : '0';
   }
   getFieldsByKind() {
-    return this.kind === 'D' ? [{
+    return this.kind === 'A' ? [{
       title: '上级代理手机号',
       field: 'refUserMobile',
       formatter: (v, d) => d.parentAgentUser ? d.parentAgentUser.mobile : '',
@@ -173,7 +173,7 @@ class Supplement extends DetailUtil {
       key: 'userId',
       code: this.code,
       view: this.state.readonly,
-      detailCode: this.kind === 'D' ? 730086 : 630067,
+      detailCode: this.kind === 'A' ? 730086 : 630067,
       afterDetail: () => {
         let userInfo = this.state.pageData;
         // TO_FILL("-1", "待填写资料"), TO_APPROVE("0", "待审核"), APPROVE_NO("1", "审核不通过"), NORMAL(

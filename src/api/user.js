@@ -42,7 +42,7 @@ export function getSysUsers() {
 
 // 判断养护方、产权方用户是否审核通过
 export function isFullUser() {
-  let bizCode = getKindByUrl() === 'D' ? 730086 : 630067;
+  let bizCode = getKindByUrl() === 'A' ? 730086 : 630067;
   return fetch(bizCode, { userId: getUserId() }).then(data => {
     return judgeStatus(data.status);
   });

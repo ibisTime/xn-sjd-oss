@@ -15,7 +15,7 @@ class OwnAccounts extends React.Component {
     this.props.initData();
   }
   goWithdraw() {
-    this.props.history.push('/own/withdraw');
+    this.props.history.push('/own/withdraw/apply');
   }
   render() {
     return (

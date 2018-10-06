@@ -20,6 +20,11 @@ class Register extends React.Component {
     };
     this.kind = getKindByUrl();
   }
+  componentWillUnmount() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+  }
   // 获取验证码
   getSmsCode = (e) => {
     e.preventDefault();
@@ -27,7 +32,7 @@ class Register extends React.Component {
       if (!err) {
         this.setState({ captFetching: true, disabled: true });
         // 根据当前url判断是注册哪种角色
-        let bizType = this.kind === 'D' ? 730070 : 630060;
+        let bizType = this.kind === 'A' ? 730070 : 630060;
         values.bizType = bizType;
         fetch(630090, values).then(() => {
           this.setState({ captFetching: false });
@@ -62,7 +67,7 @@ class Register extends React.Component {
           values.kind = 'O';
         } else if (this.kind === 'M') {
           values.kind = 'M';
-        } else if (this.kind === 'D') {
+        } else if (this.kind === 'A') {
           bizCode = 730070;
         } else {
           showWarnMsg('非常抱歉，您无法注册');

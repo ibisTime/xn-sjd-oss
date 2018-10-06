@@ -33,7 +33,7 @@ class Account extends React.Component {
               }>¥{moneyFormat(this.props.wxAccount.amount)}</Card>
             </Col>
             <Col span={8} style={{marginBottom: '20px'}}>
-              <Card title="线下充值额" extra={
+              <Card title="线下账户" extra={
                 <Button onClick={() => this.goFlow(this.props.offAccount.accountNumber)} type="primary">资金流水</Button>
               }>¥{moneyFormat(this.props.offAccount.amount)}</Card>
             </Col>
@@ -45,7 +45,7 @@ class Account extends React.Component {
               }>¥{moneyFormat(this.props.cnyAccount.amount)}</Card>
             </Col>
             <Col span={8} style={{marginBottom: '20px'}}>
-              <Card title="积分余额" extra={
+              <Card title="积分池余额" extra={
                 <Button onClick={() => this.goFlow(this.props.jfAccount.accountNumber)} type="primary">资金流水</Button>
               }>¥{moneyFormat(this.props.jfAccount.amount)}</Card>
             </Col>

@@ -18,7 +18,7 @@ export default class Home extends React.Component {
     return (
       <div className="home-wrapper">
         {
-          this.kind === 'D'
+          this.kind === 'A'
             ? <AgentComp cnyAccount={cnyAccount} />
             : this.kind === 'O'
               ? <OwnComp cnyAccount={cnyAccount} />

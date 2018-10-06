@@ -14,6 +14,8 @@ import { publicNotice } from './redux/public/notice';
 // 财务管理--平台账户
 import { platformDistributionRules } from './redux/finance/platform/distributionRules';
 import { platformGradationRules } from './redux/finance/platform/gradationRules';
+import { platformIntegralRules } from './redux/finance/platform/integralRules';
+import { platformTppRules } from './redux/finance/platform/tppRules';
 import { platformAccount } from './redux/finance/platform/account';
 import { platformAccountFlows } from './redux/finance/platform/accountFlows';
 import { platformFlows } from './redux/finance/platform/flows';
@@ -23,11 +25,7 @@ import { rechargeRecords } from './redux/finance/recharge/records';
 // 财务管理--取现管理
 import { withdrawRules } from './redux/finance/withdraw/rules';
 import { withdrawWithdraw } from './redux/finance/withdraw/withdraw';
-// 会员账户--流水查询
-import { financeAllUserFlows } from './redux/finance/all-user-flows';
-import { financeEnchashmentRule } from '@redux/finance/enchashmentRule';
-import { financeUnderEnchashment } from '@redux/finance/underEnchashment';
-import { financeEnchashments } from '@redux/finance/enchashments';
+import { withdrawRecords } from './redux/finance/withdraw/records';
 // 业务管理--产权方管理
 import { propertyProperty } from './redux/biz/property/property';
 import { propertyBinds } from './redux/biz/property/binds';
@@ -44,9 +42,25 @@ import { conserveRecords } from './redux/biz/conserve/records';
 import { conserveFlows } from './redux/biz/conserve/flows';
 // 业务管理--用户管理
 import { userUsers } from './redux/biz/user/users';
+import { userSignIn } from './redux/biz/user/signIn';
+import { userShares } from './redux/biz/user/shares';
+import { userGives } from './redux/biz/user/gives';
+import { userAccounts } from './redux/biz/user/accounts';
+import { userAccountFlows } from './redux/biz/user/account-flows';
+import { userFlows } from './redux/biz/user/flows';
 // 业务管理--认养管理
 import { claimGroupOrders } from './redux/biz/claim/groupOrders';
 import { claimPersonOrders } from './redux/biz/claim/personOrders';
+import { claimRights } from './redux/biz/claim/rights';
+import { claimRightsLogs } from './redux/biz/claim/rights-logs';
+import { claimGiftOrders } from './redux/biz/claim/giftOrders';
+import { claimRightsRecords } from './redux/biz/claim/records';
+import { claimRightsArticles } from './redux/biz/claim/articles';
+import { claimRightsTppOrders } from './redux/biz/claim/tppOrders';
+// 业务管理--情感频道
+import { emotionArticles } from './redux/biz/emotion/articles';
+// 业务管理--道具管理
+import { propProps } from './redux/biz/prop/props';
 // 业务管理--业务规则
 import { rulesWeight } from './redux/biz/rules/weight';
 // 代理管理--代理商管理
@@ -61,6 +75,7 @@ import { ownTrees } from './redux/own/trees';
 // 产权端--资金管理
 import { ownAccounts } from './redux/own/accounts';
 import { ownFlows } from './redux/own/flows';
+import { ownWithdraw } from './redux/own/withdraw';
 // 产权端--个人设置
 import { ownNotices } from './redux/own/notices';
 // 养护端--业务管理
@@ -95,6 +110,8 @@ export default combineReducers({
   publicNotice,
   platformDistributionRules,
   platformGradationRules,
+  platformIntegralRules,
+  platformTppRules,
   platformAccount,
   platformAccountFlows,
   platformFlows,
@@ -102,9 +119,7 @@ export default combineReducers({
   rechargeRecords,
   withdrawRules,
   withdrawWithdraw,
-  financeEnchashmentRule,
-  financeUnderEnchashment,
-  financeEnchashments,
+  withdrawRecords,
   propertyProperty,
   propertyBinds,
   propertyTypes,
@@ -118,8 +133,22 @@ export default combineReducers({
   conserveRecords,
   conserveFlows,
   userUsers,
+  userSignIn,
+  userShares,
+  userGives,
+  userAccounts,
+  userAccountFlows,
+  userFlows,
   claimGroupOrders,
   claimPersonOrders,
+  claimRights,
+  claimRightsLogs,
+  claimGiftOrders,
+  claimRightsRecords,
+  claimRightsArticles,
+  claimRightsTppOrders,
+  emotionArticles,
+  propProps,
   rulesWeight,
   agentAgents,
   agentSettlement,
@@ -130,6 +159,7 @@ export default combineReducers({
   ownTrees,
   ownAccounts,
   ownFlows,
+  ownWithdraw,
   ownNotices,
   curingTasks,
   curingProjects,

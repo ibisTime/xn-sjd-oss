@@ -36,12 +36,11 @@ class RechargesAddEdit extends DetailUtil {
       type: 'select',
       pageCode: 802300,
       params: {
-        currency: 'CNY',
         status: '0',
         type: 'NOT_P'
       },
       keyName: 'accountNumber',
-      valueName: '{{mobile.DATA}}-{{type.DATA}}',
+      valueName: '{{mobile.DATA}}-{{type.DATA}}-{{currency.DATA}}',
       searchName: 'userId'
     };
     const fields = [{
@@ -63,7 +62,13 @@ class RechargesAddEdit extends DetailUtil {
       code: this.code,
       view: this.view,
       detailCode: 802346,
-      addCode: 802340
+      addCode: 802340,
+      beforeSubmit: (params) => {
+        if (!this.code) {
+          params.applyUserType = 'P';
+        }
+        return params;
+      }
     };
     if (this.view) {
       fields.push({

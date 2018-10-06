@@ -85,19 +85,18 @@ export function initData() {
     dispatch(doFetching());
     getAccountsByUserId(SYS_USER).then((accounts) => {
       dispatch(cancelFetching());
-      // ALIPAY、WEIXIN、OFFLINE、CNY、JF、TPP
       accounts.forEach(account => {
-        if (account.currency === 'ALIPAY') {
+        if (account.accountNumber === 'SYS_ACOUNT_ALIPAY_TG') {
           dispatch(setAlipayAccount(account));
-        } else if (account.currency === 'WEIXIN') {
+        } else if (account.accountNumber === 'SYS_ACOUNT_WEIXIN_TG') {
           dispatch(setWXAccount(account));
-        } else if (account.currency === 'OFFLINE') {
+        } else if (account.accountNumber === 'SYS_ACOUNT_OFFLINE_TG') {
           dispatch(setOffAccount(account));
-        } else if (account.currency === 'CNY') {
+        } else if (account.accountNumber === 'SYS_ACOUNT_CNY') {
           dispatch(setCnyAccount(account));
-        } else if (account.currency === 'JF') {
+        } else if (account.accountNumber === 'SYS_ACOUNT_JF_POOL') {
           dispatch(setJfAccount(account));
-        } else if (account.currency === 'TPP') {
+        } else if (account.accountNumber === 'SYS_ACOUNT_TPP') {
           dispatch(setTppAccount(account));
         }
       });

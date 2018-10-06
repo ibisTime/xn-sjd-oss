@@ -28,7 +28,7 @@ class Withdraw extends React.Component {
       field: 'code',
       title: '编号'
     }, {
-      field: 'type',
+      field: 'accountType',
       title: '角色类型',
       type: 'select',
       key: 'account_type',
@@ -79,7 +79,7 @@ class Withdraw extends React.Component {
       search: true
     }];
     const btnEvent = {
-      examine: (keys, items) => {
+      check: (keys, items) => {
         if (!keys.length) {
           showWarnMsg('请选择记录');
         } else if (keys.length > 1) {
@@ -90,7 +90,7 @@ class Withdraw extends React.Component {
           this.props.history.push(`/withdraw/withdraw/addedit?code=${keys[0]}&check=1&v=1`);
         }
       },
-      huilu: (keys, items) => {
+      enter: (keys, items) => {
         if (!keys.length) {
           showWarnMsg('请选择记录');
         } else if (keys.length > 1) {
@@ -98,14 +98,14 @@ class Withdraw extends React.Component {
         } else if (items[0].status !== '3') {
           showWarnMsg('该记录不是待回录状态!');
         } else {
-          this.props.history.push(`/withdraw/withdraw/addedit?code=${keys[0]}&hl=1&v=1`);
+          this.props.history.push(`/withdraw/withdraw/addedit?code=${keys[0]}&enter=1&v=1`);
         }
       }
     };
     return this.props.buildList({
       fields,
       btnEvent,
-      pageCode: 802755,
+      pageCode: 802355,
       searchParams: {
         channelType: 90
       }

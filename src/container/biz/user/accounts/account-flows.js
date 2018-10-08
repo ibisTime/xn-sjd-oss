@@ -23,7 +23,8 @@ import { dateTimeFormat, getQueryString, showWarnMsg } from 'common/js/util';
 class UserAccountFlows extends React.Component {
   constructor(props) {
     super(props);
-    this.code = getQueryString('code', this.props.location.search);
+    this.accountNumber = getQueryString('code', this.props.location.search);
+    this.type = getQueryString('type', this.props.location.search);
   }
   render() {
     const fields = [{
@@ -77,8 +78,8 @@ class UserAccountFlows extends React.Component {
       fields,
       pageCode: 802320,
       searchParams: {
-        accountType: 'C',
-        accountNumber: this.code
+        accountType: this.type,
+        accountNumber: this.accountNumber
       },
       buttons: [{
         name: '详情',
@@ -89,7 +90,7 @@ class UserAccountFlows extends React.Component {
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
           } else {
-            this.props.history.push(`/user/accounts/flows/addedit?code=${keys[0]}&v=1`);
+            this.props.history.push(`${this.props.location.pathname}/addedit?code=${keys[0]}&v=1`);
           }
         }
       }, {

@@ -72,7 +72,7 @@ class Accounts extends React.Component {
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
           } else {
-            this.props.history.push(`/user/accounts/flows?code=${keys[0]}`);
+            this.props.history.push(`/user/accounts/flows?code=${keys[0]}&type=C`);
           }
         }
       }

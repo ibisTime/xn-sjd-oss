@@ -41,15 +41,7 @@ class Trees extends React.Component {
       title: '状态',
       field: 'status',
       type: 'select',
-      data: [{
-        key: '0',
-        value: '待认养'
-      }, {
-        key: '1',
-        value: '已认养'
-      }],
-      keyName: 'key',
-      valueName: 'value',
+      key: 'tree_status',
       search: true
     }];
     return this.props.buildList({

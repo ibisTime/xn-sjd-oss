@@ -179,7 +179,7 @@ export default class CUpload extends React.Component {
     }
   }
   render() {
-    const { field, isLoaded, getFieldDecorator, token, rules, readonly, isSingle,
+    const { field, isLoaded, getFieldDecorator, token, rules, readonly, single,
       isImg, onChange, accept, getFieldValue, label, hidden, initVal, inline } = this.props;
     const { previewVisible, previewId } = this.state;
     const initValue = this.getFileInitVal(initVal, isImg);
@@ -200,11 +200,11 @@ export default class CUpload extends React.Component {
                   isImg,
                   accept,
                   readonly,
-                  isSingle,
+                  single,
                   onChange,
                   initValue
                 })}>
-                  {this.getUploadBtn(field, getFieldValue, readonly, isSingle, isImg)}
+                  {this.getUploadBtn(field, getFieldValue, readonly, single, isImg)}
                 </Upload>
               )
             ) : null
@@ -244,7 +244,7 @@ CUpload.propTypes = {
   initVal: PropTypes.string,
   accept: PropTypes.string,
   readonly: PropTypes.bool,
-  isSingle: PropTypes.bool,
+  single: PropTypes.bool,
   hidden: PropTypes.bool,
   onChange: PropTypes.func,
   field: PropTypes.string.isRequired,

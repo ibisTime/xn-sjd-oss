@@ -34,11 +34,6 @@ class PropertyAddEdit extends DetailUtil {
       hidden: !this.code,
       maxlength: 30
     }, {
-      title: '真实姓名',
-      field: 'realName',
-      hidden: !this.code,
-      maxlength: 30
-    }, {
       title: '手机号',
       field: 'mobile',
       required: true,

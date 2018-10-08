@@ -150,8 +150,8 @@ class ProductEdit extends DetailUtil {
       _keys: ['directObject'],
       type: 'select',
       key: 'user_level',
-      hidden: !this.state.directLevel,
-      required: this.state.directLevel
+      hidden: !this.state.direct || !this.state.directLevel,
+      required: this.state.direct && this.state.directLevel
     }, {
       title: '针对用户',
       field: 'directUser',
@@ -162,16 +162,16 @@ class ProductEdit extends DetailUtil {
       keyName: 'userId',
       valueName: '{{mobile.DATA}}-{{nickname.DATA}}',
       searchName: 'mobile',
-      hidden: !this.state.directUser,
-      required: this.state.directUser
-    }, {
-      title: '募集时间',
-      field: 'raiseStartDatetime',
-      type: 'date',
-      rangedate: ['raiseStartDatetime', 'raiseEndDatetime']
-    }, {
-      title: '募集总数',
-      field: 'raiseCount'
+      hidden: !this.state.direct || !this.state.directUser,
+      required: this.state.direct && this.state.directUser
+    // }, {
+    //   title: '募集时间',
+    //   field: 'raiseStartDatetime',
+    //   type: 'date',
+    //   rangedate: ['raiseStartDatetime', 'raiseEndDatetime']
+    // }, {
+    //   title: '募集总数',
+    //   field: 'raiseCount'
     }, {
       title: '产品规格列表',
       field: 'productSpecsList',
@@ -219,7 +219,7 @@ class ProductEdit extends DetailUtil {
           field: 'longitude',
           required: true
         }, {
-          title: '维度',
+          title: '纬度',
           field: 'latitude',
           required: true
         }, {

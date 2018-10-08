@@ -35,12 +35,17 @@ class TreesAddEdit extends DetailUtil {
       title: '经度',
       field: 'longitude'
     }, {
-      title: '维度',
+      title: '纬度',
       field: 'latitude'
     }, {
       title: '实景图',
       field: 'pic',
       type: 'img'
+    }, {
+      title: '状态',
+      field: 'status',
+      type: 'select',
+      key: 'tree_status'
     }, {
       title: '备注',
       field: 'remark'

@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+
 import { user } from './redux/user';
 import { menu } from './redux/menu';
 import { securityRole } from './redux/security/role';
@@ -6,8 +7,6 @@ import { securityMenu } from './redux/security/menu';
 import { securitySysParam } from './redux/security/sysParam';
 import { securityUser } from './redux/security/user';
 import { securityDataDict } from './redux/security/dataDict';
-import { securityCompConstruct } from './redux/security/compConstruct';
-import { securityPost } from './redux/security/post';
 import { publicBanner } from './redux/public/banner';
 import { publicNotice } from './redux/public/notice';
 /** ***** 财务管理start ***** **/
@@ -32,6 +31,7 @@ import { propertyBinds } from './redux/biz/property/binds';
 import { propertyTypes } from './redux/biz/property/types';
 import { propertyProducts } from './redux/biz/property/products';
 import { propertyTrees } from './redux/biz/property/trees';
+import { propertyAccounts } from './redux/biz/property/accounts';
 import { propertyFlows } from './redux/biz/property/flows';
 // 业务管理--养护方管理
 import { conserveConserve } from './redux/biz/conserve/conserve';
@@ -39,6 +39,7 @@ import { conserveBinds } from './redux/biz/conserve/conserve-binds';
 import { conserveUsers } from './redux/biz/conserve/users';
 import { conserveProjects } from './redux/biz/conserve/projects';
 import { conserveRecords } from './redux/biz/conserve/records';
+import { conserveAccounts } from './redux/biz/conserve/accounts';
 import { conserveFlows } from './redux/biz/conserve/flows';
 // 业务管理--用户管理
 import { userUsers } from './redux/biz/user/users';
@@ -61,12 +62,15 @@ import { claimRightsTppOrders } from './redux/biz/claim/tppOrders';
 import { emotionArticles } from './redux/biz/emotion/articles';
 // 业务管理--道具管理
 import { propProps } from './redux/biz/prop/props';
+import { propBuyRecords } from './redux/biz/prop/buyRecords';
+import { propUseRecords } from './redux/biz/prop/useRecords';
 // 业务管理--业务规则
 import { rulesWeight } from './redux/biz/rules/weight';
 // 代理管理--代理商管理
 import { agentAgents } from './redux/agent/agents';
 import { agentSettlement } from './redux/agent/settlement';
 import { agentAchievement } from './redux/agent/achievement';
+import { agentAccounts } from './redux/agent/accounts';
 import { agentFlows } from './redux/agent/flows';
 // 产权端--业务管理
 import { ownProducts } from './redux/own/products';
@@ -104,8 +108,6 @@ export default combineReducers({
   securityUser,
   securitySysParam,
   securityDataDict,
-  securityCompConstruct,
-  securityPost,
   publicBanner,
   publicNotice,
   platformDistributionRules,
@@ -125,12 +127,14 @@ export default combineReducers({
   propertyTypes,
   propertyProducts,
   propertyTrees,
+  propertyAccounts,
   propertyFlows,
   conserveConserve,
   conserveBinds,
   conserveUsers,
   conserveProjects,
   conserveRecords,
+  conserveAccounts,
   conserveFlows,
   userUsers,
   userSignIn,
@@ -149,10 +153,13 @@ export default combineReducers({
   claimRightsTppOrders,
   emotionArticles,
   propProps,
+  propBuyRecords,
+  propUseRecords,
   rulesWeight,
   agentAgents,
   agentSettlement,
   agentAchievement,
+  agentAccounts,
   agentFlows,
   ownProducts,
   ownClaimOrders,

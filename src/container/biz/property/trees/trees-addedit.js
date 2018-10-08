@@ -35,7 +35,7 @@ class TreesAddEdit extends DetailUtil {
       title: '经度',
       field: 'longitude'
     }, {
-      title: '维度',
+      title: '纬度',
       field: 'latitude'
     }, {
       title: '实景图',

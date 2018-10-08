@@ -123,3 +123,6 @@ li {
 .cform-item-btn .ant-form-item-label label {
   visibility: hidden;
 }
+.ant-menu-horizontal {
+  white-space: normal !important;
+}

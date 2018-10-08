@@ -11,6 +11,12 @@ class ProductsAddEdit extends DetailUtil {
     this.code = getQueryString('code', this.props.location.search);
     this.view = !!getQueryString('v', this.props.location.search);
     this.check = !!getQueryString('check', this.props.location.search);
+    this.state = {
+      ...this.state,
+      direct: false,
+      directLevel: false,
+      directUser: false
+    };
   }
   checkProduct(approveResult, params) {
     this.doFetching();
@@ -104,13 +110,53 @@ class ProductsAddEdit extends DetailUtil {
       valueName: 'dvalue',
       required: true
     }, {
-      title: '募集总数',
-      field: 'raiseCount'
+      title: '定向类型',
+      field: 'directType',
+      type: 'select',
+      data: [{
+        dkey: '1',
+        dvalue: '针对某一等级用户'
+      }, {
+        dkey: '2',
+        dvalue: '针对个人用户'
+      }],
+      hidden: !this.state.direct,
+      required: this.state.direct,
+      onChange: (v) => {
+        if (v === '1' && !this.state.directLevel) {
+          this.setState({ directLevel: true, directUser: false });
+        } else if (v === '2' && !this.state.directUser) {
+          this.setState({ directUser: true, directLevel: false });
+        }
+      }
     }, {
-      title: '募集时间',
-      field: 'raiseStartDatetime',
-      type: 'date',
-      rangedate: ['raiseStartDatetime', 'raiseEndDatetime']
+      title: '针对等级',
+      field: 'directLevel',
+      _keys: ['directObject'],
+      type: 'select',
+      key: 'user_level',
+      hidden: !this.state.direct || !this.state.directLevel,
+      required: this.state.direct && this.state.directLevel
+    }, {
+      title: '针对用户',
+      field: 'directUser',
+      _keys: ['directObject'],
+      type: 'select',
+      pageCode: 805120,
+      params: { status: '0' },
+      keyName: 'userId',
+      valueName: '{{mobile.DATA}}-{{nickname.DATA}}',
+      searchName: 'mobile',
+      hidden: !this.state.direct || !this.state.directUser,
+      required: this.state.direct && this.state.directUser
+    // }, {
+    //   title: '募集总数',
+    //   field: 'raiseCount'
+    // }, {
+    //   title: '募集时间',
+    //   field: 'raiseStartDatetime',
+    //   type: 'date',
+    //   rangedate: ['raiseStartDatetime', 'raiseEndDatetime']
     }, {
       title: '产品规格列表',
       field: 'productSpecsList',
@@ -158,7 +204,7 @@ class ProductsAddEdit extends DetailUtil {
           field: 'longitude',
           required: true
         }, {
-          title: '维度',
+          title: '纬度',
           field: 'latitude',
           required: true
         }, {
@@ -170,6 +216,11 @@ class ProductsAddEdit extends DetailUtil {
           field: 'remark'
         }]
       },
+      required: true
+    }, {
+      title: '产品描述',
+      field: 'description',
+      type: 'textarea',
       required: true
     }, {
       title: '备注',

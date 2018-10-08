@@ -30,7 +30,7 @@ class Users extends React.Component {
       pageCode: 630065,
       searchName: 'keyword',
       keyName: 'userId',
-      valueName: '{{realName.DATA}}-{{mobile.DATA}}',
+      valueName: '{{realName.DATA}} {{mobile.DATA}}',
       render: (v) => v,
       search: true
     }, {
@@ -53,10 +53,7 @@ class Users extends React.Component {
     return this.props.buildList({
       fields,
       pageCode: 629615,
-      deleteCode: 629611,
-      searchParams: {
-        maintainId: getUserId()
-      }
+      deleteCode: 629611
     });
   }
 }

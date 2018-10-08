@@ -8,74 +8,71 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/finance/recharge/records';
+} from '@redux/agent/accounts';
 import { listWrapper } from 'common/js/build-list';
 import { dateTimeFormat, showWarnMsg } from 'common/js/util';
 
 @listWrapper(
   state => ({
-    ...state.rechargeRecords,
+    ...state.agentAccounts,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
-class Records extends React.Component {
+class Accounts extends React.Component {
   render() {
     const fields = [{
-      field: 'code',
-      title: '编号'
-    }, {
-      field: 'accountName',
+      field: 'mobile',
       title: '户名',
       search: true
     }, {
-      field: 'amount',
-      title: '充值金额',
-      amount: true
+      field: 'accountNumber',
+      title: '账号'
+    }, {
+      field: 'currency',
+      title: '币种',
+      type: 'select',
+      key: 'currency',
+      search: true
     }, {
       field: 'status',
       title: '状态',
       type: 'select',
-      key: 'charge_status',
+      key: 'account_status',
       search: true
     }, {
-      field: 'applyUser',
-      title: '申请人'
+      field: 'amount',
+      title: '余额',
+      amount: true
     }, {
-      field: 'applyDatetime',
-      title: '申请时间',
-      render: dateTimeFormat,
+      field: 'frozenAmount',
+      title: '冻结金额',
+      amount: true
+    }, {
+      field: 'createDatetime',
+      title: '创建时间',
       type: 'date',
-      rangedate: ['applyDateStart', 'applyDateEnd'],
-      search: true
-    }, {
-      field: 'payUser',
-      title: '审核人'
-    }, {
-      field: 'payDatetime',
-      title: '审核时间',
       render: dateTimeFormat,
-      type: 'date',
-      rangedate: ['payDateStart', 'payDateEnd'],
+      rangedate: ['dateStart', 'dateEnd'],
       search: true
     }];
     return this.props.buildList({
       fields,
-      pageCode: 802345,
+      rowKey: 'accountNumber',
+      pageCode: 802300,
       searchParams: {
-        channelType: '90'
+        type: 'A'
       },
       btnEvent: {
-        check: (keys, items) => {
+        // 流水
+        flows: (keys, items) => {
           if (!keys.length) {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '1') {
-            showWarnMsg('当前状态不能审核');
           } else {
-            this.props.history.push(`/recharge/recharges/addedit?code=${keys[0]}&check=1&v=1`);
+            this.props.history.push(`/property/accounts/flows?code=${keys[0]}&type=A`);
           }
         }
       }
@@ -83,4 +80,4 @@ class Records extends React.Component {
   }
 }
 
-export default Records;
+export default Accounts;

@@ -8,50 +8,41 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/agent/achievement';
+} from '@redux/biz/prop/buyRecords';
 import { listWrapper } from 'common/js/build-list';
 
 @listWrapper(
   state => ({
-    ...state.agentAchievement,
+    ...state.propBuyRecords,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
-class Achievement extends React.Component {
+class BuyRecords extends React.Component {
   render() {
     const fields = [{
-      title: '订单编号',
-      field: 'code'
+      title: '道具名',
+      field: 'toolName',
+      search: true
     }, {
-      title: '古树学名',
-      field: 'mobile'
+      title: '购买价格',
+      field: 'price',
+      amount: true
     }, {
-      title: '古树编号',
-      field: 'realName'
+      title: '购买人',
+      field: 'userId',
+      render: (v, d) => d.userInfo ? `${d.userInfo.nickname} ${d.userInfo.mobile}` : ''
     }, {
-      title: '认养人',
-      field: 'level'
-    }, {
-      title: '状态',
-      field: 'status',
-      type: 'select',
-      key: 'settle_status'
-    }, {
-      title: '下单时间',
+      title: '购买时间',
       field: 'createDatetime',
       type: 'datetime'
     }];
     return this.props.buildList({
       fields,
-      rowKey: 'userId',
-      pageCode: 629645,
-      searchParams: {
-        status: '1'
-      }
+      pageCode: 629515
     });
   }
 }
 
-export default Achievement;
+export default BuyRecords;

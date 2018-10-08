@@ -47,9 +47,6 @@ class Conserve extends React.Component {
       title: '手机号',
       field: 'mobile'
     }, {
-      title: '真实姓名',
-      field: 'realName'
-    }, {
       title: '总收入',
       field: 'totalIncome',
       amount: true

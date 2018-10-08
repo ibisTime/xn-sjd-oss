@@ -1,30 +1,30 @@
 import React from 'react';
 import { Form } from 'antd';
-import DetailUtil from 'common/js/build-detail';
 import { showSucMsg } from 'common/js/util';
+import DetailUtil from 'common/js/build-detail';
 import fetch from 'common/js/fetch';
 
 @Form.create()
-class HotLineAddEdit extends DetailUtil {
+class RegistrationAgreement extends DetailUtil {
   render() {
     const fields = [{
       field: 'id',
       hidden: true
     }, {
-      title: '内容',
-      field: 'cvalue',
-      required: true
-    }, {
       field: 'remark',
-      hidden: true,
-      value: '服务热线'
+      value: '注册协议',
+      hidden: true
+    }, {
+      title: '注册协议',
+      field: 'cvalue',
+      type: 'textarea',
+      required: true
     }];
     return this.buildDetail({
       fields,
-      key: 'key',
-      code: 'telephone',
+      key: 'ckey',
+      code: 'REGISTRATION_AGREEMENT',
       detailCode: 630047,
-      editCode: 630042,
       buttons: [{
         title: '保存',
         check: true,
@@ -40,4 +40,4 @@ class HotLineAddEdit extends DetailUtil {
   }
 }
 
-export default HotLineAddEdit;
+export default RegistrationAgreement;

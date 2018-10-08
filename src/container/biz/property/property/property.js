@@ -11,7 +11,7 @@ import {
   setSearchData
 } from '@redux/biz/property/property';
 import { listWrapper } from 'common/js/build-list';
-import { showWarnMsg } from 'common/js/util';
+import { showWarnMsg, moneyFormat } from 'common/js/util';
 import { activateSysUser } from 'api/user';
 
 @listWrapper(
@@ -47,15 +47,13 @@ class Property extends React.Component {
       title: '手机号',
       field: 'mobile'
     }, {
-      title: '真实姓名',
-      field: 'realName'
-    }, {
       title: '古树数量',
       field: 'treeQuantity'
     }, {
       title: '古树市值',
       field: 'treeValue',
-      amount: true
+      amount: true,
+      render: (v, d) => v ? moneyFormat(v) : '0.00'
     }, {
       title: '状态',
       field: 'status',

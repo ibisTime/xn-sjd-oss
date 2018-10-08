@@ -5,17 +5,17 @@ import DetailUtil from 'common/js/build-detail';
 import fetch from 'common/js/fetch';
 
 @Form.create()
-class AboutusAddEdit extends DetailUtil {
+class Strategy extends DetailUtil {
   render() {
     const fields = [{
       field: 'id',
       hidden: true
     }, {
       field: 'remark',
-      value: '关于我们',
+      value: '攻略',
       hidden: true
     }, {
-      title: '关于我们',
+      title: '攻略',
       field: 'cvalue',
       type: 'textarea',
       required: true
@@ -23,7 +23,7 @@ class AboutusAddEdit extends DetailUtil {
     return this.buildDetail({
       fields,
       key: 'ckey',
-      code: 'about_us',
+      code: 'STRATEGY',
       detailCode: 630047,
       buttons: [{
         title: '保存',
@@ -40,4 +40,4 @@ class AboutusAddEdit extends DetailUtil {
   }
 }
 
-export default AboutusAddEdit;
+export default Strategy;

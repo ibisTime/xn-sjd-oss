@@ -117,13 +117,11 @@ class Supplement extends DetailUtil {
       field: 'bussinessLicense',
       _keys: ['company', 'bussinessLicense'],
       type: 'img',
-      single: true,
-      required: true
+      single: true
     }, {
       title: '组织机构代码',
       field: 'organizationCode',
-      _keys: ['company', 'organizationCode'],
-      required: true
+      _keys: ['company', 'organizationCode']
     }] : [{
       title: '公司名称',
       field: 'companyName',
@@ -157,13 +155,11 @@ class Supplement extends DetailUtil {
       field: 'bussinessLicense',
       _keys: ['company', 'bussinessLicense'],
       type: 'img',
-      single: true,
-      required: true
+      single: true
     }, {
       title: '组织机构代码',
       field: 'organizationCode',
-      _keys: ['company', 'organizationCode'],
-      required: true
+      _keys: ['company', 'organizationCode']
     }];
   }
   render() {

@@ -99,7 +99,7 @@ class ProductEdit extends DetailUtil {
       type: 'img',
       required: true
     }, {
-      title: '销售分类',
+      title: '认养分类',
       field: 'sellType',
       type: 'select',
       data: [{

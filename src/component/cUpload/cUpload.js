@@ -80,6 +80,7 @@ export default class CUpload extends React.Component {
       previewVisible: true,
       previewId
     });
+    // this.imgUrl = PIC_PREFIX + file.url + '?attname=' + file.url + '.jpg';
   }
   // 隐藏图片
   handleCancel = () => this.setState({previewVisible: false})

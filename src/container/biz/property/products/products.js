@@ -104,7 +104,7 @@ class Products extends React.Component {
       keyName: 'code',
       valueName: 'name'
     }, {
-      title: '销售分类',
+      title: '认养分类',
       field: 'sellType',
       type: 'select',
       data: [{

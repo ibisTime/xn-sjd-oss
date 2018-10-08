@@ -1,6 +1,6 @@
 import React from 'react';
 import { getKindByUrl } from 'common/js/util';
-import OwnComp from './ownComp';
+import OwnComp from './ownComp/ownComp';
 import AgentComp from './agentComp';
 import CuringComp from './curingComp';
 import PlatformComp from './platformComp';

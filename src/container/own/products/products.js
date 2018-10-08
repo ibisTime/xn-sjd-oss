@@ -54,7 +54,7 @@ class Products extends React.Component {
       valueName: 'name',
       search: true
     }, {
-      title: '销售分类',
+      title: '认养分类',
       field: 'sellType',
       type: 'select',
       data: [{
@@ -123,8 +123,12 @@ class Products extends React.Component {
     return this.props.buildList({
       fields,
       pageCode: 629025,
+      searchParams: {
+        ownerId: getUserId()
+      },
       btnEvent: {
         // 0草稿/1已提交待审核/2审核不通过/3审核通过待上架/4已上架待认养/5已锁定/6已认养/7已下架
+        // 编辑
         edit: (keys, items) => {
           if (!keys || !keys.length) {
             showWarnMsg('请选择记录');
@@ -136,6 +140,7 @@ class Products extends React.Component {
             this.props.history.push(`/own/products/addedit?code=${keys[0]}`);
           }
         },
+        // 上架申请
         up: (keys, items) => {
           if (!keys || !keys.length) {
             showWarnMsg('请选择记录');

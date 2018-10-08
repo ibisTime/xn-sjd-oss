@@ -42,13 +42,14 @@ class Types extends React.Component {
       title: '名称',
       field: 'name'
     }, {
-    //   title: '上级编号',
-    //   field: 'parentCode',
-    //   type: 'select',
-    //   listCode: '629007',
-    //   keyName: 'code',
-    //   valueName: 'name'
-    // }, {
+      title: '上级编号',
+      field: 'parentCode',
+      type: 'select',
+      listCode: '629007',
+      keyName: 'code',
+      valueName: 'name',
+      search: true
+    }, {
       title: '图片',
       field: 'pic',
       type: 'img'

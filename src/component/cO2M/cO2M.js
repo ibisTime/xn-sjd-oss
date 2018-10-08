@@ -183,9 +183,11 @@ export default class CO2M extends React.Component {
       view: false,
       useData
     };
-    this.setState({
-      modalVisible: true
-    });
+    setTimeout(() => {
+      this.setState({
+        modalVisible: true
+      });
+    }, 20);
   }
   // 删除按钮点击
   deleteBtnClick = () => {
@@ -358,8 +360,9 @@ export default class CO2M extends React.Component {
       if (f.render) {
         obj.render = f.render;
       } else {
-        obj.render = (v) => {
-          return f.nowrap ? <span style={{whiteSpace: 'nowrap'}}>{dateTimeFormat(v)}</span> : dateTimeFormat(v);
+        obj.render = (v, d) => {
+          let val = f.rangedate ? `${dateTimeFormat(d[f.rangedate[0]])} ~ ${dateTimeFormat(d[f.rangedate[1]])}` : v;
+          return f.nowrap ? <span style={{whiteSpace: 'nowrap'}}>{val}</span> : val;
         };
         this.addRender(f, dateTimeFormat);
       }
@@ -367,8 +370,9 @@ export default class CO2M extends React.Component {
       if (f.render) {
         obj.render = f.render;
       } else {
-        obj.render = (v) => {
-          return f.nowrap ? <span style={{whiteSpace: 'nowrap'}}>{dateFormat(v)}</span> : dateFormat(v);
+        obj.render = (v, d) => {
+          let val = f.rangedate ? `${dateFormat(d[f.rangedate[0]])} ~ ${dateFormat(d[f.rangedate[1]])}` : v;
+          return f.nowrap ? <span style={{whiteSpace: 'nowrap'}}>{val}</span> : val;
         };
         this.addRender(f, dateFormat);
       }

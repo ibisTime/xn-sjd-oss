@@ -16,9 +16,12 @@ class TypesAddEdit extends DetailUtil {
       field: 'name',
       required: true
     }, {
+      title: '上级编号',
       field: 'parentCode',
-      value: '',
-      hidden: true
+      type: 'select',
+      listCode: '629007',
+      keyName: 'code',
+      valueName: 'name'
     }, {
       title: '图片',
       field: 'pic',

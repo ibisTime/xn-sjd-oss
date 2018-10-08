@@ -5,7 +5,7 @@ import { getDictList } from 'api/dict';
 import { getQiniuToken } from 'api/general';
 import {
   isUndefined, showSucMsg, showErrMsg, showWarnMsg, getUserId,
-  moneyParse, getRules, getRealValue } from 'common/js/util';
+  moneyParse, getRules, getRealValue, dateFormat, dateTimeFormat } from 'common/js/util';
 import fetch from 'common/js/fetch';
 import { UPLOAD_URL, PIC_PREFIX, PIC_BASEURL_L, formItemLayout,
   validateFieldsAndScrollOption, DATE_FORMAT, MONTH_FORMAT, DATETIME_FORMAT } from 'common/js/config';
@@ -623,7 +623,23 @@ export default class DetailComp extends React.Component {
           values[v.field] = values[v.field] ? values[v.field].format(format) : values[v.field];
         }
       } else if (v.type === 'o2m') {
-        values[v.field] = this.state.pageData ? this.state.pageData[v.field] : null;
+        let list = this.state.pageData ? this.state.pageData[v.field] : null;
+        if (list) {
+          v.options.fields.forEach(f => {
+            if (f.type === 'date' || f.type === 'datetime') {
+              let fn = f.type === 'date' ? dateFormat : dateTimeFormat;
+              list.forEach(l => {
+                if (f.rangedate) {
+                  l[f.rangedate[0]] = fn(l[f.rangedate[0]]);
+                  l[f.rangedate[1]] = fn(l[f.rangedate[1]]);
+                } else {
+                  l[f.field] = fn(l[f.field]);
+                }
+              });
+            }
+          });
+        }
+        values[v.field] = list;
       } else if (v.type === 'checkbox') {
         if (values[v.field] !== '' && values[v.field].push) {
           values[v.field] = values[v.field].join(',');

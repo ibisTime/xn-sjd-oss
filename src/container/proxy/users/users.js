@@ -24,7 +24,7 @@ class Users extends React.Component {
   render() {
     const fields = [{
       title: '昵称',
-      field: 'loginName'
+      field: 'nickname'
     }, {
       title: '手机号',
       field: 'mobile',

@@ -155,12 +155,20 @@ class Dashboard extends React.Component {
     ) : null;
   }
   getContent(rightCls, innerCls) {
+    let props = {
+      className: 'right-content'
+    };
+    if (this.props.location.pathname === '/') {
+      props.style = {
+        background: '#f0f2f5'
+      };
+    }
     return (
       <Layout className={rightCls}>
         <Breadcrumb className={innerCls} style={{ margin: '16px 0' }}>
           {this.getBreadcrumb()}
         </Breadcrumb>
-        <Content className="right-content">
+        <Content {...props}>
           <Switch>
             <Route path='/' exact component={Home}></Route>
             {this.props.topMenuList.length ? this.getRoutes() : null}

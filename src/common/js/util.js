@@ -647,6 +647,7 @@ export function judgeStatus(status) {
 export function getKindByUrl() {
   // 平台
   if (location.origin === 'http://sjd.oss.hichengdai.com') {
+  // if (location.origin === 'http://localhost:3001') {
     return 'P';
   }
   // 产权

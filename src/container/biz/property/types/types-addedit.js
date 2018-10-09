@@ -20,6 +20,7 @@ class TypesAddEdit extends DetailUtil {
       field: 'parentCode',
       type: 'select',
       listCode: '629007',
+      params: {status: 1, level: 1},
       keyName: 'code',
       valueName: 'name'
     }, {

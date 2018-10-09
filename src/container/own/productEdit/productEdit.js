@@ -45,10 +45,29 @@ class ProductEdit extends DetailUtil {
   render() {
     const fields = [{
       title: '产品分类',
+      field: 'parentCategoryCode',
+      type: 'select',
+      listCode: '629007',
+      params: { status: '1', level: '1' },
+      keyName: 'code',
+      valueName: 'name',
+      onChange: (v) => {
+        fetch(629007, { parentCode: v, status: '1', level: '2' }).then((data) => {
+          this.setState({
+            selectData: {
+              ...this.state.selectData,
+              level: data
+            }
+          });
+        }).catch(() => {});
+      },
+      required: true
+    }, {
+      title: '小类',
       field: 'categoryCode',
       type: 'select',
       listCode: '629007',
-      params: { status: '1' },
+      params: { status: '1', level: '2' },
       keyName: 'code',
       valueName: 'name',
       required: true
@@ -73,7 +92,7 @@ class ProductEdit extends DetailUtil {
       required: true,
       maxlength: 30
     }, {
-      title: '产地',
+      title: '属地',
       field: 'originPlace',
       required: true,
       maxlength: 30
@@ -102,21 +121,7 @@ class ProductEdit extends DetailUtil {
       title: '认养分类',
       field: 'sellType',
       type: 'select',
-      data: [{
-        dkey: '1',
-        dvalue: '个人'
-      }, {
-        dkey: '2',
-        dvalue: '定向'
-      }, {
-        dkey: '3',
-        dvalue: '捐赠'
-      }, {
-        dkey: '4',
-        dvalue: '集体'
-      }],
-      keyName: 'dkey',
-      valueName: 'dvalue',
+      key: 'sell_type',
       required: true,
       onChange: (v) => {
         let direct = v === '2';

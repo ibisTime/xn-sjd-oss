@@ -40,29 +40,20 @@ class Trees extends React.Component {
       title: '状态',
       field: 'status',
       type: 'select',
-      data: [{
-        key: '0',
-        value: '待认养'
-      }, {
-        key: '1',
-        value: '已认养'
-      }],
-      keyName: 'key',
-      valueName: 'value',
+      key: 'tree_status',
       search: true
     }, {
       title: '被认养次数',
-      field: 'createDatetime',
-      type: 'datetime'
+      field: 'adoptCount'
     }, {
       title: '文章数',
-      field: 'remark'
+      field: 'articleCount'
     }, {
       title: '点赞数',
-      field: 'remark1'
+      field: 'pointCount'
     }, {
       title: '收藏数',
-      field: 'remark2'
+      field: 'collectionCount'
     }];
     return this.props.buildList({
       fields,

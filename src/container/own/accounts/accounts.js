@@ -15,7 +15,14 @@ class OwnAccounts extends React.Component {
     this.props.initData();
   }
   goWithdraw() {
-    this.props.history.push('/own/withdraw/apply');
+    let pathname = this.props.location.pathname;
+    if (pathname.indexOf('/own') !== -1) {
+      this.props.history.push('/own/withdraw/apply');
+    } else if (pathname.indexOf('/curing') !== -1) {
+      this.props.history.push('/curing/withdraw/apply');
+    } else {
+      this.props.history.push('/proxy/withdraw/apply');
+    }
   }
   render() {
     return (

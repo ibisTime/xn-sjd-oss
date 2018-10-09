@@ -2,7 +2,7 @@ import React from 'react';
 import { getKindByUrl } from 'common/js/util';
 import OwnComp from './ownComp/ownComp';
 import AgentComp from './agentComp';
-import CuringComp from './curingComp';
+import CuringComp from './curingComp/curingComp';
 import PlatformComp from './platformComp';
 
 export default class Home extends React.Component {
@@ -26,7 +26,6 @@ export default class Home extends React.Component {
                 ? <CuringComp cnyAccount={cnyAccount} />
                 : <PlatformComp cnyAccount={cnyAccount} />
         }
-
       </div>
     );
   }

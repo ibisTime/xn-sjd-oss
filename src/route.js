@@ -140,6 +140,11 @@ const ROUTES = [
     path: '/platform/account/enter',
     component: asyncComponent(() => import('container/finance/platform/account/account-enter'))
   },
+  // 财务管理 -- 平台账户 -- 账户查询 -- 资金分布
+  {
+    path: '/platform/account/accounts',
+    component: asyncComponent(() => import('container/finance/platform/account/account-list'))
+  },
   // 财务管理 -- 平台账户 -- 流水查询
   {
     path: '/platform/flows',
@@ -667,6 +672,11 @@ const ROUTES = [
   },
   // 养护端管理 -- 资金管理 -- 提现
   {
+    path: '/curing/accounts',
+    component: asyncComponent(() => import('container/own/accounts/accounts'))
+  },
+  // 养护端管理 -- 资金管理 -- 提现
+  {
     path: '/curing/withdraw',
     component: asyncComponent(() => import('container/own/withdraw/withdraw'))
   },
@@ -729,6 +739,11 @@ const ROUTES = [
   {
     path: '/proxy/unsettled',
     component: asyncComponent(() => import('container/proxy/unsettled/unsettled'))
+  },
+  // 代理商 -- 代理商 -- 流水查询
+  {
+    path: '/proxy/accounts',
+    component: asyncComponent(() => import('container/own/accounts/accounts'))
   },
   // 代理商 -- 代理商 -- 流水查询
   {

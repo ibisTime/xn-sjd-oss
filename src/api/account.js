@@ -16,3 +16,9 @@ export function getAccountsByUserId(userId, currency) {
 export function getAccountsByCurUserId(currency) {
   return getAccountsByUserId(getUserId(), currency);
 }
+/**
+ * 列表查询各端账户总余额
+ */
+export function getClientAccounts() {
+  return fetch(802302);
+}

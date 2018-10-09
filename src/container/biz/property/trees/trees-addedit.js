@@ -42,6 +42,18 @@ class TreesAddEdit extends DetailUtil {
       field: 'pic',
       type: 'img'
     }, {
+      title: '被认养次数',
+      field: 'adoptCount'
+    }, {
+      title: '文章数',
+      field: 'articleCount'
+    }, {
+      title: '点赞数',
+      field: 'pointCount'
+    }, {
+      title: '收藏数',
+      field: 'collectionCount'
+    }, {
       title: '备注',
       field: 'remark'
     }];

@@ -17,6 +17,7 @@ import { platformIntegralRules } from './redux/finance/platform/integralRules';
 import { platformTppRules } from './redux/finance/platform/tppRules';
 import { platformAccount } from './redux/finance/platform/account';
 import { platformAccountFlows } from './redux/finance/platform/accountFlows';
+import { platformAccountList } from './redux/finance/platform/accountList';
 import { platformFlows } from './redux/finance/platform/flows';
 // 财务管理--充值管理
 import { rechargeRecharges } from './redux/finance/recharge/recharges';
@@ -116,6 +117,7 @@ export default combineReducers({
   platformTppRules,
   platformAccount,
   platformAccountFlows,
+  platformAccountList,
   platformFlows,
   rechargeRecharges,
   rechargeRecords,

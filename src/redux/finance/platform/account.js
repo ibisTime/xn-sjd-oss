@@ -1,4 +1,4 @@
-import { getAccountsByUserId } from 'api/account';
+import { getAccountsByUserId, getClientAccounts } from 'api/account';
 import { SYS_USER } from 'common/js/config';
 
 const PREFIX = 'PLATFORM_ACCOUNT_';
@@ -8,6 +8,10 @@ const SET_OFFLINE_ACCOUNT = PREFIX + 'SET_OFFLINE_ACCOUNT';
 const SET_CNY_ACCOUNT = PREFIX + 'SET_CNY_ACCOUNT';
 const SET_JF_ACCOUNT = PREFIX + 'SET_JF_ACCOUNT';
 const SET_TPP_ACCOUNT = PREFIX + 'SET_TPP_ACCOUNT';
+const SET_CCLIENT_ACCOUNT = PREFIX + 'SET_CCLIENT_ACCOUNT';
+const SET_MCLIENT_ACCOUNT = PREFIX + 'SET_MCLIENT_ACCOUNT';
+const SET_OCLIENT_ACCOUNT = PREFIX + 'SET_OCLIENT_ACCOUNT';
+const SET_ACLIENT_ACCOUNT = PREFIX + 'SET_ACLIENT_ACCOUNT';
 const LOADING = PREFIX + 'LOADING';
 const CANCEL_LOADING = PREFIX + 'CANCEL_LOADING';
 
@@ -19,6 +23,10 @@ const initState = {
   cnyAccount: {},
   jfAccount: {},
   tppAccount: {},
+  cClientAccount: {},
+  mClientAccount: {},
+  oClientAccount: {},
+  aClientAccount: {},
   fetching: true
 };
 
@@ -36,6 +44,14 @@ export function platformAccount(state = initState, action) {
       return {...state, jfAccount: action.payload};
     case SET_TPP_ACCOUNT:
       return {...state, tppAccount: action.payload};
+    case SET_CCLIENT_ACCOUNT:
+      return {...state, cClientAccount: action.payload};
+    case SET_MCLIENT_ACCOUNT:
+      return {...state, mClientAccount: action.payload};
+    case SET_OCLIENT_ACCOUNT:
+      return {...state, oClientAccount: action.payload};
+    case SET_ACLIENT_ACCOUNT:
+      return {...state, aClientAccount: action.payload};
     case LOADING:
       return {...state, fetching: true};
     case CANCEL_LOADING:
@@ -78,12 +94,30 @@ function setJfAccount(data) {
 function setTppAccount(data) {
   return { type: SET_TPP_ACCOUNT, payload: data };
 }
-
+// 设置用户总余额
+function setCClientAccount(data) {
+  return { type: SET_CCLIENT_ACCOUNT, payload: data };
+}
+// 设置养护方总余额
+function setMClientAccount(data) {
+  return { type: SET_MCLIENT_ACCOUNT, payload: data };
+}
+// 设置产权方总余额
+function setOClientAccount(data) {
+  return { type: SET_OCLIENT_ACCOUNT, payload: data };
+}
+// 设置分销商总余额
+function setAClientAccount(data) {
+  return { type: SET_ACLIENT_ACCOUNT, payload: data };
+}
 // 初始化页面数据
 export function initData() {
   return dispatch => {
     dispatch(doFetching());
-    getAccountsByUserId(SYS_USER).then((accounts) => {
+    Promise.all([
+      getAccountsByUserId(SYS_USER),
+      getClientAccounts()
+    ]).then(([accounts, accounts1]) => {
       dispatch(cancelFetching());
       accounts.forEach(account => {
         if (account.accountNumber === 'SYS_ACOUNT_ALIPAY_TG') {
@@ -98,6 +132,21 @@ export function initData() {
           dispatch(setJfAccount(account));
         } else if (account.accountNumber === 'SYS_ACOUNT_TPP') {
           dispatch(setTppAccount(account));
+        }
+      });
+      accounts1.forEach(account => {
+        // 用户总余额
+        if (account.type === 'C') {
+          dispatch(setCClientAccount(account));
+          // 养护方总余额
+        } else if (account.type === 'M') {
+          dispatch(setMClientAccount(account));
+          // 产权方总余额
+        } else if (account.type === 'O') {
+          dispatch(setOClientAccount(account));
+          // 分销商总余额
+        } else if (account.type === 'P') {
+          dispatch(setAClientAccount(account));
         }
       });
     }).catch(() => dispatch(cancelFetching()));

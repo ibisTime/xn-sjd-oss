@@ -98,30 +98,26 @@ class Products extends React.Component {
       search: true
     }, {
       title: '产品分类',
+      field: 'parentCategoryCode',
+      type: 'select',
+      listCode: '629007',
+      params: {level: 1},
+      keyName: 'code',
+      valueName: 'name'
+    }, {
+      title: '小类',
       field: 'categoryCode',
       type: 'select',
       listCode: '629007',
+      params: {level: '2'},
       keyName: 'code',
-      valueName: 'name'
+      valueName: 'name',
+      search: true
     }, {
       title: '认养分类',
       field: 'sellType',
       type: 'select',
-      data: [{
-        dkey: '1',
-        dvalue: '个人'
-      }, {
-        dkey: '2',
-        dvalue: '定向'
-      }, {
-        dkey: '3',
-        dvalue: '捐赠'
-      }, {
-        dkey: '4',
-        dvalue: '集体'
-      }],
-      keyName: 'dkey',
-      valueName: 'dvalue'
+      key: 'sell_type'
     }, {
       title: 'UI位置',
       field: 'location',

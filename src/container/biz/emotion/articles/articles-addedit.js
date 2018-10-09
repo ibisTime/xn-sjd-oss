@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from 'antd';
-import { getQueryString, showSucMsg } from 'common/js/util';
+import { getQueryString, showSucMsg, getUserId } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 import fetch from 'common/js/fetch';
 
@@ -16,6 +16,7 @@ class ArticlesAddEdit extends DetailUtil {
   saveArticle(dealType, params) {
     this.doFetching();
     params.dealType = dealType;
+    params.publishUserId = getUserId();
     let bizCode = this.code ? 629341 : 629340;
     fetch(bizCode, params).then(data => {
       this.cancelFetching();

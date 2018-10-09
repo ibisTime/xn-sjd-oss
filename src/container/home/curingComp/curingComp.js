@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Card, Button, List } from 'antd';
 import { moneyFormat } from 'common/js/util';
-import './home.css';
+import '../home.css';
 const data = [];
 const yhData = [
   '养护任务1',

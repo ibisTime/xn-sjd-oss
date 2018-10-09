@@ -36,10 +36,19 @@ class ProductsAddEdit extends DetailUtil {
       hidden: true
     }, {
       title: '产品分类',
+      field: 'parentCategoryCode',
+      type: 'select',
+      listCode: '629007',
+      params: {level: 1},
+      keyName: 'code',
+      valueName: 'name',
+      required: true
+    }, {
+      title: '小类',
       field: 'categoryCode',
       type: 'select',
       listCode: '629007',
-      params: { status: '1' },
+      params: {level: '2'},
       keyName: 'code',
       valueName: 'name',
       required: true
@@ -64,7 +73,7 @@ class ProductsAddEdit extends DetailUtil {
       required: true,
       maxlength: 30
     }, {
-      title: '产地',
+      title: '属地',
       field: 'originPlace',
       required: true,
       maxlength: 30
@@ -93,21 +102,7 @@ class ProductsAddEdit extends DetailUtil {
       title: '认养分类',
       field: 'sellType',
       type: 'select',
-      data: [{
-        dkey: '1',
-        dvalue: '个人'
-      }, {
-        dkey: '2',
-        dvalue: '定向'
-      }, {
-        dkey: '3',
-        dvalue: '捐赠'
-      }, {
-        dkey: '4',
-        dvalue: '集体'
-      }],
-      keyName: 'dkey',
-      valueName: 'dvalue',
+      key: 'sell_type',
       required: true
     }, {
       title: '定向类型',

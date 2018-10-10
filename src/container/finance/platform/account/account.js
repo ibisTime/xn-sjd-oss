@@ -37,8 +37,8 @@ class Account extends React.Component {
     this.props.history.push(`/platform/account/enter?code=${accountNumber}`);
   }
   // 手动增发
-  goAdd() {
-    // this.props.jfAccount.accountNumber
+  goAdd(currency) {
+    this.currency = currency;
     this.setState({ visible: true });
   }
   onCancel = () => {
@@ -75,6 +75,7 @@ class Account extends React.Component {
         this.setState({ btnFetching: true });
         values.updater = getUserId();
         values.amount *= 1000;
+        values.currency = this.currency;
         fetch(802342, values).then(() => {
           this.props.initData();
           showSucMsg('操作成功');
@@ -88,99 +89,89 @@ class Account extends React.Component {
   }
   render() {
     const { visible, btnFetching } = this.state;
+    const { aliAccount, wxAccount, offAccount, aClientAccount, oClientAccount,
+      mClientAccount, cClientAccount, cnyAccount, tppAccount, jfAccount } = this.props;
     return (
       <div>
         <Spin spinning={this.props.fetching}>
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col span={8} style={{marginBottom: '20px'}}>
               <Card title="支付宝账户" extra={
-                <Button onClick={() => this.goFlow(this.props.aliAccount.accountNumber)} type="primary">资金流水</Button>
-              }>¥{moneyFormat(this.props.aliAccount.amount)}
+                <Button onClick={() => this.goFlow(aliAccount.accountNumber)} type="primary">资金流水</Button>
+              }>¥{moneyFormat(aliAccount.amount)}
                 <Button
                   style={{float: 'right'}}
-                  onClick={() => this.goWithdraw(this.props.aliAccount.accountNumber)} type="primary">提现回录</Button>
+                  onClick={() => this.goWithdraw(aliAccount.accountNumber)} type="primary">提现回录</Button>
               </Card>
             </Col>
             <Col span={8} style={{marginBottom: '20px'}}>
               <Card title="微信账户" extra={
-                <Button onClick={() => this.goFlow(this.props.wxAccount.accountNumber)} type="primary">资金流水</Button>
-              }>¥{moneyFormat(this.props.wxAccount.amount)}
+                <Button onClick={() => this.goFlow(wxAccount.accountNumber)} type="primary">资金流水</Button>
+              }>¥{moneyFormat(wxAccount.amount)}
                 <Button
                   style={{float: 'right'}}
-                  onClick={() => this.goWithdraw(this.props.wxAccount.accountNumber)} type="primary">提现回录</Button>
+                  onClick={() => this.goWithdraw(wxAccount.accountNumber)} type="primary">提现回录</Button>
               </Card>
             </Col>
             <Col span={8} style={{marginBottom: '20px'}}>
               <Card title="线下账户" extra={
-                <Button onClick={() => this.goFlow(this.props.offAccount.accountNumber)} type="primary">资金流水</Button>
-              }>¥{moneyFormat(this.props.offAccount.amount)}</Card>
+                <Button onClick={() => this.goFlow(offAccount.accountNumber)} type="primary">资金流水</Button>
+              }>¥{moneyFormat(offAccount.amount)}</Card>
             </Col>
           </Row>
           <Row gutter={{ xs: 6, sm: 12, md: 24, lg: 32 }}>
             <Col span={6} style={{marginBottom: '20px'}}>
               <Card title="分销商总余额" extra={
-                <Button onClick={() => this.goAccounts(this.props.aClientAccount.type)} type="primary">资金分布</Button>
-              }>¥{moneyFormat(this.props.aClientAccount.amount)}</Card>
+                <Button onClick={() => this.goAccounts(aClientAccount.type)} type="primary">资金分布</Button>
+              }>¥{moneyFormat(aClientAccount.amount)}</Card>
             </Col>
             <Col span={6} style={{marginBottom: '20px'}}>
               <Card title="产权方总余额" extra={
-                <Button onClick={() => this.goAccounts(this.props.oClientAccount.type)} type="primary">资金分布</Button>
-              }>¥{moneyFormat(this.props.oClientAccount.amount)}</Card>
+                <Button onClick={() => this.goAccounts(oClientAccount.type)} type="primary">资金分布</Button>
+              }>¥{moneyFormat(oClientAccount.amount)}</Card>
             </Col>
             <Col span={6} style={{marginBottom: '20px'}}>
               <Card title="养护方总余额" extra={
-                <Button onClick={() => this.goAccounts(this.props.mClientAccount.type)} type="primary">资金分布</Button>
-              }>¥{moneyFormat(this.props.mClientAccount.amount)}</Card>
+                <Button onClick={() => this.goAccounts(mClientAccount.type)} type="primary">资金分布</Button>
+              }>¥{moneyFormat(mClientAccount.amount)}</Card>
             </Col>
             <Col span={6} style={{marginBottom: '20px'}}>
               <Card title="用户总余额" extra={
-                <Button onClick={() => this.goAccounts(this.props.cClientAccount.type)} type="primary">资金分布</Button>
-              }>¥{moneyFormat(this.props.cClientAccount.amount)}</Card>
+                <Button onClick={() => this.goAccounts(cClientAccount.type)} type="primary">资金分布</Button>
+              }>¥{moneyFormat(cClientAccount.amount)}</Card>
             </Col>
           </Row>
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col span={8} style={{marginBottom: '20px'}}>
               <Card title="平台余额" extra={
-                <Button onClick={() => this.goFlow(this.props.cnyAccount.accountNumber)} type="primary">资金流水</Button>
-              }>¥{moneyFormat(this.props.cnyAccount.amount)}</Card>
+                <Button onClick={() => this.goFlow(cnyAccount.accountNumber)} type="primary">资金流水</Button>
+              }>¥{moneyFormat(cnyAccount.amount)}</Card>
             </Col>
           </Row>
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col span={8} style={{marginBottom: '20px'}}>
-              <Card title="积分池余额" extra={
-                <Button onClick={() => this.goFlow(this.props.jfAccount.accountNumber)} type="primary">资金流水</Button>
-              }>¥{moneyFormat(this.props.jfAccount.amount)}
-              <Button
-                style={{float: 'right'}}
-                onClick={() => this.goAdd()} type="primary">手动增发</Button>
+              <Card title="积分池">
+                <p>总额：¥{moneyFormat(jfAccount.totalAmount)}</p>
+                <p>余额：¥{moneyFormat(jfAccount.amount)}</p>
+                <p>历史总发放额：¥{moneyFormat(jfAccount.outAmount)}</p>
+                <p>历史总回收额：¥{moneyFormat(jfAccount.inAmount)}</p>
+                <div style={{textAlign: 'center'}}>
+                  <Button onClick={() => this.goAdd(jfAccount.currency)} type="primary">手动增发</Button>
+                  <Button style={{marginLeft: 20}} onClick={() => this.goFlow(jfAccount.accountNumber)} type="primary">资金流水</Button>
+                </div>
               </Card>
             </Col>
             <Col span={8} style={{marginBottom: '20px'}}>
-              <Card title="积分发放额" extra={
-                <Button onClick={() => this.goFlow(this.props.jfAccount.accountNumber)} type="primary">资金流水</Button>
-              }>¥{moneyFormat(this.props.jfAccount.outAmount)}</Card>
-            </Col>
-            <Col span={8} style={{marginBottom: '20px'}}>
-              <Card title="积分回收额" extra={
-                <Button onClick={() => this.goFlow(this.props.jfAccount.accountNumber)} type="primary">资金流水</Button>
-              }>¥{moneyFormat(this.props.jfAccount.inAmount)}</Card>
-            </Col>
-          </Row>
-          <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-            <Col span={8} style={{marginBottom: '20px'}}>
-              <Card title="碳泡泡余额" extra={
-                <Button onClick={() => this.goFlow(this.props.tppAccount.accountNumber)} type="primary">资金流水</Button>
-              }>¥{moneyFormat(this.props.tppAccount.amount)}</Card>
-            </Col>
-            <Col span={8} style={{marginBottom: '20px'}}>
-              <Card title="碳泡泡发放额" extra={
-                <Button onClick={() => this.goFlow(this.props.tppAccount.accountNumber)} type="primary">资金流水</Button>
-              }>¥{moneyFormat(this.props.tppAccount.outAmount)}</Card>
-            </Col>
-            <Col span={8} style={{marginBottom: '20px'}}>
-              <Card title="碳泡泡回收额" extra={
-                <Button onClick={() => this.goFlow(this.props.tppAccount.accountNumber)} type="primary">资金流水</Button>
-              }>¥{moneyFormat(this.props.tppAccount.inAmount)}</Card>
+              <Card title="碳泡泡池">
+                <p>总额：¥{moneyFormat(tppAccount.totalAmount)}</p>
+                <p>余额：¥{moneyFormat(tppAccount.amount)}</p>
+                <p>历史总发放额：¥{moneyFormat(tppAccount.outAmount)}</p>
+                <p>历史总回收额：¥{moneyFormat(tppAccount.inAmount)}</p>
+                <div style={{textAlign: 'center'}}>
+                  <Button onClick={() => this.goAdd(tppAccount.currency)} type="primary">手动增发</Button>
+                  <Button style={{marginLeft: 20}} onClick={() => this.goFlow(tppAccount.accountNumber)} type="primary">资金流水</Button>
+                </div>
+              </Card>
             </Col>
           </Row>
         </Spin>

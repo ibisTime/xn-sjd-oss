@@ -160,8 +160,7 @@ class WithdrawAddedit extends DetailUtil {
       }, {
         field: 'payUser',
         title: '打款人',
-        hidden: !this.state.paySuc,
-        required: this.state.paySuc,
+        required: true,
         readonly: false
       }, {
         field: 'channelOrder',
@@ -179,8 +178,7 @@ class WithdrawAddedit extends DetailUtil {
       }, {
         field: 'payNote',
         title: '打款备注',
-        hidden: !this.state.paySuc,
-        required: this.state.paySuc,
+        required: true,
         readonly: false
       }]);
       config.buttons = [{

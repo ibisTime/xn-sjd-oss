@@ -51,9 +51,6 @@ class Conserve extends React.Component {
       field: 'totalIncome',
       amount: true
     }, {
-      title: '所属产权方',
-      field: 'owner'
-    }, {
       title: '状态',
       field: 'status',
       type: 'select',
@@ -75,7 +72,7 @@ class Conserve extends React.Component {
         kind: 'M'
       },
       btnEvent: {
-        // 审批
+        // 审核
         check: (keys, items) => {
           if (!keys || !keys.length) {
             showWarnMsg('请选择记录');
@@ -107,6 +104,16 @@ class Conserve extends React.Component {
             showWarnMsg('请选择一条记录');
           } else {
             this.props.history.push(`/conserve/conserve/binds?code=${keys[0]}`);
+          }
+        },
+        // 账户查询
+        account: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/conserve/conserve/accounts?code=${keys[0]}`);
           }
         }
       }

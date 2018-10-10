@@ -24,7 +24,7 @@ class PropertyAddEdit extends DetailUtil {
     }).catch(this.cancelFetching);
   }
   render() {
-    const fields = [{
+    let fields = [{
       field: 'kind',
       value: 'O',
       hidden: true
@@ -78,11 +78,21 @@ class PropertyAddEdit extends DetailUtil {
       field: 'organizationCode',
       _keys: ['company', 'organizationCode'],
       required: true
-    }, {
-      title: '备注',
-      field: 'remark',
-      maxlength: 250
     }];
+    if (this.view && !this.check) {
+      fields = fields.concat([{
+        title: '合同模版',
+        field: 'contractTemplate',
+        _keys: ['company', 'contractTemplate'],
+        type: 'textarea'
+      }, {
+        title: '证书模版',
+        field: 'certificateTemplate',
+        _keys: ['company', 'certificateTemplate'],
+        type: 'img',
+        single: true
+      }]);
+    }
     let config = {
       fields,
       key: 'userId',

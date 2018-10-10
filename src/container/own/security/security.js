@@ -111,7 +111,7 @@ class Security extends React.Component {
                   required: true,
                   message: '请输入交易密码!'
                 }]
-              })(<Input type="password" placeholder="交易密码"/>)}
+              })(<Input style={{maxWidth: 350}} type="password" placeholder="交易密码"/>)}
             </FormItem>
             <FormItem className="cform-item-btn" key='btns' {...formItemLayout} label="&nbsp;">
               <Button type="primary" htmlType="submit">保存</Button>

@@ -30,10 +30,11 @@ export function getCompanyCode() {
 }
 
 // 设置用户角色信息
-export function setRoleInfo({roleCode, companyCode, loginName}) {
+export function setRoleInfo({roleCode, kind, type, loginName}) {
   cookies.set('roleCode', roleCode);
-  companyCode && cookies.set('companyCode', companyCode);
   cookies.set('userName', loginName);
+  kind && cookies.set('kind', kind);
+  type && cookies.set('type', type);
 }
 
 // 获取用户角色编号
@@ -44,6 +45,16 @@ export function getRoleCode() {
 // 获取用户username
 export function getUserName() {
   return cookies.get('userName');
+}
+
+// 获取用户type
+export function getUserType() {
+  return cookies.get('type');
+}
+
+// 获取用户kind
+export function getUserKind() {
+  return cookies.get('kind');
 }
 
 /**
@@ -663,6 +674,7 @@ export function getKindByUrl() {
   // 代理
   if (location.origin === 'http://sjd.agent.hichengdai.com') {
   // if (location.origin === 'http://localhost:3001') {
+  // if (location.origin === 'http://47.99.147.67:2909') {
     return 'A';
   }
 }

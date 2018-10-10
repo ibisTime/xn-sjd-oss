@@ -28,6 +28,7 @@ import { withdrawWithdraw } from './redux/finance/withdraw/withdraw';
 import { withdrawRecords } from './redux/finance/withdraw/records';
 // 业务管理--产权方管理
 import { propertyProperty } from './redux/biz/property/property';
+import { propertyPropertyAccounts } from './redux/biz/property/property-accounts';
 import { propertyBinds } from './redux/biz/property/binds';
 import { propertyTypes } from './redux/biz/property/types';
 import { propertyProducts } from './redux/biz/property/products';
@@ -37,6 +38,7 @@ import { propertyFlows } from './redux/biz/property/flows';
 // 业务管理--养护方管理
 import { conserveConserve } from './redux/biz/conserve/conserve';
 import { conserveBinds } from './redux/biz/conserve/conserve-binds';
+import { conserveConserveAccounts } from './redux/biz/conserve/conserve-accounts';
 import { conserveUsers } from './redux/biz/conserve/users';
 import { conserveProjects } from './redux/biz/conserve/projects';
 import { conserveRecords } from './redux/biz/conserve/records';
@@ -44,6 +46,7 @@ import { conserveAccounts } from './redux/biz/conserve/accounts';
 import { conserveFlows } from './redux/biz/conserve/flows';
 // 业务管理--用户管理
 import { userUsers } from './redux/biz/user/users';
+import { userUserAccounts } from './redux/biz/user/user-accounts';
 import { userSignIn } from './redux/biz/user/signIn';
 import { userShares } from './redux/biz/user/shares';
 import { userGives } from './redux/biz/user/gives';
@@ -69,6 +72,7 @@ import { propUseRecords } from './redux/biz/prop/useRecords';
 import { rulesWeight } from './redux/biz/rules/weight';
 // 代理管理--代理商管理
 import { agentAgents } from './redux/agent/agents';
+import { agentAgentsAccounts } from './redux/agent/agents-accounts';
 import { agentSettlement } from './redux/agent/settlement';
 import { agentAchievement } from './redux/agent/achievement';
 import { agentAccounts } from './redux/agent/accounts';
@@ -125,6 +129,7 @@ export default combineReducers({
   withdrawWithdraw,
   withdrawRecords,
   propertyProperty,
+  propertyPropertyAccounts,
   propertyBinds,
   propertyTypes,
   propertyProducts,
@@ -133,12 +138,14 @@ export default combineReducers({
   propertyFlows,
   conserveConserve,
   conserveBinds,
+  conserveConserveAccounts,
   conserveUsers,
   conserveProjects,
   conserveRecords,
   conserveAccounts,
   conserveFlows,
   userUsers,
+  userUserAccounts,
   userSignIn,
   userShares,
   userGives,
@@ -159,6 +166,7 @@ export default combineReducers({
   propUseRecords,
   rulesWeight,
   agentAgents,
+  agentAgentsAccounts,
   agentSettlement,
   agentAchievement,
   agentAccounts,

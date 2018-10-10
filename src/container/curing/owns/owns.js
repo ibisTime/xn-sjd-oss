@@ -11,7 +11,7 @@ import {
   setSearchData
 } from '@redux/curing/owns';
 import { listWrapper } from 'common/js/build-list';
-import { showWarnMsg } from 'common/js/util';
+import { getUserId } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -34,7 +34,7 @@ class CuringOwns extends React.Component {
       fields,
       pageCode: '629605',
       searchParams: {
-        maintainId: this.code,
+        maintainId: getUserId(),
         status: '3'
       }
     });

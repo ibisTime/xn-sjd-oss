@@ -11,7 +11,7 @@ import {
   setSearchData
 } from '@redux/biz/conserve/conserve-binds';
 import { listWrapper } from 'common/js/build-list';
-import { showWarnMsg } from 'common/js/util';
+import { showWarnMsg, getQueryString } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -21,16 +21,27 @@ import { showWarnMsg } from 'common/js/util';
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
 class ConserveBinds extends React.Component {
+  constructor(props) {
+    super(props);
+    this.code = getQueryString('code', this.props.location.search);
+  }
   render() {
     const fields = [{
-      title: '用户编号',
-      field: 'ownerId'
+      title: '帐号',
+      field: 'loginName',
+      render: (v, d) => d.ownerUser ? d.ownerUser.loginName : ''
     }, {
-      title: '真实姓名',
-      field: 'realName'
+      title: '公司名称',
+      field: 'name',
+      render: (v, d) => d.ownerUser ? d.ownerUser.company.name : ''
     }, {
-      title: '手机号',
-      field: 'mobile'
+      title: '负责人',
+      field: 'charger',
+      render: (v, d) => d.ownerUser.company ? d.ownerUser.company.charger : ''
+    }, {
+      title: '联系方式',
+      field: 'mobile',
+      render: (v, d) => d.ownerUser.company ? d.ownerUser.company.chargeMobile : ''
     }];
     return this.props.buildList({
       fields,
@@ -48,9 +59,13 @@ class ConserveBinds extends React.Component {
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
           } else {
-            this.props.history.push(`/conserve/conserve/binds/addedit?code=${keys[0]}&v=1`);
+            this.props.history.push(`/conserve/conserve/binds/addedit?code=${items[0].ownerUser.userId}&v=1`);
           }
         }
+      }, {
+        name: '返回',
+        code: 'back',
+        handler: () => this.props.history.go(-1)
       }]
     });
   }

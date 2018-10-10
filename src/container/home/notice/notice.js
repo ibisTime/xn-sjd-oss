@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table } from 'antd';
-import { moneyFormat, dateFormat } from 'common/js/util';
+import { dateFormat } from 'common/js/util';
 import NoticeImg from './notice.png';
 import './index.css';
 
@@ -18,7 +18,7 @@ const columns = [{
 export default class Notice extends React.Component {
   render() {
     return (
-      <div className="notice-wrapper">
+      <div className="zjyhrw-wrapper">
         <div className="notice-title"><img src={NoticeImg}/>系统公告</div>
         <Table
           className="notice-table-wrapper"

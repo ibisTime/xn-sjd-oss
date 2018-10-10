@@ -75,6 +75,7 @@ class Property extends React.Component {
         kind: 'O'
       },
       btnEvent: {
+        // 审核
         check: (keys, items) => {
           if (!keys || !keys.length) {
             showWarnMsg('请选择记录');
@@ -96,6 +97,16 @@ class Property extends React.Component {
             showWarnMsg('该用户无法注销');
           } else {
             this.rockOrActive(items[0].status, keys[0]);
+          }
+        },
+        // 账户查询
+        account: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/property/property/accounts?code=${keys[0]}`);
           }
         }
       }

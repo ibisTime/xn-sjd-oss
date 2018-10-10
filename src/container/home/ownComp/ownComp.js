@@ -29,7 +29,13 @@ export default class OwnComp extends React.Component {
             <Txclz account={this.props.cnyAccount}/>
           </Col>
           <Col span={8}>
-            <Multiple account0={this.props.cnyAccount} account1={this.props.cnyAccount} account2={this.props.cnyAccount}/>
+            <Multiple
+              title0="累计获得货款"
+              account0={this.props.cnyAccount}
+              title1="累计提现货款"
+              account1={this.props.cnyAccount}
+              title2="本月货款收入"
+              account2={this.props.cnyAccount}/>
           </Col>
         </Row>
         <Row gutter={{ xs: 6, sm: 16, md: 24, lg: 32 }}>

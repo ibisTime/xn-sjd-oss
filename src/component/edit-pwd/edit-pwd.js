@@ -1,8 +1,12 @@
 import React from 'react';
 import ModalDetail from 'common/js/build-modal-detail';
-import { getUserId } from 'common/js/util';
+import { getUserId, getKindByUrl } from 'common/js/util';
 
 class EditPwd extends React.Component {
+  constructor(props) {
+    super(props);
+    this.addCode = getKindByUrl() === 'A' ? 730077 : 630054;
+  }
   render() {
     const options = {
       fields: [{
@@ -22,7 +26,7 @@ class EditPwd extends React.Component {
         required: true,
         maxlength: 30
       }],
-      addCode: 630054
+      addCode: this.addCode
     };
     return (
       <ModalDetail

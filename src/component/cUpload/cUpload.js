@@ -80,7 +80,7 @@ export default class CUpload extends React.Component {
       previewVisible: true,
       previewId
     });
-    // this.imgUrl = PIC_PREFIX + file.url + '?attname=' + file.url + '.jpg';
+    this.imgUrl = PIC_PREFIX + file.key + '?attname=' + file.key + '.jpg';
   }
   // 隐藏图片
   handleCancel = () => this.setState({previewVisible: false})
@@ -212,7 +212,7 @@ export default class CUpload extends React.Component {
           }
           <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
             <div className="previewImg-wrap">
-              <Carousel ref={(carousel => this.carousel = carousel)} afterChange={(a) => {
+              <Carousel dots={true} ref={(carousel => this.carousel = carousel)} afterChange={(a) => {
                 let url = getFieldValue(previewId).split('||')[a];
                 this.imgUrl = PIC_PREFIX + url + '?attname=' + url + '.jpg';
               }}>{

@@ -1,10 +1,11 @@
 import fetch from 'common/js/fetch';
-import { setUser, getUserId, setRoleInfo, getRoleCode,
-  getUserName, judgeStatus, getKindByUrl } from 'common/js/util';
+import { setUser, getUserId, setRoleInfo, getRoleCode, getUserName,
+  judgeStatus, getKindByUrl, getUserType, getUserKind } from 'common/js/util';
 
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOGOUT = 'LOGOUT';
 const LOAD_DATA = 'LOAD_DATA';
+const SET_USERINFO = 'SET_USERINFO';
 const LOADING = 'LOADING';
 const CANCEL_LOADING = 'CANCEL_LOADING';
 
@@ -15,7 +16,8 @@ const initState = {
   userId: getUserId() || '',
   loginName: getUserName() || '',
   roleCode: getRoleCode() || '',
-  kind: ''
+  kind: getUserKind() || '',
+  type: getUserType() || ''
 };
 
 export function user (state = initState, action) {
@@ -24,6 +26,8 @@ export function user (state = initState, action) {
       return {...state, msg: ''};
     case LOAD_DATA:
       return {...state, ...action.payload, redirectTo: action.redirectTo};
+    case SET_USERINFO:
+      return {...state, ...action.payload};
     case LOGOUT:
       return {...initState, redirectTo: '/login'};
     case LOADING:
@@ -52,6 +56,12 @@ export function cancelFetching() {
 export function loadData(data, redirectTo = '/') {
   setRoleInfo(data);
   return { type: LOAD_DATA, payload: data, redirectTo };
+}
+
+// 设置用户信息
+export function setUserInfo(data) {
+  setRoleInfo(data);
+  return { type: SET_USERINFO, payload: data };
 }
 
 // 登录

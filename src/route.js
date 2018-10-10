@@ -220,6 +220,11 @@ const ROUTES = [
     path: '/property/binds/addedit',
     component: asyncComponent(() => import('container/biz/property/binds/binds-addedit'))
   },
+  // 业务管理 -- 产权方管理 -- 产权方管理  -- 账户查询
+  {
+    path: '/property/property/accounts',
+    component: asyncComponent(() => import('container/biz/property/property/property-accounts'))
+  },
   // 业务管理 -- 产权方管理 -- 产品分类管理
   {
     path: '/property/types',
@@ -285,6 +290,16 @@ const ROUTES = [
     path: '/conserve/conserve/binds',
     component: asyncComponent(() => import('container/biz/conserve/conserve/conserve-binds'))
   },
+  // 业务管理 -- 养护方管理 -- 养护方管理 -- 绑定产权方 -- 详情
+  {
+    path: '/conserve/conserve/binds/addedit',
+    component: asyncComponent(() => import('container/biz/property/property/property-addedit'))
+  },
+  // 业务管理 -- 养护方管理 -- 养护方管理 -- 账户查询
+  {
+    path: '/conserve/conserve/accounts',
+    component: asyncComponent(() => import('container/biz/conserve/conserve/conserve-accounts'))
+  },
   // 业务管理 -- 养护方管理 -- 养护人查看
   {
     path: '/conserve/users',
@@ -339,6 +354,11 @@ const ROUTES = [
   {
     path: '/user/users/addedit',
     component: asyncComponent(() => import('container/biz/user/users/users-addedit'))
+  },
+  // 业务管理 -- 用户管理 -- 会员查询 -- 账户查询
+  {
+    path: '/user/users/accounts',
+    component: asyncComponent(() => import('container/biz/user/users/user-accounts'))
   },
   // 业务管理 -- 用户管理 -- 签到记录
   {
@@ -504,6 +524,11 @@ const ROUTES = [
   {
     path: '/agent/agents/addedit',
     component: asyncComponent(() => import('container/agent/agents/agents-addedit'))
+  },
+  // 代理管理 -- 代理商管理 -- 代理商管理 -- 账户查询
+  {
+    path: '/agent/agents/accounts',
+    component: asyncComponent(() => import('container/agent/agents/agents-accounts'))
   },
   // 代理管理 -- 代理商管理 -- 结算管理
   {

@@ -44,6 +44,7 @@ export function getSysUsers() {
 export function isFullUser() {
   let bizCode = getKindByUrl() === 'A' ? 730086 : 630067;
   return fetch(bizCode, { userId: getUserId() }).then(data => {
-    return judgeStatus(data.status);
+    let url = judgeStatus(data.status);
+    return { url, user: data };
   });
 }

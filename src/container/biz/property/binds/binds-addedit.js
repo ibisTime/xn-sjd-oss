@@ -54,10 +54,6 @@ class ProductsAddEdit extends DetailUtil {
       keyName: 'userId',
       valueName: 'mobile',
       required: true
-    }, {
-      title: '备注',
-      field: 'remark',
-      maxlength: 30
     }];
   }
   render() {

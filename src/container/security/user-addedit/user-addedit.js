@@ -10,7 +10,7 @@ class UserAddEdit extends DetailUtil {
       value: 'P',
       hidden: true
     }, {
-      title: '登录名',
+      title: '用户名',
       field: 'loginName',
       required: true,
       maxlength: 30

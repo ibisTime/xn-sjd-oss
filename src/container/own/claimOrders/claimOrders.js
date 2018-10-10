@@ -11,8 +11,7 @@ import {
   setSearchData
 } from '@redux/own/claimOrders';
 import { listWrapper } from 'common/js/build-list';
-import fetch from 'common/js/fetch';
-import { showSucMsg, showWarnMsg, getUserId } from 'common/js/util';
+import { getUserId } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -54,7 +53,10 @@ class ClaimOrders extends React.Component {
     }];
     return this.props.buildList({
       fields,
-      pageCode: 629205
+      pageCode: 629205,
+      searchParams: {
+        ownerId: getUserId()
+      }
     });
   }
 }

@@ -186,6 +186,7 @@ class ProductsAddEdit extends DetailUtil {
         add: true,
         edit: true,
         delete: true,
+        detail: true,
         fields: [{
           title: '树木编号',
           field: 'treeNumber',

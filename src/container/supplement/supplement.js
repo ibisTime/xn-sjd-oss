@@ -66,12 +66,13 @@ class Supplement extends DetailUtil {
       formatter: (v, d) => d.parentAgentUser ? d.parentAgentUser.mobile : '',
       required: false
     }, {
-      title: '公司名称',
+      title: '公司/组织名称',
       field: 'name',
       _keys: ['company', 'name'],
+      placeholder: '若您是个人请直接填写姓名',
       required: true
     }, {
-      title: '公司负责人',
+      title: '负责人',
       field: 'charger',
       _keys: ['company', 'charger'],
       required: true
@@ -101,7 +102,7 @@ class Supplement extends DetailUtil {
       },
       required: true
     }, {
-      title: '公司地址',
+      title: '地址',
       field: 'address',
       _keys: ['company', 'address'],
       required: true
@@ -123,12 +124,13 @@ class Supplement extends DetailUtil {
       field: 'organizationCode',
       _keys: ['company', 'organizationCode']
     }] : [{
-      title: '公司名称',
+      title: '公司/组织名称',
       field: 'companyName',
       _keys: ['company', 'name'],
+      placeholder: '若您是个人请直接填写姓名',
       required: true
     }, {
-      title: '公司负责人',
+      title: '负责人',
       field: 'companyCharger',
       _keys: ['company', 'charger'],
       required: true
@@ -139,7 +141,7 @@ class Supplement extends DetailUtil {
       mobile: true,
       required: true
     }, {
-      title: '公司地址',
+      title: '地址',
       field: 'companyAddress',
       _keys: ['company', 'address'],
       required: true

@@ -9,6 +9,10 @@ class TypesAddEdit extends DetailUtil {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
     this.view = !!getQueryString('v', this.props.location.search);
+    this.state = {
+      ...this.state,
+      isTop: true
+    };
   }
   render() {
     const fields = [{
@@ -20,15 +24,27 @@ class TypesAddEdit extends DetailUtil {
       field: 'parentCode',
       type: 'select',
       listCode: '629007',
-      params: {status: 1, level: 1},
+      params: {
+        status: 1,
+        level: 1,
+        orderColumn: 'order_no',
+        orderDir: 'asc'
+      },
       keyName: 'code',
-      valueName: 'name'
+      valueName: 'name',
+      onChange: (v) => {
+        if (v && this.state.isTop) {
+          this.setState({ isTop: false });
+        } else if (!v && !this.state.isTop) {
+          this.setState({ isTop: true });
+        }
+      }
     }, {
       title: '图片',
       field: 'pic',
       type: 'img',
       single: true,
-      required: true
+      required: this.state.isTop
     }, {
       title: '次序',
       field: 'orderNo',

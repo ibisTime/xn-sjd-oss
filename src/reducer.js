@@ -89,6 +89,7 @@ import { ownWithdraw } from './redux/own/withdraw';
 import { ownNotices } from './redux/own/notices';
 // 养护端--业务管理
 import { curingTasks } from './redux/curing/tasks';
+import { curingTasksRecords } from './redux/curing/tasks-records';
 import { curingProjects } from './redux/curing/projects';
 import { curingUsers } from './redux/curing/users';
 import { curingOwns } from './redux/curing/owns';
@@ -179,6 +180,7 @@ export default combineReducers({
   ownWithdraw,
   ownNotices,
   curingTasks,
+  curingTasksRecords,
   curingProjects,
   curingUsers,
   curingFlows,

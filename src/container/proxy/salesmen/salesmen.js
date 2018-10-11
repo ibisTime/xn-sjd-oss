@@ -11,6 +11,7 @@ import {
 } from '@redux/proxy/salesmen';
 import { listWrapper } from 'common/js/build-list';
 import { C_REGISTER_URL } from 'common/js/config';
+import { getUserId } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -43,7 +44,8 @@ class Salesmen extends React.Component {
       rowKey: 'userId',
       pageCode: 730085,
       searchParams: {
-        type: 1
+        type: 1,
+        parentUserId: getUserId()
       }
     });
   }

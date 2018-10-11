@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from 'antd';
-import { getQueryString } from 'common/js/util';
+import { getQueryString, getUserId } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 
 @Form.create()
@@ -12,6 +12,10 @@ class ConserveAddEdit extends DetailUtil {
   }
   render() {
     const fields = [{
+      field: 'parentUserId',
+      value: getUserId(),
+      hidden: true
+    }, {
       title: '手机号',
       field: 'mobile',
       required: true,

@@ -42,6 +42,8 @@ export default class DetailComp extends React.Component {
       fetching: true,
       // 下拉框中的数据
       selectData: {},
+      // field里dict指向的数据
+      dictData: {},
       // 页面详情查数据
       pageData: null,
       // 页面是否加载完成
@@ -64,16 +66,34 @@ export default class DetailComp extends React.Component {
     } else {
       firstFn = Promise.resolve(null);
     }
-    let list = this.fetchList.map(f => {
+    this.fetchFieldsList = [];
+    let list = [];
+    this.fetchList.forEach(f => {
+      this.fetchFieldsList.push({ field: f.field });
+      let flag = false;
       if (f.data) {
-        return Promise.resolve(f.data);
+        list.push(Promise.resolve(f.data));
+        flag = true;
       } else if (f.key) {
-        return getDictList({parentKey: f.key, bizType: f.keyCode});
+        list.push(getDictList({parentKey: f.key, bizType: f.keyCode}));
+        flag = true;
       } else if (f.listCode) {
         let param = f.params || {};
-        return fetch(f.listCode, param);
+        list.push(fetch(f.listCode, param));
+        flag = true;
       }
-      return Promise.resolve([]);
+      !flag && list.push(Promise.resolve([]));
+      if (f.dict) {
+        f.dict.forEach(d => {
+          this.fetchFieldsList.push({
+            field: f.field,
+            hasData: flag,
+            keyName: d[1],
+            valueName: d[0]
+          });
+          list.push(getDictList({parentKey: d[1], bizType: f.keyCode}));
+        });
+      }
     });
     list.unshift(getQiniuToken());
     list.unshift(firstFn);
@@ -89,22 +109,45 @@ export default class DetailComp extends React.Component {
   // 获取所有页面所需的数据
   getInfos(list) {
     let selectData = {};
+    let dictData = {};
     let pageData;
     let token;
     Promise.all(list).then(([...results]) => {
       results.forEach((data, i) => {
+        // 页面详情数据
         if (i === 0) {
           pageData = data;
+          // 七牛云数据
         } else if (i === 1) {
           token = data.uploadToken;
+          // 其它下拉框数据
         } else {
-          selectData[this.fetchList[i - 2].field] = data;
+          let field = this.fetchFieldsList[i - 2];
+          // 是数据字典
+          if (field.keyName) {
+            if (field.hasData) {
+              selectData[field.field].forEach(o => {
+                for(let i = 0; i < data.length; i++) {
+                  if (data[i].dkey === o[field.valueName]) {
+                    o[field.valueName + 'Name'] = data[i].dvalue;
+                    break;
+                  }
+                }
+              });
+            } else {
+              dictData[field.field] = dictData[field.field] || {};
+              dictData[field.field][field.keyName] = data;
+            }
+          } else {
+            selectData[this.fetchList[i - 2].field] = data;
+          }
         }
       });
       this.setState({
         pageData,
         token,
         selectData,
+        dictData,
         isLoaded: true,
         fetching: false
       }, () => {
@@ -313,6 +356,7 @@ export default class DetailComp extends React.Component {
       label: this.getLabel(item),
       readonly: item.readonly,
       onChange: item.onChange,
+      placeholder: item.placeholder,
       getFieldError: this.props.form.getFieldError,
       getFieldValue: this.props.form.getFieldValue
     };
@@ -388,6 +432,8 @@ export default class DetailComp extends React.Component {
       label: this.getLabel(item),
       keyName: item.keyName,
       valueName: item.valueName,
+      dict: item.dict,
+      dictData: this.state.dictData[item.field],
       readonly: item.readonly,
       onChange: item.onChange,
       getFieldValue: this.props.form.getFieldValue,

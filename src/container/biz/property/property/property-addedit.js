@@ -39,12 +39,13 @@ class PropertyAddEdit extends DetailUtil {
       required: true,
       mobile: true
     }, {
-      title: '公司名称',
+      title: '公司/组织名称',
       field: 'companyName',
       _keys: ['company', 'name'],
+      placeholder: '若是个人请直接填写姓名',
       required: true
     }, {
-      title: '公司负责人',
+      title: '负责人',
       field: 'companyCharger',
       _keys: ['company', 'charger'],
       required: true
@@ -55,7 +56,7 @@ class PropertyAddEdit extends DetailUtil {
       mobile: true,
       required: true
     }, {
-      title: '公司地址',
+      title: '地址',
       field: 'companyAddress',
       _keys: ['company', 'address'],
       required: true
@@ -71,13 +72,11 @@ class PropertyAddEdit extends DetailUtil {
       field: 'bussinessLicense',
       _keys: ['company', 'bussinessLicense'],
       type: 'img',
-      single: true,
-      required: true
+      single: true
     }, {
       title: '组织机构代码',
       field: 'organizationCode',
-      _keys: ['company', 'organizationCode'],
-      required: true
+      _keys: ['company', 'organizationCode']
     }];
     if (this.view && !this.check) {
       fields = fields.concat([{

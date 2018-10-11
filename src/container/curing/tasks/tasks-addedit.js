@@ -9,6 +9,8 @@ class TaskAddEdit extends DetailUtil {
   constructor(props) {
     super(props);
     this.treeNumber = getQueryString('n', this.props.location.search);
+    this.code = getQueryString('code', this.props.location.search);
+    this.view = getQueryString('v', this.props.location.search);
   }
   render() {
     const fields = [{
@@ -26,7 +28,7 @@ class TaskAddEdit extends DetailUtil {
       type: 'select',
       listCode: 629627,
       keyName: 'code',
-      valueName: 'description',
+      valueName: 'title',
       required: true
     }, {
       title: '养护人',
@@ -44,12 +46,14 @@ class TaskAddEdit extends DetailUtil {
     }, {
       title: '林木养护详细描述',
       field: 'description',
-      required: true,
       type: 'textarea',
-      normalArea: true
+      required: true
     }];
     return this.buildDetail({
       fields,
+      code: this.code,
+      view: this.view,
+      detailCode: 629636,
       addCode: 629630
     });
   }

@@ -44,6 +44,7 @@ class ProductsAddEdit extends DetailUtil {
       params: { status: 2, kind: 'O' },
       keyName: 'userId',
       valueName: 'mobile',
+      searchName: 'keyword',
       required: true
     }, {
       title: '养护方',
@@ -53,6 +54,7 @@ class ProductsAddEdit extends DetailUtil {
       params: { status: 2, kind: 'M' },
       keyName: 'userId',
       valueName: 'mobile',
+      searchName: 'keyword',
       required: true
     }];
   }

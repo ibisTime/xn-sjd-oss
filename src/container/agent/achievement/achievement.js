@@ -25,14 +25,17 @@ class Achievement extends React.Component {
       title: '订单编号',
       field: 'code'
     }, {
-      title: '古树学名',
-      field: 'mobile'
+      title: '认养产品',
+      field: 'productCode',
+      render: (v, d) => d.adoptOrder ? d.adoptOrder.productCode : ''
     }, {
-      title: '古树编号',
-      field: 'realName'
+      title: '认养规格',
+      field: 'productSpecsName',
+      render: (v, d) => d.adoptOrder ? d.adoptOrder.productSpecsName : ''
     }, {
       title: '认养人',
-      field: 'level'
+      field: 'applyUser',
+      render: (v, d) => d.adoptOrder ? d.adoptOrder.applyUser : ''
     }, {
       title: '状态',
       field: 'status',

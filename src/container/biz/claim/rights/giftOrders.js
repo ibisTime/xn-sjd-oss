@@ -26,14 +26,29 @@ class GiftOrders extends React.Component {
   }
   render() {
     const fields = [{
+      title: '礼物名称',
+      field: 'name'
+    }, {
+      title: '礼物价格',
+      field: 'price',
+      amount: true
+    }, {
       title: '认领人',
       field: 'claimer'
     }, {
-      title: '类型',
+      title: '状态',
       field: 'status',
       type: 'select',
       key: 'gift_order_status',
       search: true
+    }, {
+      title: '发放时间',
+      field: 'createDatetime',
+      type: 'datetime'
+    }, {
+      title: '失效时间',
+      field: 'invalidDatetime',
+      type: 'datetime'
     }, {
       title: '认领时间',
       field: 'claimDatetime',

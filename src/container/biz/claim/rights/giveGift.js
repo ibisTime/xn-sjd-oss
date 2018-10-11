@@ -18,6 +18,12 @@ class GiveGift extends DetailUtil {
       required: true,
       maxlength: 30
     }, {
+      title: '礼物图片',
+      field: 'listPic',
+      type: 'img',
+      single: true,
+      required: true
+    }, {
       title: '礼物价格',
       field: 'price',
       amount: true,
@@ -26,7 +32,6 @@ class GiveGift extends DetailUtil {
       title: '礼物描述',
       field: 'description',
       type: 'textarea',
-      normalArea: true,
       required: true
     }, {
       title: '失效时间',

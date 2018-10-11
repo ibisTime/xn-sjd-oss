@@ -135,7 +135,7 @@ export default class ListComponent extends React.Component {
             }
             this.addRender(f, (val) => this.renderSelect(val, f));
         } else if (f.type === 'img') {
-            obj.render = (value) => <img style={{maxWidth: 40, maxHeight: 40}} src={PIC_PREFIX + value}/>;
+            obj.render = (value) => value ? <img style={{maxWidth: 40, maxHeight: 40}} src={PIC_PREFIX + value}/> : '';
         }
         if (f.amount) {
             obj.render = (v, d) => <span style={{whiteSpace: 'nowrap'}}>{moneyFormat(v, d)}</span>;

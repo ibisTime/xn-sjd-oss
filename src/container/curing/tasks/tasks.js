@@ -38,15 +38,7 @@ class Tasks extends React.Component {
       title: '状态',
       field: 'status',
       type: 'select',
-      data: [{
-        key: '0',
-        value: '待认养'
-      }, {
-        key: '1',
-        value: '已认养'
-      }],
-      keyName: 'key',
-      valueName: 'value',
+      key: 'tree_status',
       search: true
     }];
     return this.props.buildList({
@@ -62,6 +54,16 @@ class Tasks extends React.Component {
             showWarnMsg('请选择一条记录');
           } else {
             this.props.history.push(`/curing/tasks/addedit?n=${items[0].treeNumber}`);
+          }
+        },
+        // 养护记录查询
+        records: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/curing/tasks/records?n=${items[0].treeNumber}`);
           }
         }
       }

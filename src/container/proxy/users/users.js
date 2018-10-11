@@ -12,6 +12,14 @@ import {
 import { listWrapper } from 'common/js/build-list';
 import { getUserId } from 'common/js/util';
 
+const typeDict = {
+  'P': '平台',
+  'O': '产权',
+  'M': '养护',
+  'A': '代理商',
+  'S': '业务员'
+};
+
 @listWrapper(
   state => ({
     ...state.proxyUsers,
@@ -32,7 +40,12 @@ class Users extends React.Component {
     }, {
       title: '推荐人',
       field: 'userReferee',
-      render: (v, d) => d.refereeUser ? d.refereeUser.mobile : ''
+      render: (v, d) => {
+        if (d.refereeUser) {
+          return `${d.refereeUser.mobile}(${typeDict[d.userRefereeType]})`;
+        }
+        return '';
+      }
     }, {
       title: '注册时间',
       field: 'createDatetime',
@@ -46,7 +59,7 @@ class Users extends React.Component {
       rowKey: 'userId',
       pageCode: 805120,
       searchParams: {
-        agentid: getUserId()
+        agentId: getUserId()
       }
     });
   }

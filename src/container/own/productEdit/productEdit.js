@@ -35,11 +35,11 @@ class ProductEdit extends DetailUtil {
           this.cancelFetching();
         }).catch(this.cancelFetching);
       }
-    }, {
-      title: '重置',
-      handler: (params) => {
-        this.props.form.resetFields();
-      }
+    // }, {
+    //   title: '重置',
+    //   handler: (params) => {
+    //     this.props.form.resetFields();
+    //   }
     }];
   }
   render() {
@@ -48,15 +48,30 @@ class ProductEdit extends DetailUtil {
       field: 'parentCategoryCode',
       type: 'select',
       listCode: '629007',
-      params: { status: '1', level: '1' },
+      params: {
+        status: '1',
+        level: '1',
+        orderColumn: 'order_no',
+        orderDir: 'asc'
+      },
       keyName: 'code',
       valueName: 'name',
       onChange: (v) => {
-        fetch(629007, { parentCode: v, status: '1', level: '2' }).then((data) => {
+        this.setState({
+          selectData: { ...this.state.selectData, categoryCode: [] }
+        });
+        this.props.form.resetFields(['categoryCode']);
+        fetch(629007, {
+          parentCode: v,
+          status: '1',
+          level: '2',
+          orderColumn: 'order_no',
+          orderDir: 'asc'
+        }).then((data) => {
           this.setState({
             selectData: {
               ...this.state.selectData,
-              level: data
+              categoryCode: data
             }
           });
         }).catch(() => {});
@@ -211,6 +226,7 @@ class ProductEdit extends DetailUtil {
         add: true,
         edit: true,
         delete: true,
+        detail: true,
         fields: [{
           title: '树木编号',
           field: 'treeNumber',

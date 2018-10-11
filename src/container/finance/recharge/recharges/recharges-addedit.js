@@ -26,10 +26,11 @@ class RechargesAddEdit extends DetailUtil {
     }).catch(this.cancelFetching);
   }
   render() {
-    let account = this.view ? {
-      field: 'accountNumber',
-      title: '用户账户'
-    } : {
+    const fields = [{
+      field: 'applyUser',
+      value: getUserId(),
+      hidden: true
+    }, {
       field: 'accountNumber',
       title: '用户账户',
       required: true,
@@ -39,15 +40,14 @@ class RechargesAddEdit extends DetailUtil {
         status: '0',
         type: 'NOT_P'
       },
+      dict: [
+        ['currency', 'currency'],
+        ['type', 'account_type']
+      ],
       keyName: 'accountNumber',
-      valueName: '{{mobile.DATA}}-{{type.DATA}}-{{currency.DATA}}',
-      searchName: 'userId'
-    };
-    const fields = [{
-      field: 'applyUser',
-      value: getUserId(),
-      hidden: true
-    }, account, {
+      valueName: '{{mobile.DATA}}-{{typeName.DATA}}-{{currencyName.DATA}}',
+      searchName: 'mobileForQuery'
+    }, {
       title: '充值金额',
       field: 'amount',
       required: true,

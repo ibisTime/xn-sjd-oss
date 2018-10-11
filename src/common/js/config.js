@@ -13,6 +13,7 @@ export const SYS_USER = 'SYS_USER';
 
 // c端注册地址  USER("U", "普通用户"), AGENT("A", "代理商"), SALEMANS("S", "业务员");
 export const C_REGISTER_URL = 'http://sjd.front.hichengdai.com/#/register';
+// export const C_REGISTER_URL = 'http://47.99.147.67:2903/#/register';
 
 export const formItemLayout = {
   labelCol: {

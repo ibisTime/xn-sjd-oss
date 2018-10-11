@@ -665,6 +665,16 @@ const ROUTES = [
     path: '/curing/tasks/addedit',
     component: asyncComponent(() => import('container/curing/tasks/tasks-addedit'))
   },
+  // 养护端管理 -- 业务管理 -- 养护记录查询
+  {
+    path: '/curing/tasks/records',
+    component: asyncComponent(() => import('container/curing/tasks/tasks-records'))
+  },
+  // 养护端管理 -- 业务管理 -- 养护记录查询 -- 详情
+  {
+    path: '/curing/tasks/records/addedit',
+    component: asyncComponent(() => import('container/curing/tasks/tasks-addedit'))
+  },
   // 养护端管理 -- 业务管理 -- 养护项目管理
   {
     path: '/curing/projects',
@@ -754,6 +764,11 @@ const ROUTES = [
   {
     path: '/proxy/subordinates',
     component: asyncComponent(() => import('container/proxy/subordinates/subordinates'))
+  },
+  // 代理商 -- 代理商 -- 下级代理查询 -- 详情
+  {
+    path: '/proxy/subordinates/addedit',
+    component: asyncComponent(() => import('container/proxy/subordinates/subordinates-addedit'))
   },
   // 代理商 -- 代理商 -- 已结算佣金
   {

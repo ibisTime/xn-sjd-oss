@@ -26,7 +26,7 @@ class Recharges extends React.Component {
       field: 'code',
       title: '编号'
     }, {
-      field: 'accountName',
+      field: 'realName',
       title: '户名',
       search: true
     }, {

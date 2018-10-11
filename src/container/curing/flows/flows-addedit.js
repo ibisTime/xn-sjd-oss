@@ -49,8 +49,7 @@ class FlowsAddEdit extends DetailUtil {
     }, {
       title: '创建时间',
       field: 'createDatetime',
-      type: 'datetime',
-      rangedate: ['createDatetimeStart', 'createDatetimeEnd']
+      type: 'datetime'
     }, {
       title: '关联单号',
       field: 'refNo'

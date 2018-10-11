@@ -136,16 +136,16 @@ export function initData() {
       });
       accounts1.forEach(account => {
         // 用户总余额
-        if (account.type === 'C') {
+        if (account.type === 'C' && account.currency === 'CNY') {
           dispatch(setCClientAccount(account));
           // 养护方总余额
-        } else if (account.type === 'M') {
+        } else if (account.type === 'M' && account.currency === 'CNY') {
           dispatch(setMClientAccount(account));
           // 产权方总余额
-        } else if (account.type === 'O') {
+        } else if (account.type === 'O' && account.currency === 'CNY') {
           dispatch(setOClientAccount(account));
           // 分销商总余额
-        } else if (account.type === 'P') {
+        } else if (account.type === 'A' && account.currency === 'CNY') {
           dispatch(setAClientAccount(account));
         }
       });

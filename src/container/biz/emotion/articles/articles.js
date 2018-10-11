@@ -89,7 +89,17 @@ class Articles extends React.Component {
       search: true
     }, {
       title: 'UI位置',
-      field: 'location'
+      field: 'location',
+      type: 'select',
+      data: [{
+        key: '0',
+        value: '普通'
+      }, {
+        key: '1',
+        value: '热门'
+      }],
+      keyName: 'key',
+      valueName: 'value'
     }, {
       title: 'UI次序',
       field: 'orderNo'

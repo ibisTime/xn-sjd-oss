@@ -23,13 +23,16 @@ import { getUserId } from 'common/js/util';
 class Subordinates extends React.Component {
   render() {
     const fields = [{
+      title: '用户名',
+      field: 'loginName'
+    }, {
       title: '联系人',
       field: 'charger',
       render: (v, d) => d.company ? d.company.charger : ''
     }, {
-      title: '手机号',
+      title: '联系方式',
       field: 'keyword',
-      render: (v, d) => d ? d.mobile : '',
+      render: (v, d) => d.company ? d.company.chargeMobile : '',
       search: true
     }, {
       title: '等级',

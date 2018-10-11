@@ -27,7 +27,7 @@ class WithdrawAddedit extends DetailUtil {
       required: true
     }, {
       title: '户名',
-      field: 'accountName',
+      field: 'realName',
       required: true
     }, {
       field: 'accountType',

@@ -40,7 +40,7 @@ class Records extends React.Component {
       field: 'payCardNo',
       title: '银行卡号'
     }, {
-      field: 'accountName',
+      field: 'realName',
       title: '户名',
       search: true
     }, {

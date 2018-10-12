@@ -30,7 +30,8 @@ class Records extends React.Component {
       field: 'treeNumber'
     }, {
       title: '养护方',
-      field: 'description'
+      field: 'mobile',
+      render: (v, d) => d.maintainInfo ? d.maintainInfo.mobile : ''
     }, {
       title: '养护人',
       field: 'maintainerName'

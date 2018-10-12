@@ -46,20 +46,8 @@ class PersonOrders extends React.Component {
         return '';
       }
     }, {
-      title: '产品小类',
-      field: 'categoryCode',
-      type: 'select',
-      listCode: '629007',
-      params: {level: '2'},
-      keyName: 'code',
-      valueName: 'name',
-      render: (v, d) => {
-        if (this.props.searchData.categoryCode && d.product) {
-          let obj = this.props.searchData.categoryCode.find(c => c.code === d.product.categoryCode);
-          return obj ? obj.name : '';
-        }
-        return '';
-      }
+      title: '规格',
+      field: 'productSpecsName'
     }, {
       title: '认养分类',
       field: 'sellType',
@@ -73,8 +61,15 @@ class PersonOrders extends React.Component {
         return '';
       }
     }, {
+      title: '认养数量',
+      field: 'quantity'
+    }, {
+      title: '订单价格',
+      field: 'amount',
+      amount: true
+    }, {
       title: '认养人',
-      field: 'applyUser'
+      field: 'applyUserName'
     }, {
       title: '状态',
       field: 'status',

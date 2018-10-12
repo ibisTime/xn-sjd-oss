@@ -36,7 +36,7 @@ class Rights extends React.Component {
     }, {
       title: '认养人',
       field: 'currentHolder',
-      render: (v, d) => d.user ? `${d.user.nickname} - ${d.user.mobile}` : ''
+      render: (v, d) => d.user ? d.user.mobile : ''
     }, {
       title: '状态',
       field: 'status',

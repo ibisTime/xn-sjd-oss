@@ -41,9 +41,6 @@ class Conserve extends React.Component {
   }
   render() {
     const fields = [{
-      title: '用户名',
-      field: 'loginName'
-    }, {
       title: '手机号',
       field: 'mobile'
     }, {

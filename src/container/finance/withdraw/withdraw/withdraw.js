@@ -58,9 +58,6 @@ class Withdraw extends React.Component {
       key: 'withdraw_status',
       search: true
     }, {
-      field: 'applyUser',
-      title: '申请人'
-    }, {
       field: 'applyDatetime',
       title: '申请时间',
       type: 'date',

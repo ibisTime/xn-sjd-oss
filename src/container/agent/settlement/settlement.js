@@ -26,8 +26,12 @@ class Settlement extends React.Component {
       title: '订单编号',
       field: 'code'
     }, {
+      title: '订单金额',
+      field: 'amount',
+      amount: true
+    }, {
       title: '认养人',
-      field: 'applyUser'
+      field: 'applyUserName'
     }, {
       title: '结算状态',
       field: 'settleStatus',
@@ -48,6 +52,7 @@ class Settlement extends React.Component {
     return this.props.buildList({
       fields,
       pageCode: 629045,
+      searchParams: { status: '3' },
       btnEvent: {
         // 状态（0待结算/1已结算/2不结算）
         edit: (keys, items) => {

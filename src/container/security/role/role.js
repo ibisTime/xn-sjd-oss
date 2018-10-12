@@ -28,7 +28,7 @@ class Role extends React.Component {
       search: true
     }, {
       title: '最近更新人',
-      field: 'updater'
+      field: 'updaterName'
     }, {
       title: '最近更新时间',
       field: 'updateDatetime',

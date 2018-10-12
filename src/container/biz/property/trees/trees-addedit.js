@@ -16,11 +16,11 @@ class TreesAddEdit extends DetailUtil {
       title: '树木编号',
       field: 'treeNumber'
     }, {
-      title: '产品编号',
-      field: 'productCode'
+      title: '所属产品',
+      field: 'productName'
     }, {
-      title: '产权方编号',
-      field: 'ownerId'
+      title: '产权方',
+      field: 'ownerName'
     }, {
       title: '树龄',
       field: 'age'

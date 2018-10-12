@@ -29,11 +29,6 @@ class PropertyAddEdit extends DetailUtil {
       value: 'O',
       hidden: true
     }, {
-      title: '用户名',
-      field: 'loginName',
-      hidden: !this.code,
-      maxlength: 30
-    }, {
       title: '手机号',
       field: 'mobile',
       required: true,

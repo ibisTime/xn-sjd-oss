@@ -29,11 +29,6 @@ class ConserveAddEdit extends DetailUtil {
       value: 'M',
       hidden: true
     }, {
-      title: '用户名',
-      field: 'loginName',
-      hidden: !this.code,
-      maxlength: 30
-    }, {
       title: '手机号',
       field: 'mobile',
       required: true,

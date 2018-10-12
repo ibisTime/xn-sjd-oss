@@ -15,23 +15,59 @@ class GroupOrdersAddEdit extends DetailUtil {
       title: '订单编号',
       field: 'code'
     }, {
-      title: '古树学名',
-      field: 'name'
+      title: '产品名称',
+      field: 'name',
+      _keys: ['product', 'name']
     }, {
-      title: '古树编号',
-      field: 'ownerId'
+      title: '产品分类',
+      field: 'parentCategoryCode',
+      _keys: ['product', 'parentCategoryCode'],
+      type: 'select',
+      listCode: '629007',
+      params: {level: 1},
+      keyName: 'code',
+      valueName: 'name'
+    }, {
+      title: '产品小类',
+      field: 'categoryCode',
+      _keys: ['product', 'categoryCode'],
+      type: 'select',
+      listCode: '629007',
+      params: {level: '2'},
+      keyName: 'code',
+      valueName: 'name'
+    }, {
+      title: '认养分类',
+      field: 'sellType',
+      _keys: ['product', 'sellType'],
+      type: 'select',
+      key: 'sell_type'
     }, {
       title: '认养人',
-      field: 'applyUser'
+      field: 'applyUserName'
+    }, {
+      title: '认养单价',
+      field: 'price',
+      amount: true
+    }, {
+      title: '认养数量',
+      field: 'quantity'
+    }, {
+      title: '订单价格',
+      field: 'amount',
+      amount: true
     }, {
       title: '状态',
       field: 'status',
       type: 'select',
-      key: 'group_adopt_order_status'
+      key: 'adopt_order_status'
     }, {
       title: '下单时间',
       field: 'applyDatetime',
       type: 'datetime'
+    }, {
+      title: '备注',
+      field: 'remark'
     }];
     return this.buildDetail({
       fields,

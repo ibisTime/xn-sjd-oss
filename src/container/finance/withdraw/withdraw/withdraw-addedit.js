@@ -61,9 +61,6 @@ class WithdrawAddedit extends DetailUtil {
       type: 'select',
       key: 'jour_status'
     }, {
-      field: 'applyUser',
-      title: '申请人'
-    }, {
       field: 'applyDatetime',
       title: '申请时间',
       type: 'datetime'

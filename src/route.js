@@ -323,7 +323,7 @@ const ROUTES = [
   // 业务管理 -- 养护方管理 -- 养护记录管理 -- 详情
   {
     path: '/conserve/records/addedit',
-    component: asyncComponent(() => import('container/biz/conserve/records/records-addedit'))
+    component: asyncComponent(() => import('container/curing/tasks/tasks-addedit'))
   },
   // 业务管理 -- 养护方管理 -- 账户查询
   {

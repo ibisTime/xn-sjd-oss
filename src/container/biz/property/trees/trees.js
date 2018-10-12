@@ -32,10 +32,10 @@ class Trees extends React.Component {
       field: 'treeNumber'
     }, {
       title: '产权方',
-      field: 'ownerId'
+      field: 'ownerName'
     }, {
       title: '所属产品',
-      field: 'productCode'
+      field: 'productName'
     }, {
       title: '状态',
       field: 'status',

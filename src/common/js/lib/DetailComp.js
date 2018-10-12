@@ -255,7 +255,7 @@ export default class DetailComp extends React.Component {
   }
   // 根据field的type做预处理
   judgeFieldType(f) {
-    f.readonly = isUndefined(f.readonly) ? this.options.view : f.readonly;
+    f.readonly = isUndefined(f.readonly) ? !!this.options.view : !!f.readonly;
     if (f.type === 'citySelect') {
       f.cFields = f.cFields || ['province', 'city', 'area'];
     } else if (f.type === 'select' || f.type === 'checkbox' || f.type === 'provSelect') {

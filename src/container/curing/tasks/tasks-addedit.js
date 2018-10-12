@@ -10,12 +10,13 @@ class TaskAddEdit extends DetailUtil {
     super(props);
     this.treeNumber = getQueryString('n', this.props.location.search);
     this.code = getQueryString('code', this.props.location.search);
-    this.view = getQueryString('v', this.props.location.search);
+    this.view = !!getQueryString('v', this.props.location.search);
   }
   render() {
     const fields = [{
       title: '树木编号',
       field: 'treeNumber1',
+      _keys: ['treeNumber'],
       value: this.treeNumber,
       readonly: true
     }, {

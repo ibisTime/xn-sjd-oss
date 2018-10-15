@@ -24,7 +24,8 @@ class Projects extends React.Component {
   render() {
     const fields = [{
       title: '养护方',
-      field: 'maintainId'
+      field: 'maintainId',
+      render: (v, d) => d.maintainInfo ? d.maintainInfo.mobile : ''
     }, {
       title: '名称',
       field: 'projectName'
@@ -33,7 +34,7 @@ class Projects extends React.Component {
       field: 'description'
     }, {
       title: '最新更新人',
-      field: 'updater'
+      field: 'updaterName'
     }, {
       title: '最新更新时间',
       field: 'updateDatetime',

@@ -57,7 +57,7 @@ export default class CNormalTextArea extends React.Component {
             : getFieldDecorator(field, {
                 rules,
                 initialValue: initVal
-              })(<TextArea className="textarea-normalArea" style={{maxWidth: 400}} autosize/>)
+              })(<TextArea className="textarea-normalArea" style={{maxWidth: 400}} autosize={{ minRows: 4, maxRows: 8 }}/>)
         }
       </FormItem>
     );

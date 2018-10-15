@@ -24,7 +24,7 @@ class RightsLogs extends React.Component {
     const fields = [{
       title: '操作人',
       field: 'userId',
-      render: (v, d) => d.userInfo ? `${d.userInfo.nickname} - ${d.userInfo.mobile}` : ''
+      render: (v, d) => d.userInfo ? d.userInfo.mobile : ''
     }, {
       title: '类型',
       field: 'type',

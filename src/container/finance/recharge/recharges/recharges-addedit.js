@@ -71,6 +71,14 @@ class RechargesAddEdit extends DetailUtil {
       }
     };
     if (this.view) {
+      if (!this.check) {
+        fields.push({
+          field: 'status',
+          title: '状态',
+          type: 'select',
+          key: 'charge_status'
+        });
+      }
       fields.push({
         field: 'payNote',
         title: '审核意见',

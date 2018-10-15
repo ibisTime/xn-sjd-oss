@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Card, Alert, Button, Spin } from 'antd';
-import { getRules, showSucMsg, showWarnMsg, getUserId, moneyFormat, getKindByUrl } from 'common/js/util';
+import { getRules, showSucMsg, showWarnMsg, getUserId, moneyFormat,
+  getKindByUrl, isUndefined } from 'common/js/util';
 import { formItemLayout } from 'common/js/config';
 import CInput from 'component/cInput/cInput';
 import CSelect from 'component/cSelect/cSelect';
@@ -20,6 +21,7 @@ class Apply extends React.Component {
       dzts: '',
       bankList: [],
       account: {},
+      fee: 0,
       fetching: true
     };
     this.kind = getKindByUrl();
@@ -76,10 +78,11 @@ class Apply extends React.Component {
     </div>);
   }
   // 获取输入框类型的控件
-  getInputComp(item, rules, initVal) {
+  getInputComp(item, rules, initVal, onChange) {
     const props = {
       rules,
       initVal,
+      onChange,
       title: item.title,
       field: item.field,
       label: item.title,
@@ -143,11 +146,21 @@ class Apply extends React.Component {
       }
     });
   }
+  // 返回
   back = () => {
     this.props.history.go(-1);
   }
+  // 取现金额改变时费率跟着变动
+  handleAmountChange = (v) => {
+    const { rate } = this.state;
+    if (isUndefined(v) || isNaN(v)) {
+      this.setState({ fee: 0 });
+    } else {
+      this.setState({ fee: v * 1000 * rate });
+    }
+  }
   render() {
-    const { fetching, account } = this.state;
+    const { fetching, account, fee } = this.state;
     return (
       <Spin spinning={fetching}>
         <Alert
@@ -158,9 +171,11 @@ class Apply extends React.Component {
         <Card title="提现信息" style={{marginTop: 40}}>
           <Form className="detail-form-wrapper" onSubmit={this.handleSubmit}>
             {this.getInputComp({ title: '可用余额', field: 'enableAmount', readonly: true },
-              getRules({ required: true, amount: true }), moneyFormat(account.amount))}
+              getRules({}), moneyFormat(account.amount))}
             {this.getInputComp({ title: '取现金额', field: 'amount' },
-              getRules({ required: true, amount: true }))}
+              getRules({ required: true, amount: true }), '', this.handleAmountChange)}
+            {this.getInputComp({ title: '手续费', field: 'fee', readonly: true },
+              getRules({}), moneyFormat(fee))}
             {this.getBankSelectComp()}
             {this.getInputComp({ title: '取现说明', field: 'applyNote' },
               getRules({ required: true, maxlength: 40 }))}

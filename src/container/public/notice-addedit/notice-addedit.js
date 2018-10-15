@@ -16,6 +16,29 @@ class NoticeAddEdit extends DetailUtil {
       value: '1',
       hidden: true
     }, {
+      field: 'object',
+      title: '针对对象',
+      type: 'select',
+      data: [{
+        'dkey': 'C',
+        'dvalue': 'C端用户'
+      }, {
+        'dkey': 'O',
+        'dvalue': '产权方'
+      }, {
+        'dkey': 'M',
+        'dvalue': '养护方'
+      }, {
+        'dkey': 'A',
+        'dvalue': '代理商'
+      }, {
+        'dkey': 'P',
+        'dvalue': '平台用户'
+      }],
+      keyName: 'dkey',
+      valueName: 'dvalue',
+      required: true
+    }, {
       title: '标题',
       field: 'title',
       maxlength: 50,

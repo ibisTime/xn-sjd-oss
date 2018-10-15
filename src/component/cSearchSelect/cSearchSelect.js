@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Select, Form, Spin } from 'antd';
-import { noop, tempString, isUndefined } from 'common/js/util';
+import { noop, tempString, isUndefined, isFunc } from 'common/js/util';
 import { formItemLayout } from 'common/js/config';
 import fetch from 'common/js/fetch';
 
@@ -152,6 +152,13 @@ export default class CSearchSelect extends React.Component {
       }).catch(() => this.setState({ selectFetch: false }));
     }, 300);
   }
+  getValueName(d, valueName) {
+    return isFunc(valueName)
+      ? valueName(d)
+      : d[valueName]
+        ? d[valueName]
+        : tempString(valueName, d);
+  }
   render() {
     const { label, field, rules, readonly, hidden, getFieldDecorator,
       onChange, initVal, inline, keyName, valueName, isLoaded, code } = this.props;
@@ -170,7 +177,7 @@ export default class CSearchSelect extends React.Component {
               <Select {...this.getSelectProps(onChange)}>
                 {list && list.length ? list.map(d => (
                   <Option key={d[keyName]} value={d[keyName]}>
-                    {d[valueName] ? d[valueName] : tempString(valueName, d)}
+                    {this.getValueName(d, valueName)}
                   </Option>
                 )) : null}
               </Select>
@@ -204,7 +211,10 @@ CSearchSelect.propTypes = {
   params: PropTypes.object,
   searchName: PropTypes.string,
   keyName: PropTypes.string.isRequired,
-  valueName: PropTypes.string.isRequired,
+  valueName: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string
+  ]),
   field: PropTypes.string.isRequired,
   getFieldValue: PropTypes.func.isRequired,
   getFieldDecorator: PropTypes.func.isRequired,

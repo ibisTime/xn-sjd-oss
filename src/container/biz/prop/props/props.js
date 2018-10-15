@@ -130,6 +130,7 @@ class Props extends React.Component {
         <UpDown
           updownVisible={this.state.updownVisible}
           setModalVisible={this.setModalVisible}
+          hideLoc={true}
           biz={629500}
           code={this.state.code}
           onOk={() => {

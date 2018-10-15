@@ -232,8 +232,20 @@ export function formatImg(imgs, suffix = '?imageMogr2/auto-orient/thumbnail/!300
   return formatFile(imgs, suffix);
 }
 
+/**
+ * 是否是空
+ * @param value
+ */
 export function isUndefined(value) {
   return value === undefined || value === null || value === '';
+}
+
+/**
+ * 是否是函数
+ * @param func
+ */
+export function isFunc(func) {
+  return typeof func === 'function';
 }
 
 export function tempString(str, data) {
@@ -242,7 +254,6 @@ export function tempString(str, data) {
     return isUndefined(returns) ? '' : returns;
   });
 }
-;
 
 export function showMsg(msg, type = 'success', time = 2) {
   message[type](msg, time);
@@ -548,35 +559,34 @@ export const getRealValue = ({ pageData, field, type, _keys, value, rangedate,
   multiple, formatter, amount, amountRate, cFields, readonly, listCode, selectData }) => {
   let result;
   pageData = isUndefined(pageData) ? {} : pageData;
-  if (pageData) {
-    result = pageData[field];
-    try {
-      if (_keys) {
-        result = getValFromKeys(_keys, pageData, type);
-      } else if (!isUndefined(value) && !result) {
-        result = value;
+  result = pageData[field];
+  try {
+    if (_keys) {
+      result = getValFromKeys(_keys, pageData, type);
+    }
+    if (!isUndefined(value) && !result) {
+      result = value;
+    }
+    if (type === 'citySelect') {
+      result = getCityVal(_keys, cFields, result, pageData);
+    } else if (type === 'date' || type === 'datetime' || type === 'month') {
+      result = getRealDateVal(pageData, type, result, _keys, readonly, rangedate);
+    } else if (type === 'checkbox') {
+      result = getRealCheckboxVal(result);
+    } else if (multiple) {
+      result = result ? result.split(',') : [];
+    } else if (type === 'o2m') {
+      if (listCode) {
+        result = isUndefined(result) ? selectData[field] : result;
       }
-      if (type === 'citySelect') {
-        result = getCityVal(_keys, cFields, result, pageData);
-      } else if (type === 'date' || type === 'datetime' || type === 'month') {
-        result = getRealDateVal(pageData, type, result, _keys, readonly, rangedate);
-      } else if (type === 'checkbox') {
-        result = getRealCheckboxVal(result);
-      } else if (multiple) {
-        result = result ? result.split(',') : [];
-      } else if (type === 'o2m') {
-        if (listCode) {
-          result = isUndefined(result) ? selectData[field] : result;
-        }
-        result = result || [];
-      }
-      if (formatter) {
-        result = formatter(result, pageData);
-      } else if (amount) {
-        result = isUndefined(result) ? '' : moneyFormat(result, amountRate);
-      }
-    } catch (e) {}
-  }
+      result = result || [];
+    }
+    if (formatter) {
+      result = formatter(result, pageData);
+    } else if (amount) {
+      result = isUndefined(result) ? '' : moneyFormat(result, amountRate);
+    }
+  } catch (e) {}
   return isUndefined(result) ? '' : result;
 };
 

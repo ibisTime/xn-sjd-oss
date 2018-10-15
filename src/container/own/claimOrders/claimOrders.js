@@ -31,7 +31,8 @@ class ClaimOrders extends React.Component {
       field: 'treeNumber'
     }, {
       title: '当前持有人',
-      field: 'currentHolder'
+      field: 'currentHolder',
+      render: (v, d) => d.user ? d.user.mobile : ''
     }, {
       title: '认养开始时间',
       field: 'startDatetime',

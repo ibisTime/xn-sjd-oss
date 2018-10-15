@@ -54,7 +54,7 @@ class Binds extends React.Component {
       search: true
     }, {
       title: '更新人',
-      field: 'updater'
+      field: 'updaterName'
     }, {
       title: '更新时间',
       field: 'updateDatetime',

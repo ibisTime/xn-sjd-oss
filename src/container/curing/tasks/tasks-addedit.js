@@ -28,8 +28,11 @@ class TaskAddEdit extends DetailUtil {
       field: 'projectCode',
       type: 'select',
       listCode: 629627,
+      params: {
+        maintainId: getUserId()
+      },
       keyName: 'code',
-      valueName: 'title',
+      valueName: 'projectName',
       required: true
     }, {
       title: '养护人',

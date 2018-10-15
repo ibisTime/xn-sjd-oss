@@ -88,7 +88,6 @@ li {
 
 .textarea-normalArea {
   resize: none;
-  height: 100px !important;
 }
 
 .ant-form-item-control {

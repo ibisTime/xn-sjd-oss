@@ -83,7 +83,9 @@ class ClaimBind extends React.Component {
       field: 'maintainId',
       label: '帐号',
       keyName: 'userId',
-      valueName: 'mobile',
+      valueName: (d) => {
+        return d.company ? `公司名称:${d.company.name}-联系方式:${d.company.chargeMobile}` : '';
+      },
       onChange: (v) => {},
       getFieldDecorator: this.props.form.getFieldDecorator,
       getFieldValue: this.props.form.getFieldValue,

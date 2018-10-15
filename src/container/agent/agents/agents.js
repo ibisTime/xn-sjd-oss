@@ -32,6 +32,10 @@ class Agents extends React.Component {
       title: '等级',
       field: 'level'
     }, {
+      title: '上级代理',
+      field: 'mobile1',
+      render: (v, d) => d.parentAgentUser ? d.parentAgentUser.mobile : '-'
+    }, {
       title: '状态',
       field: 'status',
       type: 'select',

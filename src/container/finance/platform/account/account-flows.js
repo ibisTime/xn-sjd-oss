@@ -27,7 +27,8 @@ class PlatformAccountFlows extends React.Component {
   render() {
     const fields = [{
       title: '户名',
-      field: 'realName',
+      field: 'relaNameForQuery',
+      render: (v, d) => d.realName,
       search: true
     }, {
       title: '币种',

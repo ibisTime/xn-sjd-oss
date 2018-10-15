@@ -35,6 +35,10 @@ class Achievement extends React.Component {
       title: '认养人',
       field: 'applyUserName'
     }, {
+      title: '结算金额',
+      field: 'amount',
+      amount: true
+    }, {
       title: '状态',
       field: 'status',
       type: 'select',

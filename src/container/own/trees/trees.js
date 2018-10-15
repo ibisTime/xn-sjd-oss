@@ -33,7 +33,7 @@ class Trees extends React.Component {
       field: 'treeNumber'
     }, {
       title: '所属产品',
-      field: 'productCode'
+      field: 'productName'
     }, {
       title: '品种',
       field: 'variety'

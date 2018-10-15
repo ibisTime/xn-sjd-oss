@@ -20,7 +20,8 @@ class ClaimOrdersAddEdit extends DetailUtil {
       field: 'treeNumber'
     }, {
       title: '当前持有人',
-      field: 'currentHolder'
+      field: 'currentHolder',
+      _keys: ['user', 'mobile']
     }, {
       title: '认养开始时间',
       field: 'startDatetime',

@@ -38,6 +38,10 @@ class Withdraw extends React.Component {
       title: '取现金额',
       amount: true
     }, {
+      field: 'fee',
+      title: '手续费',
+      amount: true
+    }, {
       field: 'status',
       title: '状态',
       type: 'select',

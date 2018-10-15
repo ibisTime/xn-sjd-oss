@@ -58,6 +58,7 @@ class AgentsAddEdit extends DetailUtil {
       field: 'settleList',
       title: '代理结算清单',
       options: {
+        noSelect: true,
         fields: [{
           title: '代理商',
           field: 'mobile',

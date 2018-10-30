@@ -24,6 +24,9 @@ class ProductEdit extends DetailUtil {
       check: true,
       handler: (params) => {
         this.doFetching();
+        params.productSpecsList = params.productSpecsList1 || params.productSpecsList2;
+        params.productSpecsList1 && delete params.productSpecsList1;
+        params.productSpecsList2 && delete params.productSpecsList2;
         params.ownerId = getUserId();
         // 如果销售类型选择定向
         if (params.sellType === '2') {
@@ -43,7 +46,7 @@ class ProductEdit extends DetailUtil {
     }];
   }
   render() {
-    const fields = [{
+    let fields = [{
       title: '产品分类',
       field: 'parentCategoryCode',
       type: 'select',
@@ -139,10 +142,11 @@ class ProductEdit extends DetailUtil {
       key: 'sell_type',
       required: true,
       onChange: (v) => {
-        let direct = v === '2';
-        if (direct !== this.state.direct) {
-          this.setState({ direct });
-        }
+        // let direct = v === '2';
+        // if (direct !== this.state.direct) {
+        //   this.setState({ direct });
+        // }
+        this.setState({ direct: v });
       }
     }, {
       title: '定向类型',
@@ -155,8 +159,10 @@ class ProductEdit extends DetailUtil {
         dkey: '2',
         dvalue: '针对个人用户'
       }],
-      hidden: !this.state.direct,
-      required: this.state.direct,
+      // hidden: !this.state.direct,
+      // required: this.state.direct,
+      hidden: this.state.direct !== '2',
+      required: this.state.direct === '2',
       onChange: (v) => {
         if (v === '1' && !this.state.directLevel) {
           this.setState({ directLevel: true, directUser: false });
@@ -170,8 +176,8 @@ class ProductEdit extends DetailUtil {
       _keys: ['directObject'],
       type: 'select',
       key: 'user_level',
-      hidden: !this.state.direct || !this.state.directLevel,
-      required: this.state.direct && this.state.directLevel
+      hidden: this.state.direct !== '2' || !this.state.directLevel,
+      required: this.state.direct === '2' && this.state.directLevel
     }, {
       title: '针对用户',
       field: 'directUser',
@@ -182,43 +188,79 @@ class ProductEdit extends DetailUtil {
       keyName: 'userId',
       valueName: '{{mobile.DATA}}-{{nickname.DATA}}',
       searchName: 'mobile',
-      hidden: !this.state.direct || !this.state.directUser,
-      required: this.state.direct && this.state.directUser
-    // }, {
-    //   title: '募集时间',
-    //   field: 'raiseStartDatetime',
-    //   type: 'date',
-    //   rangedate: ['raiseStartDatetime', 'raiseEndDatetime']
-    // }, {
-    //   title: '募集总数',
-    //   field: 'raiseCount'
+      hidden: this.state.direct !== '2' || !this.state.directUser,
+      required: this.state.direct === '2' && this.state.directUser
     }, {
-      title: '产品规格列表',
-      field: 'productSpecsList',
-      type: 'o2m',
-      options: {
-        add: true,
-        edit: true,
-        delete: true,
-        fields: [{
-          title: '名称',
-          field: 'name',
-          required: true
-        }, {
-          title: '认养价格',
-          field: 'price',
-          amount: true,
-          required: true
-        }, {
-          title: '认养时间',
-          field: 'startDatetime',
-          type: 'date',
-          rangedate: ['startDatetime', 'endDatetime'],
-          required: true
-        }]
-      },
-      required: true
+      title: '募集时间',
+      field: 'raiseStartDatetime',
+      type: 'date',
+      rangedate: ['raiseStartDatetime', 'raiseEndDatetime'],
+      hidden: this.state.direct !== '3',
+      required: this.state.direct === '3'
     }, {
+        title: '认养时间',
+        field: 'startDatetime',
+        type: 'date',
+        rangedate: ['startDatetime', 'endDatetime'],
+        hidden: this.state.direct !== '3',
+        required: this.state.direct === '3'
+    }, {
+      title: '募集总数',
+      field: 'raiseCount',
+      hidden: this.state.direct !== '4',
+      required: this.state.direct === '4'
+    }];
+    if(this.state.direct === '3') {
+      fields = fields.concat([{
+        title: '产品规格列表',
+        field: 'productSpecsList1',
+        type: 'o2m',
+        options: {
+          add: true,
+          edit: true,
+          delete: true,
+          fields: [{
+            title: '名称',
+            field: 'name',
+            required: true
+          }, {
+            title: '认养价格',
+            field: 'price',
+            amount: true,
+            required: true
+          }]
+        },
+        required: true
+      }]);
+    } else {
+      fields = fields.concat([{
+        title: '产品规格列表',
+        field: 'productSpecsList2',
+        type: 'o2m',
+        options: {
+          add: true,
+          edit: true,
+          delete: true,
+          fields: [{
+            title: '名称',
+            field: 'name',
+            required: true
+          }, {
+            title: '认养价格',
+            field: 'price',
+            amount: true,
+            required: true
+          }, {
+            title: '认养时间',
+            field: 'startDatetime',
+            type: 'date',
+            rangedate: ['startDatetime', 'endDatetime']
+          }]
+        },
+        required: true
+      }]);
+    }
+    fields = fields.concat([{
       title: '树木列表',
       field: 'treeList',
       type: 'o2m',
@@ -262,7 +304,7 @@ class ProductEdit extends DetailUtil {
       title: '备注',
       field: 'remark',
       maxlength: 250
-    }];
+    }]);
     let config = {
       fields,
       code: this.code,

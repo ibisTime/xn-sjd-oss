@@ -12,11 +12,18 @@ class ProductEdit extends DetailUtil {
     this.view = !!getQueryString('v', this.props.location.search);
     this.state = {
       ...this.state,
-      direct: false,
+      direct: '',
       directLevel: false,
       directUser: false
     };
   }
+  // componentDidMount() {
+  //   let userKind = getUserKind();
+  //   this.setState({ userKind });
+  //   getUserDetail(getUserId()).then((data) => {
+  //     this.setState({ 'projectCode': data.projectCode });
+  //   });
+  // }
   addBtns(config) {
     config.buttons = [{
       title: '保存编辑',
@@ -24,9 +31,6 @@ class ProductEdit extends DetailUtil {
       check: true,
       handler: (params) => {
         this.doFetching();
-        params.productSpecsList = params.productSpecsList1 || params.productSpecsList2;
-        params.productSpecsList1 && delete params.productSpecsList1;
-        params.productSpecsList2 && delete params.productSpecsList2;
         params.ownerId = getUserId();
         // 如果销售类型选择定向
         if (params.sellType === '2') {
@@ -142,11 +146,17 @@ class ProductEdit extends DetailUtil {
       key: 'sell_type',
       required: true,
       onChange: (v) => {
+        // console.log(v);
         // let direct = v === '2';
         // if (direct !== this.state.direct) {
         //   this.setState({ direct });
         // }
+        // let direct = v;
+        // if (direct !== this.state.direct) {
+        //   this.setState({ direct });
+        // }
         this.setState({ direct: v });
+        console.log(typeof this.state.direct);
       }
     }, {
       title: '定向类型',
@@ -209,33 +219,9 @@ class ProductEdit extends DetailUtil {
       field: 'raiseCount',
       hidden: this.state.direct !== '4',
       required: this.state.direct === '4'
-    }];
-    if(this.state.direct === '3') {
-      fields = fields.concat([{
+    }, {
         title: '产品规格列表',
-        field: 'productSpecsList1',
-        type: 'o2m',
-        options: {
-          add: true,
-          edit: true,
-          delete: true,
-          fields: [{
-            title: '名称',
-            field: 'name',
-            required: true
-          }, {
-            title: '认养价格',
-            field: 'price',
-            amount: true,
-            required: true
-          }]
-        },
-        required: true
-      }]);
-    } else {
-      fields = fields.concat([{
-        title: '产品规格列表',
-        field: 'productSpecsList2',
+        field: 'productSpecsList',
         type: 'o2m',
         options: {
           add: true,
@@ -252,59 +238,62 @@ class ProductEdit extends DetailUtil {
             required: true
           }, {
             title: '认养时间',
-            field: 'startDatetime',
+            field: 'startDatetime1',
             type: 'date',
-            rangedate: ['startDatetime', 'endDatetime']
+            rangedate: ['startDatetime', 'endDatetime'],
+            hidden: this.state.direct === '3',
+            required: this.state.direct !== '3',
+            noVisible: this.state.direct === '3'
           }]
         },
         required: true
-      }]);
-    }
-    fields = fields.concat([{
-      title: '树木列表',
-      field: 'treeList',
-      type: 'o2m',
-      options: {
-        add: true,
-        edit: true,
-        delete: true,
-        detail: true,
-        fields: [{
-          title: '树木编号',
-          field: 'treeNumber',
-          required: true
-        }, {
-          title: '树龄',
-          field: 'age',
-          required: true
-        }, {
-          title: '经度',
-          field: 'longitude',
-          required: true
-        }, {
-          title: '纬度',
-          field: 'latitude',
-          required: true
-        }, {
-          title: '实景图',
-          field: 'pic',
-          type: 'img'
-        }, {
-          title: '备注',
-          field: 'remark'
-        }]
-      },
-      required: true
-    }, {
-      title: '产品描述',
-      field: 'description',
-      type: 'textarea',
-      required: true
-    }, {
-      title: '备注',
-      field: 'remark',
-      maxlength: 250
-    }]);
+      }, {
+        title: '树木列表',
+        field: 'treeList',
+        type: 'o2m',
+        options: {
+          add: true,
+          edit: true,
+          delete: true,
+          detail: true,
+          fields: [{
+            title: '树木编号',
+            field: 'treeNumber',
+            required: true
+          }, {
+            title: '树龄',
+            field: 'age',
+            required: true
+          }, {
+            title: '经度',
+            field: 'longitude',
+            required: true
+          }, {
+            title: '纬度',
+            field: 'latitude',
+            required: true
+          }, {
+            title: '实景图',
+            field: 'pic',
+            type: 'img'
+          }, {
+            title: '备注',
+            field: 'remark'
+          }]
+        },
+        required: true
+      }, {
+        title: '产品描述',
+        field: 'description',
+        type: 'textarea',
+        required: true
+      }, {
+        title: '备注',
+        field: 'remark',
+        maxlength: 250
+      }
+      ];
+    fields = fields.concat([]);
     let config = {
       fields,
       code: this.code,

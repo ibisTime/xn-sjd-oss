@@ -110,9 +110,18 @@ const ROUTES = [
     path: '/platform/integralRules',
     component: asyncComponent(() => import('container/finance/platform/integralRules/integralRules'))
   },
+  // 财务管理 -- 平台账户 -- 积分规则
+  {
+    path: '/platform/payRules',
+    component: asyncComponent(() => import('container/finance/platform/payRules/payRules'))
+  },
   // 财务管理 -- 平台账户 -- 积分规则 -- 详情
   {
     path: '/platform/integralRules/addedit',
+    component: asyncComponent(() => import('container/security/sysParam-addedit/sysParam-addedit'))
+  },
+  {
+    path: '/platform/payRules/addedit',
     component: asyncComponent(() => import('container/security/sysParam-addedit/sysParam-addedit'))
   },
   // 财务管理 -- 平台账户 -- 碳泡泡规则

@@ -14,6 +14,7 @@ import { publicNotice } from './redux/public/notice';
 import { platformDistributionRules } from './redux/finance/platform/distributionRules';
 import { platformGradationRules } from './redux/finance/platform/gradationRules';
 import { platformIntegralRules } from './redux/finance/platform/integralRules';
+import { platformPayRules } from './redux/finance/platform/payRules';
 import { platformTppRules } from './redux/finance/platform/tppRules';
 import { platformAccount } from './redux/finance/platform/account';
 import { platformAccountFlows } from './redux/finance/platform/accountFlows';
@@ -119,6 +120,7 @@ export default combineReducers({
   platformDistributionRules,
   platformGradationRules,
   platformIntegralRules,
+  platformPayRules,
   platformTppRules,
   platformAccount,
   platformAccountFlows,

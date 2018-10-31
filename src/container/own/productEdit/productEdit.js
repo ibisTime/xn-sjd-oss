@@ -156,7 +156,6 @@ class ProductEdit extends DetailUtil {
         //   this.setState({ direct });
         // }
         this.setState({ direct: v });
-        console.log(typeof this.state.direct);
       }
     }, {
       title: '定向类型',
@@ -220,79 +219,78 @@ class ProductEdit extends DetailUtil {
       hidden: this.state.direct !== '4',
       required: this.state.direct === '4'
     }, {
-        title: '产品规格列表',
-        field: 'productSpecsList',
-        type: 'o2m',
-        options: {
-          add: true,
-          edit: true,
-          delete: true,
-          fields: [{
-            title: '名称',
-            field: 'name',
-            required: true
-          }, {
-            title: '认养价格',
-            field: 'price',
-            amount: true,
-            required: true
-          }, {
-            title: '认养时间',
-            field: 'startDatetime1',
-            type: 'date',
-            rangedate: ['startDatetime', 'endDatetime'],
-            hidden: this.state.direct === '3',
-            required: this.state.direct !== '3',
-            noVisible: this.state.direct === '3'
-          }]
-        },
-        required: true
-      }, {
-        title: '树木列表',
-        field: 'treeList',
-        type: 'o2m',
-        options: {
-          add: true,
-          edit: true,
-          delete: true,
-          detail: true,
-          fields: [{
-            title: '树木编号',
-            field: 'treeNumber',
-            required: true
-          }, {
-            title: '树龄',
-            field: 'age',
-            required: true
-          }, {
-            title: '经度',
-            field: 'longitude',
-            required: true
-          }, {
-            title: '纬度',
-            field: 'latitude',
-            required: true
-          }, {
-            title: '实景图',
-            field: 'pic',
-            type: 'img'
-          }, {
-            title: '备注',
-            field: 'remark'
-          }]
-        },
-        required: true
-      }, {
-        title: '产品描述',
-        field: 'description',
-        type: 'textarea',
-        required: true
-      }, {
-        title: '备注',
-        field: 'remark',
-        maxlength: 250
-      }
-      ];
+      title: '产品规格列表',
+      field: 'productSpecsList',
+      type: 'o2m',
+      options: {
+        add: true,
+        edit: true,
+        delete: true,
+        fields: [{
+          title: '名称',
+          field: 'name',
+          required: true
+        }, {
+          title: '认养价格',
+          field: 'price',
+          amount: true,
+          required: true
+        }, {
+          title: '认养时间',
+          field: 'startDatetime1',
+          type: 'date',
+          rangedate: ['startDatetime', 'endDatetime'],
+          hidden: this.state.direct === '3',
+          required: this.state.direct !== '3',
+          noVisible: this.state.direct === '3'
+        }]
+      },
+      required: true
+    }, {
+      title: '树木列表',
+      field: 'treeList',
+      type: 'o2m',
+      options: {
+        add: true,
+        edit: true,
+        delete: true,
+        detail: true,
+        fields: [{
+          title: '树木编号',
+          field: 'treeNumber',
+          required: true
+        }, {
+          title: '树龄',
+          field: 'age',
+          required: true
+        }, {
+          title: '经度',
+          field: 'longitude',
+          required: true
+        }, {
+          title: '纬度',
+          field: 'latitude',
+          required: true
+        }, {
+          title: '实景图',
+          field: 'pic',
+          type: 'img'
+        }, {
+          title: '备注',
+          field: 'remark'
+        }]
+      },
+      required: true
+    }, {
+      title: '产品描述',
+      field: 'description',
+      type: 'textarea',
+      required: true
+    }, {
+      title: '备注',
+      field: 'remark',
+      maxlength: 250
+    }];
     fields = fields.concat([]);
     let config = {
       fields,

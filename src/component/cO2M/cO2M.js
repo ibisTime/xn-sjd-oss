@@ -55,10 +55,12 @@ export default class CO2M extends React.Component {
     const { field, readonly, hidden, inline, list, selectedRowKeys, options } = this.props;
     let listFlag = this.isListChange(list, nextProps.list);
     let keysFlag = this.isRowKeysChange(selectedRowKeys, nextProps.selectedRowKeys);
-    let optFlag = this.isOptionsChange(options, nextProps.options);
-    let _optFlag = this.isOptChange();
-    if (_optFlag) {
-      this.prevOpts = this.options;
+    let optFlag = this.isOptChange(options, nextProps.options);
+    if (optFlag) {
+      this.prevOpts = this.options = {
+        ...this.options,
+        ...nextProps.options
+      };
     }
     return nextProps.field !== field || nextProps.readonly !== readonly ||
       nextProps.hidden !== hidden || listFlag || keysFlag || optFlag ||
@@ -94,23 +96,49 @@ export default class CO2M extends React.Component {
     });
     return flag;
   }
-  isOptionsChange(prevOpts, nowOpts) {
-    return Object.keys(prevOpts).length !== Object.keys(nowOpts).length;
-  }
-  isOptChange() {
-    if (isUndefined(this.prevOpts) || isUndefined(this.options)) {
-      return isUndefined(this.prevOpts) && isUndefined(this.options) ? false : this.prevOpts !== this.options;
+  isOptChange(prevOpts, nowOpts) {
+    if (Object.keys(prevOpts).length !== Object.keys(nowOpts).length) {
+      return true;
+    }
+    if (isUndefined(prevOpts) || isUndefined(nowOpts)) {
+      return isUndefined(prevOpts) && isUndefined(nowOpts) ? false : prevOpts !== nowOpts;
     } else {
-      if (this.prevOpts.title !== this.options.title || this.options.view !== this.prevOpts.view ||
-        this.prevOpts.code !== this.options.code || this.prevOpts.key !== this.options.key) {
+      if (prevOpts.title !== nowOpts.title || nowOpts.view !== prevOpts.view ||
+        prevOpts.code !== nowOpts.code || prevOpts.key !== nowOpts.key ||
+        prevOpts.rowKey !== nowOpts.rowKey) {
         return true;
       }
-      if (isUndefined(this.prevOpts.useData) || isUndefined(this.options.useData)) {
-        return !(isUndefined(this.prevOpts.useData) && isUndefined(this.options.useData));
+      let flag;
+      if (isUndefined(prevOpts.useData) || isUndefined(nowOpts.useData)) {
+        flag = !(isUndefined(prevOpts.useData) && isUndefined(nowOpts.useData));
       }
-      let key = this.props.options.rowKey || 'code';
-      return this.prevOpts.useData[key] !== this.options.useData[key];
+      if (flag) {
+        return true;
+      }
+      let key = nowOpts.rowKey || 'code';
+      let pKey = prevOpts.useData ? prevOpts.useData[key] : '';
+      let nKey = nowOpts.useData ? nowOpts.useData[key] : '';
+      if (pKey !== nKey) {
+        return true;
+      }
+      return this.isOptFieldChange(prevOpts, nowOpts);
     }
+  }
+  isOptFieldChange(prevOpts, nowOpts) {
+    let prevFields = prevOpts.fields;
+    let fields = nowOpts.fields;
+    if (prevFields.length !== fields.length) {
+      return true;
+    }
+    for (let i = 0; i < prevFields.length; i++) {
+      if (prevFields[i].title !== fields[i].title || prevFields[i].view !== fields[i].view ||
+        prevFields[i].type !== fields[i].type || prevFields[i].key !== fields[i].key ||
+        prevFields[i].required !== fields[i].required || prevFields[i].hidden !== fields[i].hidden ||
+        prevFields[i].noVisible !== fields[i].noVisible || prevFields[i].readonly !== fields[i].readonly) {
+        return true;
+      }
+    }
+    return false;
   }
   isStateChange(nextState) {
     const { oSelectData, options, modalVisible } = this.state;

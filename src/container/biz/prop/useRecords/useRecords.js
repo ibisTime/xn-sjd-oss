@@ -24,11 +24,12 @@ class UseRecords extends React.Component {
     const fields = [{
       title: '道具名',
       field: 'toolName',
-      search: true
+      search: true,
+        render: (v, d) => `${d.toolOrderInfo.toolName}`
     }, {
       title: '使用人',
       field: 'userId',
-      render: (v, d) => d.userInfo ? `${d.userInfo.nickname} ${d.userInfo.mobile}` : ''
+        render: (v, d) => d.userInfo && d.userInfo.nickname ? `${d.userInfo.nickname} ${d.userInfo.mobile}` : `${d.userInfo.mobile}`
     }, {
       title: '状态',
       field: 'status',

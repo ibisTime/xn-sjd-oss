@@ -153,8 +153,8 @@ class Account extends React.Component {
               <Card title="积分池">
                 <p>总额：¥{moneyFormat(jfAccount.totalAmount || 0)}</p>
                 <p>余额：¥{moneyFormat(jfAccount.amount || 0)}</p>
-                <p>历史总发放额：¥{moneyFormat(jfAccount.outAmount || 0)}</p>
-                <p>历史总回收额：¥{moneyFormat(jfAccount.inAmount || 0)}</p>
+                <p>历史总发放额：¥{moneyFormat(jfAccount.historyOutAmount || 0)}</p>
+                <p>历史总回收额：¥{moneyFormat(jfAccount.historyInAmount || 0)}</p>
                 <div style={{textAlign: 'center'}}>
                   <Button onClick={() => this.goAdd(jfAccount.currency)} type="primary">手动增发</Button>
                   <Button style={{marginLeft: 20}} onClick={() => this.goFlow(jfAccount.accountNumber)} type="primary">资金流水</Button>
@@ -165,8 +165,8 @@ class Account extends React.Component {
               <Card title="碳泡泡池">
                 <p>总额：¥{moneyFormat(tppAccount.totalAmount || 0)}</p>
                 <p>余额：¥{moneyFormat(tppAccount.amount || 0)}</p>
-                <p>历史总发放额：¥{moneyFormat(tppAccount.outAmount || 0)}</p>
-                <p>历史总回收额：¥{moneyFormat(tppAccount.inAmount || 0)}</p>
+                <p>历史总发放额：¥{moneyFormat(tppAccount.historyOutAmount || 0)}</p>
+                <p>历史总回收额：¥{moneyFormat(tppAccount.historyInAmount || 0)}</p>
                 <div style={{textAlign: 'center'}}>
                   <Button onClick={() => this.goAdd(tppAccount.currency)} type="primary">手动增发</Button>
                   <Button style={{marginLeft: 20}} onClick={() => this.goFlow(tppAccount.accountNumber)} type="primary">资金流水</Button>

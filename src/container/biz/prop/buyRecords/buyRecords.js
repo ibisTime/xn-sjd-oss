@@ -32,7 +32,7 @@ class BuyRecords extends React.Component {
     }, {
       title: '购买人',
       field: 'userId',
-      render: (v, d) => d.userInfo ? `${d.userInfo.nickname} ${d.userInfo.mobile}` : ''
+      render: (v, d) => d.userInfo && d.userInfo.nickname ? `${d.userInfo.nickname} ${d.userInfo.mobile}` : `${d.userInfo.mobile}`
     }, {
       title: '购买时间',
       field: 'createDatetime',

@@ -46,6 +46,9 @@ class PersonOrders extends React.Component {
         return '';
       }
     }, {
+        title: '古树编号',
+        field: 'treeNumbers'
+    }, {
       title: '规格',
       field: 'productSpecsName'
     }, {
@@ -66,6 +69,14 @@ class PersonOrders extends React.Component {
     }, {
       title: '订单价格',
       field: 'amount',
+      amount: true
+    }, {
+      title: '抵扣人民币',
+      field: 'cnyDeductAmount',
+      amount: true
+    }, {
+      title: '积分抵扣金额',
+      field: 'jfDeductAmount',
       amount: true
     }, {
       title: '认养人',

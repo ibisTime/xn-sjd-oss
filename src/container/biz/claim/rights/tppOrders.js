@@ -58,7 +58,7 @@ class RightsTppOrders extends React.Component {
       search: true
     }, {
       title: '收取人昵称',
-      field: 'takerNickname'
+      render: (v, d) => d.takeUser ? d.takeUser.nickname : '-'
     }, {
       title: '收取时间',
       field: 'takeDatetime',

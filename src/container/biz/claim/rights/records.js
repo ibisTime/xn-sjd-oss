@@ -27,10 +27,10 @@ class RightsRecords extends React.Component {
   render() {
     const fields = [{
       title: '赠送人',
-      field: 'userId'
+      field: 'userName'
     }, {
       title: '被赠送人',
-      field: 'toUserId'
+      field: 'toUserName'
     }, {
       title: '赠送时间',
       field: 'createDatetime',

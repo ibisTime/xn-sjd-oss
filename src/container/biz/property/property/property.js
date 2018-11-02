@@ -47,9 +47,13 @@ class Property extends React.Component {
       title: '古树数量',
       field: 'treeQuantity'
     }, {
-      title: '古树市值',
-      field: 'treeValue',
-      render: (v, d) => v ? moneyFormat(v) : '0.00'
+        title: '最小古树市值',
+        field: 'minPrice',
+        amount: true
+    }, {
+      title: '最大古树市值',
+      field: 'maxPrice',
+      amount: true
     }, {
       title: '状态',
       field: 'status',

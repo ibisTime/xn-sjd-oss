@@ -33,7 +33,7 @@ class ConserveBinds extends React.Component {
     }, {
       title: '公司名称',
       field: 'name',
-      render: (v, d) => d.ownerUser ? d.ownerUser.company.name : ''
+      render: (v, d) => d.ownerUser.company ? d.ownerUser.company.name : ''
     }, {
       title: '负责人',
       field: 'charger',

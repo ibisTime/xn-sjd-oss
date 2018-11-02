@@ -63,7 +63,8 @@ class Products extends React.Component {
       field: 'name'
     }, {
       title: '产权方',
-      field: 'ownerId'
+      field: 'ownerId',
+      render: (v, d) => d.ownerInfo ? d.ownerInfo.mobile : ''
     }, {
       title: '状态',
       field: 'status',

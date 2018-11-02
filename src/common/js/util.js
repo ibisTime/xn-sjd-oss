@@ -666,25 +666,25 @@ export function judgeStatus(status) {
 
 // 根据当前url判断是哪种角色操作
 export function getKindByUrl() {
-  // 平台
-  if (location.origin === 'http://sjd.oss.hichengdai.com') {
-  // if (location.origin === 'http://localhost:3001') {
-    return 'P';
-  }
-  // 产权
-  if (location.origin === 'http://sjd.owner.hichengdai.com') {
-  // if (location.origin === 'http://localhost:3001') {
-    return 'O';
-  }
-  // 养护
-  if (location.origin === 'http://sjd.main.hichengdai.com') {
-  // if (location.origin === 'http://localhost:3001') {
-    return 'M';
-  }
-  // 代理
-  if (location.origin === 'http://sjd.agent.hichengdai.com') {
-  // if (location.origin === 'http://localhost:3001') {
-  // if (location.origin === 'http://47.99.147.67:2909') {
-    return 'A';
-  }
+    // 平台
+    if (location.origin === 'http://sjd.oss.hichengdai.com' || location.origin === 'http://oss.o2lin.com' || location.origin === 'http://47.99.147.67:2908') {
+        // if (location.origin === 'http://localhost:3001') {
+        return 'P';
+    }
+    // 产权
+    if (location.origin === 'http://sjd.owner.hichengdai.com' || location.origin === 'http://owner.o2lin.com' || location.origin === 'http://47.99.147.67:2908') {
+        // if (location.origin === 'http://localhost:3001') {
+        return 'O';
+    }
+    // 养护
+    if (location.origin === 'http://sjd.main.hichengdai.com' || location.origin === 'http://main.o2lin.com' || location.origin === 'http://47.99.147.67:2908') {
+        // if (location.origin === 'http://localhost:3001') {
+        return 'M';
+    }
+    // 代理
+    if (location.origin === 'http://sjd.agent.hichengdai.com' || location.origin === 'http://agent.o2lin.com' || location.origin === 'http://47.99.147.67:2909') {
+        // if (location.origin === 'http://localhost:3001') {
+        // if (location.origin === 'http://47.99.147.67:2909') {
+        return 'A';
+    }
 }

@@ -64,7 +64,7 @@ class RightsArticles extends React.Component {
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
           } else {
-            this.props.history.push(`/claim/rights/records/addedit?code=${keys[0]}&v=1`);
+            this.props.history.push(`/claim/rights/articles/addedit?code=${keys[0]}&v=1`);
           }
         }
       }, {

@@ -27,13 +27,22 @@ class ArticlesAddEdit extends DetailUtil {
       field: 'photo'
     }, {
       title: '收藏总数',
-      field: 'collectCount'
+      field: 'collectCount',
+      formatter: (v, d) => {
+         return d.collectCount ? d.collectCount : '0';
+      }
     }, {
       title: '点赞总数',
-      field: 'pointCount'
+      field: 'pointCount',
+      formatter: (v, d) => {
+          return d.pointCount ? d.pointCount : '0';
+      }
     }, {
       title: '阅读总数',
-      field: 'readCount'
+      field: 'readCount',
+      formatter: (v, d) => {
+          return d.readCount ? d.readCount : '0';
+      }
     }, {
       title: '状态',
       field: 'status',

@@ -34,7 +34,7 @@ class GiftOrders extends React.Component {
       amount: true
     }, {
       title: '认领人',
-      field: 'claimer'
+      field: 'claimerName'
     }, {
       title: '状态',
       field: 'status',

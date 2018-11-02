@@ -40,7 +40,13 @@ class TppOrdersAddEdit extends DetailUtil {
       valueName: 'dvalue'
     }, {
       title: '收取人昵称',
-      field: 'takerNickname'
+      field: 'takerNickname',
+        formatter: (v, d) => {
+        if(d.takeUser) {
+            return d.takeUser.nickname;
+        }
+        }
+      // render: (v, d) => d.takeUser ? d.takeUser.nickname : '-'
     }, {
       title: '收取时间',
       field: 'takeDatetime',

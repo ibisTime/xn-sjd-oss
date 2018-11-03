@@ -449,6 +449,11 @@ const ROUTES = [
     path: '/claim/rights/giftOrders',
     component: asyncComponent(() => import('container/biz/claim/rights/giftOrders'))
   },
+    // 业务管理 -- 认养管理 -- 认养权查询 -- 证书
+  {
+    path: '/claim/rights/certificate',
+    component: asyncComponent(() => import('container/biz/claim/rights/certificate'))
+  },
   // 业务管理 -- 认养管理 -- 认养权查询 -- 礼物订单 -- 详情
   {
     path: '/claim/rights/giftOrders/addedit',

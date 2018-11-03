@@ -207,7 +207,7 @@ class ProductEdit extends DetailUtil {
       hidden: this.state.direct !== '3',
       required: this.state.direct === '3'
     }, {
-        title: '认养时间',
+        title: '年限',
         field: 'startDatetime',
         type: 'date',
         rangedate: ['startDatetime', 'endDatetime'],

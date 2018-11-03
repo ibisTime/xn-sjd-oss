@@ -35,7 +35,8 @@ class ProductsAddEdit extends DetailUtil {
     }, {
       title: '备注',
       field: 'remark',
-      maxlength: 30
+      maxlength: 30,
+      readonly: false
     }] : [{
       title: '产权方',
       field: 'ownerId',

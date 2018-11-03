@@ -125,6 +125,16 @@ class Rights extends React.Component {
           } else {
             this.props.history.push(`/claim/rights/tppOrders?code=${keys[0]}`);
           }
+        },
+          // 证书
+        certificate: (keys, items) => {
+            if (!keys.length) {
+                showWarnMsg('请选择记录');
+            } else if (keys.length > 1) {
+                showWarnMsg('请选择一条记录');
+            } else {
+                this.props.history.push(`/claim/rights/certificate?code=${keys[0]}`);
+            }
         }
       }
     });

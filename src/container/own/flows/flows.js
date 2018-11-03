@@ -72,7 +72,8 @@ class OwnFlows extends React.Component {
       search: true
     }, {
       title: '关联单号',
-      field: 'refNo'
+      field: 'refNo',
+      search: true
     }];
     return this.props.buildList({
       fields,

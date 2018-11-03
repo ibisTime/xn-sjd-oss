@@ -10,7 +10,7 @@ import {
   setSearchData
 } from '@redux/curing/tasks';
 import { listWrapper } from 'common/js/build-list';
-import { getUserId, showWarnMsg } from 'common/js/util';
+import { getUserId, showWarnMsg, dateTimeFormat } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -40,6 +40,10 @@ class Tasks extends React.Component {
       type: 'select',
       key: 'tree_status',
       search: true
+    }, {
+        title: '认养时间',
+        field: 'updateDatetime',
+        render: (v, d) => d.updateDatetime ? dateTimeFormat(d.updateDatetime) : ''
     }];
     return this.props.buildList({
       fields,

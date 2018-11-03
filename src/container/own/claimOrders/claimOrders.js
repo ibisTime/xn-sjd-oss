@@ -25,7 +25,8 @@ class ClaimOrders extends React.Component {
   render() {
     const fields = [{
       title: '认养订单编号',
-      field: 'orderCode'
+      field: 'orderCode',
+      search: true
     }, {
       title: '树木编号',
       field: 'treeNumber'

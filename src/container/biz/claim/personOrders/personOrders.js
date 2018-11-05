@@ -67,15 +67,15 @@ class PersonOrders extends React.Component {
       title: '认养数量',
       field: 'quantity'
     }, {
-      title: '订单价格',
+      title: '实际支付金额',
       field: 'amount',
       amount: true
     }, {
-      title: '抵扣人民币',
+      title: '抵扣的人民币',
       field: 'cnyDeductAmount',
       amount: true
     }, {
-      title: '积分抵扣金额',
+      title: '使用积分数量',
       field: 'jfDeductAmount',
       amount: true
     }, {

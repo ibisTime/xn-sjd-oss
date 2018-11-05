@@ -11,10 +11,7 @@ class PreSaleProductEdit extends DetailUtil {
     this.code = getQueryString('code', this.props.location.search);
     this.view = !!getQueryString('v', this.props.location.search);
     this.state = {
-      ...this.state,
-      direct: '',
-      directLevel: false,
-      directUser: false
+      ...this.state
     };
   }
   // componentDidMount() {
@@ -32,10 +29,16 @@ class PreSaleProductEdit extends DetailUtil {
       handler: (params) => {
         this.doFetching();
         params.ownerId = getUserId();
-        fetch(629400, params).then(() => {
-          showSucMsg('操作成功');
-          this.cancelFetching();
-        }).catch(this.cancelFetching);
+          let url;
+          if(!this.code) {
+            url = 629400;
+          }else {
+            url = 629401;
+          }
+          fetch(url, params).then(() => {
+              showSucMsg('操作成功');
+              this.cancelFetching();
+          }).catch(this.cancelFetching);
       }
     // }, {
     //   title: '重置',
@@ -46,41 +49,7 @@ class PreSaleProductEdit extends DetailUtil {
   }
   render() {
     let fields = [{
-      title: '产品分类',
-      field: 'parentCategoryCode',
-      type: 'select',
-      listCode: '629007',
-      params: {
-        status: '1',
-        level: '1',
-        orderColumn: 'order_no',
-        orderDir: 'asc'
-      },
-      keyName: 'code',
-      valueName: 'name',
-      onChange: (v) => {
-        this.setState({
-          selectData: { ...this.state.selectData, categoryCode: [] }
-        });
-        this.props.form.resetFields(['categoryCode']);
-        fetch(629007, {
-          parentCode: v,
-          status: '1',
-          level: '2',
-          orderColumn: 'order_no',
-          orderDir: 'asc'
-        }).then((data) => {
-          this.setState({
-            selectData: {
-              ...this.state.selectData,
-              categoryCode: data
-            }
-          });
-        }).catch(() => {});
-      },
-      required: true
-    }, {
-      title: '小类',
+      title: '产品类型',
       field: 'categoryCode',
       type: 'select',
       listCode: '629007',
@@ -124,6 +93,37 @@ class PreSaleProductEdit extends DetailUtil {
       required: true,
       maxlength: 30
     }, {
+        title: '经度',
+        field: 'longitude',
+        required: true
+    }, {
+        title: '纬度',
+        field: 'latitude',
+        required: true
+    }, {
+        title: '单棵树产量',
+        field: 'singleOutput',
+        required: true
+    }, {
+        title: '包装单位',
+        field: 'packUnit',
+        required: true
+    }, {
+        title: '包装重量',
+        field: 'packWeight',
+        required: true
+    }, {
+        title: '认养时间',
+        field: 'adoptDatetime',
+        type: 'date',
+        rangedate: ['adoptStartDatetime', 'adoptEndDatetime'],
+        required: true
+    }, {
+        title: '预计收获时间',
+        field: 'harvestDatetime',
+        type: 'date',
+        required: true
+    }, {
       title: '列表图片',
       field: 'listPic',
       type: 'img',
@@ -135,27 +135,8 @@ class PreSaleProductEdit extends DetailUtil {
       type: 'img',
       required: true
     }, {
-      title: '募集时间',
-      field: 'raiseStartDatetime',
-      type: 'date',
-      rangedate: ['raiseStartDatetime', 'raiseEndDatetime'],
-      hidden: this.state.direct !== '3',
-      required: this.state.direct === '3'
-    }, {
-        title: '年限',
-        field: 'startDatetime',
-        type: 'date',
-        rangedate: ['startDatetime', 'endDatetime'],
-        hidden: this.state.direct !== '3',
-        required: this.state.direct === '3'
-    }, {
-      title: '募集总数',
-      field: 'raiseCount',
-      hidden: this.state.direct !== '4',
-      required: this.state.direct === '4'
-    }, {
-      title: '产品规格列表',
-      field: 'productSpecsList',
+      title: '价格列表',
+      field: 'presellSpecsList',
       type: 'o2m',
       options: {
         add: true,
@@ -166,18 +147,17 @@ class PreSaleProductEdit extends DetailUtil {
           field: 'name',
           required: true
         }, {
-          title: '认养价格',
+          title: '包装数量',
+          field: 'packCount',
+          required: true
+        }, {
+          title: '价格',
           field: 'price',
           amount: true,
           required: true
         }, {
-          title: '认养时间',
-          field: 'startDatetime1',
-          type: 'date',
-          rangedate: ['startDatetime', 'endDatetime'],
-          hidden: this.state.direct === '3',
-          required: this.state.direct !== '3',
-          noVisible: this.state.direct === '3'
+          title: '每小时涨幅',
+          field: 'increase'
         }]
       },
       required: true

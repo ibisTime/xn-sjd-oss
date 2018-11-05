@@ -249,6 +249,16 @@ const ROUTES = [
     path: '/property/products',
     component: asyncComponent(() => import('container/biz/property/products/products'))
   },
+    // 业务管理 -- 产权方管理 -- 预售产品管理
+  {
+    path: '/property/preSaleProducts',
+    component: asyncComponent(() => import('container/biz/property/preSaleProducts/preSaleProducts'))
+  },
+  // 业务管理 -- 产权方管理 -- 预售产品管理 -- 审核、详情
+  {
+      path: '/property/preSaleProducts/addedit',
+      component: asyncComponent(() => import('container/biz/property/preSaleProducts/preSaleProducts-addedit'))
+  },
   // 业务管理 -- 产权方管理 -- 产品管理 -- 审核、详情
   {
     path: '/property/products/addedit',
@@ -589,6 +599,11 @@ const ROUTES = [
     path: '/own/products/addedit',
     component: asyncComponent(() => import('container/own/productEdit/productEdit'))
   },
+    // 产权端管理 -- 业务管理 -- 产品管理 -- 编辑/详情
+  {
+    path: '/own/preSaleProducts/addedit',
+    component: asyncComponent(() => import('container/own/preSaleProductEdit/preSaleProductEdit'))
+  },
   // 产权端管理 -- 业务管理 -- 产品管理
   {
     path: '/own/trees',
@@ -608,6 +623,11 @@ const ROUTES = [
   {
     path: '/own/preSaleProductEdit',
     component: asyncComponent(() => import('container/own/preSaleProductEdit/preSaleProductEdit'))
+  },
+    // 产权端管理 -- 业务管理 -- 预售产品列表
+  {
+    path: '/own/preSaleProducts',
+    component: asyncComponent(() => import('container/own/preSaleProducts/preSaleProducts'))
   },
   // 产权端管理 -- 业务管理 -- 认养权管理
   {

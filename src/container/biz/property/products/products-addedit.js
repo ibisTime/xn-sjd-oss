@@ -289,9 +289,28 @@ class ProductsAddEdit extends DetailUtil {
                 return params;
             }
         };
-        if (!this.code) {
-            this.addBtns(config);
-        }
+          if (this.check) {
+            config.buttons = [{
+              title: '通过',
+              check: true,
+              type: 'primary',
+              handler: (params) => {
+                this.checkProduct(1, params);
+              }
+            }, {
+              title: '不通过',
+              check: true,
+              type: 'primary',
+              handler: (params) => {
+                this.checkProduct(0, params);
+              }
+            }, {
+              title: '返回',
+              handler: (params) => {
+                this.props.history.go(-1);
+              }
+            }];
+          }
         return this.buildDetail(config);
     }
   // render() {

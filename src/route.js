@@ -604,6 +604,11 @@ const ROUTES = [
     path: '/own/productEdit',
     component: asyncComponent(() => import('container/own/productEdit/productEdit'))
   },
+    // 产权端管理 -- 业务管理 -- 预售产品编辑
+  {
+    path: '/own/preSaleProductEdit',
+    component: asyncComponent(() => import('container/own/preSaleProductEdit/preSaleProductEdit'))
+  },
   // 产权端管理 -- 业务管理 -- 认养权管理
   {
     path: '/own/claimOrders',

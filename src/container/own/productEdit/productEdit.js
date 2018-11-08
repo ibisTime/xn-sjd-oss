@@ -59,7 +59,8 @@ class ProductEdit extends DetailUtil {
         status: '1',
         level: '1',
         orderColumn: 'order_no',
-        orderDir: 'asc'
+        orderDir: 'asc',
+        type: '0'
       },
       keyName: 'code',
       valueName: 'name',

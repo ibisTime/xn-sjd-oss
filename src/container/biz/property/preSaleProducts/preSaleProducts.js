@@ -67,7 +67,7 @@ class PreSaleProducts extends React.Component {
         field: 'categoryCode',
         type: 'select',
         listCode: '629007',
-        params: { status: '1', level: '2' },
+        params: { status: '1' },
         keyName: 'code',
         valueName: 'name',
         required: true,
@@ -76,33 +76,7 @@ class PreSaleProducts extends React.Component {
         title: '状态',
         field: 'status',
         type: 'select',
-        data: [{
-            dkey: '0',
-            dvalue: '草稿'
-        }, {
-            dkey: '1',
-            dvalue: '已提交待审核'
-        }, {
-            dkey: '2',
-            dvalue: '审核不通过'
-        }, {
-            dkey: '3',
-            dvalue: '审核通过待上架'
-        }, {
-            dkey: '4',
-            dvalue: '已上架待认养'
-        }, {
-            dkey: '5',
-            dvalue: '已锁定'
-        }, {
-            dkey: '6',
-            dvalue: '已认养'
-        }, {
-            dkey: '7',
-            dvalue: '已下架'
-        }],
-        keyName: 'dkey',
-        valueName: 'dvalue',
+        key: 'presell_product_status',
         search: true
     }, {
         title: '已售',
@@ -167,6 +141,7 @@ class PreSaleProducts extends React.Component {
           setModalVisible={this.setModalVisible}
           biz={this.state.biz}
           code={this.state.code}
+          hideLoc={true}
           onOk={() => {
             that.setModalVisible(false);
             that.props.getPageData();

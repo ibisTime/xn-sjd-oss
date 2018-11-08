@@ -55,7 +55,7 @@ class PreProducts extends React.Component {
         field: 'categoryCode',
         type: 'select',
         listCode: '629007',
-        params: { status: '1', level: '2' },
+        params: { status: '1' },
         keyName: 'code',
         valueName: 'name',
         required: true,
@@ -64,33 +64,7 @@ class PreProducts extends React.Component {
       title: '状态',
       field: 'status',
       type: 'select',
-      data: [{
-        dkey: '0',
-        dvalue: '草稿'
-      }, {
-        dkey: '1',
-        dvalue: '已提交待审核'
-      }, {
-        dkey: '2',
-        dvalue: '审核不通过'
-      }, {
-        dkey: '3',
-        dvalue: '审核通过待上架'
-      }, {
-        dkey: '4',
-        dvalue: '已上架待认养'
-      }, {
-        dkey: '5',
-        dvalue: '已锁定'
-      }, {
-        dkey: '6',
-        dvalue: '已认养'
-      }, {
-        dkey: '7',
-        dvalue: '已下架'
-      }],
-      keyName: 'dkey',
-      valueName: 'dvalue',
+      key: 'presell_product_status',
       search: true
     }, {
         title: '已售',
@@ -106,14 +80,13 @@ class PreProducts extends React.Component {
         ownerId: getUserId()
       },
       btnEvent: {
-        // 0草稿/1已提交待审核/2审核不通过/3审核通过待上架/4已上架待认养/5已锁定/6已认养/7已下架
         // 编辑
         edit: (keys, items) => {
           if (!keys || !keys.length) {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '0' && items[0].status !== '2' && items[0].status !== '7') {
+          } else if (items[0].status !== '0' && items[0].status !== '2' && items[0].status !== '5') {
             showWarnMsg('该记录不可编辑');
           } else {
             this.props.history.push(`/own/preSaleProducts/addedit?code=${keys[0]}`);
@@ -125,7 +98,7 @@ class PreProducts extends React.Component {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '0' && items[0].status !== '2' && items[0].status !== '7') {
+          } else if (items[0].status !== '0' && items[0].status !== '2' && items[0].status !== '5') {
             showWarnMsg('该记录不是待上架状态');
           } else {
             console.log(items[0].orderNo);

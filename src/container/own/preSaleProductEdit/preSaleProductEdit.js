@@ -49,7 +49,42 @@ class PreSaleProductEdit extends DetailUtil {
   }
   render() {
     let fields = [{
-      title: '产品类型',
+      title: '产品大类',
+      field: 'parentCategoryCode',
+      type: 'select',
+      listCode: '629007',
+      params: {
+        status: '1',
+        level: '2',
+        orderColumn: 'order_no',
+        orderDir: 'asc',
+        type: '1'
+      },
+      keyName: 'code',
+      valueName: 'name',
+      onChange: (v) => {
+        this.setState({
+          selectData: { ...this.state.selectData, categoryCode: [] }
+        });
+        this.props.form.resetFields(['categoryCode']);
+        fetch(629007, {
+          parentCode: v,
+          status: '1',
+          // level: '2',
+          orderColumn: 'order_no',
+          orderDir: 'asc'
+        }).then((data) => {
+          this.setState({
+            selectData: {
+              ...this.state.selectData,
+              categoryCode: data
+            }
+          });
+        }).catch(() => {});
+      },
+      required: true
+    }, {
+      title: '产品小类',
       field: 'categoryCode',
       type: 'select',
       listCode: '629007',

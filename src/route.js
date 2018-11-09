@@ -499,6 +499,26 @@ const ROUTES = [
     path: '/claim/rights/tppOrders/addedit',
     component: asyncComponent(() => import('container/biz/claim/rights/tppOrders-addedit'))
   },
+  // 业务管理 -- 预售管理 -- 预售订单管理
+  {
+    path: '/pre/preOrder',
+    component: asyncComponent(() => import('container/biz/pre/preOrder/preOrder'))
+  },
+  // 业务管理 -- 预售管理 -- 预售订单管理 -- 详情
+  {
+    path: '/pre/preOrder/addedit',
+    component: asyncComponent(() => import('container/biz/pre/preOrder/preOrder-addedit'))
+  },
+  // 业务管理 -- 预售管理 -- 寄售订单管理
+  {
+    path: '/pre/conOrder',
+    component: asyncComponent(() => import('container/biz/pre/conOrder/conOrder'))
+  },
+  // 业务管理 -- 预售管理 -- 寄售订单管理 -- 详情
+  {
+    path: '/pre/conOrder/addedit',
+    component: asyncComponent(() => import('container/biz/pre/conOrder/conOrder-addedit'))
+  },
   // 业务管理 -- 情感频道
   {
     path: '/emotion/articles',

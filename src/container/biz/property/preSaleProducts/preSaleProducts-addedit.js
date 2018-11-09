@@ -83,7 +83,7 @@ class ProductsAddEdit extends DetailUtil {
             field: 'latitude',
             required: true
         }, {
-            title: '单棵树产量',
+            title: '单棵树产量（斤）',
             field: 'singleOutput',
             required: true
         }, {
@@ -91,11 +91,7 @@ class ProductsAddEdit extends DetailUtil {
             field: 'packUnit',
             required: true
         }, {
-            title: '包装重量',
-            field: 'packWeight',
-            required: true
-        }, {
-            title: '认养时间',
+            title: '预售时间',
             field: 'adoptDatetime',
             type: 'date',
             rangedate: ['adoptStartDatetime', 'adoptEndDatetime'],
@@ -103,6 +99,11 @@ class ProductsAddEdit extends DetailUtil {
         }, {
             title: '预计收获时间',
             field: 'harvestDatetime',
+            type: 'date',
+            required: true
+        }, {
+            title: '预计发货时间',
+            field: 'deliverDatetime',
             type: 'date',
             required: true
         }, {
@@ -129,7 +130,7 @@ class ProductsAddEdit extends DetailUtil {
                     field: 'name',
                     required: true
                 }, {
-                    title: '包装数量',
+                    title: '包装重量（斤）',
                     field: 'packCount',
                     required: true
                 }, {

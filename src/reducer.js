@@ -63,6 +63,9 @@ import { claimGiftOrders } from './redux/biz/claim/giftOrders';
 import { claimRightsRecords } from './redux/biz/claim/records';
 import { claimRightsArticles } from './redux/biz/claim/articles';
 import { claimRightsTppOrders } from './redux/biz/claim/tppOrders';
+// 业务管理-预售管理
+import { prePreOrder } from './redux/biz/pre/preOrder';
+import { preConOrder } from './redux/biz/pre/conOrder';
 // 业务管理--情感频道
 import { emotionArticles } from './redux/biz/emotion/articles';
 // 业务管理--道具管理
@@ -163,6 +166,8 @@ export default combineReducers({
   claimRightsRecords,
   claimRightsArticles,
   claimRightsTppOrders,
+  prePreOrder,
+  preConOrder,
   emotionArticles,
   propProps,
   propBuyRecords,

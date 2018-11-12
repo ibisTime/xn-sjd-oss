@@ -85,6 +85,8 @@ import { agentFlows } from './redux/agent/flows';
 import { ownProducts } from './redux/own/products';
 import { ownClaimOrders } from './redux/own/claimOrders';
 import { ownTrees } from './redux/own/trees';
+import { ownAsset } from './redux/own/asset';
+import { ownWuliudan } from './redux/own/wuliudan';
 // 产权端--资金管理
 import { ownAccounts } from './redux/own/accounts';
 import { ownFlows } from './redux/own/flows';
@@ -186,6 +188,8 @@ export default combineReducers({
   ownFlows,
   ownWithdraw,
   ownNotices,
+  ownAsset,
+  ownWuliudan,
   curingTasks,
   curingTasksRecords,
   curingProjects,

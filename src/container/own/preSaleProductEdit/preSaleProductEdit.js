@@ -113,6 +113,11 @@ class PreSaleProductEdit extends DetailUtil {
       required: true,
       maxlength: 30
     }, {
+      title: '年限',
+      field: 'adoptYear',
+      required: true,
+      number: true
+    }, {
       title: '属地',
       field: 'originPlace',
       required: true,

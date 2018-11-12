@@ -664,6 +664,21 @@ const ROUTES = [
     path: '/own/claimBind',
     component: asyncComponent(() => import('container/own/claimBind/claimBind'))
   },
+  // 产权端管理 -- 业务管理 -- 资产管理
+  {
+    path: '/own/asset',
+    component: asyncComponent(() => import('container/own/asset/asset'))
+  },
+  // 产权端管理 -- 业务管理 -- 资产管理
+  {
+    path: '/own/wuliudan',
+    component: asyncComponent(() => import('container/own/asset/wuliudan'))
+  },
+  // 产权端管理 -- 业务管理 -- 资产管理
+  {
+    path: '/own/asset/wuliudan/fahuo',
+    component: asyncComponent(() => import('container/own/asset/fahuo-addedit'))
+  },
   // 产权端管理 -- 资金管理 -- 我的账户
   {
     path: '/own/accounts',

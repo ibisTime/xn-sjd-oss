@@ -75,6 +75,9 @@ class TypesAddEdit extends DetailUtil {
       },
       keyName: 'code',
       valueName: 'name',
+      formatter: (v, d) => {
+        return d.parentCode;
+      },
       onChange: (v) => {
         if (v && this.state.isTop) {
           this.setState({ isTop: false });
@@ -86,7 +89,7 @@ class TypesAddEdit extends DetailUtil {
     }, {
       // 预售
       title: '上级编号',
-      field: 'parentCode12',
+      field: 'parentCode',
       type: 'select',
       listCode: '629007',
       params: {
@@ -98,9 +101,9 @@ class TypesAddEdit extends DetailUtil {
       },
       keyName: 'code',
       valueName: 'name',
-      formatter: (v, d) => {
-        return d.parentCode;
-      },
+      // formatter: (v, d) => {
+      //   return d.parentCode;
+      // },
       hidden: !this.view
     }, {
       title: '图片',

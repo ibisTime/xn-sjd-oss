@@ -88,7 +88,7 @@ class PreSaleProductEdit extends DetailUtil {
       field: 'categoryCode',
       type: 'select',
       listCode: '629007',
-      params: { status: '1', level: '2' },
+      params: { status: '1', level: '3', type: '1' },
       keyName: 'code',
       valueName: 'name',
       required: true
@@ -132,14 +132,6 @@ class PreSaleProductEdit extends DetailUtil {
       field: 'town',
       required: true,
       maxlength: 30
-    }, {
-        title: '经度',
-        field: 'longitude',
-        required: true
-    }, {
-        title: '纬度',
-        field: 'latitude',
-        required: true
     }, {
         title: '单棵树产量（斤）',
         field: 'singleOutput',
@@ -218,14 +210,6 @@ class PreSaleProductEdit extends DetailUtil {
         }, {
           title: '树龄',
           field: 'age',
-          required: true
-        }, {
-          title: '经度',
-          field: 'longitude',
-          required: true
-        }, {
-          title: '纬度',
-          field: 'latitude',
           required: true
         }, {
           title: '实景图',

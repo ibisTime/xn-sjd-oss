@@ -75,14 +75,6 @@ class ProductsAddEdit extends DetailUtil {
             required: true,
             maxlength: 30
         }, {
-            title: '经度',
-            field: 'longitude',
-            required: true
-        }, {
-            title: '纬度',
-            field: 'latitude',
-            required: true
-        }, {
             title: '单棵树产量（斤）',
             field: 'singleOutput',
             required: true
@@ -160,14 +152,6 @@ class ProductsAddEdit extends DetailUtil {
                 }, {
                     title: '树龄',
                     field: 'age',
-                    required: true
-                }, {
-                    title: '经度',
-                    field: 'longitude',
-                    required: true
-                }, {
-                    title: '纬度',
-                    field: 'latitude',
                     required: true
                 }, {
                     title: '实景图',

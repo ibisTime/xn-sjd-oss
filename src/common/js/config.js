@@ -1,6 +1,7 @@
 export const SYSTEM_CODE = 'CD-SJD0000025';
 // 七牛上传地址
-export const UPLOAD_URL = 'http://up-z2.qiniup.com';
+// export const UPLOAD_URL = 'http://up-z2.qiniup.com';
+export const UPLOAD_URL = 'http://up-z0.qiniup.com';
 // 七牛图片前缀
 export const PIC_PREFIX = 'http://image.tree.hichengdai.com/';
 // export const PIC_PREFIX = 'http://image.o2lin.com//';

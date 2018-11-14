@@ -25,7 +25,7 @@ class TaskAddEdit extends DetailUtil {
       value: this.treeNumber
     }, {
       title: '养护项目',
-      field: 'projectName',
+      field: 'projectCode',
       type: 'select',
       listCode: 629627,
       params: {

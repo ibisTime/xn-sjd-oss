@@ -74,7 +74,7 @@ class ConserveFlows extends React.Component {
       fields,
       pageCode: 802320,
       searchParams: {
-        accountType: 'P'
+        accountType: 'M'
       }
     });
   }

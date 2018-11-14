@@ -15,6 +15,7 @@ import { platformDistributionRules } from './redux/finance/platform/distribution
 import { platformGradationRules } from './redux/finance/platform/gradationRules';
 import { platformIntegralRules } from './redux/finance/platform/integralRules';
 import { platformPayRules } from './redux/finance/platform/payRules';
+import { platformMemberLevel } from './redux/finance/platform/memberLevel';
 import { platformTppRules } from './redux/finance/platform/tppRules';
 import { platformAccount } from './redux/finance/platform/account';
 import { platformAccountFlows } from './redux/finance/platform/accountFlows';
@@ -36,6 +37,10 @@ import { propertyProducts } from './redux/biz/property/products';
 import { propertyTrees } from './redux/biz/property/trees';
 import { propertyAccounts } from './redux/biz/property/accounts';
 import { propertyFlows } from './redux/biz/property/flows';
+// 业务管理-商家管理
+import { sellerSeller } from './redux/biz/seller/seller';
+import { sellerTypes } from './redux/biz/seller/types';
+import { bizSellerProducts } from './redux/biz/seller/products';
 // 业务管理--养护方管理
 import { conserveConserve } from './redux/biz/conserve/conserve';
 import { conserveBinds } from './redux/biz/conserve/conserve-binds';
@@ -111,6 +116,8 @@ import { proxyFlows } from './redux/proxy/flows';
 import { proxySalesmen } from './redux/proxy/salesmen';
 // 业务员--我的用户
 import { salemanUsers } from './redux/saleman/users';
+// 商家端--业务管理
+import { sellerProducts } from './redux/seller/products';
 
 export default combineReducers({
   user,
@@ -126,6 +133,7 @@ export default combineReducers({
   platformGradationRules,
   platformIntegralRules,
   platformPayRules,
+  platformMemberLevel,
   platformTppRules,
   platformAccount,
   platformAccountFlows,
@@ -144,6 +152,9 @@ export default combineReducers({
   propertyTrees,
   propertyAccounts,
   propertyFlows,
+  sellerSeller,
+  sellerTypes,
+  bizSellerProducts,
   conserveConserve,
   conserveBinds,
   conserveConserveAccounts,
@@ -202,5 +213,6 @@ export default combineReducers({
   proxyUnSettled,
   proxyFlows,
   proxySalesmen,
-  salemanUsers
+  salemanUsers,
+  sellerProducts
 });

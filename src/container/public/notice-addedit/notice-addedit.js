@@ -50,6 +50,11 @@ class NoticeAddEdit extends DetailUtil {
       normalArea: true,
       required: true
     }, {
+      title: '发布时间',
+      field: 'publishDatetime',
+      type: 'datetime',
+      required: true
+    }, {
       title: '备注',
       field: 'remark',
       maxlength: 30

@@ -44,8 +44,7 @@ class Aboutus extends DetailUtil {
       field: 'bussinessLicense',
       _keys: ['company', 'bussinessLicense'],
       type: 'img',
-      single: true,
-      readonly: true
+      single: true
     }, {
       title: '组织机构代码',
       field: 'organizationCode',

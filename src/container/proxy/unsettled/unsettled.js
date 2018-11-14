@@ -33,8 +33,7 @@ class UnSettled extends React.Component {
       title: '状态',
       field: 'status',
       type: 'select',
-      key: 'settle_status',
-      search: true
+      key: 'settle_status'
     }, {
       title: '下单时间',
       field: 'createDatetime',

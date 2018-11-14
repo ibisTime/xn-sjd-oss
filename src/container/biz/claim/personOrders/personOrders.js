@@ -67,7 +67,7 @@ class PersonOrders extends React.Component {
       title: '认养数量',
       field: 'quantity'
     }, {
-      title: '实际支付金额',
+      title: '订单价格',
       field: 'amount',
       amount: true
     }, {
@@ -87,6 +87,9 @@ class PersonOrders extends React.Component {
       type: 'select',
       key: 'adopt_order_status',
       search: true
+    }, {
+      title: '备注',
+      field: 'remark'
     }, {
       title: '下单时间',
       field: 'applyDatetime',

@@ -189,7 +189,10 @@ class PreSaleProductEdit extends DetailUtil {
           amount: true,
           required: true
         }, {
-          title: '每小时涨幅',
+          title: '间隔(小时)',
+          field: 'intervalHours'
+        }, {
+          title: '每小时涨幅(%)',
           field: 'increase'
         }]
       },

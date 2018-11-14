@@ -115,6 +115,15 @@ const ROUTES = [
     path: '/platform/payRules',
     component: asyncComponent(() => import('container/finance/platform/payRules/payRules'))
   },
+  // 财务管理 -- 平台账户 -- 会员等级设置
+  {
+    path: '/platform/memberLevel',
+    component: asyncComponent(() => import('container/finance/platform/memberLevel/memberLevel'))
+  },
+  {
+    path: '/platform/memberLevel/addedit',
+    component: asyncComponent(() => import('container/security/sysParam-addedit/sysParam-addedit'))
+  },
   // 财务管理 -- 平台账户 -- 积分规则 -- 详情
   {
     path: '/platform/integralRules/addedit',
@@ -293,6 +302,36 @@ const ROUTES = [
   {
     path: '/property/flows',
     component: asyncComponent(() => import('container/biz/property/flows/flows'))
+  },
+  // 业务管理 -- 商家管理 -- 商家管理
+  {
+    path: '/seller/seller',
+    component: asyncComponent(() => import('container/biz/seller/seller'))
+  },
+  // 业务管理 -- 商家管理 -- 商家管理 -- 待申请
+  {
+    path: '/seller/seller/addedit',
+    component: asyncComponent(() => import('container/biz/seller/seller-addedit'))
+  },
+  // 业务管理 -- 商家管理 -- 商品分类管理
+  {
+    path: '/seller/types',
+    component: asyncComponent(() => import('container/biz/seller/types/types'))
+  },
+  // 业务管理 -- 商家管理 -- 商品分类管理 -- 新增
+  {
+    path: '/seller/types/addedit',
+    component: asyncComponent(() => import('container/biz/seller/types/types-addedit'))
+  },
+  // 业务管理 -- 商家管理 -- 商品管理
+  {
+    path: '/seller/biz-products',
+    component: asyncComponent(() => import('container/biz/seller/products/products'))
+  },
+  // 业务管理 -- 商家管理 -- 商品管理
+  {
+    path: '/seller/biz-products/addedit',
+    component: asyncComponent(() => import('container/biz/seller/productEdit/productEdit'))
   },
   // 业务管理 -- 养护方管理 -- 养护方管理
   {
@@ -923,6 +962,21 @@ const ROUTES = [
   {
     path: '/saleman/notices',
     component: asyncComponent(() => import('container/own/notices/notices'))
+  },
+  // 商家端 -- 业务管理 -- 产品列表
+  {
+    path: '/seller/products',
+    component: asyncComponent(() => import('container/seller/products/products'))
+  },
+  // 商家端 -- 业务管理 -- 产品发布
+  {
+    path: '/seller/productEdit',
+    component: asyncComponent(() => import('container/seller/productEdit/productEdit'))
+  },
+  // 商家端 -- 业务管理 -- 产品发布
+  {
+    path: '/seller/products/addedit',
+    component: asyncComponent(() => import('container/seller/productEdit/productEdit'))
   }
 ];
 

@@ -61,6 +61,7 @@ class ConserveAddEdit extends DetailUtil {
       _keys: ['company', 'description'],
       type: 'textarea',
       normalArea: true,
+      maxlength: 200,
       required: true
     }, {
       title: '营业执照',

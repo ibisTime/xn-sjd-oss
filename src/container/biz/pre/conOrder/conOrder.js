@@ -58,11 +58,20 @@ class ConOrder extends React.Component {
       title: '下单人',
       field: 'applyUserName'
     }, {
+      title: '转让类型',
+      field: 'presellType',
+      type: 'select',
+      key: 'presell_type',
+      search: true
+    }, {
       title: '状态',
       field: 'status',
       type: 'select',
       key: 'presell_order_status',
       search: true
+    }, {
+      title: '备注',
+      field: 'remark'
     }, {
       title: '下单时间',
       field: 'applyDatetime',

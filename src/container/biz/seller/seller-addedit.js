@@ -5,7 +5,7 @@ import DetailUtil from 'common/js/build-detail';
 import fetch from 'common/js/fetch';
 
 @Form.create()
-class PropertyAddEdit extends DetailUtil {
+class SellerAddedit extends DetailUtil {
   constructor(props) {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
@@ -26,7 +26,7 @@ class PropertyAddEdit extends DetailUtil {
   render() {
     let fields = [{
       field: 'kind',
-      value: 'O',
+      value: 'B',
       hidden: true
     }, {
       title: '手机号',
@@ -34,10 +34,9 @@ class PropertyAddEdit extends DetailUtil {
       required: true,
       mobile: true
     }, {
-      title: '公司/组织名称',
+      title: '店铺名称',
       field: 'companyName',
       _keys: ['company', 'name'],
-      placeholder: '若是个人请直接填写姓名',
       required: true
     }, {
       title: '负责人',
@@ -122,4 +121,4 @@ class PropertyAddEdit extends DetailUtil {
   }
 }
 
-export default PropertyAddEdit;
+export default SellerAddedit;

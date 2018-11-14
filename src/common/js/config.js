@@ -3,8 +3,8 @@ export const SYSTEM_CODE = 'CD-SJD0000025';
 // export const UPLOAD_URL = 'http://up-z2.qiniup.com';
 export const UPLOAD_URL = 'http://up-z0.qiniup.com';
 // 七牛图片前缀
-export const PIC_PREFIX = 'http://image.tree.hichengdai.com/';
-// export const PIC_PREFIX = 'http://image.o2lin.com//';
+// export const PIC_PREFIX = 'http://image.tree.hichengdai.com/';
+export const PIC_PREFIX = 'http://image.o2lin.com/';
 export const PIC_BASEURL_L = '?imageMogr2/auto-orient/thumbnail/!1000x1000r';
 
 // 系统根菜单编号

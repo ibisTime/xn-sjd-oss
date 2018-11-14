@@ -64,6 +64,9 @@ class PreOrder extends React.Component {
       key: 'presell_order_status',
       search: true
     }, {
+      title: '备注',
+      field: 'remark'
+    }, {
       title: '下单时间',
       field: 'applyDatetime',
       type: 'datetime'

@@ -44,7 +44,7 @@ class Tasks extends React.Component {
       valueName: '{{name.DATA}}-{{mobile.DATA}}'
     }, {
       title: '养护时间',
-      field: 'createDatetime',
+      field: 'updateDatetime',
       type: 'datetime'
     }];
     return this.props.buildList({

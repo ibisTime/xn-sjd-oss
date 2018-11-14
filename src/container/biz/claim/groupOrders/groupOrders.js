@@ -68,6 +68,14 @@ class GroupOrders extends React.Component {
       field: 'amount',
       amount: true
     }, {
+      title: '抵扣的人民币',
+      field: 'cnyDeductAmount',
+      amount: true
+    }, {
+      title: '使用积分数量',
+      field: 'jfDeductAmount',
+      amount: true
+    }, {
       title: '认养人',
       field: 'applyUserName'
     }, {
@@ -76,6 +84,9 @@ class GroupOrders extends React.Component {
       type: 'select',
       key: 'adopt_order_status',
       search: true
+    }, {
+      title: '备注',
+      field: 'remark'
     }, {
       title: '下单时间',
       field: 'applyDatetime',

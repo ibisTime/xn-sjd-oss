@@ -68,19 +68,13 @@ class Notice extends React.Component {
       title: '状态',
       field: 'status',
       type: 'select',
-      data: [{
-        dkey: '0',
-        dvalue: '待发布'
-      }, {
-        dkey: '1',
-        dvalue: '已发布'
-      }, {
-        dkey: '2',
-        dvalue: '已撤回'
-      }],
-      keyName: 'dkey',
-      valueName: 'dvalue',
+      key: 'notice_status',
       search: true
+    }, {
+      title: '发布时间',
+      field: 'publishDatetime',
+      type: 'datetime',
+      required: true
     }, {
       title: '最新修改人',
       field: 'updaterName'

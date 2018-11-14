@@ -94,7 +94,7 @@ class ProductsAddEdit extends DetailUtil {
             required: true,
             maxlength: 30
         }, {
-            title: '属地',
+            title: '古树产地',
             field: 'originPlace',
             required: true,
             maxlength: 30

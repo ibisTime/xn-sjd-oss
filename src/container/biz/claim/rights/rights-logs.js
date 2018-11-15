@@ -10,7 +10,7 @@ import {
   setSearchData
 } from '@redux/biz/claim/rights-logs';
 import { listWrapper } from 'common/js/build-list';
-import { dateTimeFormat } from 'common/js/util';
+import { dateTimeFormat, getQueryString } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -20,6 +20,10 @@ import { dateTimeFormat } from 'common/js/util';
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
 class RightsLogs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.code = getQueryString('code', this.props.location.search);
+  }
   render() {
     const fields = [{
       title: '操作人',
@@ -43,6 +47,9 @@ class RightsLogs extends React.Component {
       fields,
       rowKey: 'id',
       pageCode: 629305,
+      searchParams: {
+        adoptTreeCode: this.code
+      },
       buttons: [{
         name: '返回',
         code: 'back',

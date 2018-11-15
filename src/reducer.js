@@ -41,6 +41,8 @@ import { propertyFlows } from './redux/biz/property/flows';
 import { sellerSeller } from './redux/biz/seller/seller';
 import { sellerTypes } from './redux/biz/seller/types';
 import { bizSellerProducts } from './redux/biz/seller/products';
+import { bizSellerOrder } from './redux/biz/seller/order';
+import { bizSellerOrderSingle } from './redux/biz/seller/order-single';
 // 业务管理--养护方管理
 import { conserveConserve } from './redux/biz/conserve/conserve';
 import { conserveBinds } from './redux/biz/conserve/conserve-binds';
@@ -118,6 +120,7 @@ import { proxySalesmen } from './redux/proxy/salesmen';
 import { salemanUsers } from './redux/saleman/users';
 // 商家端--业务管理
 import { sellerProducts } from './redux/seller/products';
+import { sellerOrder } from './redux/seller/order';
 
 export default combineReducers({
   user,
@@ -155,6 +158,8 @@ export default combineReducers({
   sellerSeller,
   sellerTypes,
   bizSellerProducts,
+  bizSellerOrder,
+  bizSellerOrderSingle,
   conserveConserve,
   conserveBinds,
   conserveConserveAccounts,
@@ -214,5 +219,6 @@ export default combineReducers({
   proxyFlows,
   proxySalesmen,
   salemanUsers,
-  sellerProducts
+  sellerProducts,
+  sellerOrder
 });

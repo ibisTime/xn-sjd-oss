@@ -333,6 +333,21 @@ const ROUTES = [
     path: '/seller/biz-products/addedit',
     component: asyncComponent(() => import('container/biz/seller/productEdit/productEdit'))
   },
+  // 业务管理 -- 商家管理 -- 商城订单管理
+  {
+    path: '/seller/biz-order',
+    component: asyncComponent(() => import('container/biz/seller/order/order'))
+  },
+  // 业务管理 -- 商家管理 -- 商城订单管理 -- 单店铺订单
+  {
+    path: '/seller/biz-order/orderSingle',
+    component: asyncComponent(() => import('container/biz/seller/order/orderSingle'))
+  },
+  // 业务管理 -- 商家管理 -- 商城订单管理 -- 单店铺订单 -- 详情
+  {
+    path: '/seller/biz-order/addedit',
+    component: asyncComponent(() => import('container/biz/seller/order/order-addedit'))
+  },
   // 业务管理 -- 养护方管理 -- 养护方管理
   {
     path: '/conserve/conserve',
@@ -977,6 +992,16 @@ const ROUTES = [
   {
     path: '/seller/products/addedit',
     component: asyncComponent(() => import('container/seller/productEdit/productEdit'))
+  },
+  // 商家端 -- 业务管理 -- 订单管理
+  {
+    path: '/seller/order',
+    component: asyncComponent(() => import('container/seller/order/order'))
+  },
+  // 商家端 -- 业务管理 -- 订单管理 -- 详情
+  {
+    path: '/seller/order/addedit',
+    component: asyncComponent(() => import('container/seller/order/order-addedit'))
   }
 ];
 

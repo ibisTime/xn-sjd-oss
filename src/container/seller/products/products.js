@@ -12,7 +12,7 @@ import {
 } from '@redux/seller/products';
 import { listWrapper } from 'common/js/build-list';
 import fetch from 'common/js/fetch';
-import { showSucMsg, showWarnMsg, getUserId } from 'common/js/util';
+import { showSucMsg, showWarnMsg, getUserId, getCompanyCode } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -23,13 +23,6 @@ import { showSucMsg, showWarnMsg, getUserId } from 'common/js/util';
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
 class sellerProducts extends React.Component {
-  componentDidMount() {
-    fetch(630067, {
-      userId: getUserId()
-    }).then((data) => {
-      this.shopCode = data.companyCode;
-    }).catch(() => {});
-  }
   upDown(code, status) {
     Modal.confirm({
       okText: '确认',
@@ -84,7 +77,7 @@ class sellerProducts extends React.Component {
       fields,
       pageCode: 629706,
       searchParams: {
-        shopCode: this.shopCode
+        shopCode: getCompanyCode()
       },
       btnEvent: {
         // 0草稿/1已提交待审核/2审核不通过/3审核通过待上架/4已上架待认养/5已锁定/6已认养/7已下架

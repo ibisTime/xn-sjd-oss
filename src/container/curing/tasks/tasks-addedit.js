@@ -52,6 +52,10 @@ class TaskAddEdit extends DetailUtil {
       field: 'description',
       type: 'textarea',
       required: true
+    }, {
+      title: '养护时间',
+      field: 'updateDatetime',
+      type: 'datetime'
     }];
     return this.buildDetail({
       fields,

@@ -27,7 +27,7 @@ class User extends React.Component {
     Modal.confirm({
       okText: '确认',
       cancelText: '取消',
-      content: `确认${status === '0' ? '注销' : '激活'}用户？`,
+      content: `确认${status === '2' ? '注销' : '激活'}用户？`,
       onOk: () => {
         this.props.doFetching();
         return activateSysUser(code).then(() => {
@@ -88,8 +88,8 @@ class User extends React.Component {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
-          } else if (items[0].status === '0') {
-            showWarnMsg('该用户已激活');
+          } else if (items[0].status === '2') {
+            showWarnMsg('该用户无需激活');
           } else {
             this.rockOrActive(items[0].status, keys[0]);
           }
@@ -100,8 +100,8 @@ class User extends React.Component {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '0') {
-            showWarnMsg('该用户已注销');
+          } else if (items[0].status !== '2') {
+            showWarnMsg('该用户不可注销');
           } else {
             this.rockOrActive(items[0].status, keys[0]);
           }

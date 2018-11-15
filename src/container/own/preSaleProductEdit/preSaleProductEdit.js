@@ -133,24 +133,36 @@ class PreSaleProductEdit extends DetailUtil {
       required: true,
       maxlength: 30
     }, {
-        title: '单棵树产量（斤）',
-        field: 'singleOutput',
-        required: true
+      title: '单棵树产量',
+      field: 'singleOutput',
+      required: true
     }, {
-        title: '包装单位',
-        field: 'packUnit',
-        required: true
+      title: '产量单位',
+      field: 'outputUnit',
+      type: 'select',
+      key: 'output_unit',
+      required: true
     }, {
-        title: '预售时间',
-        field: 'adoptDatetime',
-        type: 'date',
-        rangedate: ['adoptStartDatetime', 'adoptEndDatetime'],
-        required: true
+      title: '包装重量',
+      field: 'packWeight',
+      required: true
     }, {
-        title: '预计收获时间',
-        field: 'harvestDatetime',
-        type: 'date',
-        required: true
+      title: '包装单位',
+      field: 'packUnit',
+      type: 'select',
+      key: 'pack_unit',
+      required: true
+    }, {
+      title: '预售时间',
+      field: 'adoptDatetime',
+      type: 'date',
+      rangedate: ['adoptStartDatetime', 'adoptEndDatetime'],
+      required: true
+    }, {
+      title: '预计收获时间',
+      field: 'harvestDatetime',
+      type: 'date',
+      required: true
     }, {
       title: '预计发货时间',
       field: 'deliverDatetime',
@@ -180,7 +192,7 @@ class PreSaleProductEdit extends DetailUtil {
           field: 'name',
           required: true
         }, {
-          title: '包装重量（斤）',
+          title: '包装数量',
           field: 'packCount',
           required: true
         }, {
@@ -192,7 +204,7 @@ class PreSaleProductEdit extends DetailUtil {
           title: '间隔(小时)',
           field: 'intervalHours'
         }, {
-          title: '每小时涨幅(%)',
+          title: '涨幅(%)',
           field: 'increase'
         }]
       },

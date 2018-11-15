@@ -30,7 +30,7 @@ class Tasks extends React.Component {
       field: 'treeNumber'
     }, {
       title: '分类',
-      field: 'productCode'
+      field: 'category'
     }, {
       title: '树龄',
       field: 'age'

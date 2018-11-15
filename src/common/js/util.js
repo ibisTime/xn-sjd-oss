@@ -30,9 +30,10 @@ export function getCompanyCode() {
 }
 
 // 设置用户角色信息
-export function setRoleInfo({roleCode, kind, type, loginName}) {
+export function setRoleInfo({roleCode, kind, companyCode, type, loginName}) {
   cookies.set('roleCode', roleCode);
   cookies.set('userName', loginName);
+  companyCode && cookies.set('companyCode', companyCode);
   kind && cookies.set('kind', kind);
   type && cookies.set('type', type);
 }

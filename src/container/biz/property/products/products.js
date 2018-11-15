@@ -60,7 +60,8 @@ class Products extends React.Component {
       field: 'code'
     }, {
       title: '名称',
-      field: 'name'
+      field: 'name',
+      search: true
     }, {
       title: '产权方',
       field: 'ownerId',

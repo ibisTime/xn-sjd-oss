@@ -25,14 +25,7 @@ class Users extends React.Component {
     const fields = [{
       title: '养护方',
       field: 'maintainId',
-      type: 'select',
-      params: { kind: 'M' },
-      pageCode: 630065,
-      searchName: 'keyword',
-      keyName: 'userId',
-      valueName: '{{realName.DATA}} {{mobile.DATA}}',
-      render: (v) => v,
-      search: true
+      render: (v, d) => d.maintainInfo ? d.maintainInfo.mobile : ''
     }, {
       title: '养护人姓名',
       field: 'name'

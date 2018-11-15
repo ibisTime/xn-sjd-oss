@@ -27,7 +27,7 @@ class UserSignIn extends React.Component {
   render() {
     const fields = [{
       title: '签到人',
-      field: 'userId'
+      field: 'userName'
     }, {
       title: '签到地点',
       field: 'location'

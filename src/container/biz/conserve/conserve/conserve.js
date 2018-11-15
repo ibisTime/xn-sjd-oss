@@ -41,9 +41,14 @@ class Conserve extends React.Component {
   }
   render() {
     const fields = [{
-      title: '手机号',
-      field: 'mobile',
+      title: '关键字',
+      field: 'keyword',
+      noVisible: true,
+      placeholder: '名字/手机号',
       search: true
+    }, {
+      title: '手机号',
+      field: 'mobile'
     }, {
       title: '总收入',
       field: 'totalIncome',

@@ -26,10 +26,12 @@ class Trees extends React.Component {
       field: 'code'
     }, {
       title: '古树学名',
-      field: 'scientificName'
+      field: 'scientificName',
+      search: true
     }, {
       title: '树木编号',
-      field: 'treeNumber'
+      field: 'treeNumber',
+      search: true
     }, {
       title: '产权方',
       field: 'ownerName'

@@ -29,6 +29,9 @@ class TppOrdersAddEdit extends DetailUtil {
       title: '有效时长(小时)',
       field: 'validityTerm',
       positive: true
+    }, {
+      title: '描述',
+      field: 'description'
     }];
     if (this.view) {
       fields = fields.concat([{

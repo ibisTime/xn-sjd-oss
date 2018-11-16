@@ -87,23 +87,20 @@ class TypesAddEdit extends DetailUtil {
       },
       hidden: this.state.type === '0' || this.view
     }, {
-      // 预售
+      // 详情
       title: '上级编号',
-      field: 'parentCode',
+      field: 'parentCode2',
       type: 'select',
       listCode: '629007',
       params: {
-        status: 1,
-        level: 2,
         orderColumn: 'order_no',
-        orderDir: 'asc',
-        type: 1
+        orderDir: 'asc'
       },
       keyName: 'code',
       valueName: 'name',
-      // formatter: (v, d) => {
-      //   return d.parentCode;
-      // },
+      formatter: (v, d) => {
+        return d.parentCode;
+      },
       hidden: !this.view
     }, {
       title: '图片',

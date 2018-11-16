@@ -143,6 +143,16 @@ const ROUTES = [
     path: '/platform/tppRules/addedit',
     component: asyncComponent(() => import('container/security/sysParam-addedit/sysParam-addedit'))
   },
+  // 财务管理 -- 平台账户 -- 邀请好友设置
+  {
+    path: '/platform/invitation',
+    component: asyncComponent(() => import('container/finance/platform/invitation/invitation'))
+  },
+  // 财务管理 -- 平台账户 -- 邀请好友设置 -- 详情
+  {
+    path: '/platform/invitation/addedit',
+    component: asyncComponent(() => import('container/finance/platform/invitation/invitation-addedit'))
+  },
   // 财务管理 -- 平台账户 -- 账户查询
   {
     path: '/platform/account',
@@ -1002,6 +1012,21 @@ const ROUTES = [
   {
     path: '/seller/order/addedit',
     component: asyncComponent(() => import('container/seller/order/order-addedit'))
+  },
+  // 商家端 -- 业务管理 -- 邮费模板
+  {
+    path: '/seller/postage',
+    component: asyncComponent(() => import('container/seller/postage/postage'))
+  },
+  // 商家端 -- 业务管理 -- 邮费模板 -- 详情
+  {
+    path: '/seller/postage/addedit',
+    component: asyncComponent(() => import('container/seller/postage/postage-addedit'))
+  },
+  // 商家端 -- 业务管理 -- 售后订单管理
+  {
+    path: '/seller/shouhou-order',
+    component: asyncComponent(() => import('container/seller/shouhou-order/shouhou-order'))
   }
 ];
 

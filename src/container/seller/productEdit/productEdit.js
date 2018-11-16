@@ -28,7 +28,6 @@ class ProductEdit extends DetailUtil {
           userId: getUserId()
         }).then((data) => {
           params.shopCode = data.companyCode;
-          params.deliverPlace = params.province;
           fetch(629700, params).then(() => {
             showSucMsg('操作成功');
             this.cancelFetching();
@@ -96,7 +95,7 @@ class ProductEdit extends DetailUtil {
     }, {
       title: '发货地',
       field: 'deliverPlace',
-      type: this.view ? '' : 'citySelect',
+      type: this.view ? '' : 'provSelect',
       required: true
     }, {
       title: '重量(kg)',
@@ -163,7 +162,6 @@ class ProductEdit extends DetailUtil {
           userId: getUserId()
         }).then((data) => {
           params.shopCode = data.companyCode;
-          params.deliverPlace = params.province;
           fetch(629701, params).then(() => {
             showSucMsg('操作成功');
             this.cancelFetching();

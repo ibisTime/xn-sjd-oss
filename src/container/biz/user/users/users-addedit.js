@@ -17,7 +17,7 @@ class UsersAddEdit extends DetailUtil {
     }, {
       title: '推荐人',
       field: 'mobile',
-      render: (v, d) => d.refereeUser ? d.refereeUser.mobile : ''
+      formatter: (v, d) => d.refereeUser ? d.refereeUser.mobile : ''
     }, {
       title: '昵称',
       field: 'nickname'

@@ -10,6 +10,7 @@ class TreesAddEdit extends DetailUtil {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
     this.view = !!getQueryString('v', this.props.location.search);
+    this.productType = getQueryString('productType', this.props.location.search); // 0 认养  1  预售
   }
   render() {
     const fields = [{
@@ -33,10 +34,12 @@ class TreesAddEdit extends DetailUtil {
       field: 'town'
     }, {
       title: '经度',
-      field: 'longitude'
+      field: 'longitude',
+      hidden: this.productType === '1'
     }, {
       title: '纬度',
-      field: 'latitude'
+      field: 'latitude',
+      hidden: this.productType === '1'
     }, {
       title: '实景图',
       field: 'pic',

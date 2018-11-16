@@ -22,6 +22,11 @@ class DataDictAddEdit extends DetailUtil {
       keyName: 'dkey',
       valueName: 'dvalue'
     }, {
+      title: '类型',
+      field: 'type',
+      value: 1,
+      hidden: true
+    }, {
       title: '字典键',
       field: 'dkey',
       required: true,

@@ -9,20 +9,20 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/seller/order';
+} from '@redux/seller/postage';
 import { listWrapper } from 'common/js/build-list';
 import fetch from 'common/js/fetch';
 import { showSucMsg, showWarnMsg, getUserId, getCompanyCode } from 'common/js/util';
 
 @listWrapper(
   state => ({
-    ...state.sellerOrder,
+    ...state.sellerPostage,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
-class sellerOrder extends React.Component {
+class sellerPostage extends React.Component {
   upDown(code, orderNo, location, status) {
     Modal.confirm({
       okText: '确认',
@@ -44,32 +44,28 @@ class sellerOrder extends React.Component {
   }
   render() {
     const fields = [{
-      title: '订单编号',
-      field: 'orderCode',
-      search: true
+      title: '发货地',
+      field: 'deliverPlace',
+      type: 'provSelect',
+      required: true
     }, {
-      title: '商品名称',
-      field: 'commodityName'
+      title: '收货地',
+      field: 'receivePlace',
+      type: 'provSelect',
+      required: true
     }, {
-      title: '规格名称',
-      field: 'specsName'
+      title: '价格',
+      field: 'price',
+      amount: true,
+      required: true
     }, {
-      title: '数量',
-      field: 'quantity'
-    }, {
-      title: '订单金额',
-      field: 'amount',
-      amount: true
-    }, {
-      title: '订单状态',
-      field: 'status',
-      type: 'select',
-      key: 'commodity_order_detail_status',
-      search: true
+      title: '备注',
+      field: 'remark'
     }];
     return this.props.buildList({
       fields,
-      pageCode: 629735,
+      pageCode: 629745,
+      deleteCode: 629741,
       searchParams: {
         shopCode: getCompanyCode()
       },
@@ -91,4 +87,4 @@ class sellerOrder extends React.Component {
   }
 }
 
-export default sellerOrder;
+export default sellerPostage;

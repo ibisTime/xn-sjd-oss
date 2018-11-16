@@ -17,6 +17,7 @@ import { platformIntegralRules } from './redux/finance/platform/integralRules';
 import { platformPayRules } from './redux/finance/platform/payRules';
 import { platformMemberLevel } from './redux/finance/platform/memberLevel';
 import { platformTppRules } from './redux/finance/platform/tppRules';
+import { platformInvitation } from './redux/finance/platform/invitation';
 import { platformAccount } from './redux/finance/platform/account';
 import { platformAccountFlows } from './redux/finance/platform/accountFlows';
 import { platformAccountList } from './redux/finance/platform/accountList';
@@ -121,6 +122,8 @@ import { salemanUsers } from './redux/saleman/users';
 // 商家端--业务管理
 import { sellerProducts } from './redux/seller/products';
 import { sellerOrder } from './redux/seller/order';
+import { sellerPostage } from './redux/seller/postage';
+import { sellerShouhouOrder } from './redux/seller/shouhou-order';
 
 export default combineReducers({
   user,
@@ -138,6 +141,7 @@ export default combineReducers({
   platformPayRules,
   platformMemberLevel,
   platformTppRules,
+  platformInvitation,
   platformAccount,
   platformAccountFlows,
   platformAccountList,
@@ -220,5 +224,7 @@ export default combineReducers({
   proxySalesmen,
   salemanUsers,
   sellerProducts,
-  sellerOrder
+  sellerOrder,
+  sellerPostage,
+  sellerShouhouOrder
 });

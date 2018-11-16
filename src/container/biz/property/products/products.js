@@ -117,6 +117,9 @@ class Products extends React.Component {
     }, {
       title: '已募集数量',
       field: 'nowCount'
+    }, {
+      title: '备注',
+      field: 'remark'
     }];
     let that = this;
     return (

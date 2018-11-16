@@ -39,6 +39,9 @@ class TaskAddEdit extends DetailUtil {
       field: 'maintainerCode',
       type: 'select',
       listCode: 629617,
+      params: {
+        maintainId: getUserId()
+      },
       keyName: 'code',
       valueName: '{{name.DATA}}-{{mobile.DATA}}',
       required: true

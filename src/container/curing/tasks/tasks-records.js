@@ -10,7 +10,7 @@ import {
   setSearchData
 } from '@redux/curing/tasks-records';
 import { listWrapper } from 'common/js/build-list';
-import { showWarnMsg, getQueryString } from 'common/js/util';
+import { showWarnMsg, getQueryString, getUserId } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -33,8 +33,12 @@ class Tasks extends React.Component {
       field: 'projectCode',
       type: 'select',
       listCode: 629627,
+      params: {
+        maintainId: getUserId()
+      },
       keyName: 'code',
-      valueName: 'title'
+      valueName: 'projectName',
+      required: true
     }, {
       title: '养护人',
       field: 'maintainerCode',

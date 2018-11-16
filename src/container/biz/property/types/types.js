@@ -77,6 +77,9 @@ class Types extends React.Component {
     return this.props.buildList({
       fields,
       pageCode: '629005',
+      searchParams: {
+        typeList: [0, 1]
+      },
       btnEvent: {
         edit: (keys, items) => {
           if (!keys || !keys.length) {

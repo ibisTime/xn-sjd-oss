@@ -9,20 +9,20 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/seller/order';
+} from '@redux/seller/shouhou-order';
 import { listWrapper } from 'common/js/build-list';
 import fetch from 'common/js/fetch';
 import { showSucMsg, showWarnMsg, getUserId, getCompanyCode } from 'common/js/util';
 
 @listWrapper(
   state => ({
-    ...state.sellerOrder,
+    ...state.sellerShouhouOrder,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
-class sellerOrder extends React.Component {
+class sellerShouhouOrder extends React.Component {
   upDown(code, orderNo, location, status) {
     Modal.confirm({
       okText: '确认',
@@ -61,17 +61,23 @@ class sellerOrder extends React.Component {
       field: 'amount',
       amount: true
     }, {
-      title: '订单状态',
+      title: '售后诉求',
+      field: 'type',
+      type: 'select',
+      key: 'after_sale_type',
+      search: true
+    }, {
+      title: '售后订单状态',
       field: 'status',
       type: 'select',
-      key: 'commodity_order_detail_status',
+      key: 'after_sale_status',
       search: true
     }];
     return this.props.buildList({
       fields,
-      pageCode: 629735,
+      pageCode: 629775,
       searchParams: {
-        shopCode: getCompanyCode()
+        receiver: getUserId()
       },
       btnEvent: {
         // 编辑
@@ -91,4 +97,4 @@ class sellerOrder extends React.Component {
   }
 }
 
-export default sellerOrder;
+export default sellerShouhouOrder;

@@ -72,21 +72,24 @@ class SellerAddedit extends DetailUtil {
       title: '组织机构代码',
       field: 'organizationCode',
       _keys: ['company', 'organizationCode']
+    }, {
+      title: '备注',
+      field: 'remark'
     }];
-    if (this.view && !this.check) {
-      fields = fields.concat([{
-        title: '合同模版',
-        field: 'contractTemplate',
-        _keys: ['company', 'contractTemplate'],
-        type: 'textarea'
-      }, {
-        title: '证书模版',
-        field: 'certificateTemplate',
-        _keys: ['company', 'certificateTemplate'],
-        type: 'img',
-        single: true
-      }]);
-    }
+    // if (this.view && !this.check) {
+    //   fields = fields.concat([{
+    //     title: '合同模版',
+    //     field: 'contractTemplate',
+    //     _keys: ['company', 'contractTemplate'],
+    //     type: 'textarea'
+    //   }, {
+    //     title: '证书模版',
+    //     field: 'certificateTemplate',
+    //     _keys: ['company', 'certificateTemplate'],
+    //     type: 'img',
+    //     single: true
+    //   }]);
+    // }
     let config = {
       fields,
       key: 'userId',

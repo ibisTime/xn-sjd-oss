@@ -72,6 +72,18 @@ class BizSellerOrderSingle extends React.Component {
       field: 'amount',
       amount: true
     }, {
+      title: '实际支付金额',
+      field: 'payAmount',
+      amount: true
+    }, {
+      title: '抵扣的人民币',
+      field: 'cnyDeductAmount',
+      amount: true
+    }, {
+      title: '使用积分数量',
+      field: 'jfDeductAmount',
+      amount: true
+    }, {
       title: '订单状态',
       field: 'status',
       type: 'select',
@@ -91,8 +103,6 @@ class BizSellerOrderSingle extends React.Component {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '0') {
-            showWarnMsg('该订单不可发货');
           } else {
             this.props.history.push(`/seller/biz-order/addedit?code=${keys[0]}`);
           }

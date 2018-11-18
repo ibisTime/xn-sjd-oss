@@ -46,7 +46,7 @@ class Types extends React.Component {
       field: 'parentCode',
       type: 'select',
       listCode: '629007',
-      params: {status: 1},
+      params: {status: 1, typeList: [0, 1]},
       keyName: 'code',
       valueName: 'name',
       search: true

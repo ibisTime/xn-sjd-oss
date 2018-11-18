@@ -72,12 +72,19 @@ class sellerProducts extends React.Component {
       type: 'select',
       key: 'commodity_status',
       search: true
+    }, {
+      title: '更新时间',
+      field: 'updateDatetime',
+      type: 'datetime',
+      search: true
     }];
     return this.props.buildList({
       fields,
       pageCode: 629706,
       searchParams: {
-        shopCode: getCompanyCode()
+        shopCode: getCompanyCode(),
+        orderDir: 'desc',
+        orderColumn: 'update_datetime'
       },
       btnEvent: {
         // 0草稿/1已提交待审核/2审核不通过/3审核通过待上架/4已上架待认养/5已锁定/6已认养/7已下架

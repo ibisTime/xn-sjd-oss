@@ -4,7 +4,7 @@ import { getQueryString } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 
 @Form.create()
-class NoticeAddEdit extends DetailUtil {
+class NoticesAddedit extends DetailUtil {
   constructor(props) {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
@@ -15,32 +15,6 @@ class NoticeAddEdit extends DetailUtil {
       field: 'type',
       value: '1',
       hidden: true
-    }, {
-      field: 'object',
-      title: '针对对象',
-      type: 'select',
-      data: [{
-        'dkey': 'C',
-        'dvalue': 'C端用户'
-      }, {
-        'dkey': 'O',
-        'dvalue': '产权方'
-      }, {
-        'dkey': 'M',
-        'dvalue': '养护方'
-      }, {
-        'dkey': 'A',
-        'dvalue': '代理商'
-      }, {
-        'dkey': 'P',
-        'dvalue': '平台用户'
-      }, {
-        'dkey': 'B',
-        'dvalue': '商家'
-      }],
-      keyName: 'dkey',
-      valueName: 'dvalue',
-      required: true
     }, {
       title: '标题',
       field: 'title',
@@ -74,4 +48,4 @@ class NoticeAddEdit extends DetailUtil {
   }
 }
 
-export default NoticeAddEdit;
+export default NoticesAddedit;

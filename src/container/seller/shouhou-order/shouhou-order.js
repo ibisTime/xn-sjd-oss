@@ -12,8 +12,7 @@ import {
 } from '@redux/seller/shouhou-order';
 import { listWrapper } from 'common/js/build-list';
 import fetch from 'common/js/fetch';
-import { showSucMsg, showWarnMsg, getUserId, getCompanyCode } from 'common/js/util';
-
+import { showSucMsg, showWarnMsg, getUserId, getCompanyCode, moneyFormat } from 'common/js/util';
 @listWrapper(
   state => ({
     ...state.sellerShouhouOrder,
@@ -23,7 +22,7 @@ import { showSucMsg, showWarnMsg, getUserId, getCompanyCode } from 'common/js/ut
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
 class sellerShouhouOrder extends React.Component {
-  upDown(code, orderNo, location, status) {
+  handle(code, orderNo, location, status) {
     Modal.confirm({
       okText: '确认',
       cancelText: '取消',
@@ -45,21 +44,28 @@ class sellerShouhouOrder extends React.Component {
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'orderCode',
+      field: 'code',
       search: true
     }, {
       title: '商品名称',
-      field: 'commodityName'
+      field: 'commodityName',
+      render: (v, d) => d.orderDetail ? d.orderDetail.commodityName : ''
     }, {
       title: '规格名称',
-      field: 'specsName'
+      field: 'specsName',
+      render: (v, d) => d.orderDetail ? d.orderDetail.specsName : ''
     }, {
       title: '数量',
-      field: 'quantity'
+      field: 'quantity',
+      render: (v, d) => d.orderDetail ? d.orderDetail.quantity : ''
     }, {
       title: '订单金额',
-      field: 'amount',
-      amount: true
+      field: 'amount1',
+      render: (v, d) => d.orderDetail ? moneyFormat(d.orderDetail.amount) : 0
+      // formatter: (v, d) => {
+      //   return d.orderDetail ? d.orderDetail.price : 0;
+      // }
+      // amount: true
     }, {
       title: '售后诉求',
       field: 'type',
@@ -77,19 +83,19 @@ class sellerShouhouOrder extends React.Component {
       fields,
       pageCode: 629775,
       searchParams: {
-        receiver: getUserId()
+        shopCode: getCompanyCode()
       },
       btnEvent: {
         // 编辑
-        fahuo: (keys, items) => {
+        handle: (keys, items) => {
           if (!keys || !keys.length) {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '1') {
-            showWarnMsg('该订单不可发货');
+          } else if (items[0].status !== '0') {
+            showWarnMsg('该订单不可处理');
           } else {
-            this.props.history.push(`/seller/order/addedit?fahuo=1&v=1&code=${keys[0]}`);
+            this.props.history.push(`/seller/shouhou-order/addedit?handle=1&v=1&code=${keys[0]}`);
           }
         }
       }

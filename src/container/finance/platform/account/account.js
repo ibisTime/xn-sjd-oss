@@ -90,7 +90,7 @@ class Account extends React.Component {
   render() {
     const { visible, btnFetching } = this.state;
     const { aliAccount, wxAccount, offAccount, aClientAccount, oClientAccount,
-      mClientAccount, cClientAccount, cnyAccount, tppAccount, jfAccount } = this.props;
+      mClientAccount, cClientAccount, bClientAccount, cnyAccount, tppAccount, jfAccount } = this.props;
     return (
       <div>
         <Spin spinning={this.props.fetching}>
@@ -134,6 +134,11 @@ class Account extends React.Component {
               <Card title="养护方总余额" extra={
                 <Button onClick={() => this.goAccounts(mClientAccount.type)} type="primary">资金分布</Button>
               }>¥{moneyFormat(mClientAccount.amount || 0)}</Card>
+            </Col>
+            <Col span={6} style={{marginBottom: '20px'}}>
+              <Card title="商家总余额" extra={
+                <Button onClick={() => this.goAccounts(bClientAccount.type)} type="primary">资金分布</Button>
+              }>¥{moneyFormat(bClientAccount.amount || 0)}</Card>
             </Col>
             <Col span={6} style={{marginBottom: '20px'}}>
               <Card title="用户总余额" extra={

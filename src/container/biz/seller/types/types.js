@@ -89,7 +89,7 @@ class SellerTypes extends React.Component {
           } else if (items[0].status !== '0') {
             showWarnMsg('该记录不是待上架状态，无法修改');
           } else {
-            this.props.history.push(`/property/types/addedit?code=${keys[0]}`);
+            this.props.history.push(`/seller/types/addedit?code=${keys[0]}`);
           }
         },
         up: (keys, items) => {

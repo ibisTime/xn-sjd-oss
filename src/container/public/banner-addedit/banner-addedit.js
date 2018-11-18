@@ -31,13 +31,7 @@ class BannerAddEdit extends DetailUtil {
       title: '位置',
       field: 'location',
       type: 'select',
-      data: [{
-        dkey: 'index_banner',
-        dvalue: '首页'
-      }],
-      keyName: 'dkey',
-      valueName: 'dvalue',
-      value: 'index_banner',
+      key: 'cnavigate_type',
       required: true
     }, {
       title: '顺序',

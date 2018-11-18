@@ -16,13 +16,17 @@ const columns = [{
 }];
 
 export default class Notice extends React.Component {
+  // goNotice() {
+  //   this.props.history.
+  // }
   render() {
     return (
       <div className="notice-wrapper">
-        <div className="notice-title"><img src={NoticeImg}/>系统公告</div>
+        <div className="notice-title"><img src={NoticeImg}/>系统最新公告</div>
         <Table
           className="notice-table-wrapper"
           columns={columns}
+          onRowClick={this.props.goNotice}
           dataSource={this.props.data}
           pagination={false} />
       </div>

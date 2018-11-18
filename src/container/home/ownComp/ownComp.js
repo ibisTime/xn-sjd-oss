@@ -6,18 +6,35 @@ import Multiple from '../multiple/multiple';
 import Notice from '../notice/notice';
 import Fbdsdzz from '../fbdsdzz/fbdsdzz';
 import Yrydzz from '../yrydzz/yrydzz';
+import fetch from 'common/js/fetch';
 
 export default class OwnComp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [{
-        title: '氧林1.0.0正式上线了',
-        createDatetime: '2018-09-05'
-      }]
+      data: []
     };
   }
+  componentDidMount() {
+    fetch(805305, {
+      object: 'O',
+      start: '1',
+      limit: '10',
+      orderDir: 'desc',
+      orderColumn: 'publish_datetime'
+    }).then((res) => {
+      res.list.length && this.setState({
+        data: [{
+          title: res.list[0].title,
+          createDatetime: res.list[0].publishDatetime
+        }]
+      });
+    }).catch();
+  }
   goWithdraw = () => {}
+  goNotice = () => {
+    window.location.href = '/own/notices';
+  }
   render() {
     return (
       <div>
@@ -40,7 +57,10 @@ export default class OwnComp extends React.Component {
         </Row>
         <Row gutter={{ xs: 6, sm: 16, md: 24, lg: 32 }}>
           <Col span={12}>
-            <Notice data={this.state.data}/>
+            <Notice
+              data={this.state.data}
+              goNotice={this.goNotice}
+            />
           </Col>
           <Col span={12}>
             <Fbdsdzz account={this.props.cnyAccount}/>

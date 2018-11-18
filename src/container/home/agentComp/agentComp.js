@@ -8,6 +8,7 @@ import Djsje from '../djsje/djsje';
 import UserInfo from '../userInfo/userInfo';
 import UsersImg from './users.png';
 import agentImg from './agent.png';
+import fetch from 'common/js/fetch';
 
 export default class AgentComp extends React.Component {
   constructor(props) {
@@ -16,13 +17,29 @@ export default class AgentComp extends React.Component {
       addCount: 0,
       totalCount: 0,
       amount: 0,
-      data: [{
-        title: '氧林1.0.0正式上线了',
-        createDatetime: '2018-09-05'
-      }]
+      data: []
     };
   }
+  componentDidMount() {
+    fetch(805305, {
+      object: 'A',
+      start: '1',
+      limit: '10',
+      orderDir: 'desc',
+      orderColumn: 'publish_datetime'
+    }).then((res) => {
+      res.list.length && this.setState({
+        data: [{
+          title: res.list[0].title,
+          createDatetime: res.list[0].publishDatetime
+        }]
+      });
+    }).catch();
+  }
   goWithdraw() {}
+  goNotice = () => {
+    // window.location.href = '/own/notices';
+  }
   render() {
     const { amount, addCount, totalCount } = this.state;
     return (
@@ -46,7 +63,10 @@ export default class AgentComp extends React.Component {
         </Row>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col span={12}>
-            <Notice data={this.state.data}/>
+            <Notice
+              data={this.state.data}
+              goNotice={this.goNotice}
+            />
           </Col>
           <Col span={12}>
             <Djsje style={{padding: 16}} amount={amount}/>

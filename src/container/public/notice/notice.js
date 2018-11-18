@@ -60,6 +60,9 @@ class Notice extends React.Component {
       }, {
         'dkey': 'P',
         'dvalue': '平台用户'
+      }, {
+        'dkey': 'B',
+        'dvalue': '商家'
       }],
       keyName: 'dkey',
       valueName: 'dvalue',

@@ -185,6 +185,7 @@ class ProductEdit extends DetailUtil {
       field: 'directLevel',
       _keys: ['directObject'],
       type: 'select',
+      multiple: true,
       key: 'user_level',
       hidden: this.state.direct !== '2' || !this.state.directLevel,
       required: this.state.direct === '2' && this.state.directLevel
@@ -193,11 +194,11 @@ class ProductEdit extends DetailUtil {
       field: 'directUser',
       _keys: ['directObject'],
       type: 'select',
+      // multiple: true,
       pageCode: 805120,
       params: { status: '0' },
       keyName: 'userId',
       valueName: '{{mobile.DATA}}-{{nickname.DATA}}',
-      searchName: 'mobile',
       hidden: this.state.direct !== '2' || !this.state.directUser,
       required: this.state.direct === '2' && this.state.directUser
     }, {
@@ -208,7 +209,7 @@ class ProductEdit extends DetailUtil {
       hidden: this.state.direct !== '3',
       required: this.state.direct === '3'
     }, {
-        title: '年限',
+        title: '认养时间',
         field: 'startDatetime',
         type: 'date',
         rangedate: ['startDatetime', 'endDatetime'],

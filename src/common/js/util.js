@@ -17,6 +17,8 @@ export function setUser({ userId, token }) {
 export function clearUser() {
   cookies.erase('userId');
   cookies.erase('token');
+  cookies.erase('kind');
+  cookies.erase('companyCode');
 }
 
 // 获取用户编号
@@ -687,5 +689,11 @@ export function getKindByUrl() {
         // if (location.origin === 'http://localhost:3001') {
         // if (location.origin === 'http://47.99.147.67:2909') {
         return 'A';
+    }
+    // 商家
+    if (location.origin === 'http://sjd.sell.hichengdai.com' || location.origin === 'http://sell.o2lin.com') {
+      // if (location.origin === 'http://localhost:3001') {
+      // if (location.origin === 'http://47.99.147.67:2909') {
+      return 'B';
     }
 }

@@ -12,6 +12,7 @@ const SET_CCLIENT_ACCOUNT = PREFIX + 'SET_CCLIENT_ACCOUNT';
 const SET_MCLIENT_ACCOUNT = PREFIX + 'SET_MCLIENT_ACCOUNT';
 const SET_OCLIENT_ACCOUNT = PREFIX + 'SET_OCLIENT_ACCOUNT';
 const SET_ACLIENT_ACCOUNT = PREFIX + 'SET_ACLIENT_ACCOUNT';
+const SET_BCLIENT_ACCOUNT = PREFIX + 'SET_BCLIENT_ACCOUNT';
 const LOADING = PREFIX + 'LOADING';
 const CANCEL_LOADING = PREFIX + 'CANCEL_LOADING';
 
@@ -25,6 +26,7 @@ const initState = {
   tppAccount: {},
   cClientAccount: {},
   mClientAccount: {},
+  bClientAccount: {},
   oClientAccount: {},
   aClientAccount: {},
   fetching: true
@@ -52,6 +54,8 @@ export function platformAccount(state = initState, action) {
       return {...state, oClientAccount: action.payload};
     case SET_ACLIENT_ACCOUNT:
       return {...state, aClientAccount: action.payload};
+    case SET_BCLIENT_ACCOUNT:
+      return {...state, bClientAccount: action.payload};
     case LOADING:
       return {...state, fetching: true};
     case CANCEL_LOADING:
@@ -110,6 +114,10 @@ function setOClientAccount(data) {
 function setAClientAccount(data) {
   return { type: SET_ACLIENT_ACCOUNT, payload: data };
 }
+// 设置商家总余额
+function setBClientAccount(data) {
+  return { type: SET_BCLIENT_ACCOUNT, payload: data };
+}
 // 初始化页面数据
 export function initData() {
   return dispatch => {
@@ -147,6 +155,8 @@ export function initData() {
           // 分销商总余额
         } else if (account.type === 'A' && account.currency === 'CNY') {
           dispatch(setAClientAccount(account));
+        } else if (account.type === 'B' && account.currency === 'CNY') {
+          dispatch(setBClientAccount(account));
         }
       });
     }).catch(() => dispatch(cancelFetching()));

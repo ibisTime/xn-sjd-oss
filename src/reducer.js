@@ -74,6 +74,7 @@ import { claimRightsTppOrders } from './redux/biz/claim/tppOrders';
 // 业务管理-预售管理
 import { prePreOrder } from './redux/biz/pre/preOrder';
 import { preConOrder } from './redux/biz/pre/conOrder';
+import { preAsset } from './redux/biz/pre/asset';
 // 业务管理--情感频道
 import { emotionArticles } from './redux/biz/emotion/articles';
 // 业务管理--道具管理
@@ -86,6 +87,8 @@ import { rulesWeight } from './redux/biz/rules/weight';
 import { agentAgents } from './redux/agent/agents';
 import { agentAgentsAccounts } from './redux/agent/agents-accounts';
 import { agentSettlement } from './redux/agent/settlement';
+import { agentPreSettlement } from './redux/agent/pre-settlement';
+import { agentGroupSettlement } from './redux/agent/group-settlement';
 import { agentAchievement } from './redux/agent/achievement';
 import { agentAccounts } from './redux/agent/accounts';
 import { agentFlows } from './redux/agent/flows';
@@ -190,6 +193,7 @@ export default combineReducers({
   claimRightsTppOrders,
   prePreOrder,
   preConOrder,
+  preAsset,
   emotionArticles,
   propProps,
   propBuyRecords,
@@ -198,6 +202,8 @@ export default combineReducers({
   agentAgents,
   agentAgentsAccounts,
   agentSettlement,
+  agentPreSettlement,
+  agentGroupSettlement,
   agentAchievement,
   agentAccounts,
   agentFlows,

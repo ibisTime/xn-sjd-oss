@@ -583,6 +583,21 @@ const ROUTES = [
     path: '/pre/conOrder/addedit',
     component: asyncComponent(() => import('container/biz/pre/conOrder/conOrder-addedit'))
   },
+  // 业务管理 -- 预售管理 -- 资产管理
+  {
+    path: '/pre/asset',
+    component: asyncComponent(() => import('container/biz/pre/asset/asset'))
+  },
+  // 业务管理 -- 预售管理 -- 资产管理
+  {
+    path: '/pre/asset/wuliudan',
+    component: asyncComponent(() => import('container/biz/pre/asset/wuliudan'))
+  },
+  // 业务管理 -- 预售管理 -- 资产管理 -- 详情
+  {
+    path: '/pre/asset/wuliudan/fahuo',
+    component: asyncComponent(() => import('container/biz/pre/asset/fahuo-addedit'))
+  },
   // 业务管理 -- 情感频道
   {
     path: '/emotion/articles',
@@ -638,15 +653,35 @@ const ROUTES = [
     path: '/agent/agents/accounts',
     component: asyncComponent(() => import('container/agent/agents/agents-accounts'))
   },
-  // 代理管理 -- 代理商管理 -- 结算管理
+  // 代理管理 -- 代理商管理 -- 认养结算
   {
     path: '/agent/settlement',
     component: asyncComponent(() => import('container/agent/settlement/settlement'))
   },
-  // 代理管理 -- 代理商管理 -- 结算管理 -- 详情
+  // 代理管理 -- 代理商管理 -- 认养结算 -- 详情
   {
     path: '/agent/settlement/addedit',
     component: asyncComponent(() => import('container/agent/settlement/settlement-addedit'))
+  },
+  // 代理管理 -- 代理商管理 -- 预售结算
+  {
+    path: '/agent/pre-settlement',
+    component: asyncComponent(() => import('container/agent/pre-settlement/pre-settlement'))
+  },
+  // 代理管理 -- 代理商管理 -- 预售结算 -- 详情
+  {
+    path: '/agent/pre-settlement/addedit',
+    component: asyncComponent(() => import('container/agent/pre-settlement/pre-settlement-addedit'))
+  },
+  // 代理管理 -- 代理商管理 -- 集体结算
+  {
+    path: '/agent/group-settlement',
+    component: asyncComponent(() => import('container/agent/group-settlement/group-settlement'))
+  },
+  // 代理管理 -- 代理商管理 -- 集体结算 -- 详情
+  {
+    path: '/agent/group-settlement/addedit',
+    component: asyncComponent(() => import('container/agent/group-settlement/group-settlement-addedit'))
   },
   // 代理管理 -- 代理商管理 -- 业绩查询
   {
@@ -782,6 +817,11 @@ const ROUTES = [
   {
     path: '/own/notices',
     component: asyncComponent(() => import('container/own/notices/notices'))
+  },
+  // 产权端管理 -- 个人设置 -- 系统公告 -- 打开
+  {
+    path: '/own/notices/addedit',
+    component: asyncComponent(() => import('container/own/notices/notices-addedit'))
   },
   // 产权端管理 -- 个人设置 -- 安全管理
   {
@@ -1027,6 +1067,11 @@ const ROUTES = [
   {
     path: '/seller/shouhou-order',
     component: asyncComponent(() => import('container/seller/shouhou-order/shouhou-order'))
+  },
+  // 商家端 -- 业务管理 -- 售后订单管理 -- 详情
+  {
+    path: '/seller/shouhou-order/addedit',
+    component: asyncComponent(() => import('container/seller/shouhou-order/shouhou-order-addedit'))
   }
 ];
 

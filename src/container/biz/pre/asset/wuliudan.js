@@ -9,20 +9,25 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/seller/order';
+} from '@redux/own/wuliudan';
 import { listWrapper } from 'common/js/build-list';
 import fetch from 'common/js/fetch';
-import { showSucMsg, showWarnMsg, getUserId, getCompanyCode } from 'common/js/util';
+import { showSucMsg, showWarnMsg, getUserId, getQueryString } from 'common/js/util';
 
 @listWrapper(
   state => ({
-    ...state.sellerOrder,
+    ...state.ownWuliudan,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
-class sellerOrder extends React.Component {
+class OwnWuliudan extends React.Component {
+  constructor(props) {
+    super(props);
+    this.code = getQueryString('code', this.props.location.search);
+    this.status = getQueryString('status', this.props.location.search);
+  }
   upDown(code, orderNo, location, status) {
     Modal.confirm({
       okText: '确认',
@@ -44,67 +49,60 @@ class sellerOrder extends React.Component {
   }
   render() {
     const fields = [{
-      title: '订单编号',
-      field: 'orderCode',
+      title: '编号',
+      field: 'code',
       search: true
     }, {
-      title: '商品名称',
-      field: 'commodityName'
+      title: '省',
+      field: 'province'
     }, {
-      title: '规格名称',
-      field: 'specsName'
+      title: '市',
+      field: 'city'
     }, {
-      title: '数量',
-      field: 'quantity'
+      title: '区',
+      field: 'area'
     }, {
-      title: '订单金额',
-      field: 'amount',
-      amount: true
+      title: '详细地址',
+      field: 'address'
     }, {
-      title: '实际支付金额',
-      field: 'payAmount',
-      amount: true
+      title: '收货人',
+      field: 'receiver'
     }, {
-      title: '抵扣的人民币',
-      field: 'cnyDeductAmount',
-      amount: true
+      title: '收货人手机号',
+      field: 'receiverMobile'
     }, {
-      title: '使用积分数量',
-      field: 'jfDeductAmount',
-      amount: true
-    }, {
-      title: '下单时间',
-      field: 'applyDatetime',
-      type: 'datetime'
-    }, {
-      title: '订单状态',
+      title: '状态',
       field: 'status',
       type: 'select',
-      key: 'commodity_order_detail_status',
+      key: 'presell_logistics_status',
       search: true
     }];
     return this.props.buildList({
       fields,
-      pageCode: 629735,
+      pageCode: 629465,
+      view: false,
       searchParams: {
-        shopCode: getCompanyCode()
+        originalGroupCode: this.code
       },
-      btnEvent: {
-        // 编辑
-        fahuo: (keys, items) => {
-          if (!keys || !keys.length) {
+      buttons: [{
+        name: '详情',
+        code: 'detail',
+        handler: (keys, items) => {
+          if (!keys.length) {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '1') {
-            showWarnMsg('该订单不可发货');
           } else {
-            this.props.history.push(`/seller/order/addedit?fahuo=1&v=1&code=${keys[0]}`);
+            this.props.history.push(`/pre/asset/wuliudan/fahuo?v=1&code=${keys[0]}`);
           }
         }
-      }
+      }, {
+        name: '返回',
+        code: 'back',
+        handler: () => this.props.history.go(-1)
+      }]
     });
   }
 }
 
-export default sellerOrder;
+export default OwnWuliudan;

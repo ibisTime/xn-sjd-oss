@@ -8,15 +8,14 @@ import fetch from 'common/js/fetch';
 class SellerOrderAddEdit extends DetailUtil {
   constructor(props) {
     super(props);
-    this.fahuo = getQueryString('fahuo', this.props.location.search);
+    this.handle = getQueryString('handle', this.props.location.search);
     this.code = getQueryString('code', this.props.location.search);
     this.view = !!getQueryString('v', this.props.location.search);
   }
-  fahuoFun(params) {
-    console.log(params);
+  handleFun(result, params) {
     this.doFetching();
-    params.deliver = getUserId();
-    fetch(629730, params).then(data => {
+    params.handleResult = result;
+    fetch(629772, params).then(data => {
       this.cancelFetching();
       showSucMsg('操作成功');
       setTimeout(() => {
@@ -27,61 +26,57 @@ class SellerOrderAddEdit extends DetailUtil {
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'orderCode'
+      field: 'code',
+      search: true
     }, {
-      title: '产品名称',
-      field: 'commodityName'
+      title: '商品名称',
+      field: 'commodityName',
+      _keys: ['orderDetail', 'commodityName']
     }, {
       title: '规格名称',
-      field: 'specsName'
+      field: 'specsName',
+      _keys: ['orderDetail', 'specsName']
     }, {
       title: '数量',
-      field: 'quantity'
+      field: 'quantity',
+      _keys: ['orderDetail', 'quantity']
     }, {
       title: '订单金额',
       field: 'amount',
+      _keys: ['orderDetail', 'amount'],
       amount: true
     }, {
-      title: '订单状态',
+      title: '售后诉求',
+      field: 'type',
+      type: 'select',
+      key: 'after_sale_type',
+      search: true
+    }, {
+      title: '售后订单状态',
       field: 'status',
       type: 'select',
-      key: 'commodity_order_detail_status'
-    }, {
-      title: '地址信息',
-      field: 'province',
-      formatter: (v, d) => d.address && `${d.address.province} ${d.address.city} ${d.address.district} ${d.address.detailAddress}`
-    }, {
-      title: '收货人',
-      field: 'addressee',
-      _keys: ['address', 'addressee']
-    }, {
-      title: '收货人手机号',
-      field: 'mobile',
-      _keys: ['address', 'mobile']
-    }, {
-      title: '物流公司',
-      field: 'logisticsCompany',
-      type: 'select',
-      key: 'logistics_company',
-      readonly: !this.fahuo
-    }, {
-      title: '物流单号',
-      field: 'logisticsNumber',
-      readonly: !this.fahuo
+      key: 'after_sale_status',
+      search: true
     }];
     let config = {
       fields,
       code: this.code,
       view: this.view,
-      detailCode: 629736
+      detailCode: 629776
     };
-    if (this.fahuo) {
+    if (this.handle) {
       config.buttons = [{
-        title: '发货',
+        title: '拒绝',
+        check: true,
+        handler: (params) => {
+          this.handleFun(0, params);
+        }
+      }, {
+        title: '同意',
         check: true,
         type: 'primary',
         handler: (params) => {
-          this.fahuoFun(params);
+          this.handleFun(1, params);
         }
       }, {
         title: '返回',

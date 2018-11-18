@@ -6,6 +6,7 @@ import AgentComp from './agentComp/agentComp';
 import Saleman from './saleman/saleman';
 import CuringComp from './curingComp/curingComp';
 import PlatformComp from './platformComp/platformComp';
+import Seller from './seller/seller';
 
 @connect(
   state => state.user
@@ -16,7 +17,7 @@ export default class Home extends React.Component {
     this.state = {
       cnyAccount: {}
     };
-    this.kind = getKindByUrl();
+    console.log(this.kind);
   }
   render() {
     const { cnyAccount } = this.state;
@@ -31,7 +32,9 @@ export default class Home extends React.Component {
               ? <OwnComp cnyAccount={cnyAccount} />
               : this.kind === 'M'
                 ? <CuringComp cnyAccount={cnyAccount} />
-                : <PlatformComp cnyAccount={cnyAccount} />
+                : this.kind === 'B'
+                  ? <Seller cnyAccount={cnyAccount} />
+                  : <PlatformComp cnyAccount={cnyAccount} />
         }
       </div>
     );

@@ -5,6 +5,7 @@ import Txclz from '../txclz/txclz';
 import Multiple from '../multiple/multiple';
 import Notice from '../notice/notice';
 import Zjyhrw from '../zjyhrw/zjyhrw';
+import fetch from 'common/js/fetch';
 
 export default class CuringComp extends React.Component {
   constructor(props) {
@@ -14,7 +15,26 @@ export default class CuringComp extends React.Component {
       yhData: []
     };
   }
+  componentDidMount() {
+    fetch(805305, {
+      object: 'M',
+      start: '1',
+      limit: '10',
+      orderDir: 'desc',
+      orderColumn: 'publish_datetime'
+    }).then((res) => {
+      res.list.length && this.setState({
+        data: [{
+          title: res.list[0].title,
+          createDatetime: res.list[0].publishDatetime
+        }]
+      });
+    }).catch();
+  }
   goWithdraw() {}
+  goNotice = () => {
+    // window.location.href = '/own/notices';
+  }
   render() {
     return (
       <div>
@@ -31,7 +51,10 @@ export default class CuringComp extends React.Component {
         </Row>
         <Row gutter={{ xs: 12, sm: 24, md: 24, lg: 32 }}>
           <Col span={12}>
-            <Notice data={this.state.data}/>
+            <Notice
+              data={this.state.data}
+              goNotice={this.goNotice}
+            />
           </Col>
           <Col span={12} style={{marginBottom: '20px'}}>
             <Zjyhrw data={this.state.yhData}/>

@@ -38,9 +38,9 @@ class Notices extends React.Component {
     }];
     return this.props.buildList({
       fields,
-      pageCode: 805315,
+      pageCode: 805305,
       searchParams: {
-        userId: getUserId()
+        object: 'O'
       }
     });
   }

@@ -96,9 +96,6 @@ class OwnAsset extends React.Component {
     return this.props.buildList({
       fields,
       pageCode: 629435,
-      searchParams: {
-        belongPartId: getUserId()
-      },
       btnEvent: {
         // 物流单管理
         wuliudan: (keys, items) => {
@@ -107,7 +104,7 @@ class OwnAsset extends React.Component {
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
           } else {
-            this.props.history.push(`/own/wuliudan?status=${items[0].status}&code=${keys[0]}`);
+            this.props.history.push(`/pre/asset/wuliudan?status=${items[0].status}&code=${keys[0]}`);
           }
         }
       }

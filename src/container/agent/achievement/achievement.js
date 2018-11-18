@@ -22,6 +22,9 @@ import { listWrapper } from 'common/js/build-list';
 class Achievement extends React.Component {
   render() {
     const fields = [{
+      title: '代理商',
+      field: 'userName'
+    }, {
       title: '订单编号',
       field: 'code'
     }, {

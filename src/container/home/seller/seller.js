@@ -11,23 +11,30 @@ import fetch from 'common/js/fetch';
 
 const data = [];
 
-export default class PlatformComp extends React.Component {
+export default class Seller extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       addCount: 0,
       totalCount: 0,
-      data: []
+      data: [
+      //   {
+      //   title: '氧林1.0.0正式上线了',
+      //   createDatetime: '2018-09-05'
+      // }
+      ]
     };
   }
   componentDidMount() {
     fetch(805305, {
+      object: 'B',
       start: '1',
       limit: '10',
       orderDir: 'desc',
       orderColumn: 'publish_datetime'
     }).then((res) => {
-      this.setState({
+      // console.log(res);
+      res.list.length && this.setState({
         data: [{
           title: res.list[0].title,
           createDatetime: res.list[0].publishDatetime
@@ -36,7 +43,7 @@ export default class PlatformComp extends React.Component {
     }).catch();
   }
   goNotice = () => {
-    window.location.href = '/public/notice';
+    // window.location.href = '/own/notices';
   }
   render() {
     const { addCount, totalCount } = this.state;

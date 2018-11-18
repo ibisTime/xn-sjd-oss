@@ -67,7 +67,7 @@ class BizSellerProducts extends React.Component {
       field: 'parentCategoryCode',
       type: 'select',
       listCode: '629007',
-      params: {level: '1'},
+      params: {level: '1', type: '2'},
       keyName: 'code',
       valueName: 'name',
       search: true
@@ -76,15 +76,37 @@ class BizSellerProducts extends React.Component {
       field: 'categoryCode',
       type: 'select',
       listCode: '629007',
-      params: {level: '2'},
+      params: {level: '2', type: '2'},
       keyName: 'code',
       valueName: 'name',
       search: true
+    }, {
+      title: 'UI位置',
+      field: 'location',
+      type: 'select',
+      data: [{
+        dkey: '0',
+        dvalue: '普通'
+      }, {
+        dkey: '1',
+        dvalue: '热门'
+      }],
+      keyName: 'dkey',
+      valueName: 'dvalue',
+      search: true
+    }, {
+      title: '次序',
+      field: 'orderNo'
     }, {
       title: '状态',
       field: 'status',
       type: 'select',
       key: 'commodity_status',
+      search: true
+    }, {
+      title: '更新时间',
+      field: 'updateDatetime',
+      type: 'datetime',
       search: true
     }];
     let that = this;
@@ -93,6 +115,10 @@ class BizSellerProducts extends React.Component {
         {this.props.buildList({
           fields,
           pageCode: 629706,
+          searchParams: {
+            orderDir: 'desc',
+            orderColumn: 'update_datetime'
+          },
           // 0草稿/1已提交待审核/2审核不通过/3审核通过待上架/4已上架待认养/5已锁定/6已认养/7已下架
           btnEvent: {
             // 审核

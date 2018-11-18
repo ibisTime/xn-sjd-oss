@@ -62,11 +62,14 @@ class Register extends React.Component {
       if (!err) {
         this.setState({ fetching: true });
         // 根据当前url判断是注册哪种角色
+        // this.kind = 'B';
         let bizCode = 630060;
         if (this.kind === 'O') {
           values.kind = 'O';
         } else if (this.kind === 'M') {
           values.kind = 'M';
+        } else if (this.kind === 'B') {
+          values.kind = 'B';
         } else if (this.kind === 'A') {
           bizCode = 730070;
         } else {

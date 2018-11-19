@@ -25,7 +25,8 @@ class PersonOrders extends React.Component {
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'code'
+      field: 'code',
+      search: true
     }, {
       title: '产品名称',
       field: 'name',
@@ -84,7 +85,8 @@ class PersonOrders extends React.Component {
       amount: true
     }, {
       title: '认养人',
-      field: 'applyUserName'
+      field: 'applyUserName',
+      search: true
     }, {
       title: '状态',
       field: 'status',

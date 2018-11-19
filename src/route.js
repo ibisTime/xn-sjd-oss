@@ -683,6 +683,11 @@ const ROUTES = [
     path: '/agent/group-settlement/addedit',
     component: asyncComponent(() => import('container/agent/group-settlement/group-settlement-addedit'))
   },
+  // 代理管理 -- 商家管理 -- 商城结算
+  {
+    path: '/mall/mall-settlement',
+    component: asyncComponent(() => import('container/agent/mall-settlement/mall-settlement'))
+  },
   // 代理管理 -- 代理商管理 -- 业绩查询
   {
     path: '/agent/achievement',

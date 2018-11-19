@@ -79,7 +79,9 @@ class Property extends React.Component {
       rowKey: 'userId',
       pageCode: '630065',
       searchParams: {
-        kind: 'O'
+        kind: 'O',
+        orderColumn: 'create_datetime',
+        orderDir: 'desc'
       },
       btnEvent: {
         // 审核

@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getKindByUrl } from 'common/js/util';
+import { getKindByUrl, getUserId, judgeStatus } from 'common/js/util';
 import OwnComp from './ownComp/ownComp';
 import AgentComp from './agentComp/agentComp';
 import Saleman from './saleman/saleman';
 import CuringComp from './curingComp/curingComp';
 import PlatformComp from './platformComp/platformComp';
 import Seller from './seller/seller';
+import fetch from 'common/js/fetch';
 
 @connect(
   state => state.user
@@ -17,7 +18,16 @@ export default class Home extends React.Component {
     this.state = {
       cnyAccount: {}
     };
-    console.log(this.kind);
+  }
+  componentDidMount() {
+    let bizCode = getKindByUrl() === 'A' ? 730086 : 630067;
+    fetch(bizCode, { userId: getUserId() }).then(data => {
+      let url = judgeStatus(data.status);
+      console.log(url);
+      if (url) {
+        this.props.history.replace(url);
+      }
+    });
   }
   render() {
     const { cnyAccount } = this.state;

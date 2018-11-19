@@ -89,6 +89,7 @@ import { agentAgentsAccounts } from './redux/agent/agents-accounts';
 import { agentSettlement } from './redux/agent/settlement';
 import { agentPreSettlement } from './redux/agent/pre-settlement';
 import { agentGroupSettlement } from './redux/agent/group-settlement';
+import { agentMallSettlement } from './redux/agent/mall-settlement';
 import { agentAchievement } from './redux/agent/achievement';
 import { agentAccounts } from './redux/agent/accounts';
 import { agentFlows } from './redux/agent/flows';
@@ -204,6 +205,7 @@ export default combineReducers({
   agentSettlement,
   agentPreSettlement,
   agentGroupSettlement,
+  agentMallSettlement,
   agentAchievement,
   agentAccounts,
   agentFlows,

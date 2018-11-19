@@ -63,7 +63,9 @@ class Agents extends React.Component {
       rowKey: 'userId',
       pageCode: 730085,
       searchParams: {
-        type: '0'
+        type: '0',
+        orderColumn: 'create_datetime',
+        orderDir: 'desc'
       },
       btnEvent: {
         check: (keys, items) => {

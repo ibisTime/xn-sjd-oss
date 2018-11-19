@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Alert, Card } from 'antd';
-import { getQueryString, getUserId, getKindByUrl, isUndefined } from 'common/js/util';
+import { getQueryString, getUserId, getKindByUrl, isUndefined, judgeStatus } from 'common/js/util';
+import { isFullUser } from 'api/user';
 import DetailUtil from 'common/js/build-detail';
 import fetch from 'common/js/fetch';
 
@@ -15,6 +16,17 @@ class Supplement extends DetailUtil {
       readonly: false,
       isFailed: false
     };
+  }
+  componentWillUnmount() {
+    console.log(1);
+    let bizCode = getKindByUrl() === 'A' ? 730086 : 630067;
+    fetch(bizCode, { userId: getUserId() }).then(data => {
+      let url = judgeStatus(data.status);
+      console.log(url);
+      if (url) {
+        this.props.history.replace(url);
+      }
+    });
   }
   getExtra() {
     // TO_FILL("-1", "待填写资料"), TO_APPROVE("0", "待审核"), APPROVE_NO("1", "审核不通过"), NORMAL(

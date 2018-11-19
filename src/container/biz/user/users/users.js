@@ -82,6 +82,10 @@ class Users extends React.Component {
       fields,
       rowKey: 'userId',
       pageCode: 805120,
+      searchParams: {
+        orderColumn: 'create_datetime',
+        orderDir: 'desc'
+      },
       btnEvent: {
         // 账户查询
         accounts: (keys, items) => {

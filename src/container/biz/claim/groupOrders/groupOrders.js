@@ -25,7 +25,8 @@ class GroupOrders extends React.Component {
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'code'
+      field: 'code',
+      search: true
     }, {
       title: '产品名称',
       field: 'name',

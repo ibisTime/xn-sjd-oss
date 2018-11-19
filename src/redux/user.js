@@ -71,7 +71,8 @@ export function login({ loginName, loginPwd, type = 'P' }) {
     let bizCode = getKindByUrl() === 'A' ? 730071 : 630051;
     fetch(bizCode, {
       loginName,
-      loginPwd
+      loginPwd,
+      type: getKindByUrl()
     }).then(data => {
       setUser(data);
       dispatch(loginSuccess());

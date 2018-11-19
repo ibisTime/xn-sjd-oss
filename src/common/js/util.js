@@ -691,7 +691,7 @@ export function getKindByUrl() {
         return 'A';
     }
     // 商家
-    if (location.origin === 'http://sjd.sell.hichengdai.com' || location.origin === 'http://sell.o2lin.com') {
+    if (location.origin === 'http://sjd.sell.hichengdai.com' || location.origin === 'http://sell.o2lin.com' || location.origin === 'http://47.99.147.67:2910') {
       // if (location.origin === 'http://localhost:3001') {
       // if (location.origin === 'http://47.99.147.67:2909') {
       return 'B';

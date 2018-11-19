@@ -72,7 +72,9 @@ class Conserve extends React.Component {
       rowKey: 'userId',
       pageCode: '630065',
       searchParams: {
-        kind: 'M'
+        kind: 'M',
+        orderColumn: 'create_datetime',
+        orderDir: 'desc'
       },
       btnEvent: {
         // 审核

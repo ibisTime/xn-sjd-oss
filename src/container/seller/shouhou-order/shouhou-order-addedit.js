@@ -46,6 +46,10 @@ class SellerOrderAddEdit extends DetailUtil {
       _keys: ['orderDetail', 'amount'],
       amount: true
     }, {
+      title: '退款金额',
+      field: 'refundAmount',
+      amount: true
+    }, {
       title: '售后诉求',
       field: 'type',
       type: 'select',

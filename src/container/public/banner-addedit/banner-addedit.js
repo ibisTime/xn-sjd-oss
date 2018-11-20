@@ -29,7 +29,7 @@ class BannerAddEdit extends DetailUtil {
       required: true
     }, {
       title: '位置',
-      field: 'location',
+      field: 'type',
       type: 'select',
       key: 'cnavigate_type',
       required: true

@@ -48,3 +48,8 @@ export function isFullUser() {
     return { url, user: data };
   });
 }
+
+// 详情查用户
+export function getUserDetail(data) {
+  return fetch(805121, {...data});
+}

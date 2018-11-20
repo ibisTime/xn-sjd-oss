@@ -28,7 +28,7 @@ class Banner extends React.Component {
       search: true
     }, {
       title: '位置',
-      field: 'location',
+      field: 'type',
       type: 'select',
       key: 'cnavigate_type',
       search: true

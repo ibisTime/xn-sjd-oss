@@ -13,7 +13,6 @@ class SellerOrderAddEdit extends DetailUtil {
     this.view = !!getQueryString('v', this.props.location.search);
   }
   fahuoFun(params) {
-    console.log(params);
     this.doFetching();
     params.deliver = getUserId();
     fetch(629730, params).then(data => {
@@ -89,7 +88,7 @@ class SellerOrderAddEdit extends DetailUtil {
       fields,
       code: this.code,
       view: this.view,
-      detailCode: 629736
+      detailCode: 629726
     };
     if (this.fahuo) {
       config.buttons = [{

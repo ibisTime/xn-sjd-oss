@@ -41,21 +41,7 @@ class Rights extends React.Component {
       title: '状态',
       field: 'status',
       type: 'select',
-      data: [{
-        dkey: '1',
-        dvalue: '待认养'
-      }, {
-        dkey: '2',
-        dvalue: '认养中'
-      }, {
-        dkey: '3',
-        dvalue: '已到期'
-      }, {
-        dkey: '4',
-        dvalue: '已赠送'
-      }],
-      keyName: 'dkey',
-      valueName: 'dvalue',
+      key: 'adopt_order_tree_status',
       search: true
     }, {
       title: '认养期',

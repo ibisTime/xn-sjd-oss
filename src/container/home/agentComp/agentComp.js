@@ -9,6 +9,8 @@ import UserInfo from '../userInfo/userInfo';
 import UsersImg from './users.png';
 import agentImg from './agent.png';
 import fetch from 'common/js/fetch';
+import { getUserId, formatDate } from 'common/js/util';
+import { tixianAmountCount, getAccount, yongjinAcount, getNewUserNum } from 'api/count';
 
 export default class AgentComp extends React.Component {
   constructor(props) {
@@ -20,18 +22,56 @@ export default class AgentComp extends React.Component {
       data: []
     };
   }
+  getMonth() {
+    let date = new Date();
+    let y = date.getFullYear();
+    let m = date.getMonth();
+    let firstDay = new Date(y, m, 1);
+    return firstDay;
+  }
   componentDidMount() {
-    fetch(805305, {
-      object: 'A',
-      start: '1',
-      limit: '10',
-      orderDir: 'desc',
-      orderColumn: 'publish_datetime'
-    }).then((res) => {
-      res.list.length && this.setState({
+    let curTime = formatDate(new Date());
+    let startTime = formatDate(this.getMonth());
+    Promise.all([
+      // 提现处理中
+      tixianAmountCount({ statusList: [1, 3], applyUser: getUserId() }),
+      // 累积提现佣金
+      tixianAmountCount({ statusList: [5], applyUser: getUserId() }),
+      // 可用佣金金额
+      getAccount({ userId: getUserId() }),
+      // 待结算金额
+      yongjinAcount({ userId: getUserId(), status: 0 }),
+      // 累计获得佣金
+      yongjinAcount({ userId: getUserId() }),
+      // 本月佣金收入
+      yongjinAcount({ userId: getUserId(), createStartDatetime: startTime, createEndDatetime: curTime }),
+      // 代理概况(共）
+      getNewUserNum({ userId: getUserId(), type: 'A' }),
+      // 用户概况（新增）
+      getNewUserNum({ userId: getUserId(), type: 'A', createDatetimeStart: curTime, createDatetimeEnd: curTime }),
+      // 公告
+      fetch(805305, {
+        object: 'A',
+        start: '1',
+        limit: '10',
+        orderDir: 'desc',
+        orderColumn: 'publish_datetime'
+      })
+    ]).then(([res1, res2, res3, res4, res5, res6, res7, res8, res9]) => {
+      res9.list.length && this.setState({
+        txclzAmount: res1.totalAmount,
+        account1: res2.totalAmount,
+        account: res3[0].amount,
+        djsAmount: res4.totalAmount,
+        account0: res5.totalAmount,
+        account2: res6.totalAmount,
+        dailiCount: res7.agentUserCount,
+        userCount: res7.userCount,
+        dailiNew: res8.agentUserCount,
+        userNew: res8.userCount,
         data: [{
-          title: res.list[0].title,
-          createDatetime: res.list[0].publishDatetime
+          title: res9.list[0].title,
+          createDatetime: res9.list[0].publishDatetime
         }]
       });
     }).catch();
@@ -41,24 +81,29 @@ export default class AgentComp extends React.Component {
     // window.location.href = '/own/notices';
   }
   render() {
-    const { amount, addCount, totalCount } = this.state;
+    const { txclzAmount,
+      account,
+      account0,
+      account1,
+      account2,
+      djsAmount, dailiCount, dailiNew, userCount, userNew } = this.state;
     return (
       <div>
         <Row gutter={{ xs: 6, sm: 16, md: 24, lg: 32 }} style={{marginBottom: 4}}>
           <Col span={8} style={{marginBottom: '20px'}}>
-            <Kyyjje account={this.props.cnyAccount} goWithdraw={this.goWithdraw}/>
+            <Kyyjje account={account} goWithdraw={this.goWithdraw}/>
           </Col>
           <Col span={8}>
-            <Txclz account={this.props.cnyAccount}/>
+            <Txclz account={txclzAmount}/>
           </Col>
           <Col span={8}>
             <Multiple
               title0="累计获得佣金"
-              account0={this.props.cnyAccount}
+              account0={account0}
               title1="累计提现佣金"
-              account1={this.props.cnyAccount}
+              account1={account1}
               title2="本月佣金收入"
-              account2={this.props.cnyAccount}/>
+              account2={account2}/>
           </Col>
         </Row>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
@@ -69,9 +114,9 @@ export default class AgentComp extends React.Component {
             />
           </Col>
           <Col span={12}>
-            <Djsje style={{padding: 16}} amount={amount}/>
-            <UserInfo icon={agentImg} title="代理概况" totalCount={totalCount} addCount={addCount}/>
-            <UserInfo icon={UsersImg} title="用户概况" totalCount={totalCount} addCount={addCount} style={{marginBottom: 0}}/>
+            <Djsje style={{padding: 16}} amount={djsAmount}/>
+            <UserInfo icon={agentImg} title="代理概况" totalCount={dailiCount} addCount={dailiNew}/>
+            <UserInfo icon={UsersImg} title="用户概况" totalCount={userCount} addCount={userNew} style={{marginBottom: 0}}/>
           </Col>
         </Row>
       </div>

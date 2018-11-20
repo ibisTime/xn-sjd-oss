@@ -53,6 +53,46 @@ class OwnWuliudan extends React.Component {
       field: 'code',
       search: true
     }, {
+      title: '产品名称',
+      field: 'name',
+      // _keys: ['presellProduct', 'name']
+      render: (v, d) => d.presellProduct ? d.presellProduct.name : ''
+    }, {
+      title: '产品分类',
+      field: 'parentCategoryCode',
+      _keys: ['presellProduct', 'parentCategoryCode'],
+      type: 'select',
+      listCode: '629007',
+      params: {type: 1},
+      keyName: 'code',
+      valueName: 'name',
+      render: (v, d) => {
+        if (this.props.searchData.parentCategoryCode && d.presellProduct) {
+          let obj = this.props.searchData.parentCategoryCode.find(c => c.code === d.presellProduct.parentCategoryCode);
+          return obj ? obj.name : '';
+        }
+        return '';
+      }
+    }, {
+      title: '产品小类',
+      field: 'categoryCode',
+      _keys: ['presellProduct', 'categoryCode'],
+      type: 'select',
+      listCode: '629007',
+      params: {type: 1},
+      keyName: 'code',
+      valueName: 'name',
+      render: (v, d) => {
+        if (this.props.searchData.categoryCode && d.presellProduct) {
+          let obj = this.props.searchData.categoryCode.find(c => c.code === d.presellProduct.categoryCode);
+          return obj ? obj.name : '';
+        }
+        return '';
+      }
+    }, {
+      title: '发货数量',
+      field: 'deliverCount'
+    }, {
       title: '省',
       field: 'province'
     }, {

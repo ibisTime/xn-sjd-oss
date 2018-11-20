@@ -8,6 +8,8 @@ import AddImg from './add.png';
 import TotalImg from './total.png';
 import './index.css';
 import fetch from 'common/js/fetch';
+import { formatDate } from 'common/js/util';
+import { getNewUserNum } from 'api/count';
 
 const data = [];
 
@@ -21,16 +23,24 @@ export default class PlatformComp extends React.Component {
     };
   }
   componentDidMount() {
-    fetch(805305, {
-      start: '1',
-      limit: '10',
-      orderDir: 'desc',
-      orderColumn: 'publish_datetime'
-    }).then((res) => {
+    let curTime = formatDate(new Date());
+    Promise.all([
+      getNewUserNum({ type: 'P' }),
+      getNewUserNum({ type: 'P', createDatetimeStart: curTime, createDatetimeEnd: curTime }),
+      fetch(805305, {
+        object: 'P',
+        start: '1',
+        limit: '10',
+        orderDir: 'desc',
+        orderColumn: 'publish_datetime'
+      })
+    ]).then(([res1, res2, res3]) => {
       this.setState({
+        totalCount: res1.userTotalCount,
+        addCount: res2.userTotalCount,
         data: [{
-          title: res.list[0].title,
-          createDatetime: res.list[0].publishDatetime
+          title: res3.list[0].title,
+          createDatetime: res3.list[0].publishDatetime
         }]
       });
     }).catch();
@@ -53,7 +63,7 @@ export default class PlatformComp extends React.Component {
               <UserCountCard bgImage={AddImg} title='新增用户' subTitle="NEW USERS" count={addCount} />
             </Col>
             <Col span={6} style={{marginBottom: '20px'}}>
-              <UserCountCard bgImage={TotalImg} title='总用户数' subTitle="TOTAL USERS" count={addCount} />
+              <UserCountCard bgImage={TotalImg} title='总用户数' subTitle="TOTAL USERS" count={totalCount} />
             </Col>
           </Row>
           <Row style={{marginTop: 20}} gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>

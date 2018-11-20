@@ -18,15 +18,21 @@ export default class Home extends React.Component {
     this.state = {
       cnyAccount: {}
     };
+    this.kind = getKindByUrl();
+    // this.kind = 'A';
+    console.log(this.kind);
   }
   componentDidMount() {
     let bizCode = getKindByUrl() === 'A' ? 730086 : 630067;
+    // let bizCode = this.kind === 'A' ? 730086 : 630067;
     fetch(bizCode, { userId: getUserId() }).then(data => {
       let url = judgeStatus(data.status);
       console.log(url);
       if (url) {
         this.props.history.replace(url);
       }
+    }).catch(() => {
+      console.log(1);
     });
   }
   render() {

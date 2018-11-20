@@ -85,7 +85,7 @@ class sellerOrder extends React.Component {
     }];
     return this.props.buildList({
       fields,
-      pageCode: 629735,
+      pageCode: 629725,
       searchParams: {
         shopCode: getCompanyCode()
       },

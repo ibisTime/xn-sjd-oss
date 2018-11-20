@@ -10,7 +10,7 @@ export default class NormalBox extends React.Component {
         <div className="normal-content">
           <div className="normal-title">{this.props.title}</div>
           <div className="normal-price">
-            <label>¥</label>{moneyFormat(this.props.account.amount) || '0.00'}
+            <label>¥</label>{moneyFormat(this.props.account) || '0.00'}
           </div>
         </div>
       </div>

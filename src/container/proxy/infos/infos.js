@@ -17,6 +17,7 @@ class Infos extends React.Component {
       pageData: {},
       bankList: [],
       mobile: '',
+      registerUrl: '',
       fetching: true
     };
   }
@@ -24,12 +25,14 @@ class Infos extends React.Component {
     Promise.all([
       fetch(802026, { userId: getUserId() }),
       fetch(802116),
-      fetch(730086, { userId: getUserId() })
-    ]).then(([bankCards, bankList, userInfo]) => {
+      fetch(730086, { userId: getUserId() }),
+      fetch(630047, { ckey: 'REGISTER_URL' })
+    ]).then(([bankCards, bankList, userInfo, url]) => {
       this.setState({
         pageData: bankCards.length ? bankCards[0] : {},
         bankList,
         mobile: userInfo.mobile,
+        registerUrl: url.cvalue,
         fetching: false
       });
     }).catch(() => this.setState({ fetching: false }));
@@ -102,7 +105,7 @@ class Infos extends React.Component {
     });
   }
   render() {
-    const { pageData, fetching, mobile } = this.state;
+    const { pageData, fetching, mobile, registerUrl } = this.state;
     return (
       <Spin spinning={fetching}>
         <Alert
@@ -111,8 +114,8 @@ class Infos extends React.Component {
           type="info"
         />
         <Card title="分享二维码" style={{marginTop: 40}}>
-          <QRCode value={`${C_REGISTER_URL}?userReferee=${mobile}&type=A`} />
-          <label style={{paddingLeft: 20}}>注册链接：{`${C_REGISTER_URL}?userReferee=${mobile}&type=A`}</label>
+          <QRCode value={`${registerUrl}?userReferee=${mobile}&type=A`} />
+          <label style={{paddingLeft: 20}}>注册链接：{`${registerUrl}?userReferee=${mobile}&type=A`}</label>
         </Card>
         <Card title="银行卡信息" style={{marginTop: 40}}>
           <Form className="detail-form-wrapper" onSubmit={this.handleSubmit}>

@@ -926,7 +926,12 @@ const ROUTES = [
   // 养护端管理 -- 个人设置 -- 系统公告
   {
     path: '/curing/notices',
-    component: asyncComponent(() => import('container/own/notices/notices'))
+    component: asyncComponent(() => import('container/curing/notices/notices'))
+  },
+  // 养护端管理 -- 个人设置 -- 系统公告 -- 打开
+  {
+    path: '/curing/notices/addedit',
+    component: asyncComponent(() => import('container/curing/notices/notices'))
   },
   // 养护端管理 -- 个人设置 -- 安全管理
   {
@@ -1007,6 +1012,11 @@ const ROUTES = [
   {
     path: '/proxy/notices',
     component: asyncComponent(() => import('container/own/notices/notices'))
+  },
+  // 代理商 -- 个人设置 -- 公告管理 -- 打开
+  {
+    path: '/proxy/notices/addedit',
+    component: asyncComponent(() => import('container/own/notices/notices-addedit'))
   },
   // 代理商 -- 个人设置 -- 安全管理
   {

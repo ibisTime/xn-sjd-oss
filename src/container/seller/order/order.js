@@ -45,18 +45,21 @@ class sellerOrder extends React.Component {
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'orderCode',
+      field: 'code',
       search: true
-    }, {
-      title: '商品名称',
-      field: 'commodityName'
-    }, {
-      title: '规格名称',
-      field: 'specsName'
-    }, {
-      title: '数量',
-      field: 'quantity'
-    }, {
+    },
+    //   {
+    //   title: '商品名称',
+    //   field: 'commodityName',
+    //   render: (v, d) => d.detailList ? d.detailList.name : ''
+    // }, {
+    //   title: '规格名称',
+    //   field: 'specsName'
+    // }, {
+    //   title: '数量',
+    //   field: 'quantity'
+    // },
+      {
       title: '订单金额',
       field: 'amount',
       amount: true
@@ -77,6 +80,9 @@ class sellerOrder extends React.Component {
       field: 'applyDatetime',
       type: 'datetime'
     }, {
+      title: '下单人',
+      field: 'applyUser'
+      }, {
       title: '订单状态',
       field: 'status',
       type: 'select',

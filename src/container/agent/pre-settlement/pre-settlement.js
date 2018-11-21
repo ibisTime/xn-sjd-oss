@@ -52,7 +52,7 @@ class PreSettlement extends React.Component {
     return this.props.buildList({
       fields,
       pageCode: 629425,
-      searchParams: { status: '2' },
+      searchParams: { status: '2', existsSettle: 1 },
       btnEvent: {
         // 状态（0待支付/1已取消/2已支付）
         edit: (keys, items) => {

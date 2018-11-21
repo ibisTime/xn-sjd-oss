@@ -15,7 +15,7 @@ class SellerOrderAddEdit extends DetailUtil {
   fahuoFun(params) {
     this.doFetching();
     params.deliver = getUserId();
-    fetch(629730, params).then(data => {
+    fetch(629723, params).then(data => {
       this.cancelFetching();
       showSucMsg('操作成功');
       setTimeout(() => {
@@ -26,17 +26,19 @@ class SellerOrderAddEdit extends DetailUtil {
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'orderCode'
-    }, {
-      title: '产品名称',
-      field: 'commodityName'
-    }, {
-      title: '规格名称',
-      field: 'specsName'
-    }, {
-      title: '数量',
-      field: 'quantity'
-    }, {
+      field: 'code'
+    },
+    //   {
+    //   title: '产品名称',
+    //   field: 'commodityName'
+    // }, {
+    //   title: '规格名称',
+    //   field: 'specsName'
+    // }, {
+    //   title: '数量',
+    //   field: 'quantity'
+    // },
+      {
       title: '订单金额',
       field: 'amount',
       amount: true

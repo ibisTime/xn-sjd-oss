@@ -111,6 +111,7 @@ import { curingTasksRecords } from './redux/curing/tasks-records';
 import { curingProjects } from './redux/curing/projects';
 import { curingUsers } from './redux/curing/users';
 import { curingOwns } from './redux/curing/owns';
+import { curingNotices } from './redux/curing/notices';
 // 养护端--资金管理
 import { curingFlows } from './redux/curing/flows';
 // 代理商--代理商
@@ -119,6 +120,7 @@ import { proxySubordinates } from './redux/proxy/subordinates';
 import { proxySettled } from './redux/proxy/settled';
 import { proxyUnSettled } from './redux/proxy/unsettled';
 import { proxyFlows } from './redux/proxy/flows';
+import { proxyNotices } from './redux/proxy/notices';
 // 代理商--业务员管理
 import { proxySalesmen } from './redux/proxy/salesmen';
 // 业务员--我的用户
@@ -224,12 +226,14 @@ export default combineReducers({
   curingUsers,
   curingFlows,
   curingOwns,
+  curingNotices,
   proxyUsers,
   proxySubordinates,
   proxySettled,
   proxyUnSettled,
   proxyFlows,
   proxySalesmen,
+  proxyNotices,
   salemanUsers,
   sellerProducts,
   sellerOrder,

@@ -19,11 +19,7 @@ import { getQueryString } from 'common/js/util';
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
-class UserSignIn extends React.Component {
-  constructor(props) {
-    super(props);
-    this.code = getQueryString('code', this.props.location.search);
-  }
+class UserSignInAll extends React.Component {
   render() {
     const fields = [{
       title: '签到人',
@@ -38,13 +34,9 @@ class UserSignIn extends React.Component {
     }];
     return this.props.buildList({
       fields,
-      rowKey: 'id',
-      pageCode: 805145,
-      searchParams: {
-        userId: this.code
-      }
+      pageCode: 805145
     });
   }
 }
 
-export default UserSignIn;
+export default UserSignInAll;

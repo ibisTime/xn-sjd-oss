@@ -12,6 +12,9 @@ import { publicNotice } from './redux/public/notice';
 /** ***** 财务管理start ***** **/
 // 财务管理--平台账户
 import { platformDistributionRules } from './redux/finance/platform/distributionRules';
+import { platformPreDistributionRules } from './redux/finance/platform/pre-distributionRules';
+import { platformMallDistributionRules } from './redux/finance/platform/mall-distributionRules';
+import { platformInvitationMoneyRules } from './redux/finance/platform/invitationMoneyRules';
 import { platformGradationRules } from './redux/finance/platform/gradationRules';
 import { platformIntegralRules } from './redux/finance/platform/integralRules';
 import { platformPayRules } from './redux/finance/platform/payRules';
@@ -34,6 +37,7 @@ import { propertyProperty } from './redux/biz/property/property';
 import { propertyPropertyAccounts } from './redux/biz/property/property-accounts';
 import { propertyBinds } from './redux/biz/property/binds';
 import { propertyTypes } from './redux/biz/property/types';
+import { propertyPreTypes } from './redux/biz/property/pre-types';
 import { propertyProducts } from './redux/biz/property/products';
 import { propertyTrees } from './redux/biz/property/trees';
 import { propertyAccounts } from './redux/biz/property/accounts';
@@ -44,6 +48,14 @@ import { sellerTypes } from './redux/biz/seller/types';
 import { bizSellerProducts } from './redux/biz/seller/products';
 import { bizSellerOrder } from './redux/biz/seller/order';
 import { bizSellerOrderSingle } from './redux/biz/seller/order-single';
+import { bizSellerKeyword } from './redux/biz/seller/keyword';
+import { bizSellerCommentCheck } from './redux/biz/seller/comment-check';
+import { bizSellerComment } from './redux/biz/seller/comment';
+import { bizSellerMessage } from './redux/biz/seller/message';
+import { bizSellerUnread } from './redux/biz/seller/unread';
+import { sellerAfterSale } from './redux/biz/seller/after-sale';
+import { bizSellerAccounts } from './redux/biz/seller/accounts';
+import { bizSellerFlows } from './redux/biz/seller/flows';
 // 业务管理--养护方管理
 import { conserveConserve } from './redux/biz/conserve/conserve';
 import { conserveBinds } from './redux/biz/conserve/conserve-binds';
@@ -56,6 +68,7 @@ import { conserveFlows } from './redux/biz/conserve/flows';
 // 业务管理--用户管理
 import { userUsers } from './redux/biz/user/users';
 import { userUserAccounts } from './redux/biz/user/user-accounts';
+// import { userSignIn } from './redux/biz/user/signIn';
 import { userSignIn } from './redux/biz/user/signIn';
 import { userShares } from './redux/biz/user/shares';
 import { userGives } from './redux/biz/user/gives';
@@ -142,6 +155,9 @@ export default combineReducers({
   publicBanner,
   publicNotice,
   platformDistributionRules,
+  platformPreDistributionRules,
+  platformMallDistributionRules,
+  platformInvitationMoneyRules,
   platformGradationRules,
   platformIntegralRules,
   platformPayRules,
@@ -161,6 +177,7 @@ export default combineReducers({
   propertyPropertyAccounts,
   propertyBinds,
   propertyTypes,
+  propertyPreTypes,
   propertyProducts,
   propertyTrees,
   propertyAccounts,
@@ -170,6 +187,14 @@ export default combineReducers({
   bizSellerProducts,
   bizSellerOrder,
   bizSellerOrderSingle,
+  bizSellerKeyword,
+  bizSellerCommentCheck,
+  bizSellerComment,
+  bizSellerMessage,
+  bizSellerUnread,
+  bizSellerAccounts,
+  bizSellerFlows,
+  sellerAfterSale,
   conserveConserve,
   conserveBinds,
   conserveConserveAccounts,

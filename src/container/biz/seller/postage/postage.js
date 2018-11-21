@@ -9,20 +9,20 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/seller/order';
+} from '@redux/seller/postage';
 import { listWrapper } from 'common/js/build-list';
 import fetch from 'common/js/fetch';
-import { showSucMsg, showWarnMsg, getUserId, getCompanyCode } from 'common/js/util';
+import { showSucMsg, showWarnMsg, getUserId } from 'common/js/util';
 
 @listWrapper(
   state => ({
-    ...state.sellerOrder,
+    ...state.sellerPostage,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
-class sellerOrder extends React.Component {
+class sellerPostage extends React.Component {
   upDown(code, orderNo, location, status) {
     Modal.confirm({
       okText: '确认',
@@ -44,57 +44,31 @@ class sellerOrder extends React.Component {
   }
   render() {
     const fields = [{
-      title: '订单编号',
-      field: 'code',
-      search: true
-    },
-    //   {
-    //   title: '商品名称',
-    //   field: 'commodityName',
-    //   render: (v, d) => d.detailList ? d.detailList.name : ''
-    // }, {
-    //   title: '规格名称',
-    //   field: 'specsName'
-    // }, {
-    //   title: '数量',
-    //   field: 'quantity'
-    // },
-      {
-      title: '订单金额',
-      field: 'amount',
-      amount: true
+      title: '店铺',
+      field: 'shopCode'
     }, {
-      title: '实际支付金额',
-      field: 'payAmount',
-      amount: true
+      title: '发货地',
+      field: 'deliverPlace',
+      type: 'provSelect',
+      required: true
     }, {
-      title: '抵扣的人民币',
-      field: 'cnyDeductAmount',
-      amount: true
+      title: '收货地',
+      field: 'receivePlace',
+      type: 'provSelect',
+      required: true
     }, {
-      title: '使用积分数量',
-      field: 'jfDeductAmount',
-      amount: true
+      title: '价格',
+      field: 'price',
+      amount: true,
+      required: true
     }, {
-      title: '下单时间',
-      field: 'applyDatetime',
-      type: 'datetime'
-    }, {
-      title: '下单人',
-      field: 'applyUser'
-      }, {
-      title: '订单状态',
-      field: 'status',
-      type: 'select',
-      key: 'commodity_order_status',
-      search: true
+      title: '备注',
+      field: 'remark'
     }];
     return this.props.buildList({
       fields,
-      pageCode: 629725,
-      searchParams: {
-        shopCode: getCompanyCode()
-      },
+      pageCode: 629745,
+      deleteCode: 629741,
       btnEvent: {
         // 编辑
         fahuo: (keys, items) => {
@@ -105,7 +79,7 @@ class sellerOrder extends React.Component {
           } else if (items[0].status !== '1') {
             showWarnMsg('该订单不可发货');
           } else {
-            this.props.history.push(`/seller/order/addedit?fahuo=1&v=1&code=${keys[0]}`);
+            this.props.history.push(`/seller/biz-postage/addedit?fahuo=1&v=1&code=${keys[0]}`);
           }
         }
       }
@@ -113,4 +87,4 @@ class sellerOrder extends React.Component {
   }
 }
 
-export default sellerOrder;
+export default sellerPostage;

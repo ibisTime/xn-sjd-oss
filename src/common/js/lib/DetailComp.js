@@ -422,6 +422,7 @@ export default class DetailComp extends React.Component {
       initVal,
       rules,
       getFieldDecorator,
+      multiple: item.multiple,
       code: this.options.code,
       params: item.params,
       pageCode: item.pageCode,

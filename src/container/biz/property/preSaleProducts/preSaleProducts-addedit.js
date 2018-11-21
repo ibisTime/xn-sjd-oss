@@ -122,6 +122,11 @@ class ProductsAddEdit extends DetailUtil {
             type: 'img',
             required: true
         }, {
+          title: '最大积分抵扣比例',
+          field: 'maxJfdkRate',
+          number: true,
+          required: true
+        }, {
             title: '价格列表',
             field: 'presellSpecsList',
             type: 'o2m',

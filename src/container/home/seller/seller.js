@@ -1,78 +1,87 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Row, Col, Avatar } from 'antd';
-import UserCountCard from '../userCountCard/userCountCard';
+import { Row, Col } from 'antd';
+import Kyyjje from '../kyyjje/kyyjje';
+import Txclz from '../txclz/txclz';
+import Multiple from '../multiple/multiple';
 import Notice from '../notice/notice';
-import AvatarImg from './avatar.png';
-import AddImg from './add.png';
-import TotalImg from './total.png';
-import './index.css';
+import Zjyhrw from '../zjyhrw/zjyhrw';
 import fetch from 'common/js/fetch';
+import { moneyFormat, getUserId } from 'common/js/util';
+import { tixianAmountCount, claimCount, getAccount } from 'api/count';
+import { getUserById } from 'api/user';
 
-const data = [];
-
-export default class Seller extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      addCount: 0,
-      totalCount: 0,
-      data: [
-      //   {
-      //   title: '氧林1.0.0正式上线了',
-      //   createDatetime: '2018-09-05'
-      // }
-      ]
-    };
-  }
-  componentDidMount() {
-    fetch(805305, {
-      object: 'B',
-      start: '1',
-      limit: '10',
-      orderDir: 'desc',
-      orderColumn: 'publish_datetime'
-    }).then((res) => {
-      // console.log(res);
-      res.list.length && this.setState({
-        data: [{
-          title: res.list[0].title,
-          createDatetime: res.list[0].publishDatetime
-        }]
-      });
-    }).catch();
-  }
-  goNotice = () => {
-    // window.location.href = '/own/notices';
-  }
-  render() {
-    const { addCount, totalCount } = this.state;
-    return (
-      <div className="platform-wrapper">
-        <div className="avatar-wrapper">
-          <Avatar size={80} src={AvatarImg} />
-          <div className="user-name">ADMIN</div>
-          <div className="user-role">超级管理员</div>
-        </div>
-        <div className="platform-content">
-          <Row gutter={{ xs: 6, sm: 12, md: 24, lg: 32 }}>
-            <Col span={6} style={{marginBottom: '20px'}}>
-              <UserCountCard bgImage={AddImg} title='新增用户' subTitle="NEW USERS" count={addCount} />
-            </Col>
-            <Col span={6} style={{marginBottom: '20px'}}>
-              <UserCountCard bgImage={TotalImg} title='总用户数' subTitle="TOTAL USERS" count={addCount} />
-            </Col>
-          </Row>
-          <Row style={{marginTop: 20}} gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-            <Col span={24} style={{marginBottom: '20px'}}>
-              <Notice
-                data={this.state.data}
-                goNotice={this.goNotice}
-              />
-            </Col>
-          </Row>
-        </div>
-      </div>
-    );
-  }
+export default class CuringComp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            yhData: []
+        };
+    }
+    componentDidMount() {
+        Promise.all([
+            // 提现处理中
+            tixianAmountCount({ statusList: [1, 3], applyUser: getUserId() }),
+            // 累积提现货款
+            tixianAmountCount({ statusList: [5], applyUser: getUserId() }),
+            getAccount({ userId: getUserId() }),
+            // 公告
+            fetch(805305, {
+                object: 'M',
+                start: '1',
+                limit: '10',
+                orderDir: 'desc',
+                orderColumn: 'publish_datetime'
+            })
+        ]).then(([res1, res2, res3, res4]) => {
+            res4.list.length && this.setState({
+                txclzAmount: res1.totalAmount,
+                account1: res2.totalAmount,
+                account: res3[0].amount,
+                data: [{
+                    title: res4.list[0].title,
+                    createDatetime: res4.list[0].publishDatetime
+                }]
+            });
+        }).catch();
+    }
+    goWithdraw() {}
+    goNotice = () => {
+        window.location.href = '/curing/notices';
+    }
+    render() {
+        const title0 = '累计获得货款';
+        const title1 = '累计提现货款';
+        const title2 = '本月货款收入';
+        const { account, txclzAmount, account1 } = this.state;
+        return (
+            <div>
+                <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} style={{marginBottom: 4}}>
+                    <Col span={8} style={{marginBottom: '20px'}}>
+                        <Kyyjje account={account} goWithdraw={this.goWithdraw}/>
+                    </Col>
+                    <Col span={8}>
+                        <Txclz account={txclzAmount}/>
+                    </Col>
+                    <Col span={8}>
+                        <Multiple
+                            title0={title0}
+                            title1={title1}
+                            title2={title2}
+                            account0={this.props.cnyAccount}
+                            account1={account1}
+                            account2={this.props.cnyAccount}/>
+                    </Col>
+                </Row>
+                <Row gutter={{ xs: 12, sm: 24, md: 24, lg: 32 }}>
+                    <Col span={12}>
+                        <Notice
+                            data={this.state.data}
+                            goNotice={this.goNotice}
+                        />
+                    </Col>
+                </Row>
+            </div>
+        );
+    }
 }

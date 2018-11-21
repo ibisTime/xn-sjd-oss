@@ -103,6 +103,15 @@ class ProductEdit extends DetailUtil {
       required: true,
       number: true
     }, {
+      title: '原价',
+      field: 'originalPrice',
+      required: true,
+      amount: true
+    }, {
+      title: '最大积分抵扣比例',
+      field: 'maxJfdkRate',
+      required: true
+    }, {
       title: '物流方式',
       field: 'logistics',
       type: 'select',

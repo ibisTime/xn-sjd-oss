@@ -67,6 +67,11 @@ class sellerProducts extends React.Component {
       valueName: 'name',
       search: true
     }, {
+        title: '物流方式',
+        field: 'logistics',
+        type: 'select',
+        key: 'logistics'
+    }, {
       title: '状态',
       field: 'status',
       type: 'select',

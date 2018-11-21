@@ -86,7 +86,7 @@ class sellerOrder extends React.Component {
       title: '订单状态',
       field: 'status',
       type: 'select',
-      key: 'commodity_order_detail_status',
+      key: 'commodity_cnavigate_status',
       search: true
     }];
     return this.props.buildList({

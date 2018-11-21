@@ -9,20 +9,20 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/biz/property/types';
+} from '@redux/biz/property/pre-types';
 import { listWrapper } from 'common/js/build-list';
 import { showWarnMsg, showSucMsg, getUserId } from 'common/js/util';
 import fetch from 'common/js/fetch';
 
 @listWrapper(
   state => ({
-    ...state.propertyTypes,
+    ...state.propertyPreTypes,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
-class Types extends React.Component {
+class PreTypes extends React.Component {
   upDown(bizCode, code) {
     Modal.confirm({
       okText: '确认',
@@ -46,7 +46,7 @@ class Types extends React.Component {
       field: 'parentCode',
       type: 'select',
       listCode: '629007',
-      params: {status: 1, typeList: [0]},
+      params: {status: 1, typeList: [1]},
       keyName: 'code',
       valueName: 'name',
       search: true
@@ -70,7 +70,7 @@ class Types extends React.Component {
       fields,
       pageCode: '629005',
       searchParams: {
-        typeList: [0]
+        typeList: [1]
       },
       btnEvent: {
         edit: (keys, items) => {
@@ -81,7 +81,7 @@ class Types extends React.Component {
           } else if (items[0].status !== '0') {
             showWarnMsg('该记录不是待上架状态，无法修改');
           } else {
-            this.props.history.push(`/property/types/addedit?code=${keys[0]}`);
+            this.props.history.push(`/pre/preTypes/addedit?code=${keys[0]}`);
           }
         },
         up: (keys, items) => {
@@ -111,4 +111,4 @@ class Types extends React.Component {
   }
 }
 
-export default Types;
+export default PreTypes;

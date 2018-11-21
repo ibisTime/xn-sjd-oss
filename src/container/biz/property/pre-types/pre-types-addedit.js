@@ -4,7 +4,7 @@ import { getQueryString } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 
 @Form.create()
-class TypesAddEdit extends DetailUtil {
+class PreTypesAddedit extends DetailUtil {
   constructor(props) {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
@@ -23,23 +23,25 @@ class TypesAddEdit extends DetailUtil {
     }, {
       title: '类型',
       field: 'type',
-      value: '0',
+      value: '1',
       hidden: true
     }, {
-      // 认养
       title: '上级编号',
       field: 'parentCode',
       type: 'select',
       listCode: '629007',
       params: {
         status: 1,
-        level: 1,
+        level: 2,
         orderColumn: 'order_no',
         orderDir: 'asc',
-        type: 0
+        type: 1
       },
       keyName: 'code',
       valueName: 'name',
+      formatter: (v, d) => {
+        return d.parentCode;
+      },
       onChange: (v) => {
         if (v && this.state.isTop) {
           this.setState({ isTop: false });
@@ -92,4 +94,4 @@ class TypesAddEdit extends DetailUtil {
   }
 }
 
-export default TypesAddEdit;
+export default PreTypesAddedit;

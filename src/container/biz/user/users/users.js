@@ -120,17 +120,17 @@ class Users extends React.Component {
           } else {
             this.rockOrActive(items[0].status, keys[0]);
           }
-        },
-        // 签到记录
-        signIn: (keys, items) => {
-          if (!keys || !keys.length) {
-            showWarnMsg('请选择记录');
-          } else if (keys.length > 1) {
-            showWarnMsg('请选择一条记录');
-          } else {
-            this.props.history.push(`/user/users/signIn?code=${keys[0]}`);
-          }
         }
+        // 签到记录
+        // signIn: (keys, items) => {
+        //   if (!keys || !keys.length) {
+        //     showWarnMsg('请选择记录');
+        //   } else if (keys.length > 1) {
+        //     showWarnMsg('请选择一条记录');
+        //   } else {
+        //     this.props.history.push(`/user/users/signIn?code=${keys[0]}`);
+        //   }
+        // }
       }
     });
   }

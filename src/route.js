@@ -95,6 +95,36 @@ const ROUTES = [
     path: '/platform/distributionRules/addedit',
     component: asyncComponent(() => import('container/finance/platform/distributionRules/distributionRules-addedit'))
   },
+  // 财务管理 -- 规则设置 -- 预售分销规则设置
+  {
+    path: '/platform/pre-distributionRules',
+    component: asyncComponent(() => import('container/finance/platform/pre-distributionRules/pre-distributionRules'))
+  },
+  // 财务管理 -- 规则设置 -- 预售分销规则设置 -- 详情
+  {
+    path: '/platform/pre-distributionRules/addedit',
+    component: asyncComponent(() => import('container/finance/platform/pre-distributionRules/pre-distributionRules-addedit'))
+  },
+  // 财务管理 -- 规则设置 -- 商城分销规则设置
+  {
+    path: '/platform/mall-distributionRules',
+    component: asyncComponent(() => import('container/finance/platform/mall-distributionRules/mall-distributionRules'))
+  },
+  // 财务管理 -- 规则设置 -- 商城分销规则设置 -- 详情
+  {
+    path: '/platform/mall-distributionRules/addedit',
+    component: asyncComponent(() => import('container/finance/platform/mall-distributionRules/mall-distributionRules-addedit'))
+  },
+  // 财务管理 -- 规则设置 -- 用户推荐送钱规则
+  {
+    path: '/platform/invitationMoneyRules',
+    component: asyncComponent(() => import('container/finance/platform/invitationMoneyRules/invitationMoneyRules'))
+  },
+  // 财务管理 -- 规则设置 -- 用户推荐送钱规则 -- 详情
+  {
+    path: '/platform/invitationMoneyRules/addedit',
+    component: asyncComponent(() => import('container/finance/platform/invitationMoneyRules/invitationMoneyRules-addedit'))
+  },
   // 财务管理 -- 平台账户 -- 级差设置
   {
     path: '/platform/gradationRules',
@@ -263,6 +293,16 @@ const ROUTES = [
     path: '/property/types/addedit',
     component: asyncComponent(() => import('container/biz/property/types/types-addedit'))
   },
+  // 业务管理 -- 产权方管理 -- 预售产品分类管理
+  {
+    path: '/pre/preTypes',
+    component: asyncComponent(() => import('container/biz/property/pre-types/pre-types'))
+  },
+  // 业务管理 -- 产权方管理 -- 产品分类管理
+  {
+    path: '/pre/preTypes/addedit',
+    component: asyncComponent(() => import('container/biz/property/pre-types/pre-types-addedit'))
+  },
   // 业务管理 -- 产权方管理 -- 产品管理
   {
     path: '/property/products',
@@ -338,10 +378,30 @@ const ROUTES = [
     path: '/seller/biz-products',
     component: asyncComponent(() => import('container/biz/seller/products/products'))
   },
-  // 业务管理 -- 商家管理 -- 商品管理
+  // 业务管理 -- 商家管理 -- 商品管理 -- 详情
   {
     path: '/seller/biz-products/addedit',
     component: asyncComponent(() => import('container/biz/seller/productEdit/productEdit'))
+  },
+  // 商城管理 -- 商城管理 -- 邮费查询
+  {
+    path: '/seller/biz-postage',
+    component: asyncComponent(() => import('container/biz/seller/postage/postage'))
+  },
+  // 商城管理 -- 商城管理 -- 邮费查询 -- 详情
+  {
+    path: '/seller/biz-postage/addedit',
+    component: asyncComponent(() => import('container/biz/seller/postage/postage-addedit'))
+  },
+  // 商城管理 -- 商城管理 -- 售后查询
+  {
+    path: '/seller/after-sale',
+    component: asyncComponent(() => import('container/biz/seller/after-sale/after-sale'))
+  },
+  // 商城管理 -- 商城管理 -- 售后查询 -- 详情
+  {
+    path: '/seller/after-sale/addedit',
+    component: asyncComponent(() => import('container/biz/seller/after-sale/after-sale-addedit'))
   },
   // 业务管理 -- 商家管理 -- 商城订单管理
   {
@@ -357,6 +417,81 @@ const ROUTES = [
   {
     path: '/seller/biz-order/addedit',
     component: asyncComponent(() => import('container/biz/seller/order/order-addedit'))
+  },
+  // 商城管理 -- 商城管理 -- 账户查询
+  {
+    path: '/seller/biz-accounts',
+    component: asyncComponent(() => import('container/biz/seller/accounts/accounts'))
+  },
+  // 商城管理 -- 商城管理 -- 账户查询 -- 流水查询
+  {
+    path: '/seller/biz-accounts/flows',
+    component: asyncComponent(() => import('container/biz/seller/accounts/account-flows'))
+  },
+  // 商城管理 -- 商城管理 -- 流水查询
+  {
+    path: '/seller/biz-flows',
+    component: asyncComponent(() => import('container/biz/seller/flows/flows'))
+  },
+  // 商城管理 -- 商城管理 -- 流水查询 -- 详情
+  {
+    path: '/seller/biz-flows/addedit',
+    component: asyncComponent(() => import('container/finance/flows-addedit/flows-addedit'))
+  },
+  // 业务管理 -- 商城管理 -- 评论管理 -- 关键字设置
+  {
+    path: '/biz-comment/keyword',
+    component: asyncComponent(() => import('container/biz/seller/keyword/keyword'))
+  },
+  // 业务管理 -- 商城管理 -- 评论管理 -- 关键字设置 -- 详情
+  {
+    path: '/biz-comment/keyword/addedit',
+    component: asyncComponent(() => import('container/biz/seller/keyword/keyword-addedit'))
+  },
+  // 业务管理 -- 商城管理 -- 评论管理 -- 评论审核
+  {
+    path: '/biz-comment/comment-check',
+    component: asyncComponent(() => import('container/biz/seller/comment-check/comment-check'))
+  },
+  // 业务管理 -- 商城管理 -- 评论管理 -- 评论审核 -- 审核
+  {
+    path: '/biz-comment/comment-check/addedit',
+    component: asyncComponent(() => import('container/biz/seller/comment-check/comment-check-addedit'))
+  },
+  // 业务管理 -- 商城管理 -- 评论管理 -- 评论查询
+  {
+    path: '/biz-comment/comment',
+    component: asyncComponent(() => import('container/biz/seller/comment/comment'))
+  },
+  // 业务管理 -- 商城管理 -- 评论管理 -- 关键字设置 -- 详情
+  {
+    path: '/biz-comment/comment/addedit',
+    component: asyncComponent(() => import('container/biz/seller/comment/comment-addedit'))
+  },
+  // 业务管理 -- 商城管理 -- 客服管理 -- 消息查询
+  {
+    path: '/biz-message/message',
+    component: asyncComponent(() => import('container/biz/seller/messages/messages'))
+  },
+  // 业务管理 -- 商城管理 -- 客服管理 -- 待回复消息 -- 回复
+  {
+    path: '/biz-message/message/addedit',
+    component: asyncComponent(() => import('container/biz/seller/unread/unread-addedit'))
+  },
+  // 业务管理 -- 商城管理 -- 客服管理 -- 待回复消息
+  {
+    path: '/biz-message/unread',
+    component: asyncComponent(() => import('container/biz/seller/unread/unread'))
+  },
+  // 业务管理 -- 商城管理 -- 客服管理 -- 待回复消息 -- 回复
+  {
+    path: '/biz-message/unread/addedit',
+    component: asyncComponent(() => import('container/biz/seller/unread/unread-addedit'))
+  },
+  // 业务管理 -- 商城管理 -- 评论管理 -- 关键字设置 -- 详情
+  {
+    path: '/biz-comment/comment/addedit',
+    component: asyncComponent(() => import('container/biz/seller/comment/comment-addedit'))
   },
   // 业务管理 -- 养护方管理 -- 养护方管理
   {
@@ -443,10 +578,15 @@ const ROUTES = [
     path: '/user/users/accounts',
     component: asyncComponent(() => import('container/biz/user/users/user-accounts'))
   },
-  // 业务管理 -- 用户管理 -- 签到记录
+  // // 业务管理 -- 用户管理 -- 签到记录
+  // {
+  //   path: '/user/users/signIn',
+  //   component: asyncComponent(() => import('container/biz/user/users/user-signIn'))
+  // },
+  // 业务管理 -- 签到记录
   {
-    path: '/user/users/signIn',
-    component: asyncComponent(() => import('container/biz/user/users/user-signIn'))
+    path: '/user/signIn',
+    component: asyncComponent(() => import('container/biz/user/sign-in-all/sign-in-all'))
   },
   // 业务管理 -- 用户管理 -- 分享记录
   {

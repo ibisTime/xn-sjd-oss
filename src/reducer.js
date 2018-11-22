@@ -68,7 +68,6 @@ import { conserveFlows } from './redux/biz/conserve/flows';
 // 业务管理--用户管理
 import { userUsers } from './redux/biz/user/users';
 import { userUserAccounts } from './redux/biz/user/user-accounts';
-// import { userSignIn } from './redux/biz/user/signIn';
 import { userSignIn } from './redux/biz/user/signIn';
 import { userShares } from './redux/biz/user/shares';
 import { userGives } from './redux/biz/user/gives';
@@ -88,6 +87,7 @@ import { claimRightsTppOrders } from './redux/biz/claim/tppOrders';
 import { prePreOrder } from './redux/biz/pre/preOrder';
 import { preConOrder } from './redux/biz/pre/conOrder';
 import { preAsset } from './redux/biz/pre/asset';
+import { preFahuo } from './redux/biz/pre/fahuo';
 // 业务管理--情感频道
 import { emotionArticles } from './redux/biz/emotion/articles';
 // 业务管理--道具管理
@@ -222,6 +222,7 @@ export default combineReducers({
   prePreOrder,
   preConOrder,
   preAsset,
+  preFahuo,
   emotionArticles,
   propProps,
   propBuyRecords,

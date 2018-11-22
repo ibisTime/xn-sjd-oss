@@ -43,10 +43,23 @@ class sellerPostage extends React.Component {
     });
   }
   render() {
-    const fields = [{
-      title: '店铺',
-      field: 'shopCode'
-    }, {
+    const fields = [
+    //   {
+    //   title: '店铺',
+    //   field: 'shopCode',
+    //   type: 'select',
+    //   pageCode: 630065,
+    //   params: { kind: 'B' },
+    //   keyName: 'userId',
+    //   valueName: 'mobile',
+    //   searchName: 'keyword',
+    //   search: true
+    // },
+      {
+        title: '店铺',
+        field: 'shopName',
+        search: true
+      }, {
       title: '发货地',
       field: 'deliverPlace',
       type: 'provSelect',

@@ -56,14 +56,6 @@ class SellerOrderAddEdit extends DetailUtil {
       title: '收货人手机号',
       field: 'mobile',
       _keys: ['address', 'mobile']
-    }, {
-      title: '物流公司',
-      field: 'logisticsCompany',
-      type: 'select',
-      key: 'logistics_company'
-    }, {
-      title: '物流单号',
-      field: 'logisticsNumber'
     }];
     let config = {
       fields,
@@ -73,7 +65,7 @@ class SellerOrderAddEdit extends DetailUtil {
     };
     if (this.fahuo) {
       config.buttons = [{
-        title: '发货',
+        title: 'fahuo',
         check: true,
         type: 'primary',
         handler: (params) => {

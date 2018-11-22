@@ -25,24 +25,21 @@ import {showWarnMsg} from 'common/js/util';
 class Comment extends React.Component {
     render() {
         const fields = [{
-            field: 'content',
-            title: '内容'
+          field: 'nickname',
+          title: '评论人'
         }, {
-            field: 'status',
-            title: '状态',
-            type: 'select',
-            key: 'comment_status',
-            search: true
+          field: 'cName',
+          title: '评论对象'
         }, {
-            field: 'userId',
-            title: '评论人'
+          field: 'commentDatetime',
+          title: '评论时间',
+          type: 'datetime'
         }, {
-            field: 'commodityCode',
-            title: '评论对象'
-        }, {
-            field: 'commentDatetime',
-            title: '评论时间',
-            type: 'datetime'
+          field: 'status',
+          title: '状态',
+          type: 'select',
+          key: 'comment_status',
+          search: true
         }];
         return this.props.buildList({
           fields,

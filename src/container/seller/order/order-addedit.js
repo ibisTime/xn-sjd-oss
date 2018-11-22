@@ -94,7 +94,7 @@ class SellerOrderAddEdit extends DetailUtil {
     };
     if (this.fahuo) {
       config.buttons = [{
-        title: '发货',
+        title: 'fahuo',
         check: true,
         type: 'primary',
         handler: (params) => {

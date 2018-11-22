@@ -25,19 +25,15 @@ import {showWarnMsg} from 'common/js/util';
 class CommentCheck extends React.Component {
     render() {
         const fields = [{
-            field: 'content',
-            title: '内容',
-          type: 'textarea'
+          field: 'nickname',
+          title: '评论人'
         }, {
-            field: 'userId',
-            title: '评论人'
+          field: 'cName',
+          title: '评论对象'
         }, {
-            field: 'commodityCode',
-            title: '评论对象'
-        }, {
-            field: 'commentDatetime',
-            title: '评论时间',
-            type: 'datetime'
+          field: 'commentDatetime',
+          title: '评论时间',
+          type: 'datetime'
         }];
         return this.props.buildList({
           fields,

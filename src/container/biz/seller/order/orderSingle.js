@@ -1,5 +1,4 @@
 import React from 'react';
-import { Modal } from 'antd';
 import {
   setTableData,
   setPagination,
@@ -11,7 +10,6 @@ import {
   setSearchData
 } from '@redux/biz/seller/order-single';
 import { listWrapper } from 'common/js/build-list';
-import fetch from 'common/js/fetch';
 import { showSucMsg, showWarnMsg, getUserId, getQueryString } from 'common/js/util';
 
 @listWrapper(
@@ -26,32 +24,6 @@ class BizSellerOrderSingle extends React.Component {
   constructor(props) {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
-  }
-  componentDidMount() {
-    fetch(630067, {
-      userId: getUserId()
-    }).then((data) => {
-      this.shopCode = data.companyCode;
-    }).catch(() => {});
-  }
-  upDown(code, orderNo, location, status) {
-    Modal.confirm({
-      okText: '确认',
-      cancelText: '取消',
-      content: `确认提交${status === '4' ? '下架' : '上架'}申请？`,
-      onOk: () => {
-        this.props.doFetching();
-        return fetch(629402, {
-          code,
-          orderNo,
-          location,
-          updater: getUserId()
-        }).then(() => {
-          showSucMsg('操作成功');
-          this.props.getPageData();
-        }).catch(() => this.props.cancelFetching());
-      }
-    });
   }
   render() {
     const fields = [{
@@ -96,9 +68,10 @@ class BizSellerOrderSingle extends React.Component {
       searchParams: {
         orderCode: this.code
       },
-      btnEvent: {
-        // 编辑
-        detail: (keys, items) => {
+      buttons: [{
+        name: '详情',
+        code: 'detail',
+        handler: (keys, items) => {
           if (!keys || !keys.length) {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
@@ -107,7 +80,12 @@ class BizSellerOrderSingle extends React.Component {
             this.props.history.push(`/seller/biz-order/addedit?code=${keys[0]}`);
           }
         }
-      }
+      }, {
+          name: '返回',
+          code: 'back',
+          handler: () => this.props.history.go(-1)
+        }
+      ]
     });
   }
 }

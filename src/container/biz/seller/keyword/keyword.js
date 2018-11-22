@@ -45,7 +45,8 @@ class Keyword extends React.Component {
       type: 'select'
     }, {
       title: '更新人',
-      field: 'updater'
+      field: 'realName',
+      render: (v, d) => d.sysUser ? d.sysUser.realName : ''
     }, {
       title: '更新时间',
       field: 'updateDatetime',

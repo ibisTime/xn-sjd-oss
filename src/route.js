@@ -1227,6 +1227,36 @@ const ROUTES = [
   {
     path: '/seller/shouhou-order/addedit',
     component: asyncComponent(() => import('container/seller/shouhou-order/shouhou-order-addedit'))
+  },
+  // 商家端 -- 资金管理 -- 我的账户
+  {
+      path: '/seller/accounts',
+      component: asyncComponent(() => import('container/seller/accounts/accounts'))
+  },
+  // 商家端 -- 资金管理 -- 账户流水
+  {
+      path: '/seller/flows',
+      component: asyncComponent(() => import('container/seller/flows/flows'))
+  },
+  // 商家端 -- 资金管理 -- 提现
+  {
+      path: '/seller/withdraw',
+      component: asyncComponent(() => import('container/seller/withdraw/withdraw'))
+  },
+  // 商家端 -- 消息管理 -- 待回复消息
+  {
+      path: '/seller/unread',
+      component: asyncComponent(() => import('container/seller/unread/unread'))
+  },
+  // 商家端 -- 消息管理 -- 消息查询
+  {
+    path: '/seller/message',
+    component: asyncComponent(() => import('container/seller/messages/messages'))
+  },
+  // 商家端 -- 消息管理 -- 待回复消息 -- 回复
+  {
+      path: '/seller/message/addedit',
+      component: asyncComponent(() => import('container/seller/unread/unread-addedit'))
   }
 ];
 

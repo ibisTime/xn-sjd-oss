@@ -143,6 +143,11 @@ import { sellerProducts } from './redux/seller/products';
 import { sellerOrder } from './redux/seller/order';
 import { sellerPostage } from './redux/seller/postage';
 import { sellerShouhouOrder } from './redux/seller/shouhou-order';
+import { sellerFlows } from './redux/seller/flows';
+import { sellerAccounts } from './redux/seller/accounts';
+import { sellerWithdraw } from './redux/seller/withdraw';
+import { sellerUnread } from './redux/seller/unread';
+import { sellerMessage } from './redux/seller/message';
 
 export default combineReducers({
   user,
@@ -263,5 +268,10 @@ export default combineReducers({
   sellerProducts,
   sellerOrder,
   sellerPostage,
-  sellerShouhouOrder
+  sellerShouhouOrder,
+  sellerFlows,
+  sellerAccounts,
+  sellerWithdraw,
+  sellerUnread,
+  sellerMessage
 });

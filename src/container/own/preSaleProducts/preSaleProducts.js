@@ -97,6 +97,9 @@ class PreProducts extends React.Component {
     }, {
         title: '总库存',
         field: 'totalOutput'
+    }, {
+      title: '备注',
+      field: 'remark'
     }];
     return this.props.buildList({
       fields,

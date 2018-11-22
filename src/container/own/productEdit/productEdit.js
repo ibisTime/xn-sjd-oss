@@ -194,7 +194,7 @@ class ProductEdit extends DetailUtil {
       field: 'directUser',
       _keys: ['directObject'],
       type: 'select',
-      // multiple: true,
+      multiple: true,
       pageCode: 805120,
       params: { status: '0' },
       keyName: 'userId',

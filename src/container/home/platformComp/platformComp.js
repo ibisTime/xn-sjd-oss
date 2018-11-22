@@ -35,7 +35,6 @@ export default class PlatformComp extends React.Component {
         orderColumn: 'publish_datetime'
       })
     ]).then(([res1, res2, res3]) => {
-      console.log('1', res1, res2, res3);
       this.setState({
         totalCount: res1.userTotalCount,
         addCount: res2.userTotalCount,

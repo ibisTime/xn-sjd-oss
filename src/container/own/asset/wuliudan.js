@@ -125,7 +125,7 @@ class OwnWuliudan extends React.Component {
         originalGroupCode: this.code
       },
       buttons: [{
-        name: '发货',
+        name: 'fahuo',
         code: 'fahuo',
         handler: (keys, items) => {
           if (!keys.length) {

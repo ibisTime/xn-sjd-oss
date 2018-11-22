@@ -109,6 +109,9 @@ class PreSaleProducts extends React.Component {
     }, {
         title: '库存',
         field: 'totalOutput'
+    }, {
+      title: '备注',
+      field: 'remark'
     }];
     let that = this;
     return (

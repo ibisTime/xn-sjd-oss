@@ -1,5 +1,4 @@
 import React from 'react';
-import { Modal } from 'antd';
 import {
   setTableData,
   setPagination,
@@ -11,7 +10,6 @@ import {
   setSearchData
 } from '@redux/own/asset';
 import { listWrapper } from 'common/js/build-list';
-import fetch from 'common/js/fetch';
 import { showSucMsg, showWarnMsg, getUserId } from 'common/js/util';
 
 @listWrapper(
@@ -23,25 +21,6 @@ import { showSucMsg, showWarnMsg, getUserId } from 'common/js/util';
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
 class OwnAsset extends React.Component {
-  upDown(code, orderNo, location, status) {
-    Modal.confirm({
-      okText: '确认',
-      cancelText: '取消',
-      content: `确认提交${status === '4' ? '下架' : '上架'}申请？`,
-      onOk: () => {
-        this.props.doFetching();
-        return fetch(629402, {
-          code,
-          orderNo,
-          location,
-          updater: getUserId()
-        }).then(() => {
-          showSucMsg('操作成功');
-          this.props.getPageData();
-        }).catch(() => this.props.cancelFetching());
-      }
-    });
-  }
   render() {
     const fields = [{
       title: '编号',
@@ -53,7 +32,6 @@ class OwnAsset extends React.Component {
     }, {
       title: '产品分类',
       field: 'parentCategoryCode',
-      // _keys: ['presellProduct', 'parentCategoryCode'],
       type: 'select',
       listCode: '629007',
       params: {type: 1},
@@ -85,7 +63,7 @@ class OwnAsset extends React.Component {
     }, {
       title: '归属人',
       field: 'ownerInfo',
-      render: (v, d) => d.ownerInfo ? d.ownerInfo.nickname : d.ownerInfo.mobile
+      render: (v, d) => d.ownerInfo ? d.ownerInfo.nickname || d.ownerInfo.mobile : ''
     }, {
       title: '转让中数量',
       field: 'presellQuantity'

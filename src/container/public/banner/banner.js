@@ -44,8 +44,7 @@ class Banner extends React.Component {
       pageCode: '630505',
       deleteCode: '630501',
       searchParams: {
-        companyCode: SYSTEM_CODE,
-        type: 2
+        companyCode: SYSTEM_CODE
       }
     });
   }

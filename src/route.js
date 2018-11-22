@@ -586,7 +586,7 @@ const ROUTES = [
   // 业务管理 -- 签到记录
   {
     path: '/user/signIn',
-    component: asyncComponent(() => import('container/biz/user/sign-in-all/sign-in-all'))
+    component: asyncComponent(() => import('container/biz/user/sign-in/sign-in'))
   },
   // 业务管理 -- 用户管理 -- 分享记录
   {
@@ -732,6 +732,16 @@ const ROUTES = [
   {
     path: '/pre/asset/wuliudan',
     component: asyncComponent(() => import('container/biz/pre/asset/wuliudan'))
+  },
+  // 认养预售 -- 预售管理 -- 预售发货查询
+  {
+    path: '/pre/fahuo',
+    component: asyncComponent(() => import('container/biz/pre/fahuo/fahuo'))
+  },
+  // 业务管理 -- 预售管理 -- 资产管理
+  {
+    path: '/pre/fahuo/addedit',
+    component: asyncComponent(() => import('container/biz/pre/fahuo/fahuo-addedit'))
   },
   // 业务管理 -- 预售管理 -- 资产管理 -- 详情
   {

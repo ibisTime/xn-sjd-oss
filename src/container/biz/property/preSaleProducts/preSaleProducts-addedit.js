@@ -191,7 +191,8 @@ class ProductsAddEdit extends DetailUtil {
         }, {
             title: '备注',
             field: 'remark',
-            maxlength: 250
+            maxlength: 250,
+          readonly: !this.check
         }];
         fields = fields.concat([]);
         let config = {

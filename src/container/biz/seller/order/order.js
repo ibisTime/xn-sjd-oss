@@ -1,5 +1,4 @@
 import React from 'react';
-import { Modal } from 'antd';
 import {
   setTableData,
   setPagination,
@@ -11,7 +10,6 @@ import {
   setSearchData
 } from '@redux/biz/seller/order';
 import { listWrapper } from 'common/js/build-list';
-import fetch from 'common/js/fetch';
 import { showSucMsg, showWarnMsg, getUserId } from 'common/js/util';
 
 @listWrapper(
@@ -23,30 +21,10 @@ import { showSucMsg, showWarnMsg, getUserId } from 'common/js/util';
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
 class BizSellerOrder extends React.Component {
-  upDown(code, orderNo, location, status) {
-    Modal.confirm({
-      okText: '确认',
-      cancelText: '取消',
-      content: `确认提交${status === '4' ? '下架' : '上架'}申请？`,
-      onOk: () => {
-        this.props.doFetching();
-        return fetch(629402, {
-          code,
-          orderNo,
-          location,
-          updater: getUserId()
-        }).then(() => {
-          showSucMsg('操作成功');
-          this.props.getPageData();
-        }).catch(() => this.props.cancelFetching());
-      }
-    });
-  }
   render() {
     const fields = [{
       title: '编号',
-      field: 'code',
-      search: true
+      field: 'code'
     }, {
       title: '商品数量',
       field: 'quantity'
@@ -74,8 +52,16 @@ class BizSellerOrder extends React.Component {
       title: '订单状态',
       field: 'status',
       type: 'select',
-      key: 'commodity_order_detail_status',
+      key: 'commodity_order_status',
       search: true
+    }, {
+      title: '物流公司',
+      field: 'logisticsCompany',
+      type: 'select',
+      key: 'logistics_company'
+    }, {
+      title: '物流单号',
+      field: 'logisticsNumber'
     }, {
       title: '下单时间',
       field: 'applyDatetime',

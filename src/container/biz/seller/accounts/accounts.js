@@ -23,9 +23,13 @@ import { dateTimeFormat, showWarnMsg } from 'common/js/util';
 class BizSellerAccounts extends React.Component {
   render() {
     const fields = [{
-      field: 'mobile',
+      field: 'mobileForQuery',
       title: '户名',
-      search: true
+      search: true,
+      noVisible: true
+    }, {
+      field: 'mobile',
+      title: '户名'
     }, {
       field: 'accountNumber',
       title: '账号'

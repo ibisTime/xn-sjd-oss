@@ -1,5 +1,4 @@
 import React from 'react';
-import { Modal } from 'antd';
 import {
   setTableData,
   setPagination,
@@ -11,7 +10,6 @@ import {
   setSearchData
 } from '@redux/biz/seller/after-sale';
 import { listWrapper } from 'common/js/build-list';
-import fetch from 'common/js/fetch';
 import { showSucMsg, showWarnMsg, getUserId, getCompanyCode, moneyFormat } from 'common/js/util';
 @listWrapper(
   state => ({
@@ -22,30 +20,10 @@ import { showSucMsg, showWarnMsg, getUserId, getCompanyCode, moneyFormat } from 
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
 class sellerAfterSale extends React.Component {
-  handle(code, orderNo, location, status) {
-    Modal.confirm({
-      okText: '确认',
-      cancelText: '取消',
-      content: `确认提交${status === '4' ? '下架' : '上架'}申请？`,
-      onOk: () => {
-        this.props.doFetching();
-        return fetch(629402, {
-          code,
-          orderNo,
-          location,
-          updater: getUserId()
-        }).then(() => {
-          showSucMsg('操作成功');
-          this.props.getPageData();
-        }).catch(() => this.props.cancelFetching());
-      }
-    });
-  }
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'code',
-      search: true
+      field: 'code'
     }, {
       title: '商品名称',
       field: 'commodityName',

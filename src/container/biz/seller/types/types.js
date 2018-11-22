@@ -46,7 +46,7 @@ class SellerTypes extends React.Component {
       field: 'parentCode',
       type: 'select',
       listCode: '629007',
-      params: {status: 1},
+      params: {status: 1, type: '2', level: '1'},
       keyName: 'code',
       valueName: 'name',
       search: true

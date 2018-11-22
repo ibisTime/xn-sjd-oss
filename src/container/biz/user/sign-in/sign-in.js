@@ -25,9 +25,6 @@ class UserSignInAll extends React.Component {
       title: '签到人',
       field: 'userName'
     }, {
-      title: '签到地点',
-      field: 'location'
-    }, {
       title: '签到时间',
       field: 'createDatetime',
       type: 'datetime'

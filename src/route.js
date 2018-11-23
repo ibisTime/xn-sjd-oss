@@ -778,6 +778,16 @@ const ROUTES = [
     path: '/prop/useRecords',
     component: asyncComponent(() => import('container/biz/prop/useRecords/useRecords'))
   },
+  // 业务管理 -- 道具管理 -- 道具管理
+  {
+    path: '/danmu/danmu',
+    component: asyncComponent(() => import('container/biz/danmu/danmu'))
+  },
+  // 业务管理 -- 道具管理 -- 道具管理 -- 详情
+  {
+    path: '/danmu/danmu/addedit',
+    component: asyncComponent(() => import('container/biz/danmu/danmu-addedit'))
+  },
   // 业务管理 -- 业务规则 -- 好友排行权重设置
   {
     path: '/rules/weight',

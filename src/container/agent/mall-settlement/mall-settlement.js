@@ -42,8 +42,7 @@ class MallSettlement extends React.Component {
       title: '订单状态',
       field: 'status',
       type: 'select',
-      key: 'commodity_order_status',
-      search: true
+      key: 'commodity_order_status'
     }, {
       title: '下单时间',
       field: 'applyDatetime',

@@ -159,125 +159,116 @@ class ProductsAddEdit extends DetailUtil {
                     this.setState({ directUser: true, directLevel: false });
                 }
             }
-        }, {
-            title: '针对等级',
-            field: 'directLevel',
-            _keys: ['directObject'],
-            type: 'select',
-            key: 'user_level',
-            hidden: this.state.direct !== '2' || !this.state.directLevel,
-            required: this.state.direct === '2' && this.state.directLevel
-        }, {
-            title: '针对用户',
-            field: 'directUser',
-            _keys: ['directObject'],
-            type: 'select',
-            pageCode: 805120,
-            params: { status: '0' },
-            keyName: 'userId',
-            valueName: '{{mobile.DATA}}-{{nickname.DATA}}',
-            searchName: 'mobile',
-            hidden: this.state.direct !== '2' || !this.state.directUser,
-            required: this.state.direct === '2' && this.state.directUser
-        }, {
-            title: '募集时间',
-            field: 'raiseStartDatetime',
-            type: 'date',
-            rangedate: ['raiseStartDatetime', 'raiseEndDatetime'],
-            hidden: this.state.direct !== '3',
-            required: this.state.direct === '3'
-        }, {
-            title: '年限',
-            field: 'startDatetime',
+        }];
+      if(this.state.directLevel) {
+        fields = fields.concat([{
+          title: '针对等级',
+          field: 'directObjectName'
+        }]);
+      } else {
+        fields = fields.concat([{
+          title: '针对用户',
+          field: 'directObjectName'
+        }]);
+      }
+      fields = fields.concat([{
+        title: '募集时间',
+        field: 'raiseStartDatetime',
+        type: 'date',
+        rangedate: ['raiseStartDatetime', 'raiseEndDatetime'],
+        hidden: this.state.direct !== '3',
+        required: this.state.direct === '3'
+      }, {
+        title: '年限',
+        field: 'startDatetime',
+        type: 'date',
+        rangedate: ['startDatetime', 'endDatetime'],
+        hidden: this.state.direct !== '3',
+        required: this.state.direct === '3'
+      }, {
+        title: '募集总数',
+        field: 'raiseCount',
+        hidden: this.state.direct !== '4',
+        required: this.state.direct === '4'
+      }, {
+        title: '最大积分抵扣比例',
+        field: 'maxJfdkRate',
+        number: true,
+        required: true
+      }, {
+        title: '产品规格列表',
+        field: 'productSpecsList',
+        type: 'o2m',
+        options: {
+          add: true,
+          edit: true,
+          delete: true,
+          fields: [{
+            title: '名称',
+            field: 'name',
+            required: true
+          }, {
+            title: '认养价格',
+            field: 'price',
+            amount: true,
+            required: true
+          }, {
+            title: '认养时间',
+            field: 'startDatetime1',
             type: 'date',
             rangedate: ['startDatetime', 'endDatetime'],
-            hidden: this.state.direct !== '3',
-            required: this.state.direct === '3'
-        }, {
-            title: '募集总数',
-            field: 'raiseCount',
-            hidden: this.state.direct !== '4',
-            required: this.state.direct === '4'
-        }, {
-          title: '最大积分抵扣比例',
-          field: 'maxJfdkRate',
-          number: true,
-          required: true
-        }, {
-            title: '产品规格列表',
-            field: 'productSpecsList',
-            type: 'o2m',
-            options: {
-                add: true,
-                edit: true,
-                delete: true,
-                fields: [{
-                    title: '名称',
-                    field: 'name',
-                    required: true
-                }, {
-                    title: '认养价格',
-                    field: 'price',
-                    amount: true,
-                    required: true
-                }, {
-                    title: '认养时间',
-                    field: 'startDatetime1',
-                    type: 'date',
-                    rangedate: ['startDatetime', 'endDatetime'],
-                    hidden: this.state.direct === '3',
-                    required: this.state.direct !== '3',
-                    noVisible: this.state.direct === '3'
-                }]
-            },
+            hidden: this.state.direct === '3',
+            required: this.state.direct !== '3',
+            noVisible: this.state.direct === '3'
+          }]
+        },
+        required: true
+      }, {
+        title: '树木列表',
+        field: 'treeList',
+        type: 'o2m',
+        options: {
+          add: true,
+          edit: true,
+          delete: true,
+          detail: true,
+          fields: [{
+            title: '树木编号',
+            field: 'treeNumber',
             required: true
-        }, {
-            title: '树木列表',
-            field: 'treeList',
-            type: 'o2m',
-            options: {
-                add: true,
-                edit: true,
-                delete: true,
-                detail: true,
-                fields: [{
-                    title: '树木编号',
-                    field: 'treeNumber',
-                    required: true
-                }, {
-                    title: '树龄',
-                    field: 'age',
-                    required: true
-                }, {
-                    title: '经度',
-                    field: 'longitude',
-                    required: true
-                }, {
-                    title: '纬度',
-                    field: 'latitude',
-                    required: true
-                }, {
-                    title: '实景图',
-                    field: 'pic',
-                    type: 'img'
-                }, {
-                    title: '备注',
-                    field: 'remark'
-                }]
-            },
+          }, {
+            title: '树龄',
+            field: 'age',
             required: true
-        }, {
-          title: '产品描述',
-          field: 'description',
-          type: 'textarea',
-          required: true
-        }, {
-          title: '备注',
-          field: 'remark',
-          maxlength: 250,
-          readonly: !this.check
-        }];
-        fields = fields.concat([]);
+          }, {
+            title: '经度',
+            field: 'longitude',
+            required: true
+          }, {
+            title: '纬度',
+            field: 'latitude',
+            required: true
+          }, {
+            title: '实景图',
+            field: 'pic',
+            type: 'img'
+          }, {
+            title: '备注',
+            field: 'remark'
+          }]
+        },
+        required: true
+      }, {
+        title: '产品描述',
+        field: 'description',
+        type: 'textarea',
+        required: true
+      }, {
+        title: '备注',
+        field: 'remark',
+        maxlength: 250,
+        readonly: !this.check
+      }]);
         let config = {
             fields,
             code: this.code,

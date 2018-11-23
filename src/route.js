@@ -1267,6 +1267,11 @@ const ROUTES = [
   {
       path: '/seller/message/addedit',
       component: asyncComponent(() => import('container/seller/unread/unread-addedit'))
+  },
+  // 商家端 -- 个人设置 -- 个人信息
+  {
+    path: '/seller/infos',
+    component: asyncComponent(() => import('container/seller/infos/infos'))
   }
 ];
 

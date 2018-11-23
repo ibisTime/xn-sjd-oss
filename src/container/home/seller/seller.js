@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Avatar } from 'antd';
 import Kyyjje from '../kyyjje/kyyjje';
 import Txclz from '../txclz/txclz';
 import Multiple from '../multiple/multiple';

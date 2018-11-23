@@ -53,7 +53,7 @@ class sellerProducts extends React.Component {
       field: 'parentCategoryCode',
       type: 'select',
       listCode: '629007',
-      params: {level: '1'},
+      params: {level: '1', type: '2'},
       keyName: 'code',
       valueName: 'name',
       search: true
@@ -62,7 +62,7 @@ class sellerProducts extends React.Component {
       field: 'categoryCode',
       type: 'select',
       listCode: '629007',
-      params: {level: '2'},
+      params: {level: '2', type: '2'},
       keyName: 'code',
       valueName: 'name',
       search: true

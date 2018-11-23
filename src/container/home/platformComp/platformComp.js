@@ -31,8 +31,7 @@ export default class PlatformComp extends React.Component {
         object: 'P',
         start: '1',
         limit: '10',
-        orderDir: 'desc',
-        orderColumn: 'publish_datetime'
+        orderDir: 'desc'
       })
     ]).then(([res1, res2, res3]) => {
       this.setState({

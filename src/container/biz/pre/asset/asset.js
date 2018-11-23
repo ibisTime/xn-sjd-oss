@@ -24,8 +24,7 @@ class OwnAsset extends React.Component {
   render() {
     const fields = [{
       title: '编号',
-      field: 'code',
-      search: true
+      field: 'code'
     }, {
       title: '产品名称',
       field: 'productName'

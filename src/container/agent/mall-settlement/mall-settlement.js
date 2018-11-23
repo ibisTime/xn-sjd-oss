@@ -36,7 +36,7 @@ class MallSettlement extends React.Component {
       title: '结算状态',
       field: 'settleStatus',
       type: 'select',
-      key: 'adopt_settle_status',
+      key: 'commodity_settle_status',
       search: true
     }, {
       title: '订单状态',

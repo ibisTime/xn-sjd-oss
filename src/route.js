@@ -873,6 +873,11 @@ const ROUTES = [
     path: '/own/products/addedit',
     component: asyncComponent(() => import('container/own/productEdit/productEdit'))
   },
+  // 产权端管理 -- 业务管理 -- 产品管理 -- 详情
+  {
+    path: '/own/products/detail',
+    component: asyncComponent(() => import('container/own/productDetail/productDetail'))
+  },
     // 产权端管理 -- 业务管理 -- 产品管理 -- 编辑/详情
   {
     path: '/own/preSaleProducts/addedit',

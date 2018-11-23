@@ -34,10 +34,12 @@ export default class CuringComp extends React.Component {
         orderColumn: 'publish_datetime'
       })
     ]).then(([res1, res2, res3, res4]) => {
+      this.setState({
+        txclzAmount: res1.totalAmount,
+        account1: res2.totalAmount,
+        account: res3[0].amount
+      });
       res4.list.length && this.setState({
-          txclzAmount: res1.totalAmount,
-          account1: res2.totalAmount,
-          account: res3[0].amount,
           data: [{
             title: res4.list[0].title,
             createDatetime: res4.list[0].publishDatetime
@@ -58,7 +60,7 @@ export default class CuringComp extends React.Component {
       <div>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} style={{marginBottom: 4}}>
           <Col span={8} style={{marginBottom: '20px'}}>
-            <Kyyjje account={account} goWithdraw={this.goWithdraw}/>
+            <Kyyjje account={account} goWithdraw={this.goWithdraw} isseller="123"/>
           </Col>
           <Col span={8}>
             <Txclz account={txclzAmount}/>

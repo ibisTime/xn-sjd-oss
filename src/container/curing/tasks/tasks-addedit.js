@@ -36,15 +36,7 @@ class TaskAddEdit extends DetailUtil {
       required: true
     }, {
       title: '养护人',
-      field: 'maintainerCode',
-      type: 'select',
-      listCode: 629617,
-      params: {
-        maintainId: getUserId()
-      },
-      keyName: 'code',
-      valueName: '{{name.DATA}}-{{mobile.DATA}}',
-      required: true
+      field: 'maintainerName'
     }, {
       title: '养护照片',
       field: 'pic',

@@ -58,7 +58,7 @@ export default class AgentComp extends React.Component {
         orderColumn: 'publish_datetime'
       })
     ]).then(([res1, res2, res3, res4, res5, res6, res7, res8, res9]) => {
-      res9.list.length && this.setState({
+      this.setState({
         txclzAmount: res1.totalAmount,
         account1: res2.totalAmount,
         account: res3[0].amount,
@@ -68,7 +68,9 @@ export default class AgentComp extends React.Component {
         dailiCount: res7.agentUserCount,
         userCount: res7.userCount,
         dailiNew: res8.agentUserCount,
-        userNew: res8.userCount,
+        userNew: res8.userCount
+      });
+      res9.list.length && this.setState({
         data: [{
           title: res9.list[0].title,
           createDatetime: res9.list[0].publishDatetime
@@ -91,7 +93,7 @@ export default class AgentComp extends React.Component {
       <div>
         <Row gutter={{ xs: 6, sm: 16, md: 24, lg: 32 }} style={{marginBottom: 4}}>
           <Col span={8} style={{marginBottom: '20px'}}>
-            <Kyyjje account={account} goWithdraw={this.goWithdraw}/>
+            <Kyyjje account={account} goWithdraw={this.goWithdraw} isseller="123"/>
           </Col>
           <Col span={8}>
             <Txclz account={txclzAmount}/>

@@ -57,7 +57,6 @@ export default class Saleman extends React.Component {
       // 用户概况（新增）
       getNewUserNum({ userId: getUserId(), type: 'A', createDatetimeStart: curTime, createDatetimeEnd: curTime })
     ]).then(([res1, res2, res3, res4, res5]) => {
-      console.log(res5);
       this.setState({
         account0: res1.totalAmount,
         account1: res2.totalAmount,

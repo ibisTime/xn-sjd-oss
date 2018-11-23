@@ -439,7 +439,8 @@ export default class DetailComp extends React.Component {
       onChange: item.onChange,
       getFieldValue: this.props.form.getFieldValue,
       getFieldError: this.props.form.getFieldError,
-      isLoaded: !this.options.code || this.state.isLoaded
+      isLoaded: !this.options.code || this.state.isLoaded,
+      placeholder: item.placeholder
     };
     return <CSearchSelect key={item.field} {...props} />;
   }

@@ -145,6 +145,10 @@ class ProductsAddEdit extends DetailUtil {
       field: 'description',
       type: 'textarea',
       required: true
+    }, {
+      title: '备注',
+      field: 'remark',
+      readonly: !this.check
     }];
     fields = fields.concat([]);
     let config = {

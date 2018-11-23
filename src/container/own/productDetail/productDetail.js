@@ -5,7 +5,7 @@ import DetailUtil from 'common/js/build-detail';
 import fetch from 'common/js/fetch';
 
 @Form.create()
-class ProductEdit extends DetailUtil {
+class ProductDetail extends DetailUtil {
   constructor(props) {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
@@ -35,15 +35,22 @@ class ProductEdit extends DetailUtil {
           this.cancelFetching();
         }).catch(this.cancelFetching);
       }
-    // }, {
-    //   title: '重置',
-    //   handler: (params) => {
-    //     this.props.form.resetFields();
-    //   }
     }];
   }
   render() {
-    let fields = [{
+    // let directObject = !this.props.pageData.directObjectName ? {
+    //   title: '针对等级',
+    //   field: 'directObject',
+    //   type: 'select',
+    //   multiple: true,
+    //   key: 'user_level',
+    //   hidden: this.state.direct !== '2' || !this.state.directLevel,
+    //   required: this.state.direct === '2' && this.state.directLevel
+    // } : {
+    //   title: '针对用户',
+    //   field: 'directObjectName'
+    // };
+      let fields = [{
       title: '产品分类',
       field: 'parentCategoryCode',
       type: 'select',
@@ -140,14 +147,6 @@ class ProductEdit extends DetailUtil {
       key: 'sell_type',
       required: true,
       onChange: (v) => {
-        // let direct = v === '2';
-        // if (direct !== this.state.direct) {
-        //   this.setState({ direct });
-        // }
-        // let direct = v;
-        // if (direct !== this.state.direct) {
-        //   this.setState({ direct });
-        // }
         this.setState({ direct: v });
       }
     }, {
@@ -161,8 +160,6 @@ class ProductEdit extends DetailUtil {
         dkey: '2',
         dvalue: '针对个人用户'
       }],
-      // hidden: !this.state.direct,
-      // required: this.state.direct,
       hidden: this.state.direct !== '2',
       required: this.state.direct === '2',
       onChange: (v) => {
@@ -172,125 +169,116 @@ class ProductEdit extends DetailUtil {
           this.setState({ directUser: true, directLevel: false });
         }
       }
-    }, {
-      title: '针对等级',
-      field: 'directLevel',
-      _keys: ['directObject'],
-      type: 'select',
-      key: 'user_level',
-      hidden: this.state.direct !== '2' || !this.state.directLevel,
-      required: this.state.direct === '2' && this.state.directLevel
-    }, {
-      title: '针对用户',
-      field: 'directUser',
-      _keys: ['directObject'],
-      type: 'select',
-      multiple: true,
-      pageCode: 805120,
-      params: { status: '0' },
-      keyName: 'userId',
-      searchName: 'mobile',
-      placeholder: '请输入手机号搜索',
-      valueName: '{{mobile.DATA}}-{{nickname.DATA}}',
-      hidden: this.state.direct !== '2' || !this.state.directUser,
-      required: this.state.direct === '2' && this.state.directUser
-    }, {
-      title: '募集时间',
-      field: 'raiseStartDatetime',
-      type: 'date',
-      rangedate: ['raiseStartDatetime', 'raiseEndDatetime'],
-      hidden: this.state.direct !== '3',
-      required: this.state.direct === '3'
-    }, {
+    }];
+      if(this.state.directLevel) {
+        fields = fields.concat([{
+          title: '针对等级',
+          field: 'directObjectName'
+        }]);
+      } else {
+        fields = fields.concat([{
+          title: '针对用户',
+          field: 'directObjectName'
+        }]);
+      }
+      fields = fields.concat([{
+        title: '募集时间',
+        field: 'raiseStartDatetime',
+        type: 'date',
+        rangedate: ['raiseStartDatetime', 'raiseEndDatetime'],
+        hidden: this.state.direct !== '3',
+        required: this.state.direct === '3'
+      }, {
         title: '认养时间',
         field: 'startDatetime',
         type: 'date',
         rangedate: ['startDatetime', 'endDatetime'],
         hidden: this.state.direct !== '3',
         required: this.state.direct === '3'
-    }, {
-      title: '募集总数',
-      field: 'raiseCount',
-      hidden: this.state.direct !== '4',
-      required: this.state.direct === '4'
-    }, {
-      title: '最大积分抵扣比例',
-      field: 'maxJfdkRate',
-      number: true,
-      required: true
-    }, {
-      title: '产品规格列表',
-      field: 'productSpecsList',
-      type: 'o2m',
-      options: {
-        add: true,
-        edit: true,
-        delete: true,
-        fields: [{
-          title: '名称',
-          field: 'name',
-          required: true
-        }, {
-          title: '认养价格',
-          field: 'price',
-          amount: true,
-          required: true
-        }, {
-          title: '认养时间',
-          field: 'startDatetime1',
-          type: 'date',
-          rangedate: ['startDatetime', 'endDatetime'],
-          hidden: this.state.direct === '3',
-          required: this.state.direct !== '3',
-          noVisible: this.state.direct === '3'
-        }]
-      },
-      required: true
-    }, {
-      title: '树木列表',
-      field: 'treeList',
-      type: 'o2m',
-      options: {
-        add: true,
-        edit: true,
-        delete: true,
-        detail: true,
-        fields: [{
-          title: '树木编号',
-          field: 'treeNumber',
-          required: true
-        }, {
-          title: '树龄',
-          field: 'age',
-          required: true
-        }, {
-          title: '经度',
-          field: 'longitude',
-          required: true
-        }, {
-          title: '纬度',
-          field: 'latitude',
-          required: true
-        }, {
-          title: '实景图',
-          field: 'pic',
-          type: 'img'
-        }, {
-          title: '备注',
-          field: 'remark'
-        }]
-      },
-      required: true
-    }, {
-      title: '产品描述',
-      field: 'description',
-      type: 'textarea',
-      required: true
-    }, {
-      title: '备注',
-      field: 'remark',
-      maxlength: 250
-    }];
+      }, {
+        title: '募集总数',
+        field: 'raiseCount',
+        hidden: this.state.direct !== '4',
+        required: this.state.direct === '4'
+      }, {
+        title: '最大积分抵扣比例',
+        field: 'maxJfdkRate',
+        number: true,
+        required: true
+      }, {
+        title: '产品规格列表',
+        field: 'productSpecsList',
+        type: 'o2m',
+        options: {
+          add: true,
+          edit: true,
+          delete: true,
+          fields: [{
+            title: '名称',
+            field: 'name',
+            required: true
+          }, {
+            title: '认养价格',
+            field: 'price',
+            amount: true,
+            required: true
+          }, {
+            title: '认养时间',
+            field: 'startDatetime1',
+            type: 'date',
+            rangedate: ['startDatetime', 'endDatetime'],
+            hidden: this.state.direct === '3',
+            required: this.state.direct !== '3',
+            noVisible: this.state.direct === '3'
+          }]
+        },
+        required: true
+      }, {
+        title: '树木列表',
+        field: 'treeList',
+        type: 'o2m',
+        options: {
+          add: true,
+          edit: true,
+          delete: true,
+          detail: true,
+          fields: [{
+            title: '树木编号',
+            field: 'treeNumber',
+            required: true
+          }, {
+            title: '树龄',
+            field: 'age',
+            required: true
+          }, {
+            title: '经度',
+            field: 'longitude',
+            required: true
+          }, {
+            title: '纬度',
+            field: 'latitude',
+            required: true
+          }, {
+            title: '实景图',
+            field: 'pic',
+            type: 'img'
+          }, {
+            title: '备注',
+            field: 'remark'
+          }]
+        },
+        required: true
+      }, {
+        title: '产品描述',
+        field: 'description',
+        type: 'textarea',
+        required: true
+      }, {
+        title: '备注',
+        field: 'remark',
+        maxlength: 250
+      }])
+      ;
     fields = fields.concat([]);
     let config = {
       fields,
@@ -316,4 +304,4 @@ class ProductEdit extends DetailUtil {
   }
 }
 
-export default ProductEdit;
+export default ProductDetail;

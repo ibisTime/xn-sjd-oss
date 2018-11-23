@@ -36,7 +36,9 @@ export default class PlatformComp extends React.Component {
     ]).then(([res1, res2, res3]) => {
       this.setState({
         totalCount: res1.userTotalCount,
-        addCount: res2.userTotalCount,
+        addCount: res2.userTotalCount
+      });
+      res3.list.length && this.setState({
         data: [{
           title: res3.list[0].title,
           createDatetime: res3.list[0].publishDatetime

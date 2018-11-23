@@ -31,7 +31,7 @@ export default class CSearchSelect extends React.Component {
   }
   isPropsChange(nextProps) {
     const { field, rules, readonly, getFieldValue, hidden, initVal, inline,
-      keyName, valueName, searchName, pageCode, isLoaded, params, getFieldError } = this.props;
+      keyName, valueName, searchName, pageCode, isLoaded, params, getFieldError, placeholder, multiple } = this.props;
     let nowValue = getFieldValue(field);
     let flag = this.prevValue !== nowValue;
     if (isUndefined(this.prevValue) || isUndefined(nowValue)) {
@@ -49,7 +49,7 @@ export default class CSearchSelect extends React.Component {
       nextProps.initVal !== initVal || nextProps.inline !== inline ||
       nextProps.keyName !== keyName || nextProps.valueName !== valueName ||
       nextProps.searchName !== searchName || nextProps.pageCode !== pageCode ||
-      nextProps.isLoaded !== isLoaded || flag || paramFlag || errFlag;
+      nextProps.isLoaded !== isLoaded || nextProps.multiple !== multiple || flag || paramFlag || errFlag;
   }
   // item.params是否改变
   isParamsChange(params, nextParams) {
@@ -82,17 +82,17 @@ export default class CSearchSelect extends React.Component {
     const { selectFetch, list } = this.state;
     return nextState.selectFetch !== selectFetch || nextState.list.length !== list.length;
   }
-  getSelectProps(onChange) {
+  getSelectProps(multiple, onChange) {
     const props = {
       allowClear: true,
-      mode: 'combobox',
+      mode: multiple ? 'multiple' : 'combobox',
       showArrow: false,
       filterOption: false,
       style: { minWidth: 200, maxWidth: 400 },
       onSearch: this.searchSelectChange,
       optionLabelProp: 'children',
       notFoundContent: this.state.selectFetch ? <Spin size="small"/> : '暂无数据',
-      placeholder: '请输入关键字搜索'
+      placeholder: this.props.placeholder || '请输入关键字搜索'
     };
     if (onChange) {
       props.onSelect = (v) => onChange(v);
@@ -109,6 +109,21 @@ export default class CSearchSelect extends React.Component {
         : initVal;
     }
     return value;
+    // let value = '';
+    // if (readonly && list && initVal) {
+    //   if (multiple) {
+    //     value = initVal.map(i => {
+    //       let obj = list.find(v => v[keyName] === i);
+    //       return obj[valueName] || tempString(valueName, obj) || '';
+    //     }).join('、');
+    //   } else {
+    //     value = list.filter(v => v[keyName] === initVal);
+    //     value = value && value.length
+    //       ? value[0][valueName] || tempString(valueName, value[0])
+    //       : initVal;
+    //   }
+    // }
+    // return value;
   }
   searchSelectChange = (keyword) => {
     if (this.timeout) {
@@ -161,10 +176,10 @@ export default class CSearchSelect extends React.Component {
   }
   render() {
     const { label, field, rules, readonly, hidden, getFieldDecorator,
-      onChange, initVal, inline, keyName, valueName, isLoaded, code } = this.props;
+      onChange, initVal, inline, keyName, valueName, isLoaded, code, placeholder, multiple } = this.props;
     const { list } = this.state;
     let layoutProps = inline ? {} : formItemLayout;
-    let value = this.getReadonlyValue(initVal, readonly, keyName, valueName);
+    let value = this.getReadonlyValue(initVal, readonly, keyName, valueName, multiple);
     !code && this.initList();
     return (
       <FormItem key={field} label={label} {...layoutProps} className={hidden ? 'hidden' : ''}>
@@ -174,7 +189,7 @@ export default class CSearchSelect extends React.Component {
                 rules,
                 initialValue: initVal
               })(
-              <Select {...this.getSelectProps(onChange)}>
+              <Select {...this.getSelectProps(multiple, onChange)}>
                 {list && list.length ? list.map(d => (
                   <Option key={d[keyName]} value={d[keyName]}>
                     {this.getValueName(d, valueName)}
@@ -206,6 +221,7 @@ CSearchSelect.propTypes = {
     PropTypes.number
   ]),
   code: PropTypes.string,
+  multiple: PropTypes.bool,
   inline: PropTypes.bool,
   isLoaded: PropTypes.bool,
   params: PropTypes.object,

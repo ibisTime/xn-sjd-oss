@@ -47,14 +47,16 @@ export default class OwnComp extends React.Component {
       })
     ])
     .then(([res1, res2, res3, res4, res5, res6]) => {
-      res6.list.length && this.setState({
+      this.setState({
         txclzAmount: res1.totalAmount,
         account1: res2.totalAmount,
         fbdsdzzMin: res3.minPrice,
         fbdsdzzMax: res3.maxPrice,
         yrydzzAmount: res4.totalAmount,
         yrydzzCount: res4.treeCount,
-        account: res5[0].amount,
+        account: res5[0].amount
+      });
+      res6.list.length && this.setState({
         data: [{
           title: res6.list[0].title,
           createDatetime: res6.list[0].publishDatetime
@@ -79,7 +81,7 @@ export default class OwnComp extends React.Component {
       <div>
         <Row gutter={{ xs: 6, sm: 16, md: 24, lg: 32 }} style={{marginBottom: 4}}>
           <Col span={8} style={{marginBottom: '20px'}}>
-            <Kyyjje account={account} goWithdraw={this.goWithdraw}/>
+            <Kyyjje account={account} goWithdraw={this.goWithdraw} isseller="123"/>
           </Col>
           <Col span={8}>
             <Txclz account={txclzAmount}/>

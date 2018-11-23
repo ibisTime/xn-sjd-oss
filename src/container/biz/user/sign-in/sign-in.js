@@ -31,7 +31,10 @@ class UserSignInAll extends React.Component {
     }];
     return this.props.buildList({
       fields,
-      pageCode: 805145
+      pageCode: 805145,
+      searchParams: {
+        type: 2
+      }
     });
   }
 }

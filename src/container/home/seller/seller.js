@@ -9,6 +9,7 @@ import fetch from 'common/js/fetch';
 import { moneyFormat, getUserId } from 'common/js/util';
 import { tixianAmountCount, claimCount, getAccount } from 'api/count';
 import { getUserById } from 'api/user';
+import AvatarImg from "../platformComp/avatar.png";
 
 export default class CuringComp extends React.Component {
     constructor(props) {
@@ -45,7 +46,16 @@ export default class CuringComp extends React.Component {
             });
         }).catch();
     }
-    goWithdraw() {}
+    goWithdraw() {
+        let pathname = this.props.location.pathname;
+        if (pathname.indexOf('/own') !== -1) {
+            this.props.history.push('/own/withdraw/apply');
+        } else if (pathname.indexOf('/curing') !== -1) {
+            this.props.history.push('/curing/withdraw/apply');
+        } else {
+            this.props.history.push('/proxy/withdraw/apply');
+        }
+    }
     goNotice = () => {
         window.location.href = '/curing/notices';
     }
@@ -56,31 +66,38 @@ export default class CuringComp extends React.Component {
         const { account, txclzAmount, account1 } = this.state;
         return (
             <div>
-                <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} style={{marginBottom: 4}}>
-                    <Col span={8} style={{marginBottom: '20px'}}>
-                        <Kyyjje account={account} goWithdraw={this.goWithdraw}/>
-                    </Col>
-                    <Col span={8}>
-                        <Txclz account={txclzAmount}/>
-                    </Col>
-                    <Col span={8}>
-                        <Multiple
-                            title0={title0}
-                            title1={title1}
-                            title2={title2}
-                            account0={this.props.cnyAccount}
-                            account1={account1}
-                            account2={this.props.cnyAccount}/>
-                    </Col>
-                </Row>
-                <Row gutter={{ xs: 12, sm: 24, md: 24, lg: 32 }}>
-                    <Col span={12}>
-                        <Notice
-                            data={this.state.data}
-                            goNotice={this.goNotice}
-                        />
-                    </Col>
-                </Row>
+                <div className="avatar-wrapper">
+                    <Avatar size={80} src={AvatarImg} />
+                    <div className="user-name">ADMIN</div>
+                    <div className="user-role">超级管理员</div>
+                </div>
+                <div>
+                    <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} style={{marginBottom: 4}}>
+                        <Col span={8} style={{marginBottom: '20px'}}>
+                            <Kyyjje account={account} goWithdraw={this.goWithdraw}/>
+                        </Col>
+                        <Col span={8}>
+                            <Txclz account={txclzAmount}/>
+                        </Col>
+                        <Col span={8}>
+                            <Multiple
+                                title0={title0}
+                                title1={title1}
+                                title2={title2}
+                                account0={this.props.cnyAccount}
+                                account1={account1}
+                                account2={this.props.cnyAccount}/>
+                        </Col>
+                    </Row>
+                    <Row gutter={{ xs: 12, sm: 24, md: 24, lg: 32 }}>
+                        <Col span={12}>
+                            <Notice
+                                data={this.state.data}
+                                goNotice={this.goNotice}
+                            />
+                        </Col>
+                    </Row>
+                </div>
             </div>
         );
     }

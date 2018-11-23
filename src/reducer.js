@@ -94,6 +94,8 @@ import { emotionArticles } from './redux/biz/emotion/articles';
 import { propProps } from './redux/biz/prop/props';
 import { propBuyRecords } from './redux/biz/prop/buyRecords';
 import { propUseRecords } from './redux/biz/prop/useRecords';
+// 认养预售--弹幕管理
+import { danmuDanmu } from './redux/biz/danmu/danmu';
 // 业务管理--业务规则
 import { rulesWeight } from './redux/biz/rules/weight';
 // 代理管理--代理商管理
@@ -232,6 +234,7 @@ export default combineReducers({
   propProps,
   propBuyRecords,
   propUseRecords,
+  danmuDanmu,
   rulesWeight,
   agentAgents,
   agentAgentsAccounts,

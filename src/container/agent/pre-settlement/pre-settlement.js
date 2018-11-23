@@ -42,8 +42,7 @@ class PreSettlement extends React.Component {
       title: '订单状态',
       field: 'status',
       type: 'select',
-      key: 'presell_order_status',
-      search: true
+      key: 'presell_order_status'
     }, {
       title: '下单时间',
       field: 'applyDatetime',

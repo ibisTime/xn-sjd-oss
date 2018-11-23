@@ -18,9 +18,9 @@ export default class Home extends React.Component {
     this.state = {
       cnyAccount: {}
     };
-    // this.kind = getKindByUrl();
-    this.kind = 'B';
-    console.log(this.kind);
+    this.kind = getKindByUrl();
+    // this.kind = 'B';
+    // console.log(this.kind);
   }
   componentDidMount() {
     let bizCode = getKindByUrl() === 'A' ? 730086 : 630067;

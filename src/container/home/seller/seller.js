@@ -8,15 +8,17 @@ import Zjyhrw from '../zjyhrw/zjyhrw';
 import fetch from 'common/js/fetch';
 import { moneyFormat, getUserId } from 'common/js/util';
 import { tixianAmountCount, claimCount, getAccount } from 'api/count';
-import { getUserById } from 'api/user';
-import AvatarImg from "../platformComp/avatar.png";
+import { getUser } from 'api/user';
+import AvatarImg from '../platformComp/avatar.png';
 
 export default class CuringComp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             data: [],
-            yhData: []
+            yhData: [],
+            pname: '',
+            mobile: ''
         };
     }
     componentDidMount() {
@@ -33,8 +35,11 @@ export default class CuringComp extends React.Component {
                 limit: '10',
                 orderDir: 'desc',
                 orderColumn: 'publish_datetime'
-            })
-        ]).then(([res1, res2, res3, res4]) => {
+            }),
+            // 用户信息
+            getUser()
+        ]).then(([res1, res2, res3, res4, res5]) => {
+            this.state.mobile = res5.mobile;
             res4.list.length && this.setState({
                 txclzAmount: res1.totalAmount,
                 account1: res2.totalAmount,
@@ -46,16 +51,9 @@ export default class CuringComp extends React.Component {
             });
         }).catch();
     }
-    goWithdraw() {
-        let pathname = this.props.location.pathname;
-        if (pathname.indexOf('/own') !== -1) {
-            this.props.history.push('/own/withdraw/apply');
-        } else if (pathname.indexOf('/curing') !== -1) {
-            this.props.history.push('/curing/withdraw/apply');
-        } else {
-            this.props.history.push('/proxy/withdraw/apply');
-        }
-    }
+    // goWithdraw() {
+    //     window.location.href = '/proxy/withdraw/apply';
+    // }
     goNotice = () => {
         window.location.href = '/curing/notices';
     }
@@ -65,16 +63,16 @@ export default class CuringComp extends React.Component {
         const title2 = '本月货款收入';
         const { account, txclzAmount, account1 } = this.state;
         return (
-            <div>
+            <div className="platform-wrapper">
                 <div className="avatar-wrapper">
                     <Avatar size={80} src={AvatarImg} />
-                    <div className="user-name">ADMIN</div>
+                    <div className="user-name">{this.state.mobile}</div>
                     <div className="user-role">超级管理员</div>
                 </div>
-                <div>
+                <div className="platform-content">
                     <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} style={{marginBottom: 4}}>
                         <Col span={8} style={{marginBottom: '20px'}}>
-                            <Kyyjje account={account} goWithdraw={this.goWithdraw}/>
+                            <Kyyjje account={account} goWithdraw={this.goWithdraw} isseller="ok"/>
                         </Col>
                         <Col span={8}>
                             <Txclz account={txclzAmount}/>

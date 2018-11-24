@@ -42,6 +42,12 @@ class GiftOrders extends React.Component {
       key: 'gift_order_status',
       search: true
     }, {
+      title: '收货地址',
+      field: 'province',
+      render: (v, d) => {
+        return `${d.province} ${d.city} ${d.area} ${d.reAddress}`;
+      }
+    }, {
       title: '发放时间',
       field: 'createDatetime',
       type: 'datetime'
@@ -64,6 +70,18 @@ class GiftOrders extends React.Component {
         adoptTreeCode: this.adoptTreeCode
       },
       buttons: [{
+        name: '发货',
+        code: 'delivery',
+        handler: (keys, items) => {
+          if (!keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/claim/rights/giftOrders/delivery?code=${keys[0]}&v=1`);
+          }
+        }
+      }, {
         name: '详情',
         code: 'detail',
         handler: (keys, items) => {

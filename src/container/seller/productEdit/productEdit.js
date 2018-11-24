@@ -108,7 +108,7 @@ class ProductEdit extends DetailUtil {
       required: true,
       amount: true
     }, {
-      title: '最大积分抵扣比例',
+      title: '最大积分抵扣比例%)',
       field: 'maxJfdkRate',
       required: true
     }, {

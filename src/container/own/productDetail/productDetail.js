@@ -201,7 +201,7 @@ class ProductDetail extends DetailUtil {
         hidden: this.state.direct !== '4',
         required: this.state.direct === '4'
       }, {
-        title: '最大积分抵扣比例',
+        title: '最大积分抵扣比例(%)',
         field: 'maxJfdkRate',
         number: true,
         required: true

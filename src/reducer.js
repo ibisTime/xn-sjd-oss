@@ -151,6 +151,7 @@ import { sellerAccounts } from './redux/seller/accounts';
 import { sellerWithdraw } from './redux/seller/withdraw';
 import { sellerUnread } from './redux/seller/unread';
 import { sellerMessage } from './redux/seller/message';
+import { sellerNotices } from './redux/seller/notices';
 
 export default combineReducers({
   user,
@@ -279,5 +280,6 @@ export default combineReducers({
   sellerAccounts,
   sellerWithdraw,
   sellerUnread,
-  sellerMessage
+  sellerMessage,
+  sellerNotices
 });

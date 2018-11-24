@@ -88,6 +88,11 @@ class PropertyAddEdit extends DetailUtil {
         single: true
       }]);
     }
+    fields = fields.concat([{
+      title: '备注',
+      field: 'remark',
+      readonly: !this.check
+    }]);
     let config = {
       fields,
       key: 'userId',

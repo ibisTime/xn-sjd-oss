@@ -81,7 +81,7 @@ class sellerOrder extends React.Component {
       type: 'datetime'
     }, {
       title: '下单人',
-      field: 'applyUser'
+      field: 'applyUserName'
       }, {
       title: '订单状态',
       field: 'status',

@@ -673,6 +673,11 @@ const ROUTES = [
     path: '/claim/rights/giftOrders/addedit',
     component: asyncComponent(() => import('container/biz/claim/rights/giveGift'))
   },
+  // 业务管理 -- 认养管理 -- 认养权查询 -- 礼物订单 -- 发货
+  {
+    path: '/claim/rights/giftOrders/delivery',
+    component: asyncComponent(() => import('container/biz/claim/rights/delivery'))
+  },
   // 业务管理 -- 认养管理 -- 认养权查询 -- 转送记录
   {
     path: '/claim/rights/records',

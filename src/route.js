@@ -1287,6 +1287,26 @@ const ROUTES = [
   {
     path: '/seller/infos',
     component: asyncComponent(() => import('container/seller/infos/infos'))
+  },
+  // 商家端 -- 个人设置 -- 系统公告
+  {
+      path: '/seller/notices',
+      component: asyncComponent(() => import('container/seller/notices/notices'))
+  },
+  // 商家端 -- 个人设置 -- 系统公告详情
+  {
+      path: '/seller/notices/addedit',
+      component: asyncComponent(() => import('container/seller/notices/notices-addedit'))
+  },
+  // 商家端 -- 个人设置 -- 安全设置
+  {
+      path: '/seller/security',
+      component: asyncComponent(() => import('container/seller/security/security'))
+  },
+  // 商家端 -- 个人设置 -- 关于我们
+  {
+      path: '/seller/aboutus',
+      component: asyncComponent(() => import('container/seller/aboutus/aboutus'))
   }
 ];
 

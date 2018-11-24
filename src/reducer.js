@@ -56,6 +56,7 @@ import { bizSellerUnread } from './redux/biz/seller/unread';
 import { sellerAfterSale } from './redux/biz/seller/after-sale';
 import { bizSellerAccounts } from './redux/biz/seller/accounts';
 import { bizSellerFlows } from './redux/biz/seller/flows';
+import { bizSellerSellerAccounts } from './redux/biz/seller/seller-accounts';
 // 业务管理--养护方管理
 import { conserveConserve } from './redux/biz/conserve/conserve';
 import { conserveBinds } from './redux/biz/conserve/conserve-binds';
@@ -202,6 +203,7 @@ export default combineReducers({
   bizSellerUnread,
   bizSellerAccounts,
   bizSellerFlows,
+  bizSellerSellerAccounts,
   sellerAfterSale,
   conserveConserve,
   conserveBinds,

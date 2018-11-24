@@ -363,6 +363,11 @@ const ROUTES = [
     path: '/seller/seller/addedit',
     component: asyncComponent(() => import('container/biz/seller/seller-addedit'))
   },
+  // 业务管理 -- 商家管理 -- 商家管理 -- 账户查询
+  {
+    path: '/seller/seller/accounts',
+    component: asyncComponent(() => import('container/biz/seller/seller-accounts'))
+  },
   // 业务管理 -- 商家管理 -- 商品分类管理
   {
     path: '/seller/types',

@@ -74,7 +74,7 @@ class Seller extends React.Component {
           } else if (items[0].status !== '0') {
             showWarnMsg('该用户不是待审核状态');
           } else {
-            this.props.history.push(`/property/property/addedit?code=${keys[0]}&v=1&check=1`);
+            this.props.history.push(`/seller/seller/addedit?code=${keys[0]}&v=1&check=1`);
           }
         },
         // 注销
@@ -96,7 +96,7 @@ class Seller extends React.Component {
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
           } else {
-            this.props.history.push(`/property/property/accounts?code=${keys[0]}`);
+            this.props.history.push(`/seller/seller/accounts?code=${keys[0]}`);
           }
         }
       }

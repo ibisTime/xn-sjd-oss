@@ -8,13 +8,13 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/biz/property/property-accounts';
+} from '@redux/biz/seller/seller-accounts';
 import { listWrapper } from 'common/js/build-list';
 import { dateTimeFormat, showWarnMsg, getQueryString } from 'common/js/util';
 
 @listWrapper(
   state => ({
-    ...state.propertyPropertyAccounts
+    ...state.bizSellerSellerAccounts
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
@@ -76,7 +76,7 @@ class Accounts extends React.Component {
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
           } else {
-            this.props.history.push(`/property/accounts/flows?code=${keys[0]}&type=M`);
+            this.props.history.push(`/seller/biz-accounts/flows?code=${keys[0]}&type=M`);
           }
         }
       }, {

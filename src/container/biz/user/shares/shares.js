@@ -23,10 +23,12 @@ class Shares extends React.Component {
   render() {
     const fields = [{
       title: '分享人',
-      field: 'userId'
+      field: 'userName'
     }, {
       title: '分享渠道',
-      field: 'channel'
+      field: 'channel',
+      type: 'select',
+      key: 'share_type'
     }, {
       title: '分享时间',
       field: 'createDatetime',

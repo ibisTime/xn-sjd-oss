@@ -74,7 +74,8 @@ class SellerAddedit extends DetailUtil {
       _keys: ['company', 'organizationCode']
     }, {
       title: '备注',
-      field: 'remark'
+      field: 'remark',
+      readonly: !this.check
     }];
     // if (this.view && !this.check) {
     //   fields = fields.concat([{

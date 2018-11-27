@@ -89,20 +89,35 @@ class sellerShouhouOrder extends React.Component {
       searchParams: {
         shopCode: getCompanyCode()
       },
-      btnEvent: {
-        // 编辑
-        handle: (keys, items) => {
-          if (!keys || !keys.length) {
-            showWarnMsg('请选择记录');
-          } else if (keys.length > 1) {
-            showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '0') {
-            showWarnMsg('该订单不可处理');
-          } else {
-            this.props.history.push(`/seller/shouhou-order/addedit?handle=1&v=1&code=${keys[0]}`);
+      buttons: [
+        {
+          name: '处理',
+          code: 'dispose',
+          handler: (keys, items) => {
+            if (!keys || !keys.length) {
+              showWarnMsg('请选择记录');
+            } else if (keys.length > 1) {
+              showWarnMsg('请选择一条记录');
+            } else if (items[0].status !== '0') {
+              showWarnMsg('该订单不可处理');
+            } else {
+              this.props.history.push(`/seller/shouhou-order/addedit?handle=${items[0].type}&v=1&code=${keys[0]}`);
+            }
+          }
+        }, {
+          name: '详情',
+          code: 'detail',
+          handler: (keys, items) => {
+            if (!keys.length) {
+              showWarnMsg('请选择记录');
+            } else if (keys.length > 1) {
+              showWarnMsg('请选择一条记录');
+            } else {
+              this.props.history.push(`/seller/shouhou-order/addedit?handle=${items[0].type}&v=1&code=${keys[0]}`);
+            }
           }
         }
-      }
+      ]
     });
   }
 }

@@ -10,7 +10,7 @@ import {
     setSearchData
 } from '@redux/own/notices';
 import { listWrapper } from 'common/js/build-list';
-import { getUserId } from 'common/js/util';
+import { getUserId, showWarnMsg } from 'common/js/util';
 
 @listWrapper(
     state => ({
@@ -40,7 +40,22 @@ class SelleerNotices extends React.Component {
             fields,
             pageCode: 805305,
             searchParams: {
-                object: 'O'
+                object: 'B',
+                start: '1',
+                limit: '10',
+                orderDir: 'desc',
+                orderColumn: 'publish_datetime'
+            },
+            btnEvent: {
+                detail: (keys, items) => {
+                    if (!keys || !keys.length) {
+                        showWarnMsg('请选择记录');
+                    } else if (keys.length > 1) {
+                        showWarnMsg('请选择一条记录');
+                    } else {
+                        this.props.history.push(`/own/notices/addedit?code=${keys[0]}&v=1}`);
+                    }
+                }
             }
         });
     }

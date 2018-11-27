@@ -31,6 +31,7 @@ class ProductEdit extends DetailUtil {
           fetch(629700, params).then(() => {
             showSucMsg('操作成功');
             this.cancelFetching();
+            // window.location.reload();
           }).catch(this.cancelFetching);
         }).catch(() => {});
       }

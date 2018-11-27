@@ -30,7 +30,9 @@ export default class CuringComp extends React.Component {
             getAccount({ userId: getUserId() }),
             // 公告
             fetch(805305, {
-                object: 'M',
+                object: 'B',
+                type: 0,
+                status: 1,
                 start: '1',
                 limit: '10',
                 orderDir: 'desc',
@@ -39,7 +41,9 @@ export default class CuringComp extends React.Component {
             // 用户信息
             getUser()
         ]).then(([res1, res2, res3, res4, res5]) => {
-            this.state.mobile = res5.mobile;
+            this.setState({
+                mobile: res5.mobile
+            });
             res4.list.length && this.setState({
                 txclzAmount: res1.totalAmount,
                 account1: res2.totalAmount,
@@ -55,7 +59,7 @@ export default class CuringComp extends React.Component {
     //     window.location.href = '/proxy/withdraw/apply';
     // }
     goNotice = () => {
-        window.location.href = '/curing/notices';
+        window.location.href = '/seller/notices';
     }
     render() {
         const title0 = '累计获得货款';
@@ -67,7 +71,7 @@ export default class CuringComp extends React.Component {
                 <div className="avatar-wrapper">
                     <Avatar size={80} src={AvatarImg} />
                     <div className="user-name">{this.state.mobile}</div>
-                    <div className="user-role">超级管理员</div>
+                    <div className="user-role">商家</div>
                 </div>
                 <div className="platform-content">
                     <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} style={{marginBottom: 4}}>

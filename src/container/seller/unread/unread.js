@@ -42,9 +42,9 @@ class sellerUnRead extends React.Component {
     }];
     return this.props.buildList({
       fields,
-      pageCode: 629755,
+      pageCode: 629785,
       searchParams: {
-        type: 1,
+        type: 0,
         user2: 'SYS_USER',
         minUser2UnreadSum: 1
       },

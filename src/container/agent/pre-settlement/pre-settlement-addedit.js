@@ -35,6 +35,10 @@ class AgentsAddEdit extends DetailUtil {
       field: 'amount',
       amount: true
     }, {
+      title: '实际支付金额',
+      field: 'payAmount',
+      amount: true
+    }, {
       title: '归属人',
       field: 'applyUserName'
     }, {

@@ -10,6 +10,7 @@ class ConOrderAddedit extends DetailUtil {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
     this.view = !!getQueryString('v', this.props.location.search);
+    this.detail = !!getQueryString('detail', this.props.location.search);
   }
   fahuo(params) {
     this.doFetching();
@@ -96,12 +97,12 @@ class ConOrderAddedit extends DetailUtil {
       title: '物流公司',
       type: 'select',
       key: 'logistics_company',
-      readonly: false,
+      readonly: this.detail,
       required: true
     }, {
       field: 'logisticsNumber',
       title: '物流单号',
-      readonly: false,
+      readonly: this.detail,
       required: true
     }];
     return this.buildDetail({
@@ -109,7 +110,15 @@ class ConOrderAddedit extends DetailUtil {
       code: this.code,
       view: this.view,
       detailCode: 629466,
-      buttons: [
+      buttons: this.detail ? [
+        {
+          title: '返回',
+          check: true,
+          handler: () => {
+            this.props.history.go(-1);
+          }
+        }
+      ] : [
         {
           title: '确认发货',
           check: true,

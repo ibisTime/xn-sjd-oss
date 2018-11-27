@@ -35,6 +35,10 @@ class AgentsAddEdit extends DetailUtil {
       field: 'amount',
       amount: true
     }, {
+      title: '实际支付金额',
+      field: 'payAmount',
+      amount: true
+    }, {
       title: '认养人',
       field: 'applyUserName'
     }, {
@@ -90,7 +94,7 @@ class AgentsAddEdit extends DetailUtil {
       fields,
       code: this.code,
       view: this.view,
-      detailCode: 629056,
+      detailCode: 629726,
       beforeDetail: (params) => {
         params.isSettle = '1';
       }

@@ -30,13 +30,18 @@ class GroupSettlement extends React.Component {
       field: 'amount',
       amount: true
     }, {
+      title: '实际支付金额',
+      field: 'payAmount',
+      amount: true
+    }, {
       title: '认养人',
       field: 'applyUserName'
     }, {
       title: '结算状态',
       field: 'settleStatus',
       type: 'select',
-      key: 'adopt_settle_status'
+      key: 'adopt_settle_status',
+      search: true
     }, {
       title: '订单状态',
       field: 'status',
@@ -50,7 +55,7 @@ class GroupSettlement extends React.Component {
     return this.props.buildList({
       fields,
       pageCode: 629055,
-      searchParams: { status: '3', settleStatus: '1', existsSettle: '1' },
+      searchParams: { status: '3', existsSettle: '1' },
       btnEvent: {
         // 状态（0不结算/1待结算/2已结算）
         edit: (keys, items) => {

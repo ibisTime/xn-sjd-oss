@@ -30,6 +30,10 @@ class Settlement extends React.Component {
       field: 'amount',
       amount: true
     }, {
+      title: '实际支付金额',
+      field: 'payAmount',
+      amount: true
+    }, {
       title: '认养人',
       field: 'applyUserName'
     }, {

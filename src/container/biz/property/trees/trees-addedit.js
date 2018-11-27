@@ -51,12 +51,6 @@ class TreesAddEdit extends DetailUtil {
       title: '文章数',
       field: 'articleCount'
     }, {
-      title: '点赞数',
-      field: 'pointCount'
-    }, {
-      title: '收藏数',
-      field: 'collectionCount'
-    }, {
       title: '备注',
       field: 'remark'
     }];

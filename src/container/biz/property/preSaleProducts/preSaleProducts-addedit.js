@@ -32,7 +32,7 @@ class ProductsAddEdit extends DetailUtil {
     render() {
         let fields = [{
             title: '产品类型',
-            field: 'categoryCode',
+            field: 'parentCategoryCode',
             type: 'select',
             listCode: '629007',
             params: { status: '1', level: '2' },
@@ -174,6 +174,14 @@ class ProductsAddEdit extends DetailUtil {
                     field: 'age',
                     required: true
                 }, {
+                  title: '经度',
+                  field: 'longitude',
+                  required: true
+                }, {
+                  title: '纬度',
+                  field: 'latitude',
+                  required: true
+                }, {
                     title: '实景图',
                     field: 'pic',
                     type: 'img'
@@ -202,14 +210,10 @@ class ProductsAddEdit extends DetailUtil {
             detailCode: 629416,
             addCode: 629400,
             editCode: 629401,
-            beforeSubmit: (params) => {
-                params.ownerId = getUserId();
-                // 如果销售类型选择定向
-                if (params.sellType === '2') {
-                    params.directObject = params.directType === '1'
-                        ? params.directLevel : params.directUser;
-                }
-                return params;
+            beforeSubmit: (params, e) => {
+              if(!e) {
+                return false;
+              }
             }
         };
           if (this.check) {

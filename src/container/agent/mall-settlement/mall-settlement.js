@@ -30,6 +30,10 @@ class MallSettlement extends React.Component {
       field: 'amount',
       amount: true
     }, {
+      title: '实际支付金额',
+      field: 'payAmount',
+      amount: true
+    }, {
       title: '下单人',
       field: 'applyUserName'
     }, {
@@ -51,7 +55,7 @@ class MallSettlement extends React.Component {
     return this.props.buildList({
       fields,
       pageCode: 629725,
-      searchParams: { status: '1' },
+      searchParams: { status: '1', existsSettle: 1 },
       btnEvent: {
         // 状态（0不结算/1待结算/2已结算）
         edit: (keys, items) => {
@@ -62,7 +66,7 @@ class MallSettlement extends React.Component {
           } else if (items[0].settleStatus !== '1') {
             showWarnMsg('该用户不是待结算状态');
           } else {
-            this.props.history.push(`/agent/group-settlement/addedit?code=${keys[0]}&v=1&check=1`);
+            this.props.history.push(`/agent/mall-settlement/addedit?code=${keys[0]}&v=1&check=1`);
           }
         }
       }

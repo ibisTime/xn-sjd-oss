@@ -175,7 +175,7 @@ class ProductDetail extends DetailUtil {
           title: '针对等级',
           field: 'directObjectName'
         }]);
-      } else {
+      } else if(this.state.directUser) {
         fields = fields.concat([{
           title: '针对用户',
           field: 'directObjectName'

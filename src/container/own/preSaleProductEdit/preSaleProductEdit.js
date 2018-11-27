@@ -38,6 +38,7 @@ class PreSaleProductEdit extends DetailUtil {
           fetch(url, params).then(() => {
               showSucMsg('操作成功');
               this.cancelFetching();
+              // this.props.history.push('/own/preSaleProducts');
           }).catch(this.cancelFetching);
       }
     // }, {
@@ -230,6 +231,14 @@ class PreSaleProductEdit extends DetailUtil {
         }, {
           title: '树龄',
           field: 'age',
+          required: true
+        }, {
+          title: '经度',
+          field: 'longitude',
+          required: true
+        }, {
+          title: '纬度',
+          field: 'latitude',
           required: true
         }, {
           title: '实景图',

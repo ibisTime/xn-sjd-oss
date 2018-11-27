@@ -125,7 +125,7 @@ class OwnWuliudan extends React.Component {
         originalGroupCode: this.code
       },
       buttons: [{
-        name: 'fahuo',
+        name: '发货',
         code: 'fahuo',
         handler: (keys, items) => {
           if (!keys.length) {
@@ -142,6 +142,18 @@ class OwnWuliudan extends React.Component {
                 showWarnMsg('资产不是待收货状态，无法发货');
               }
             }
+          }
+        }
+      }, {
+        name: '详情',
+        code: 'detail',
+        handler: (keys, items) => {
+          if (!keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/own/asset/wuliudan/fahuo?detail=1&v=1&code=${keys[0]}`);
           }
         }
       }, {

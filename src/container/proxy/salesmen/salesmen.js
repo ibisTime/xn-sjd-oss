@@ -10,8 +10,8 @@ import {
   setSearchData
 } from '@redux/proxy/salesmen';
 import { listWrapper } from 'common/js/build-list';
-import { C_REGISTER_URL } from 'common/js/config';
 import { getUserId } from 'common/js/util';
+import fetch from 'common/js/fetch';
 
 @listWrapper(
   state => ({
@@ -22,7 +22,25 @@ import { getUserId } from 'common/js/util';
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
 class Salesmen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      registerUrl: '',
+      fetching: true
+    };
+  }
+  componentDidMount() {
+    Promise.all([
+      fetch(630047, { ckey: 'REGISTER_URL' })
+    ]).then(([url]) => {
+      this.setState({
+        registerUrl: url.cvalue,
+        fetching: false
+      });
+    }).catch(() => this.setState({ fetching: false }));
+  }
   render() {
+    const { registerUrl } = this.state;
     const fields = [{
       title: '手机号',
       field: 'keyword',
@@ -32,7 +50,7 @@ class Salesmen extends React.Component {
       title: '分享链接',
       field: 'mobile',
       render: (v) => {
-        return `${C_REGISTER_URL}?userReferee=${v}&type=S`;
+        return `${registerUrl}?userReferee=${v}&type=S`;
       }
     }, {
       title: '注册时间',

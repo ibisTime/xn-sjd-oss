@@ -163,7 +163,7 @@ class Products extends React.Component {
                 showWarnMsg('请选择记录');
               } else if (keys.length > 1) {
                 showWarnMsg('请选择一条记录');
-              } else if (items[0].status !== '6') {
+              } else if (items[0].status !== '6' && items[0].status !== '4') {
                 showWarnMsg('该记录不可下架');
               } else {
                 this.downProduct(keys[0]);

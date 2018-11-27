@@ -10,12 +10,17 @@ import {
   clearSubOpenCode,
   restoreSubOpenCode
 } from '@redux/menu';
-import { clearUser } from 'common/js/util';
+import { clearUser, getKindByUrl } from 'common/js/util';
 import asyncComponent from '../async-component/async-component';
 import EditPwd from 'component/edit-pwd/edit-pwd';
 import ROUTES from 'src/route';
 import './dashboard.css';
-import logo from './logo.png';
+// import logo from './logo.png';
+import Alogo from './a-logo.png';
+import Blogo from './b-logo.png';
+import Mlogo from './m-logo.png';
+import Ologo from './o-logo.png';
+import Plogo from './p-logo.png';
 
 const { SubMenu, Item } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -34,6 +39,7 @@ class Dashboard extends React.Component {
     this.handleTopMenuClick = this.handleTopMenuClick.bind(this);
     this.handleSubMenuClick = this.handleSubMenuClick.bind(this);
     this.handleTitleClick = this.handleTitleClick.bind(this);
+    this.kind = getKindByUrl();
   }
   componentDidMount() {
     this.props.getMenuList(this.props.location.pathname);
@@ -103,7 +109,17 @@ class Dashboard extends React.Component {
               this.props.setTopCode('');
               this.props.history.push('/');
           }}>
-              <img src={logo}/>
+            {
+              this.kind === 'A'
+                ? <img src={Alogo}/>
+                : this.kind === 'O'
+                ? <img src={Ologo}/>
+                : this.kind === 'M'
+                  ? <img src={Mlogo}/>
+                  : this.kind === 'B'
+                    ? <img src={Blogo}/>
+                    : <img src={Plogo}/>
+            }
           </div>
         <Menu
           theme="dark"

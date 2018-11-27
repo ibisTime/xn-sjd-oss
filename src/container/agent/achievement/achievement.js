@@ -33,7 +33,16 @@ class Achievement extends React.Component {
     }, {
       title: '认养规格',
       field: 'productSpecsName',
-      render: (v, d) => d.adoptOrder ? d.adoptOrder.productSpecsName : ''
+      render: (v, d) => {
+        // d.adoptOrder ? d.adoptOrder.productSpecsName : d.presellOrder ? d.presellOrder.specsName
+          if(d.adoptOrder) {
+            return d.adoptOrder.productSpecsName;
+          } else if(d.presellOrder) {
+            return d.presellOrder.specsName;
+          } else if(d.groupAdoptOrder) {
+            return d.groupAdoptOrder.productSpecsName;
+          }
+      }
     }, {
       title: '认养人',
       field: 'applyUserName'
@@ -53,7 +62,6 @@ class Achievement extends React.Component {
     }];
     return this.props.buildList({
       fields,
-      rowKey: 'userId',
       pageCode: 629645,
       searchParams: {
         status: '1'

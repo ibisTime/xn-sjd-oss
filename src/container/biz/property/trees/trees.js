@@ -51,12 +51,6 @@ class Trees extends React.Component {
     }, {
       title: '文章数',
       field: 'articleCount'
-    }, {
-      title: '点赞数',
-      field: 'pointCount'
-    }, {
-      title: '收藏数',
-      field: 'collectionCount'
     }];
     return this.props.buildList({
       fields,

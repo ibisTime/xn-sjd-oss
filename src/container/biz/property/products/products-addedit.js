@@ -275,15 +275,10 @@ class ProductsAddEdit extends DetailUtil {
             view: this.view,
             detailCode: 629026,
             addCode: 629010,
-            editCode: 629011,
-            beforeSubmit: (params) => {
-                params.ownerId = getUserId();
-                // 如果销售类型选择定向
-                if (params.sellType === '2') {
-                    params.directObject = params.directType === '1'
-                        ? params.directLevel : params.directUser;
-                }
-                return params;
+            beforeSubmit: (params, e) => {
+              if(!e) {
+                return false;
+              }
             }
         };
           if (this.check) {

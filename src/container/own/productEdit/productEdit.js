@@ -29,10 +29,15 @@ class ProductEdit extends DetailUtil {
         if (params.sellType === '2') {
           params.directObject = params.directType === '1'
             ? params.directLevel : params.directUser;
+        } else {
+          params.directType && delete params.directType;
+          params.directLevel && delete params.directLevel;
+          params.directUser && delete params.directUser;
         }
         fetch(629010, params).then(() => {
           showSucMsg('操作成功');
           this.cancelFetching();
+          // this.props.history.push('/own/products');
         }).catch(this.cancelFetching);
       }
     // }, {
@@ -305,6 +310,10 @@ class ProductEdit extends DetailUtil {
         if (params.sellType === '2') {
           params.directObject = params.directType === '1'
             ? params.directLevel : params.directUser;
+        } else {
+          params.directType && delete params.directType;
+          params.directLevel && delete params.directLevel;
+          params.directUser && delete params.directUser;
         }
         return params;
       }

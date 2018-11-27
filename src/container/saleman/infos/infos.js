@@ -2,7 +2,6 @@ import React from 'react';
 import { Alert, Card, Spin } from 'antd';
 import QRCode from 'qrcode.react';
 import { getUserId } from 'common/js/util';
-import { C_REGISTER_URL } from 'common/js/config';
 import fetch from 'common/js/fetch';
 
 export default class Infos extends React.Component {

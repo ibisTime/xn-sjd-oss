@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Card, Alert, Button, Spin } from 'antd';
 import QRCode from 'qrcode.react';
 import { getRules, showSucMsg, getUserId } from 'common/js/util';
-import { formItemLayout, C_REGISTER_URL } from 'common/js/config';
+import { formItemLayout } from 'common/js/config';
 import CInput from 'component/cInput/cInput';
 import CSelect from 'component/cSelect/cSelect';
 import fetch from 'common/js/fetch';

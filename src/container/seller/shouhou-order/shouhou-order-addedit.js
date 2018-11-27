@@ -50,6 +50,21 @@ class SellerOrderAddEdit extends DetailUtil {
       field: 'refundAmount',
       amount: true
     }, {
+      title: '物流公司',
+      field: 'logisticsCompany',
+      hidden: this.handle === '0',
+      _keys: ['orderDetail', 'logisticsCompany']
+    }, {
+      title: '物流单号',
+      field: 'logisticsNumber',
+      hidden: this.handle === '0',
+      _keys: ['orderDetail', 'logisticsNumber']
+    }, {
+      title: '发货人',
+      field: 'deliver',
+      hidden: this.handle === '0',
+      _keys: ['orderDetail', 'deliver']
+    }, {
       title: '售后诉求',
       field: 'type',
       type: 'select',

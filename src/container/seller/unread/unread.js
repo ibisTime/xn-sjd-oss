@@ -33,7 +33,7 @@ class sellerUnRead extends React.Component {
       render: (v, d) => d.mobile || '',
       search: true
     }, {
-      field: 'user1Nickname',
+      field: 'nickname',
       title: '昵称'
     }, {
       field: 'user2UnreadSum',
@@ -42,7 +42,7 @@ class sellerUnRead extends React.Component {
     }];
     return this.props.buildList({
       fields,
-      pageCode: 629785,
+      pageCode: 629755,
       searchParams: {
         type: 1,
         user2: 'SYS_USER',

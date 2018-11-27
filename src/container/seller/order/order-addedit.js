@@ -62,7 +62,7 @@ class SellerOrderAddEdit extends DetailUtil {
       title: '订单状态',
       field: 'status',
       type: 'select',
-      key: 'commodity_order_detail_status'
+      key: 'commodity_cnavigate_status'
     }, {
       title: '地址信息',
       field: 'province',
@@ -94,7 +94,7 @@ class SellerOrderAddEdit extends DetailUtil {
     };
     if (this.fahuo) {
       config.buttons = [{
-        title: 'fahuo',
+        title: '发货',
         check: true,
         type: 'primary',
         handler: (params) => {

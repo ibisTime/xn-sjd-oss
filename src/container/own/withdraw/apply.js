@@ -135,6 +135,7 @@ class Apply extends React.Component {
         values.payCardInfo = bankInfo.bankName + bankInfo.subbranch;
         values.payCardNo = bankInfo.bankcardNumber;
         values.accountNumber = account.accountNumber;
+        debugger;
         values.applyUserType = this.kind;
         fetch(802350, values).then((code) => {
           showSucMsg('操作成功');

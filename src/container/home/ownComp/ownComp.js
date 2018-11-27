@@ -9,8 +9,8 @@ import Yrydzz from '../yrydzz/yrydzz';
 import Fbdyszz from '../fbdyszz/fbdyszz';
 import Ycsdyszz from '../ycsdyszz/ycsdyszz';
 import fetch from 'common/js/fetch';
-import { getUserId, moneyFormat } from 'common/js/util';
-import { tixianAmountCount, claimCount, getAccount } from 'api/count';
+import { getUserId, moneyFormat, formatDate } from 'common/js/util';
+import { tixianAmountCount, claimCount, getAccount, yongjinAcount } from 'api/count';
 import { getUserById } from 'api/user';
 
 export default class OwnComp extends React.Component {
@@ -18,7 +18,9 @@ export default class OwnComp extends React.Component {
     super(props);
     this.state = {
       txclzAmount: 0,
+      account0: 0,
       account1: 0,
+      account2: 0,
       fbdsdzzMin: 0,
       fbdsdzzMax: 0,
       yrydzzAmount: 0,
@@ -27,7 +29,16 @@ export default class OwnComp extends React.Component {
       data: []
     };
   }
+  getMonth() {
+    let date = new Date();
+    let y = date.getFullYear();
+    let m = date.getMonth();
+    let firstDay = new Date(y, m, 1);
+    return firstDay;
+  }
   componentDidMount() {
+    let curTime = formatDate(new Date());
+    let startTime = formatDate(this.getMonth());
     Promise.all([
       // 提现处理中
       tixianAmountCount({ statusList: [1, 3], applyUser: getUserId() }),
@@ -38,6 +49,10 @@ export default class OwnComp extends React.Component {
       // 已认养的总值
       claimCount({ userId: getUserId() }),
       getAccount({ userId: getUserId() }),
+      // 累计获得货款
+      yongjinAcount({ userId: getUserId(), status: 1 }),
+      // 本月货款收入
+      yongjinAcount({ userId: getUserId(), createStartDatetime: startTime, createEndDatetime: curTime, status: 1 }),
       fetch(805305, {
         object: 'O',
         start: '1',
@@ -46,7 +61,7 @@ export default class OwnComp extends React.Component {
         orderColumn: 'publish_datetime'
       })
     ])
-    .then(([res1, res2, res3, res4, res5, res6]) => {
+    .then(([res1, res2, res3, res4, res5, res6, res7, res8]) => {
       this.setState({
         txclzAmount: res1.totalAmount,
         account1: res2.totalAmount,
@@ -54,12 +69,14 @@ export default class OwnComp extends React.Component {
         fbdsdzzMax: res3.maxPrice,
         yrydzzAmount: res4.totalAmount,
         yrydzzCount: res4.treeCount,
-        account: res5[0].amount
+        account: res5[0].amount,
+        account0: res6.totalAmount,
+        account2: res7.totalAmount
       });
-      res6.list.length && this.setState({
+      res8.list.length && this.setState({
         data: [{
-          title: res6.list[0].title,
-          createDatetime: res6.list[0].publishDatetime
+          title: res8.list[0].title,
+          createDatetime: res8.list[0].publishDatetime
         }]
       });
     }).catch();
@@ -71,7 +88,9 @@ export default class OwnComp extends React.Component {
   render() {
     const { account,
       txclzAmount,
+      account0,
       account1,
+      account2,
       data,
       fbdsdzzMin,
       fbdsdzzMax,
@@ -89,11 +108,11 @@ export default class OwnComp extends React.Component {
           <Col span={8}>
             <Multiple
               title0="累计获得货款"
-              account0={this.props.cnyAccount}
+              account0={account0}
               title1="累计提现货款"
               account1={account1}
               title2="本月货款收入"
-              account2={this.props.cnyAccount}/>
+              account2={account2}/>
           </Col>
         </Row>
         <Row gutter={{ xs: 6, sm: 16, md: 24, lg: 32 }}>

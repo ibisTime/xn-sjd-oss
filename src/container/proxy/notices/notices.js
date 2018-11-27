@@ -30,7 +30,10 @@ class ProxyNotices extends React.Component {
       field: 'content'
     }, {
       title: '状态',
-      field: 'status'
+      field: 'status',
+      type: 'select',
+      key: 'notice_status',
+      search: true
     }, {
       title: '发布时间',
       field: 'createDatetime',

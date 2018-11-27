@@ -42,9 +42,9 @@ export default class AgentComp extends React.Component {
       // 待结算金额
       yongjinAcount({ userId: getUserId(), status: 0 }),
       // 累计获得佣金
-      yongjinAcount({ userId: getUserId() }),
+      yongjinAcount({ userId: getUserId(), status: 1 }),
       // 本月佣金收入
-      yongjinAcount({ userId: getUserId(), createStartDatetime: startTime, createEndDatetime: curTime }),
+      yongjinAcount({ userId: getUserId(), createStartDatetime: startTime, createEndDatetime: curTime, status: 1 }),
       // 代理概况(共）
       getNewUserNum({ userId: getUserId(), type: 'A' }),
       // 用户概况（新增）
@@ -80,7 +80,7 @@ export default class AgentComp extends React.Component {
   }
   goWithdraw() {}
   goNotice = () => {
-    // window.location.href = '/own/notices';
+    window.location.href = '/proxy/notices';
   }
   render() {
     const { txclzAmount,

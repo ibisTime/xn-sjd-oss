@@ -174,6 +174,10 @@ class Supplement extends DetailUtil {
       title: '组织机构代码',
       field: 'organizationCode',
       _keys: ['company', 'organizationCode']
+    }, {
+      title: '备注',
+      field: 'remark',
+      readonly: true
     }];
   }
   render() {

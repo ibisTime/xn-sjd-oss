@@ -30,7 +30,7 @@ class Users extends React.Component {
       field: 'mobile'
     }, {
       title: '最新更新人',
-      field: 'updater'
+      field: 'updaterName'
     }, {
       title: '最新更新时间',
       field: 'updateDatetime',

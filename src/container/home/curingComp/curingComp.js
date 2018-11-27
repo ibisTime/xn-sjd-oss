@@ -6,8 +6,8 @@ import Multiple from '../multiple/multiple';
 import Notice from '../notice/notice';
 import Zjyhrw from '../zjyhrw/zjyhrw';
 import fetch from 'common/js/fetch';
-import { moneyFormat, getUserId } from 'common/js/util';
-import { tixianAmountCount, claimCount, getAccount } from 'api/count';
+import { moneyFormat, getUserId, formatDate } from 'common/js/util';
+import { tixianAmountCount, claimCount, getAccount, yongjinAcount } from 'api/count';
 import { getUserById } from 'api/user';
 
 export default class CuringComp extends React.Component {
@@ -18,13 +18,26 @@ export default class CuringComp extends React.Component {
       yhData: []
     };
   }
+  getMonth() {
+    let date = new Date();
+    let y = date.getFullYear();
+    let m = date.getMonth();
+    let firstDay = new Date(y, m, 1);
+    return firstDay;
+  }
   componentDidMount() {
+    let curTime = formatDate(new Date());
+    let startTime = formatDate(this.getMonth());
     Promise.all([
       // 提现处理中
       tixianAmountCount({ statusList: [1, 3], applyUser: getUserId() }),
       // 累积提现货款
       tixianAmountCount({ statusList: [5], applyUser: getUserId() }),
       getAccount({ userId: getUserId() }),
+      // 累计获得货款
+      yongjinAcount({ userId: getUserId(), status: 1 }),
+      // 本月获得货款
+      yongjinAcount({ userId: getUserId(), createStartDatetime: startTime, createEndDatetime: curTime, status: 1 }),
       // 公告
       fetch(805305, {
         object: 'M',
@@ -33,16 +46,18 @@ export default class CuringComp extends React.Component {
         orderDir: 'desc',
         orderColumn: 'publish_datetime'
       })
-    ]).then(([res1, res2, res3, res4]) => {
+    ]).then(([res1, res2, res3, res4, res5, res6]) => {
       this.setState({
         txclzAmount: res1.totalAmount,
         account1: res2.totalAmount,
-        account: res3[0].amount
+        account: res3[0].amount,
+        account0: res4.totalAmount,
+        account2: res5.totalAmount
       });
-      res4.list.length && this.setState({
+      res6.list.length && this.setState({
           data: [{
-            title: res4.list[0].title,
-            createDatetime: res4.list[0].publishDatetime
+            title: res6.list[0].title,
+            createDatetime: res6.list[0].publishDatetime
           }]
         });
       }).catch();
@@ -55,7 +70,7 @@ export default class CuringComp extends React.Component {
     const title0 = '累计获得货款';
     const title1 = '累计提现货款';
     const title2 = '本月货款收入';
-    const { account, txclzAmount, account1 } = this.state;
+    const { account, txclzAmount, account0, account1, account2 } = this.state;
     return (
       <div>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} style={{marginBottom: 4}}>
@@ -70,9 +85,9 @@ export default class CuringComp extends React.Component {
               title0={title0}
               title1={title1}
               title2={title2}
-              account0={this.props.cnyAccount}
+              account0={account0}
               account1={account1}
-              account2={this.props.cnyAccount}/>
+              account2={account2}/>
           </Col>
         </Row>
         <Row gutter={{ xs: 12, sm: 24, md: 24, lg: 32 }}>

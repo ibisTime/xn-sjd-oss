@@ -33,13 +33,45 @@
   border-bottom-right-radius: 20px;
   background: #fff;
 }
-.login-wrap .login-form .login-logo {
+.login-wrap .login-form .login-logo.a-logo {
   margin-top: 64.4px;
   margin-bottom: 48px;
   height: 65.6px;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url('./logo.png');
+  background-image: url('./a-logo.png');
+}
+.login-wrap .login-form .login-logo.b-logo {
+    margin-top: 64.4px;
+    margin-bottom: 48px;
+    height: 65.6px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('./b-logo.png');
+}
+.login-wrap .login-form .login-logo.m-logo {
+    margin-top: 64.4px;
+    margin-bottom: 48px;
+    height: 65.6px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('./m-logo.png');
+}
+.login-wrap .login-form .login-logo.o-logo {
+    margin-top: 64.4px;
+    margin-bottom: 48px;
+    height: 65.6px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('./o-logo.png');
+}
+.login-wrap .login-form .login-logo.p-logo {
+    margin-top: 64.4px;
+    margin-bottom: 48px;
+    height: 65.6px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('./p-logo.png');
 }
 .login-wrap .login-form-wrapper {
   padding: 0 42px;

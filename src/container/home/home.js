@@ -19,7 +19,7 @@ export default class Home extends React.Component {
       cnyAccount: {}
     };
     this.kind = getKindByUrl();
-    // this.kind = 'B';
+    // this.kind = 'M';
   }
   componentDidMount() {
     let bizCode = getKindByUrl() === 'A' ? 730086 : 630067;

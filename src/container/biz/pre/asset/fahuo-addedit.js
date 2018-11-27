@@ -11,17 +11,6 @@ class ConOrderAddedit extends DetailUtil {
     this.code = getQueryString('code', this.props.location.search);
     this.view = !!getQueryString('v', this.props.location.search);
   }
-  fahuo(params) {
-    this.doFetching();
-    params.deliver = getUserId();
-    fetch(629460, params).then(data => {
-      this.cancelFetching();
-      showSucMsg('操作成功');
-      setTimeout(() => {
-        this.props.history.go(-1);
-      }, 1000);
-    }).catch(this.cancelFetching);
-  }
   render() {
     const fields = [{
       title: '编号',
@@ -58,30 +47,16 @@ class ConOrderAddedit extends DetailUtil {
       field: 'logisticsCompany',
       title: '物流公司',
       type: 'select',
-      key: 'logistics_company',
-      readonly: false,
-      required: true
+      key: 'logistics_company'
     }, {
       field: 'logisticsNumber',
-      title: '物流单号',
-      readonly: false,
-      required: true
+      title: '物流单号'
     }];
     return this.buildDetail({
       fields,
       code: this.code,
       view: this.view,
-      detailCode: 629466,
-      buttons: [
-        {
-          title: '确认发货',
-          check: true,
-          type: 'primary',
-          handler: (params) => {
-            this.fahuo(params);
-          }
-        }
-      ]
+      detailCode: 629466
     });
   }
 }

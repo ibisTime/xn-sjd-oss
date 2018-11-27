@@ -47,9 +47,9 @@ export default class Saleman extends React.Component {
     let lastDay = this.getDate().lastDay;
     Promise.all([
       // 累计获得佣金
-      yongjinAcount({ userId: getUserId() }),
+      yongjinAcount({ userId: getUserId(), status: 1 }),
       // 上月佣金收入
-      yongjinAcount({ userId: getUserId(), createStartDatetime: firstDay, createEndDatetime: lastDay }),
+      yongjinAcount({ userId: getUserId(), createStartDatetime: firstDay, createEndDatetime: lastDay, status: 1 }),
       // 待结算金额
       yongjinAcount({ userId: getUserId(), status: 0 }),
       // 代理概况(共）

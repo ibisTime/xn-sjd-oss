@@ -35,6 +35,12 @@ class Tasks extends React.Component {
       title: '树龄',
       field: 'age'
     }, {
+      title: '销售分类',
+      field: 'sellType',
+      type: 'select',
+      key: 'sell_type',
+      search: true
+    }, {
       title: '状态',
       field: 'status',
       type: 'select',

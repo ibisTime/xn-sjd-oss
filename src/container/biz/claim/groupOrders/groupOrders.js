@@ -86,7 +86,7 @@ class GroupOrders extends React.Component {
       title: '状态',
       field: 'status',
       type: 'select',
-      key: 'adopt_order_status',
+      key: 'group_adopt_order_status',
       search: true
     }, {
       title: '备注',

@@ -46,7 +46,7 @@ class GroupSettlement extends React.Component {
       title: '订单状态',
       field: 'status',
       type: 'select',
-      key: 'adopt_order_status'
+      key: 'group_adopt_order_status'
     }, {
       title: '下单时间',
       field: 'applyDatetime',

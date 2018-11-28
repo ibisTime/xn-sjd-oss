@@ -11,6 +11,7 @@ class Supplement extends DetailUtil {
     super(props);
     this.code = getUserId();
     this.kind = getKindByUrl();
+    console.log(this.kind);
     this.state = {
       ...this.state,
       readonly: false,
@@ -18,8 +19,8 @@ class Supplement extends DetailUtil {
     };
   }
   componentWillUnmount() {
-    console.log(1);
     let bizCode = getKindByUrl() === 'A' ? 730086 : 630067;
+    // let bizCode = 730086;
     fetch(bizCode, { userId: getUserId() }).then(data => {
       let url = judgeStatus(data.status);
       console.log(url);
@@ -50,8 +51,10 @@ class Supplement extends DetailUtil {
         handler: (params) => {
           this.doFetching();
           let bizCode = this.kind === 'A' ? 730073 : 630061;
+          // let bizCode = 730073;
           fetch(bizCode, params).then(() => {
             let code = this.kind === 'A' ? 730086 : 630067;
+            // let code = 730086;
             fetch(code, { userId: this.code }).then((data) => {
               this.setState({
                 readonly: true,
@@ -135,6 +138,10 @@ class Supplement extends DetailUtil {
       title: '组织机构代码',
       field: 'organizationCode',
       _keys: ['company', 'organizationCode']
+    }, {
+      title: '备注',
+      field: 'remark',
+      readonly: true
     }] : [{
       title: '公司/组织名称',
       field: 'companyName',
@@ -188,6 +195,7 @@ class Supplement extends DetailUtil {
       code: this.code,
       view: this.state.readonly,
       detailCode: this.kind === 'A' ? 730086 : 630067,
+      // detailCode: 730086,
       afterDetail: () => {
         let userInfo = this.state.pageData;
         // TO_FILL("-1", "待填写资料"), TO_APPROVE("0", "待审核"), APPROVE_NO("1", "审核不通过"), NORMAL(

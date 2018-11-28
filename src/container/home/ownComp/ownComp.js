@@ -10,7 +10,7 @@ import Fbdyszz from '../fbdyszz/fbdyszz';
 import Ycsdyszz from '../ycsdyszz/ycsdyszz';
 import fetch from 'common/js/fetch';
 import { getUserId, moneyFormat, formatDate } from 'common/js/util';
-import { tixianAmountCount, claimCount, getAccount, yongjinAcount } from 'api/count';
+import { tixianAmountCount, claimCount, getAccount, yhcqsy } from 'api/count';
 import { getUserById } from 'api/user';
 
 export default class OwnComp extends React.Component {
@@ -18,14 +18,18 @@ export default class OwnComp extends React.Component {
     super(props);
     this.state = {
       txclzAmount: 0,
-      account0: 0,
       account1: 0,
-      account2: 0,
       fbdsdzzMin: 0,
       fbdsdzzMax: 0,
+      fbdyszzMin: 0,
+      fbdyszzMax: 0,
       yrydzzAmount: 0,
       yrydzzCount: 0,
       account: 0,
+      account0: 0,
+      account2: 0,
+      ysdzzAmount: 0,
+      ysdzzCount: 0,
       data: []
     };
   }
@@ -47,12 +51,14 @@ export default class OwnComp extends React.Component {
       // 发布的树总值
       getUserById(getUserId()),
       // 已认养的总值
-      claimCount({ userId: getUserId() }),
+      claimCount({ userId: getUserId(), orderTypeList: [1, 2, 3, 4] }),
       getAccount({ userId: getUserId() }),
       // 累计获得货款
-      yongjinAcount({ userId: getUserId(), status: 1 }),
+      yhcqsy({ userId: getUserId(), accountType: 'O' }),
       // 本月货款收入
-      yongjinAcount({ userId: getUserId(), createStartDatetime: startTime, createEndDatetime: curTime, status: 1 }),
+      yhcqsy({ userId: getUserId(), accountType: 'O', dateStart: startTime, dateEnd: curTime }),
+      // 预售的总值
+      claimCount({ userId: getUserId(), orderTypeList: [5] }),
       fetch(805305, {
         object: 'O',
         start: '1',
@@ -61,22 +67,26 @@ export default class OwnComp extends React.Component {
         orderColumn: 'publish_datetime'
       })
     ])
-    .then(([res1, res2, res3, res4, res5, res6, res7, res8]) => {
+    .then(([res1, res2, res3, res4, res5, res6, res7, res8, res9]) => {
       this.setState({
         txclzAmount: res1.totalAmount,
         account1: res2.totalAmount,
         fbdsdzzMin: res3.minPrice,
         fbdsdzzMax: res3.maxPrice,
+        fbdyszzMin: res3.minPresellPrice,
+        fbdyszzMax: res3.maxPresellPrice,
         yrydzzAmount: res4.totalAmount,
         yrydzzCount: res4.treeCount,
         account: res5[0].amount,
         account0: res6.totalAmount,
-        account2: res7.totalAmount
+        account2: res7.totalAmount,
+        ysdzzAmount: res8.totalAmount,
+        ysdzzCount: res8.treeCount
       });
-      res8.list.length && this.setState({
+      res9.list.length && this.setState({
         data: [{
-          title: res8.list[0].title,
-          createDatetime: res8.list[0].publishDatetime
+          title: res9.list[0].title,
+          createDatetime: res9.list[0].publishDatetime
         }]
       });
     }).catch();
@@ -94,8 +104,13 @@ export default class OwnComp extends React.Component {
       data,
       fbdsdzzMin,
       fbdsdzzMax,
+      fbdyszzMin,
+      fbdyszzMax,
       yrydzzAmount,
-      yrydzzCount } = this.state;
+      yrydzzCount,
+      ysdzzAmount,
+      ysdzzCount
+    } = this.state;
     return (
       <div>
         <Row gutter={{ xs: 6, sm: 16, md: 24, lg: 32 }} style={{marginBottom: 4}}>
@@ -129,8 +144,8 @@ export default class OwnComp extends React.Component {
         </Row>
         <Row gutter={{ xs: 6, sm: 16, md: 24, lg: 32 }}>
           <Col span={12}>
-            <Fbdyszz minPrice={fbdsdzzMin} maxPrice={fbdsdzzMax}/>
-            <Ycsdyszz totalAmount={yrydzzAmount} treeCount={yrydzzCount}/>
+            <Fbdyszz minPrice={fbdyszzMin} maxPrice={fbdyszzMax}/>
+            <Ycsdyszz totalAmount={ysdzzAmount} treeCount={ysdzzCount}/>
           </Col>
         </Row>
       </div>

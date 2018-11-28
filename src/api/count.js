@@ -29,3 +29,8 @@ export function getAccount(data) {
 export function yongjinAcount(data) {
   return fetch(629902, {...data});
 }
+
+// 养护产权收益
+export function yhcqsy(data) {
+  return fetch(629905, {...data});
+}

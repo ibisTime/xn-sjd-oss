@@ -13,24 +13,25 @@ const columns = [{
   dataIndex: 'treeNumber',
   key: 'treeNumber'
 }, {
-  title: '树龄',
-  dataIndex: 'age',
-  key: 'age'
+  title: '养护人',
+  dataIndex: 'maintainerName',
+  key: 'maintainerName'
 }, {
-  title: '状态',
-  dataIndex: 'status',
-  key: 'status',
-  render: (v) => statusDict[v]
+  title: '养护时间',
+  key: 'updateDatetime',
+  dataIndex: 'updateDatetime',
+  render: (v) => dateFormat(v)
 }];
 
 export default class Zjyhrw extends React.Component {
   render() {
     return (
       <div className="notice-wrapper">
-        <div className="notice-title"><img src={YhrwImg}/>最近养护任务</div>
+        <div className="notice-title"><img src={YhrwImg}/>最新养护任务</div>
         <Table
           className="notice-table-wrapper"
           columns={columns}
+          onRowClick={this.props.goRecord}
           dataSource={this.props.data}
           pagination={false} />
       </div>

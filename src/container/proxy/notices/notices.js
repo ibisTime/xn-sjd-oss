@@ -24,7 +24,8 @@ class ProxyNotices extends React.Component {
   render() {
     const fields = [{
       title: '标题',
-      field: 'title'
+      field: 'title',
+      search: true
     }, {
       title: '内容',
       field: 'content'

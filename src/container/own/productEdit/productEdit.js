@@ -36,16 +36,21 @@ class ProductEdit extends DetailUtil {
         }
         fetch(629010, params).then(() => {
           showSucMsg('操作成功');
+          // debugger;
+          // this.props.form.resetFields();
           this.cancelFetching();
+          window.location.href = '/own/products';
           // this.props.history.push('/own/products');
         }).catch(this.cancelFetching);
       }
-    // }, {
+    }
+    // , {
     //   title: '重置',
     //   handler: (params) => {
-    //     this.props.form.resetFields();
+    //     this.props.form.resetFields(['listPic']);
     //   }
-    }];
+    // }
+    ];
   }
   render() {
     let fields = [{

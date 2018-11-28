@@ -40,7 +40,8 @@ class Notice extends React.Component {
   render() {
     const fields = [{
       title: '标题',
-      field: 'title'
+      field: 'title',
+      search: true
     }, {
       field: 'object',
       title: '针对对象',

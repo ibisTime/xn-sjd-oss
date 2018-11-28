@@ -62,7 +62,17 @@ class OwnAsset extends React.Component {
     }, {
       title: '归属人',
       field: 'ownerInfo',
-      render: (v, d) => d.ownerInfo ? d.ownerInfo.nickname || d.ownerInfo.mobile : ''
+      render: (v, d) => {
+        if (d.ownerInfo) {
+          if (d.ownerInfo.nickname) {
+            return `${d.ownerInfo.nickname}-${d.ownerInfo.mobile}`;
+          } else {
+            return `${d.ownerInfo.mobile}`;
+          }
+        } else {
+          return '';
+        }
+      }
     }, {
       title: '转让中数量',
       field: 'presellQuantity'

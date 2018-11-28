@@ -14,13 +14,6 @@ class PreSaleProductEdit extends DetailUtil {
       ...this.state
     };
   }
-  // componentDidMount() {
-  //   let userKind = getUserKind();
-  //   this.setState({ userKind });
-  //   getUserDetail(getUserId()).then((data) => {
-  //     this.setState({ 'projectCode': data.projectCode });
-  //   });
-  // }
   addBtns(config) {
     config.buttons = [{
       title: '保存编辑',
@@ -38,6 +31,7 @@ class PreSaleProductEdit extends DetailUtil {
           fetch(url, params).then(() => {
               showSucMsg('操作成功');
               this.cancelFetching();
+              window.location.href = '/own/preSaleProducts';
               // this.props.history.push('/own/preSaleProducts');
           }).catch(this.cancelFetching);
       }

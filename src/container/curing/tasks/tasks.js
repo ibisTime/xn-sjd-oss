@@ -48,7 +48,7 @@ class Tasks extends React.Component {
     return this.props.buildList({
       fields,
       pageCode: '629035',
-      searchParams: { maintainId: getUserId() },
+      searchParams: { maintain: getUserId() },
       btnEvent: {
         // 添加养护记录
         add: (keys, items) => {

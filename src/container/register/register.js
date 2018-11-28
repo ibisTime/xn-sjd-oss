@@ -95,7 +95,17 @@ class Register extends React.Component {
         <div className="login-wrap register-wrap">
           <div className="login-img"></div>
           <div className="login-form">
-            <div className="login-logo"></div>
+            {
+              this.kind === 'A'
+                ? <div className="login-logo a-logo"></div>
+                : this.kind === 'B'
+                ? <div className="login-logo b-logo"></div>
+                : this.kind === 'M'
+                  ? <div className="login-logo m-logo"></div>
+                  : this.kind === 'O'
+                    ? <div className="login-logo o-logo"></div>
+                    : <div className="login-logo p-logo"></div>
+            }
             <Form onSubmit={this.handleSubmit} className="login-form-wrapper">
               <FormItem className="form-item">
                 {getFieldDecorator('mobile', {

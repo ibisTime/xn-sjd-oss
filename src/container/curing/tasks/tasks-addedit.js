@@ -15,10 +15,11 @@ class TaskAddEdit extends DetailUtil {
   render() {
     const fields = [{
       title: '树木编号',
-      field: 'treeNumber1',
+      field: 'treeNumber',
       _keys: ['treeNumber'],
       value: this.treeNumber,
-      readonly: true
+      readonly: true,
+      hidden: this.treeNumber
     }, {
       field: 'treeNumber',
       hidden: true,

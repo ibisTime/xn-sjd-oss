@@ -16,9 +16,6 @@ const columns = [{
 }];
 
 export default class Notice extends React.Component {
-  // goNotice() {
-  //   this.props.history.
-  // }
   render() {
     return (
       <div className="notice-wrapper">

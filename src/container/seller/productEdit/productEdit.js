@@ -5,7 +5,7 @@ import DetailUtil from 'common/js/build-detail';
 import fetch from 'common/js/fetch';
 
 @Form.create()
-class ProductEdit extends DetailUtil {
+class sellerProductEdit extends DetailUtil {
   constructor(props) {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
@@ -186,4 +186,4 @@ class ProductEdit extends DetailUtil {
   }
 }
 
-export default ProductEdit;
+export default sellerProductEdit;

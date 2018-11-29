@@ -95,6 +95,7 @@ class ClaimBind extends React.Component {
     return <CSearchSelect key='maintainId' {...props} />;
   }
   getStatus() {
+    console.log(this.state.bindInfo);
     return dictInfo[this.state.bindInfo.status] || '';
   }
   render() {

@@ -1,6 +1,6 @@
 import { getAccountsByCurUserId } from 'api/account';
 
-const PREFIX = 'OWN_ACCOUNTS_';
+const PREFIX = 'SELLER_ACCOUNTS_';
 const SET_CNY_ACCOUNT = PREFIX + 'SET_CNY_ACCOUNT';
 const SET_TG_ACCOUNT = PREFIX + 'SET_TG_ACCOUNT';
 const SET_JF_ACCOUNT = PREFIX + 'SET_JF_ACCOUNT';

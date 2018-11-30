@@ -27,9 +27,6 @@ class CuringNotices extends React.Component {
       field: 'title',
       search: true
     }, {
-      title: '内容',
-      field: 'content'
-    }, {
       title: '状态',
       field: 'status',
       type: 'select',

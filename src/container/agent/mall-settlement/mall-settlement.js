@@ -66,7 +66,7 @@ class MallSettlement extends React.Component {
           } else if (items[0].settleStatus !== '1') {
             showWarnMsg('该用户不是待结算状态');
           } else {
-            this.props.history.push(`/agent/mall-settlement/addedit?code=${keys[0]}&v=1&check=1`);
+            this.props.history.push(`/mall/mall-settlement/addedit?code=${keys[0]}&v=1&check=1`);
           }
         }
       }

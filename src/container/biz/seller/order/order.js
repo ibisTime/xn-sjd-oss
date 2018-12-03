@@ -68,7 +68,7 @@ class BizSellerOrder extends React.Component {
       type: 'datetime'
     }, {
       title: '下单人',
-      field: 'applyUser'
+      field: 'applyUserName'
     }];
     return this.props.buildList({
       fields,

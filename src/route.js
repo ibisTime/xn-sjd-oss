@@ -1283,6 +1283,16 @@ const ROUTES = [
       path: '/seller/withdraw',
       component: asyncComponent(() => import('container/seller/withdraw/withdraw'))
   },
+  // 商家端 -- 资金管理 -- 提现 -- 详情
+  {
+    path: '/seller/withdraw/addedit',
+    component: asyncComponent(() => import('container/seller/withdraw/withdraw-addedit'))
+  },
+  // 商家端 -- 资金管理 -- 提现 -- 申请
+  {
+    path: '/seller/withdraw/apply',
+    component: asyncComponent(() => import('container/seller/withdraw/apply'))
+  },
   // 商家端 -- 消息管理 -- 待回复消息
   {
       path: '/seller/unread',

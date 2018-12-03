@@ -8,9 +8,9 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/biz/seller/unread';
+} from '@redux/seller/unread';
 import { listWrapper } from 'common/js/build-list';
-import { showWarnMsg } from 'common/js/util';
+import { showWarnMsg, getUserId } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -45,8 +45,8 @@ class sellerUnRead extends React.Component {
       pageCode: 629785,
       searchParams: {
         type: 0,
-        user2: 'SYS_USER',
-        minUser2UnreadSum: 1
+        user2: getUserId(),
+        minUser2UnreadSum: 2
       },
       btnEvent: {
         reply: (keys, items) => {

@@ -8,7 +8,7 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/public/banner';
+} from '@redux/seller/banner';
 import { listWrapper } from 'common/js/build-list';
 import { SYSTEM_CODE } from 'common/js/config';
 

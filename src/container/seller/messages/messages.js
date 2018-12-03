@@ -8,9 +8,9 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/biz/seller/message';
+} from '@redux/seller/message';
 import { listWrapper } from 'common/js/build-list';
-import { showWarnMsg } from 'common/js/util';
+import { showWarnMsg, getUserId } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -45,7 +45,7 @@ class SellerMessages extends React.Component {
       pageCode: 629785,
       searchParams: {
         type: '1',
-        user2: 'SYS_USER'
+        user2: getUserId()
       },
       btnEvent: {
         detail: (keys, items) => {

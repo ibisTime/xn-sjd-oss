@@ -13,6 +13,10 @@ export function setRoleMenus(menuCodeList, roleCode) {
 export function activateSysUser(userId) {
   return fetch(630056, { userId, updater: getUserId() });
 }
+// 注销激活平台用户
+export function activateAgentUser(userId) {
+  return fetch(730080, { userId, updater: getUserId() });
+}
 // 注销激活c端用户
 export function activateUser(userId) {
   return fetch(805084, { userId, updater: getUserId() });

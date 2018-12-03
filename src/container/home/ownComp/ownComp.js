@@ -61,6 +61,7 @@ export default class OwnComp extends React.Component {
       claimCount({ userId: getUserId(), orderTypeList: [5] }),
       fetch(805305, {
         object: 'O',
+        status: 1,
         start: '1',
         limit: '10',
         orderDir: 'desc',

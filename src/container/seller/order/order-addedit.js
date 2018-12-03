@@ -59,10 +59,41 @@ class SellerOrderAddEdit extends DetailUtil {
       field: 'applyDatetime',
       type: 'datetime'
     }, {
+        title: '订单明细',
+        field: 'detailList',
+        type: 'o2m',
+        noSelect: true,
+        options: {
+          fields: [{
+            title: '产品名称',
+            field: 'commodityName'
+          }, {
+            title: '单价',
+            field: 'price',
+            amount: true
+          }, {
+            title: '数量',
+            field: 'quantity'
+          }, {
+            title: '总价',
+            field: 'amount',
+            amount: true
+          }, {
+            title: '规格',
+            field: 'specsName'
+          }, {
+            title: '状态',
+            field: 'status',
+            type: 'select',
+            key: 'commodity_order_detail_status'
+          }]
+        },
+        required: true
+      }, {
       title: '订单状态',
       field: 'status',
       type: 'select',
-      key: 'commodity_cnavigate_status'
+      key: 'commodity_order_status'
     }, {
       title: '地址信息',
       field: 'province',

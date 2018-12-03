@@ -40,6 +40,7 @@ export default class CuringComp extends React.Component {
       yhcqsy({ userId: getUserId(), accountType: 'M', dateStart: startTime, dateEnd: curTime }),
       // 公告
       fetch(805305, {
+        status: 1,
         object: 'M',
         start: '1',
         limit: '10',

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Modal } from 'antd';
 import {
   setTableData,
   setPagination,
@@ -11,6 +12,7 @@ import {
 } from '@redux/agent/agents';
 import { listWrapper } from 'common/js/build-list';
 import { showWarnMsg } from 'common/js/util';
+import { activateAgentUser } from 'api/user';
 
 @listWrapper(
   state => ({
@@ -21,6 +23,22 @@ import { showWarnMsg } from 'common/js/util';
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
 class Agents extends React.Component {
+  rockOrActive(status, code) {
+    Modal.confirm({
+      okText: '确认',
+      cancelText: '取消',
+      content: `确认${status === '2' ? '注销' : '激活'}用户？`,
+      onOk: () => {
+        this.props.doFetching();
+        return activateAgentUser(code).then(() => {
+          this.props.getPageData();
+          showWarnMsg('操作成功');
+        }).catch(() => {
+          this.props.cancelFetching();
+        });
+      }
+    });
+  }
   render() {
     const fields = [{
       title: '用户名',

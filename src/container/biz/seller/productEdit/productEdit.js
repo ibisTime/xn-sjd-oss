@@ -92,8 +92,7 @@ class ProductsAddEdit extends DetailUtil {
     }, {
       title: '原价',
       field: 'originalPrice',
-      required: true,
-      amount: true
+      required: true
     }, {
       title: '最大积分抵扣比例(%)',
       field: 'maxJfdkRate',

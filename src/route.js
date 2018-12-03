@@ -1323,7 +1323,7 @@ const ROUTES = [
       path: '/seller/aboutus',
       component: asyncComponent(() => import('container/seller/aboutus/aboutus'))
   },
-  // 商家端 -- 个人设置 -- 关于我们
+  // 商家端 -- banner
   {
     path: '/seller/banner',
     component: asyncComponent(() => import('container/seller/banner/banner'))

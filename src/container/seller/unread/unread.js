@@ -46,7 +46,7 @@ class sellerUnRead extends React.Component {
       searchParams: {
         type: 0,
         user2: getUserId(),
-        minUser2UnreadSum: 2
+        minUser2UnreadSum: 1
       },
       btnEvent: {
         reply: (keys, items) => {

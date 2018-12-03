@@ -44,7 +44,7 @@ class SellerMessages extends React.Component {
       fields,
       pageCode: 629785,
       searchParams: {
-        type: '1',
+        type: '0',
         user2: getUserId()
       },
       btnEvent: {

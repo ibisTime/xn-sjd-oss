@@ -28,7 +28,7 @@ export default class UnReadAddEdit extends React.Component {
   }
   componentDidMount() {
     if(this.reply) {
-      fetch(629782, {code: this.code, userId: 'SYS_USER'});
+      fetch(629782, {code: this.code, userId: getUserId()});
     }
     Promise.all([
       fetch(629786, { code: this.code }),
@@ -50,7 +50,7 @@ export default class UnReadAddEdit extends React.Component {
       if (!err) {
         this.setState({ btnLoading: true });
         values.code = this.code;
-        values.userId = 'SYS_USER';
+        values.userId = getUserId();
         fetch(629781, values).then(() => {
           this.setState({ btnLoading: false });
           showSucMsg('操作成功');

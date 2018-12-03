@@ -8,7 +8,7 @@ import {
     doFetching,
     cancelFetching,
     setSearchData
-} from '@redux/own/notices';
+} from '@redux/seller/notices';
 import { listWrapper } from 'common/js/build-list';
 import { getUserId, showWarnMsg } from 'common/js/util';
 

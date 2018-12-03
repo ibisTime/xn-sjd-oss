@@ -8,7 +8,7 @@ import {
     doFetching,
     cancelFetching,
     setSearchData
-} from '@redux/own/withdraw';
+} from '@redux/seller/withdraw';
 import { listWrapper } from 'common/js/build-list';
 import { dateTimeFormat, getUserId } from 'common/js/util';
 

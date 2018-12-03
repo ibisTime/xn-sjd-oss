@@ -19,6 +19,7 @@ class Register extends React.Component {
       captFetching: false
     };
     this.kind = getKindByUrl();
+    // this.kind = 'B';
   }
   componentWillUnmount() {
     if (this.timer) {

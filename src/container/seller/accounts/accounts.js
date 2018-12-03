@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Card, Row, Col, Button, Spin } from 'antd';
-import { initData } from '@redux/own/accounts';
+import { initData } from '@redux/seller/accounts';
 import { moneyFormat } from 'common/js/util';
 
 const { Meta } = Card;
@@ -16,8 +16,8 @@ class SellerAccounts extends React.Component {
     }
     goWithdraw() {
         let pathname = this.props.location.pathname;
-        if (pathname.indexOf('/own') !== -1) {
-            this.props.history.push('/own/withdraw/apply');
+        if (pathname.indexOf('/seller') !== -1) {
+            this.props.history.push('/seller/withdraw/apply');
         } else if (pathname.indexOf('/curing') !== -1) {
             this.props.history.push('/curing/withdraw/apply');
         } else {

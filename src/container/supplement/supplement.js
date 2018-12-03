@@ -140,8 +140,7 @@ class Supplement extends DetailUtil {
       _keys: ['company', 'organizationCode']
     }, {
       title: '备注',
-      field: 'remark',
-      readonly: true
+      field: 'remark'
     }] : [{
       title: '公司/组织名称',
       field: 'companyName',
@@ -183,8 +182,7 @@ class Supplement extends DetailUtil {
       _keys: ['company', 'organizationCode']
     }, {
       title: '备注',
-      field: 'remark',
-      readonly: true
+      field: 'remark'
     }];
   }
   render() {

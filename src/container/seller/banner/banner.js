@@ -11,6 +11,7 @@ import {
 } from '@redux/seller/banner';
 import { listWrapper } from 'common/js/build-list';
 import { SYSTEM_CODE } from 'common/js/config';
+import { getCompanyCode } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -27,12 +28,6 @@ class sellerBanner extends React.Component {
       field: 'name',
       search: true
     }, {
-      title: '位置',
-      field: 'type',
-      type: 'select',
-      key: 'cnavigate_type',
-      search: true
-    }, {
       title: '顺序',
       field: 'orderNo'
     }, {
@@ -44,7 +39,7 @@ class sellerBanner extends React.Component {
       pageCode: '630505',
       deleteCode: '630501',
       searchParams: {
-        companyCode: SYSTEM_CODE
+        shopCode: getCompanyCode()
       }
     });
   }

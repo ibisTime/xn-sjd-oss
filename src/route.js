@@ -860,7 +860,7 @@ const ROUTES = [
   },
   // 代理管理 -- 商家管理 -- 商城结算 -- 详情
   {
-    path: '/agent/mall-settlement/addedit',
+    path: '/mall/mall-settlement/addedit',
     component: asyncComponent(() => import('container/agent/mall-settlement/mall-settlement-addedit'))
   },
   // 代理管理 -- 代理商管理 -- 业绩查询
@@ -1337,6 +1337,11 @@ const ROUTES = [
   {
     path: '/seller/banner',
     component: asyncComponent(() => import('container/seller/banner/banner'))
+  },
+  // 商家端 -- banner -- 详情
+  {
+    path: '/seller/banner/addedit',
+    component: asyncComponent(() => import('container/seller/banner/banner-addedit'))
   }
 ];
 

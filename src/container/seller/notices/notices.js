@@ -26,12 +26,6 @@ class SelleerNotices extends React.Component {
             title: '标题',
             field: 'title'
         }, {
-            title: '内容',
-            field: 'content'
-        }, {
-            title: '状态',
-            field: 'status'
-        }, {
             title: '发布时间',
             field: 'createDatetime',
             type: 'datetime'
@@ -40,11 +34,12 @@ class SelleerNotices extends React.Component {
             fields,
             pageCode: 805305,
             searchParams: {
-                object: 'B',
-                start: '1',
-                limit: '10',
-                orderDir: 'desc',
-                orderColumn: 'publish_datetime'
+              status: 1,
+              object: 'B',
+              start: '1',
+              limit: '10',
+              orderDir: 'desc',
+              orderColumn: 'publish_datetime'
             },
             btnEvent: {
                 detail: (keys, items) => {

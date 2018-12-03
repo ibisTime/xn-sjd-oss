@@ -52,6 +52,7 @@ export default class AgentComp extends React.Component {
       // 公告
       fetch(805305, {
         object: 'A',
+        status: 1,
         start: '1',
         limit: '10',
         orderDir: 'desc',

@@ -24,7 +24,6 @@ class SellerNoticesAddedit extends DetailUtil {
             title: '内容',
             field: 'content',
             type: 'textarea',
-            normalArea: true,
             required: true
         }, {
             title: '发布时间',

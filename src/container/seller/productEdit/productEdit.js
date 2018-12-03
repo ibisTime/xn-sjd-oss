@@ -106,8 +106,7 @@ class sellerProductEdit extends DetailUtil {
     }, {
       title: '原价',
       field: 'originalPrice',
-      required: true,
-      amount: true
+      required: true
     }, {
       title: '最大积分抵扣比例%)',
       field: 'maxJfdkRate',
@@ -134,6 +133,8 @@ class sellerProductEdit extends DetailUtil {
       field: 'specsList',
       type: 'o2m',
       options: {
+        rowKey: 'id',
+        key: 'id',
         add: true,
         edit: true,
         delete: true,

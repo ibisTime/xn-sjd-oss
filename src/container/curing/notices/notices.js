@@ -26,13 +26,15 @@ class CuringNotices extends React.Component {
       title: '标题',
       field: 'title',
       search: true
-    }, {
-      title: '状态',
-      field: 'status',
-      type: 'select',
-      key: 'notice_status',
-      search: true
-    }, {
+    },
+    //   {
+    //   title: '状态',
+    //   field: 'status',
+    //   type: 'select',
+    //   key: 'notice_status',
+    //   search: true
+    // },
+      {
       title: '发布时间',
       field: 'createDatetime',
       type: 'datetime'
@@ -41,7 +43,8 @@ class CuringNotices extends React.Component {
       fields,
       pageCode: 805305,
       searchParams: {
-        object: 'M'
+        object: 'M',
+        status: 1
       }
     });
   }

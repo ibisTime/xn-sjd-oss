@@ -13,6 +13,8 @@ app.use('/api', function (req, res) {
   var url = 'http://47.99.147.67:2901/forward-service/api';
   // 测试
   // var url = 'http://47.99.147.67:2905/forward-service/api';
+  // 线上
+  // var url = 'http://47.99.147.67:2919/forward-service/api';
   var _body = req.body;
   var param = 'code=' + _body.code + '&json=' + encodeURIComponent(_body.json);
 

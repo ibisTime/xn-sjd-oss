@@ -95,6 +95,7 @@ class ClaimBind extends React.Component {
     return <CSearchSelect key='maintainId' {...props} />;
   }
   getStatus() {
+    console.log(this.state.bindInfo);
     return dictInfo[this.state.bindInfo.status] || '';
   }
   render() {
@@ -112,6 +113,7 @@ class ClaimBind extends React.Component {
               <p>名&nbsp;&nbsp;&nbsp;&nbsp;称：{bindInfo.company ? bindInfo.company.name : ''}</p>
               <p>负&nbsp;责&nbsp;人：{bindInfo.company ? bindInfo.company.charger : ''}</p>
               <p>联系方式：{bindInfo.company ? bindInfo.company.chargeMobile : ''}</p>
+              <p>备&nbsp;&nbsp;&nbsp;&nbsp;注：{bindInfo.remark || ''}</p>
             </Card>
           </FormItem>
         </Form>

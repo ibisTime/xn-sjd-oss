@@ -52,8 +52,7 @@ class SellerOrderAddEdit extends DetailUtil {
     }, {
       title: '物流公司',
       field: 'logisticsCompany',
-      hidden: this.handle === '0',
-      _keys: ['orderDetail', 'logisticsCompany']
+      hidden: this.handle === '0'
     }, {
       title: '物流单号',
       field: 'logisticsNumber',
@@ -62,8 +61,7 @@ class SellerOrderAddEdit extends DetailUtil {
     }, {
       title: '发货人',
       field: 'deliver',
-      hidden: this.handle === '0',
-      _keys: ['orderDetail', 'deliver']
+      hidden: this.handle === '0'
     }, {
       title: '售后诉求',
       field: 'type',

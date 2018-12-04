@@ -93,7 +93,7 @@ class SellerOrderAddEdit extends DetailUtil {
       title: '订单状态',
       field: 'status',
       type: 'select',
-      key: 'commodity_order_status'
+      key: 'commodity_cnavigate_status'
     }, {
       title: '地址信息',
       field: 'province',

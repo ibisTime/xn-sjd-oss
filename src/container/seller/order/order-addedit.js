@@ -97,15 +97,13 @@ class SellerOrderAddEdit extends DetailUtil {
     }, {
       title: '地址信息',
       field: 'province',
-      formatter: (v, d) => d.address && `${d.address.province} ${d.address.city} ${d.address.district} ${d.address.detailAddress}`
+      formatter: (v, d) => `${d.province} ${d.city} ${d.district} ${d.detailAddress}`
     }, {
       title: '收货人',
-      field: 'addressee',
-      _keys: ['address', 'addressee']
+      field: 'receiverName'
     }, {
       title: '收货人手机号',
-      field: 'mobile',
-      _keys: ['address', 'mobile']
+      field: 'receiverMobile'
     }, {
       title: '物流公司',
       field: 'logisticsCompany',

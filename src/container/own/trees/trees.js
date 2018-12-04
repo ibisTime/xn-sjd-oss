@@ -10,7 +10,7 @@ import {
   setSearchData
 } from '@redux/own/trees';
 import { listWrapper } from 'common/js/build-list';
-import { getUserId } from 'common/js/util';
+import { getUserId, getQueryString, showWarnMsg } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -21,9 +21,14 @@ import { getUserId } from 'common/js/util';
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
 class Trees extends React.Component {
+  constructor(props) {
+    super(props);
+    this.productCode = getQueryString('productCode', this.props.location.search);
+    this.view = !!getQueryString('v', this.props.location.search);
+  }
   render() {
     const fields = [{
-      title: '系统编号',
+      title: '编号',
       field: 'code'
     }, {
       title: '古树学名',
@@ -44,13 +49,34 @@ class Trees extends React.Component {
       key: 'tree_status',
       search: true
     }];
-    return this.props.buildList({
+    let config = {
       fields,
       pageCode: '629035',
       searchParams: {
-        ownerId: getUserId()
+        ownerId: getUserId(),
+        productCode: this.productCode || ''
       }
-    });
+    };
+    if(this.productCode) {
+      config.buttons = [{
+        name: '详情',
+        code: 'detail',
+        handler: (keys, items) => {
+          if (!keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`${this.props.location.pathname}/addedit?code=${keys[0]}&v=1`);
+          }
+        }
+      }, {
+        name: '返回',
+        code: 'back',
+        handler: () => this.props.history.go(-1)
+      }];
+    }
+    return this.props.buildList(config);
   }
 }
 

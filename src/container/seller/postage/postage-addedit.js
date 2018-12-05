@@ -34,13 +34,13 @@ class SellerOrderAddEdit extends DetailUtil {
       field: 'deliverPlace',
       type: 'provSelect',
       required: true,
-      hidden: !this.view
+      hidden: this.code
     }, {
       title: '收货地',
       field: 'receivePlace',
       type: 'provSelect',
       required: true,
-      hidden: !this.view
+      hidden: this.code
     }, {
       title: '价格',
       field: 'price',

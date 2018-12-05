@@ -28,7 +28,7 @@ export default class UnReadAddEdit extends React.Component {
   }
   componentDidMount() {
     if(this.reply) {
-      fetch(629782, {code: this.code, userId: getUserId()});
+      fetch(629782, {code: this.code, userId: this.userId});
     }
     Promise.all([
       fetch(629786, { code: this.code }),

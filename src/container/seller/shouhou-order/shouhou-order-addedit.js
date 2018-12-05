@@ -56,8 +56,7 @@ class SellerOrderAddEdit extends DetailUtil {
     }, {
       title: '物流单号',
       field: 'logisticsNumber',
-      hidden: this.handle === '0',
-      _keys: ['orderDetail', 'logisticsNumber']
+      hidden: this.handle === '0'
     }, {
       title: '发货人',
       field: 'deliver',

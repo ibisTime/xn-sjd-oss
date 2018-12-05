@@ -33,7 +33,7 @@ class sellerUnRead extends React.Component {
       render: (v, d) => d.mobile || '',
       search: true
     }, {
-      field: 'nickname',
+      field: 'user1Nickname',
       title: '昵称'
     }, {
       field: 'user2UnreadSum',
@@ -55,7 +55,7 @@ class sellerUnRead extends React.Component {
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
           } else {
-            this.props.history.push(`/biz-message/unread/addedit?code=${keys[0]}&userId=${items[0].user1}&reply=1`);
+            this.props.history.push(`/seller/message/addedit?code=${keys[0]}&userId=${items[0].user1}&reply=1`);
           }
         }
       }

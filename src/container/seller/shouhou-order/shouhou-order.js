@@ -41,6 +41,23 @@ class sellerShouhouOrder extends React.Component {
       }
     });
   }
+  upDown(code, status) {
+    Modal.confirm({
+      okText: '确认',
+      cancelText: '取消',
+      content: `确认收货`,
+      onOk: () => {
+        this.props.doFetching();
+        return fetch(629773, {
+          code,
+          receiver: getUserId()
+        }).then(() => {
+          showSucMsg('操作成功');
+          this.props.getPageData();
+        }).catch(() => this.props.cancelFetching());
+      }
+    });
+  }
   render() {
     const fields = [{
       title: '订单编号',
@@ -102,6 +119,20 @@ class sellerShouhouOrder extends React.Component {
               showWarnMsg('该订单不可处理');
             } else {
               this.props.history.push(`/seller/shouhou-order/addedit?handle=${items[0].type}&v=1&code=${keys[0]}`);
+            }
+          }
+        }, {
+          name: '确认收货',
+          code: 'goods',
+          handler: (keys, items) => {
+            if (!keys || !keys.length) {
+              showWarnMsg('请选择记录');
+            } else if (keys.length > 1) {
+              showWarnMsg('请选择一条记录');
+            } else if (items[0].status !== '3') {
+              showWarnMsg('该订单不能收货');
+            } else {
+              this.upDown(keys[0]);
             }
           }
         }, {

@@ -42,7 +42,7 @@ class Tasks extends React.Component {
       title: '销售分类',
       field: 'sellType',
       type: 'select',
-      key: 'sell_type',
+      key: 'ex_sell_type',
       search: true
     }, {
       title: '产地',

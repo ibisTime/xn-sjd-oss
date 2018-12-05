@@ -1,8 +1,10 @@
 import React from 'react';
 import { Form } from 'antd';
-import { getQueryString, showSucMsg, getUserId } from 'common/js/util';
+// import { getQueryString, showSucMsg, getUserId } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 import fetch from 'common/js/fetch';
+import XLSX from 'xlsx';
+import { getQueryString, showWarnMsg, showSucMsg, formatDate, getUserName, isUndefined, getUserId, moneyFormat } from 'common/js/util';
 
 @Form.create()
 class ProductEdit extends DetailUtil {
@@ -16,6 +18,14 @@ class ProductEdit extends DetailUtil {
       directLevel: false,
       directUser: false
     };
+  }
+  makeCols = (refstr) => {
+    var o = [];
+    var range = XLSX.utils.decode_range(refstr);
+    for (var i = 0; i <= range.e.c; ++i) {
+      o.push({ name: XLSX.utils.encode_col(i), key: i });
+    }
+    return o;
   }
   addBtns(config) {
     config.buttons = [{
@@ -34,6 +44,21 @@ class ProductEdit extends DetailUtil {
           params.directLevel && delete params.directLevel;
           params.directUser && delete params.directUser;
         }
+        let treeList = [];
+        this.state.data.forEach((d, i) => {
+          if (i > 0 && d.length) {
+            console.log(d);
+            treeList.push({
+              treeNumber: d[1],
+              age: d[2],
+              longitude: d[3],
+              latitude: d[4],
+              pic: d[5],
+              remark: d[6]
+            });
+          }
+        });
+        params.treeList = treeList;
         fetch(629010, params).then(() => {
           showSucMsg('操作成功');
           // debugger;
@@ -51,6 +76,49 @@ class ProductEdit extends DetailUtil {
     //   }
     // }
     ];
+  }
+  handleChange = (file) => {
+    // debugger;
+    console.log(this.state);
+    try {
+      const reader = new FileReader();
+      const rABS = !!reader.readAsBinaryString;
+      reader.onload = (e) => {
+        const bstr = e.target.result;
+        const wb = XLSX.read(bstr, { type: rABS ? 'binary' : 'array' });
+        const wsname = wb.SheetNames[0];
+        const ws = wb.Sheets[wsname];
+        let data = XLSX.utils.sheet_to_json(ws, { header: 1 });
+        console.log(data);
+        this.setState({ data: data, cols: this.makeCols(ws['!ref']) });
+        let statusNum;
+        // for (let i = 5; i < data.length; i++) {
+        //   data[i][7] = formatDate(data[i][7]);
+        //   if (isUndefined(data[i][6]) || isUndefined(data[i][7])) {
+        //     showWarnMsg('请确定已发工资或发放日期填写完整填写！');
+        //     statusNum = true;
+        //     return;
+        //   }
+        // }
+        // if (!statusNum) {
+          this.setState({
+            data: data,
+            cols: this.makeCols(ws['!ref']),
+            fileList: [{
+              uid: file.uid,
+              name: file.name,
+              status: 'done'
+            }]
+          });
+      };
+      if (rABS) {
+        reader.readAsBinaryString(file);
+      } else {
+        reader.readAsArrayBuffer(file);
+      }
+    } catch (error) {
+      showWarnMsg('请上传正确的文件！');
+    }
   }
   render() {
     let fields = [{
@@ -256,42 +324,55 @@ class ProductEdit extends DetailUtil {
         }]
       },
       required: true
-    }, {
-      title: '树木列表',
-      field: 'treeList',
-      type: 'o2m',
-      options: {
-        add: true,
-        edit: true,
-        delete: true,
-        detail: true,
-        fields: [{
-          title: '树木编号',
-          field: 'treeNumber',
-          required: true
-        }, {
-          title: '树龄',
-          field: 'age',
-          required: true
-        }, {
-          title: '经度',
-          field: 'longitude',
-          required: true
-        }, {
-          title: '纬度',
-          field: 'latitude',
-          required: true
-        }, {
-          title: '实景图',
-          field: 'pic',
-          type: 'img'
-        }, {
-          title: '备注',
-          field: 'remark'
-        }]
-      },
-      required: true
-    }, {
+    }];
+    if(this.code) {
+      fields = fields.concat([{
+        title: '树木列表',
+        field: 'treeList',
+        type: 'o2m',
+        options: {
+          add: true,
+          edit: true,
+          delete: true,
+          detail: true,
+          fields: [{
+            title: '树木编号',
+            field: 'treeNumber',
+            required: true
+          }, {
+            title: '树龄',
+            field: 'age',
+            required: true
+          }, {
+            title: '经度',
+            field: 'longitude',
+            required: true
+          }, {
+            title: '纬度',
+            field: 'latitude',
+            required: true
+          }, {
+            title: '实景图',
+            field: 'pic',
+            type: 'img'
+          }, {
+            title: '备注',
+            field: 'remark'
+          }]
+        },
+        required: true
+      }]);
+    } else {
+      fields = fields.concat([{
+        title: '树木列表',
+        field: 'treeList',
+        type: 'file',
+        handleChange: this.handleChange,
+        required: true,
+        hidden: this.code
+      }]);
+    }
+    fields = fields.concat([{
       title: '产品描述',
       field: 'description',
       type: 'textarea',
@@ -300,8 +381,7 @@ class ProductEdit extends DetailUtil {
       title: '备注',
       field: 'remark',
       maxlength: 250
-    }];
-    fields = fields.concat([]);
+    }]);
     let config = {
       fields,
       code: this.code,

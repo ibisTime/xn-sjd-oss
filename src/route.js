@@ -918,6 +918,16 @@ const ROUTES = [
     path: '/own/products/viewTrees/addedit',
     component: asyncComponent(() => import('container/own/trees/trees-addedit'))
   },
+  // 产权端管理 -- 业务管理 -- 预售产品管理 -- 树木查看
+  {
+    path: '/own/preSaleProducts/viewTrees',
+    component: asyncComponent(() => import('container/own/trees/trees'))
+  },
+  // 产权端管理 -- 业务管理 -- 预售产品管理 -- 树木查看 -- 详情
+  {
+    path: '/own/preSaleProducts/viewTrees/addedit',
+    component: asyncComponent(() => import('container/own/trees/trees-addedit'))
+  },
     // 产权端管理 -- 业务管理 -- 产品管理 -- 编辑/详情
   {
     path: '/own/preSaleProducts/addedit',

@@ -86,7 +86,7 @@ export default class CUpload extends React.Component {
   handleCancel = () => this.setState({previewVisible: false})
   // 获取文件上传的属性
   getUploadProps = ({ initValue, token, field, readonly = false,
-    single = false, isImg = true, onChange, accept }) => {
+    single = false, isImg = true, onChange, accept, handleChange }) => {
     const commProps = {
       action: UPLOAD_URL,
       multiple: !single,
@@ -99,6 +99,9 @@ export default class CUpload extends React.Component {
     };
     const fileProps = {
       ...commProps,
+      beforeUpload: (file, fileList) => {
+        handleChange(file, fileList);
+      },
       onChange: ({ fileList }) => this.setUploadFileUrl(fileList, false, onChange),
       onPreview: this.handleFilePreview
     };
@@ -159,6 +162,7 @@ export default class CUpload extends React.Component {
 
   // 格式化文件的url
   setUploadFileUrl(fileList, isImg, callback) {
+    console.log(fileList);
     let format = isImg ? formatImg : formatFile;
     fileList.forEach(f => {
       if (!f.url && f.status === 'done' && f.response) {
@@ -181,7 +185,7 @@ export default class CUpload extends React.Component {
   }
   render() {
     const { field, isLoaded, getFieldDecorator, token, rules, readonly, single,
-      isImg, onChange, accept, getFieldValue, label, hidden, initVal, inline } = this.props;
+      isImg, onChange, accept, getFieldValue, label, hidden, initVal, inline, handleChange } = this.props;
     const { previewVisible, previewId } = this.state;
     const initValue = this.getFileInitVal(initVal, isImg);
     let layoutProps = inline ? {} : formItemLayout;
@@ -203,6 +207,7 @@ export default class CUpload extends React.Component {
                   readonly,
                   single,
                   onChange,
+                  handleChange,
                   initValue
                 })}>
                   {this.getUploadBtn(field, getFieldValue, readonly, single, isImg)}

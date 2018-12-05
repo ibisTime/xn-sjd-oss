@@ -1273,6 +1273,11 @@ const ROUTES = [
     path: '/seller/postage',
     component: asyncComponent(() => import('container/seller/postage/postage'))
   },
+  // 商家端 -- 业务管理 -- 默认邮费
+  {
+    path: '/seller/defPostage',
+    component: asyncComponent(() => import('container/seller/defPostage/def-postage'))
+  },
   // 商家端 -- 业务管理 -- 邮费模板 -- 详情
   {
     path: '/seller/postage/addedit',

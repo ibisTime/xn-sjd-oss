@@ -30,6 +30,9 @@ class Shares extends React.Component {
       type: 'select',
       key: 'share_type'
     }, {
+      title: '分享内容',
+      field: 'conetnt'
+    }, {
       title: '分享时间',
       field: 'createDatetime',
       type: 'datetime'

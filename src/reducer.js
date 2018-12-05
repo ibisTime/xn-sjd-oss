@@ -143,6 +143,7 @@ import { proxySalesmen } from './redux/proxy/salesmen';
 import { salemanUsers } from './redux/saleman/users';
 // 商家端--业务管理
 import { sellerProducts } from './redux/seller/products';
+import { sellerDefPostage } from './redux/seller/defpostage';
 import { sellerOrder } from './redux/seller/order';
 import { sellerPostage } from './redux/seller/postage';
 import { sellerShouhouOrder } from './redux/seller/shouhou-order';
@@ -274,6 +275,7 @@ export default combineReducers({
   proxyNotices,
   salemanUsers,
   sellerProducts,
+  sellerDefPostage,
   sellerOrder,
   sellerPostage,
   sellerShouhouOrder,

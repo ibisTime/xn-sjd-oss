@@ -1293,6 +1293,11 @@ const ROUTES = [
     path: '/seller/postage/addedit',
     component: asyncComponent(() => import('container/seller/postage/postage-addedit'))
   },
+  // 商家端 -- 默认邮费 -- 详情
+  {
+    path: '/seller/defpostage/addedit',
+    component: asyncComponent(() => import('container/seller/defPostage/defpostage-addedit'))
+  },
   // 商家端 -- 业务管理 -- 售后订单管理
   {
     path: '/seller/shouhou-order',

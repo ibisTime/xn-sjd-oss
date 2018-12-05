@@ -118,7 +118,7 @@ class sellerShouhouOrder extends React.Component {
             } else if (items[0].status !== '0') {
               showWarnMsg('该订单不可处理');
             } else {
-              this.props.history.push(`/seller/shouhou-order/addedit?handle=${items[0].type}&v=1&code=${keys[0]}`);
+              this.props.history.push(`/seller/shouhou-order/addedit?v=1&code=${keys[0]}`);
             }
           }
         }, {

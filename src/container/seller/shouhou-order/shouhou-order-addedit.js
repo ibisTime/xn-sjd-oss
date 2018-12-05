@@ -80,7 +80,7 @@ class SellerOrderAddEdit extends DetailUtil {
       view: this.view,
       detailCode: 629776
     };
-    if (this.handle) {
+    if (!this.handle) {
       config.buttons = [{
         title: '拒绝',
         check: true,

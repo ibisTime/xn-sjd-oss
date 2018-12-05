@@ -62,7 +62,10 @@ class sellerOrder extends React.Component {
       {
       title: '订单金额',
       field: 'amount',
-      amount: true
+      amount: true,
+      formatter(v, s) {
+        console.log(v);
+      }
     }, {
       title: '实际支付金额',
       field: 'payAmount',
@@ -74,6 +77,10 @@ class sellerOrder extends React.Component {
     }, {
       title: '使用积分数量',
       field: 'jfDeductAmount',
+      amount: true
+    }, {
+      title: '邮费',
+      field: 'postalFee',
       amount: true
     }, {
       title: '下单时间',

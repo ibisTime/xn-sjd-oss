@@ -64,7 +64,7 @@ class sellerDefPostage extends React.Component {
     }];
     return this.props.buildList({
       fields,
-      pageCode: 629745,
+      pageCode: 629795,
       deleteCode: 629741,
       searchParams: {
         shopCode: getCompanyCode()

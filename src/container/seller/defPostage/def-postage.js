@@ -16,7 +16,7 @@ import { showSucMsg, showWarnMsg, getUserId, getCompanyCode } from 'common/js/ut
 
 @listWrapper(
   state => ({
-    ...state.sellerPostage,
+    ...state.sellerDefPostage,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
@@ -44,20 +44,12 @@ class sellerDefPostage extends React.Component {
   }
   render() {
     const fields = [{
-      title: '发货地',
-      field: 'deliverPlace',
-      type: 'provSelect',
-      required: true
-    }, {
-      title: '收货地',
-      field: 'receivePlace',
-      type: 'provSelect',
-      required: true
+      title: '地区',
+      field: 'name'
     }, {
       title: '价格',
       field: 'price',
-      amount: true,
-      required: true
+      amount: true
     }, {
       title: '备注',
       field: 'remark'

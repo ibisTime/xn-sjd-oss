@@ -42,9 +42,8 @@ class sellerProducts extends React.Component {
   }
   render() {
     const fields = [{
-      title: '系统编号',
-      field: 'code',
-      search: true
+      title: '编号',
+      field: 'code'
     }, {
       title: '名称',
       field: 'name'
@@ -80,8 +79,7 @@ class sellerProducts extends React.Component {
     }, {
       title: '更新时间',
       field: 'updateDatetime',
-      type: 'datetime',
-      search: true
+      type: 'datetime'
     }];
     return this.props.buildList({
       fields,

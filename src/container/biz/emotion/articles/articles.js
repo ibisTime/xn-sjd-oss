@@ -125,7 +125,7 @@ class Articles extends React.Component {
                 showWarnMsg('请选择记录');
               } else if (keys.length > 1) {
                 showWarnMsg('请选择一条记录');
-              } else if (items[0].status !== '1') {
+              } else if (items[0].status !== '1' && items[0].status !== '6') {
                 showWarnMsg('该记录不是可修改状态');
               } else {
                 this.props.history.push(`/emotion/articles/addedit?code=${keys[0]}`);

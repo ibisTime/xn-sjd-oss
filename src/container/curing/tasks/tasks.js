@@ -23,11 +23,15 @@ import { getUserId, showWarnMsg, dateTimeFormat } from 'common/js/util';
 class Tasks extends React.Component {
   render() {
     const fields = [{
-      title: '系统编号',
+      title: '编号',
       field: 'code'
     }, {
+      title: '树木名称',
+      field: 'scientificName'
+    }, {
       title: '树木编号',
-      field: 'treeNumber'
+      field: 'treeNumber',
+      search: true
     }, {
       title: '分类',
       field: 'category'
@@ -39,6 +43,10 @@ class Tasks extends React.Component {
       field: 'sellType',
       type: 'select',
       key: 'sell_type',
+      search: true
+    }, {
+      title: '产地',
+      field: 'originPlace',
       search: true
     }, {
       title: '状态',
@@ -74,6 +82,16 @@ class Tasks extends React.Component {
             showWarnMsg('请选择一条记录');
           } else {
             this.props.history.push(`/curing/tasks/records?n=${items[0].treeNumber}`);
+          }
+        },
+        // 养护记录查询
+        treeDetail: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/curing/tasks/treeDetail?v=1&code=${items[0].code}`);
           }
         }
       }

@@ -56,7 +56,7 @@ class BizSellerProducts extends React.Component {
   }
   render() {
     const fields = [{
-      title: '系统编号',
+      title: '编号',
       field: 'code'
     }, {
       title: '名称',

@@ -813,6 +813,11 @@ const ROUTES = [
     path: '/agent/agents',
     component: asyncComponent(() => import('container/agent/agents/agents'))
   },
+  // 代理管理 -- 代理商管理 -- 代理商管理 -- 重置密码
+  {
+    path: '/agent/agents/pwd_reset',
+    component: asyncComponent(() => import('container/agent/agents/agents-pwdReset'))
+  },
   // 代理管理 -- 代理商管理 -- 代理商管理 -- 详情
   {
     path: '/agent/agents/addedit',
@@ -902,6 +907,16 @@ const ROUTES = [
   {
     path: '/own/products/detail',
     component: asyncComponent(() => import('container/own/productDetail/productDetail'))
+  },
+  // 产权端管理 -- 业务管理 -- 产品管理 -- 树木查看
+  {
+    path: '/own/products/viewTrees',
+    component: asyncComponent(() => import('container/own/trees/trees'))
+  },
+  // 产权端管理 -- 业务管理 -- 产品管理 -- 树木查看 -- 详情
+  {
+    path: '/own/products/viewTrees/addedit',
+    component: asyncComponent(() => import('container/own/trees/trees-addedit'))
   },
     // 产权端管理 -- 业务管理 -- 产品管理 -- 编辑/详情
   {
@@ -1037,6 +1052,11 @@ const ROUTES = [
   {
     path: '/curing/tasks/records/addedit',
     component: asyncComponent(() => import('container/curing/tasks/tasks-addedit'))
+  },
+  // 养护端管理 -- 业务管理 -- 养护记录查询 -- 详情
+  {
+    path: '/curing/tasks/treeDetail',
+    component: asyncComponent(() => import('container/curing/tasks/treeDetail'))
   },
   // 养护端管理 -- 业务管理 -- 养护项目管理
   {

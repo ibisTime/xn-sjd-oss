@@ -2,16 +2,43 @@ import React from 'react';
 import { Form } from 'antd';
 import { getQueryString, showSucMsg, getUserId } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
+import fetch from 'common/js/fetch';
 
 @Form.create()
-class TreesAddEdit extends DetailUtil {
+class CuringTasksTreeDetail extends DetailUtil {
   constructor(props) {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
     this.view = !!getQueryString('v', this.props.location.search);
   }
+  // 新增修改文章
+  saveArticle(dealType, params) {
+    this.doFetching();
+    params.dealType = dealType;
+    params.publishUserId = getUserId();
+    let bizCode = this.code ? 629341 : 629340;
+    fetch(bizCode, params).then(data => {
+      this.cancelFetching();
+      showSucMsg('操作成功');
+      setTimeout(() => {
+        this.props.history.go(-1);
+      }, 1000);
+    }).catch(this.cancelFetching);
+  }
+  // 审核文章
+  checkArticle(approveResult, params) {
+    this.doFetching();
+    params.approveResult = approveResult;
+    fetch(629342, params).then(data => {
+      this.cancelFetching();
+      showSucMsg('操作成功');
+      setTimeout(() => {
+        this.props.history.go(-1);
+      }, 1000);
+    }).catch(this.cancelFetching);
+  }
   render() {
-    const fields = [{
+    let fields = [{
       title: '树木编号',
       field: 'treeNumber'
     }, {
@@ -72,4 +99,4 @@ class TreesAddEdit extends DetailUtil {
   }
 }
 
-export default TreesAddEdit;
+export default CuringTasksTreeDetail;

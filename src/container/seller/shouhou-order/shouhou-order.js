@@ -129,7 +129,7 @@ class sellerShouhouOrder extends React.Component {
               showWarnMsg('请选择记录');
             } else if (keys.length > 1) {
               showWarnMsg('请选择一条记录');
-            } else if (items[0].status !== '3') {
+            } else if (items[0].status !== '1') {
               showWarnMsg('该订单不能收货');
             } else {
               this.upDown(keys[0]);

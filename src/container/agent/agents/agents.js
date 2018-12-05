@@ -30,12 +30,19 @@ class Agents extends React.Component {
       content: `确认${status === '2' ? '注销' : '激活'}用户？`,
       onOk: () => {
         this.props.doFetching();
-        return activateAgentUser(code).then(() => {
+        return status === '2' ? activateAgentUser(code).then(() => {
           this.props.getPageData();
           showWarnMsg('操作成功');
         }).catch(() => {
           this.props.cancelFetching();
-        });
+        })
+          : activateAgentUser(code).then(() => {
+            this.props.getPageData();
+            showWarnMsg('操作成功');
+          }).catch(() => {
+            this.props.cancelFetching();
+          })
+          ;
       }
     });
   }
@@ -103,10 +110,12 @@ class Agents extends React.Component {
             showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
-          } else if (items[0].status !== '2') {
-            showWarnMsg('该用户无法注销');
           } else {
-            this.rockOrActive(items[0].status, keys[0]);
+            if(items[0].status === '2' || items[0].status === '3' || items[0].status === '4') {
+              this.rockOrActive(items[0].status, keys[0]);
+            } else {
+              showWarnMsg('该用户无法注销或激活');
+            }
           }
         },
         // 账户查询
@@ -117,6 +126,16 @@ class Agents extends React.Component {
             showWarnMsg('请选择一条记录');
           } else {
             this.props.history.push(`/agent/agents/accounts?code=${keys[0]}`);
+          }
+        },
+        // 重置密码
+        resetPwd: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/agent/agents/pwd_reset?userId=${keys[0]}`);
           }
         }
       }

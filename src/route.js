@@ -813,6 +813,11 @@ const ROUTES = [
     path: '/agent/agents',
     component: asyncComponent(() => import('container/agent/agents/agents'))
   },
+  // 代理管理 -- 代理商管理 -- 代理商管理 -- 重置密码
+  {
+    path: '/agent/agents/pwd_reset',
+    component: asyncComponent(() => import('container/agent/agents/agents-pwdReset'))
+  },
   // 代理管理 -- 代理商管理 -- 代理商管理 -- 详情
   {
     path: '/agent/agents/addedit',

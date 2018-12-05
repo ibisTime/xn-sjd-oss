@@ -58,7 +58,7 @@ class Records extends React.Component {
       key: 'withdraw_status',
       search: true
     }, {
-      field: 'applyUser',
+      field: 'realName',
       title: '申请人'
     }, {
       field: 'applyDatetime',

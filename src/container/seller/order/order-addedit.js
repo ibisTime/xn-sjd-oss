@@ -59,6 +59,9 @@ class SellerOrderAddEdit extends DetailUtil {
       field: 'applyDatetime',
       type: 'datetime'
     }, {
+      title: '备注',
+      field: 'remark'
+    }, {
         title: '订单明细',
         field: 'detailList',
         type: 'o2m',

@@ -104,7 +104,9 @@ class sellerShouhouOrder extends React.Component {
       fields,
       pageCode: 629775,
       searchParams: {
-        shopCode: getCompanyCode()
+        shopCode: getCompanyCode(),
+        orderDir: 'desc',
+        orderColumn: 'update_datetime'
       },
       buttons: [
         {

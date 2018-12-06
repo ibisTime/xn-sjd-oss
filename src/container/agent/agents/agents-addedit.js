@@ -12,8 +12,7 @@ class AgentsAddEdit extends DetailUtil {
     this.view = !!getQueryString('v', this.props.location.search);
     this.check = !!getQueryString('check', this.props.location.search);
     this.state = {
-      ...this.state,
-      isTop: !this.code
+      ...this.state
     };
   }
   checkUser(approveResult, params) {
@@ -34,23 +33,6 @@ class AgentsAddEdit extends DetailUtil {
   }
   render() {
     const fields = [{
-      title: '是否顶级',
-      field: 'isTop',
-      type: 'select',
-      data: [{
-        dkey: '0',
-        dvalue: '否'
-      }, {
-        dkey: '1',
-        dvalue: '是'
-      }],
-      required: true,
-      value: this.getIsTop(),
-      onChange: (v) => {
-        this.setState({ isTop: v === '1' });
-      },
-      readonly: this.code && !this.check
-    }, {
       title: '上级代理',
       field: 'parentUserId',
       type: 'select',
@@ -62,14 +44,18 @@ class AgentsAddEdit extends DetailUtil {
       keyName: 'userId',
       valueName: 'mobile',
       searchName: 'keyword',
-      hidden: this.state.isTop,
-      required: !this.state.isTop,
       readonly: this.code && !this.check
     }, {
       title: '用户名',
       field: 'loginName',
       hidden: !this.code,
       maxlength: 30
+    }, {
+      title: '等级',
+      field: 'level',
+      type: 'select',
+      key: 'agent_level',
+      required: true
     }, {
       title: '手机号',
       field: 'mobile',

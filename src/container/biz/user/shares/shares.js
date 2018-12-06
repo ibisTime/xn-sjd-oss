@@ -31,7 +31,7 @@ class Shares extends React.Component {
       key: 'share_type'
     }, {
       title: '分享内容',
-      field: 'conetnt'
+      field: 'content'
     }, {
       title: '分享时间',
       field: 'createDatetime',

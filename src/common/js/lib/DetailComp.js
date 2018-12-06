@@ -462,6 +462,7 @@ export default class DetailComp extends React.Component {
       single: item.single,
       readonly: item.readonly,
       onChange: item.onChange,
+      handleChange: item.handleChange,
       token: this.state.token,
       isLoaded: !this.options.code || this.state.isLoaded,
       getFieldError: this.props.form.getFieldError,

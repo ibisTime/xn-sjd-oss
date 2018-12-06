@@ -16,7 +16,7 @@ class AgentsAddEdit extends DetailUtil {
     this.doFetching();
     params.approveResult = approveResult;
     params.refCode = this.code;
-    params.refType = '4';
+    params.refType = '6';
     params.handler = getUserId();
     fetch(629640, params).then(data => {
       this.cancelFetching();

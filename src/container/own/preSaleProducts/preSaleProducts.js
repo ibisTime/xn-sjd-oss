@@ -133,6 +133,16 @@ class PreProducts extends React.Component {
            let localtion = `${items[0].longitude},${items[0].latitude}`;
             this.upDown(keys[0], items[0].orderNo, localtion);
           }
+        },
+        // 树木查看
+        viewTrees: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/own/preSaleProducts/viewTrees?&productCode=${keys[0]}`);
+          }
         }
       }
     });

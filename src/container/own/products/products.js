@@ -90,33 +90,7 @@ class Products extends React.Component {
       title: '状态',
       field: 'status',
       type: 'select',
-      data: [{
-        dkey: '0',
-        dvalue: '草稿'
-      }, {
-        dkey: '1',
-        dvalue: '已提交待审核'
-      }, {
-        dkey: '2',
-        dvalue: '审核不通过'
-      }, {
-        dkey: '3',
-        dvalue: '审核通过待上架'
-      }, {
-        dkey: '4',
-        dvalue: '已上架待认养'
-      }, {
-        dkey: '5',
-        dvalue: '已锁定'
-      }, {
-        dkey: '6',
-        dvalue: '已认养'
-      }, {
-        dkey: '7',
-        dvalue: '已下架'
-      }],
-      keyName: 'dkey',
-      valueName: 'dvalue',
+      key: 'product_status',
       search: true
     }];
     return this.props.buildList({

@@ -182,7 +182,13 @@ class Supplement extends DetailUtil {
       _keys: ['company', 'organizationCode']
     }, {
       title: '备注',
-      field: 'remark'
+      field: 'remark',
+      hidden: this.state.readonly
+    }, {
+      title: '备注',
+      field: 'remark',
+      _keys: ['company', 'remark'],
+      hidden: !this.state.readonly
     }];
   }
   render() {

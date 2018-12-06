@@ -41,6 +41,8 @@ class Achievement extends React.Component {
             return d.presellOrder.specsName;
           } else if(d.groupAdoptOrder) {
             return d.groupAdoptOrder.productSpecsName;
+          } else if(d.commodityOrder) {
+            return d.commodityOrder.specsNames;
           }
       }
     }, {

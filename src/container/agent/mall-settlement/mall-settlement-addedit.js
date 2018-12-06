@@ -45,13 +45,13 @@ class AgentsAddEdit extends DetailUtil {
       title: '订单状态',
       field: 'status',
       type: 'select',
-      key: 'adopt_order_status',
+      key: 'commodity_order_status',
       search: true
     }, {
       title: '结算状态',
       field: 'settleStatus',
       type: 'select',
-      key: 'adopt_settle_status',
+      key: 'commodity_settle_status',
       search: true
     }, {
       title: '下单时间',

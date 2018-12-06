@@ -161,6 +161,9 @@ class sellerProductEdit extends DetailUtil {
       field: 'description',
       type: 'textarea',
       required: true
+    }, {
+      title: '备注',
+      field: 'remark'
     }];
     let config = {
       fields,

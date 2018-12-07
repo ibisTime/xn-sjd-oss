@@ -22,6 +22,7 @@ class ProductsAddEdit extends DetailUtil {
     this.doFetching();
     params.approver = getUserId();
     params.approveResult = approveResult;
+    params.approveNote = params.remark;
     fetch(629703, params).then(data => {
       this.cancelFetching();
       showSucMsg('操作成功');

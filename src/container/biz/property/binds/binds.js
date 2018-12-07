@@ -28,10 +28,20 @@ class Binds extends React.Component {
       render: (v, d) => d.ownerUser ? d.ownerUser.mobile : '',
       _keys: ['ownerUser', 'mobile']
     }, {
+      title: '产权方',
+      field: 'ownerUserName',
+      search: true,
+      noVisible: true
+    }, {
       title: '养护方',
       field: 'maintainId',
       render: (v, d) => d.maintainUser ? d.maintainUser.mobile : '',
       _keys: ['maintainUser', 'mobile']
+    }, {
+      title: '养护方',
+      field: 'maintainUserName',
+      search: true,
+      noVisible: true
     }, {
       title: '状态',
       field: 'status',

@@ -43,7 +43,8 @@ class Products extends React.Component {
   render() {
     const fields = [{
       title: '编号',
-      field: 'code'
+      field: 'code',
+      search: true
     }, {
       title: '名称',
       field: 'name',

@@ -11,6 +11,7 @@ class SellerOrderAddEdit extends DetailUtil {
     this.handle = getQueryString('handle', this.props.location.search);
     this.code = getQueryString('code', this.props.location.search);
     this.view = !!getQueryString('v', this.props.location.search);
+    this.isDet = !!getQueryString('isDet', this.props.location.isDet);
   }
   handleFun(result, params) {
     this.doFetching();
@@ -80,7 +81,7 @@ class SellerOrderAddEdit extends DetailUtil {
       view: this.view,
       detailCode: 629776
     };
-    if (!this.handle) {
+    if (!this.isDet) {
       config.buttons = [{
         title: '拒绝',
         check: true,

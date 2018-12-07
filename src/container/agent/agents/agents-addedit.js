@@ -44,7 +44,7 @@ class AgentsAddEdit extends DetailUtil {
       keyName: 'userId',
       valueName: 'mobile',
       searchName: 'keyword',
-      readonly: this.code && !this.check
+      readonly: this.check || this.view
     }, {
       title: '用户名',
       field: 'loginName',
@@ -130,7 +130,8 @@ class AgentsAddEdit extends DetailUtil {
       code: this.code,
       view: this.view,
       detailCode: 730086,
-      addCode: 730072
+      addCode: 730072,
+      editCode: 730090
     };
     if (this.check) {
       config.buttons = [{

@@ -55,7 +55,9 @@ class Agents extends React.Component {
       field: 'mobile'
     }, {
       title: '等级',
-      field: 'level'
+      field: 'level',
+      type: 'select',
+      key: 'agent_level'
     }, {
       title: '上级代理',
       field: 'mobile1',

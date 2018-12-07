@@ -1158,6 +1158,11 @@ const ROUTES = [
     path: '/proxy/users',
     component: asyncComponent(() => import('container/proxy/users/users'))
   },
+  // 代理商 -- 代理商 -- 用户查询
+  {
+    path: '/proxy/changeInfo',
+    component: asyncComponent(() => import('container/proxy/changeInfo'))
+  },
   // 代理商 -- 代理商 -- 下级代理查询
   {
     path: '/proxy/subordinates',

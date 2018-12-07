@@ -39,6 +39,14 @@ class AgentsAddEdit extends DetailUtil {
       field: 'payAmount',
       amount: true
     }, {
+      title: '积分抵扣金额',
+      field: 'jfDeductAmount',
+      amount: true
+    }, {
+      title: '运费',
+      field: 'postalFee',
+      amount: true
+    }, {
       title: '认养人',
       field: 'applyUserName'
     }, {

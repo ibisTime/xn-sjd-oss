@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from 'antd';
-import { getQueryString, showSucMsg, getUserId } from 'common/js/util';
+import { getQueryString, showSucMsg, getUserId, clearUser } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 import fetch from 'common/js/fetch';
 
@@ -15,30 +15,30 @@ class Aboutus extends DetailUtil {
       title: '名称',
       field: 'companyName',
       _keys: ['company', 'name'],
-      readonly: true
+      required: true
     }, {
       title: '负责人',
       field: 'companyCharger',
       _keys: ['company', 'charger'],
-      readonly: true
+      required: true
     }, {
       title: '联系方式',
       field: 'chargerMobile',
       _keys: ['company', 'chargeMobile'],
       mobile: true,
-      readonly: true
+      required: true
     }, {
       title: '地址',
       field: 'companyAddress',
       _keys: ['company', 'address'],
-      readonly: true
+      required: true
     }, {
       title: '简介',
       field: 'description',
       _keys: ['company', 'description'],
       type: 'textarea',
       normalArea: true,
-      readonly: true
+      required: true
     }, {
       title: '营业执照',
       field: 'bussinessLicense',
@@ -75,9 +75,15 @@ class Aboutus extends DetailUtil {
         check: true,
         handler: (params) => {
           this.doFetching();
-          fetch(630064, params).then(() => {
+          fetch(630080, params).then((res) => {
+            if(res.isSuccess) {
+              showSucMsg('操作成功');
+              setTimeout(() => {
+                clearUser();
+                window.location.href = '/login';
+              }, 500);
+            }
             this.cancelFetching();
-            showSucMsg('操作成功');
           }).catch(this.cancelFetching);
         }
       }]

@@ -34,6 +34,14 @@ class MallSettlement extends React.Component {
       field: 'payAmount',
       amount: true
     }, {
+      title: '积分抵扣金额',
+      field: 'jfDeductAmount',
+      amount: true
+    }, {
+      title: '运费',
+      field: 'postalFee',
+      amount: true
+    }, {
       title: '下单人',
       field: 'applyUserName'
     }, {

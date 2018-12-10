@@ -74,24 +74,25 @@ class PropertyAddEdit extends DetailUtil {
       field: 'organizationCode',
       _keys: ['company', 'organizationCode']
     }];
-    if (this.view && !this.check) {
+    // if (this.view && !this.check) {
       fields = fields.concat([{
         title: '合同模版',
         field: 'contractTemplate',
         _keys: ['company', 'contractTemplate'],
-        type: 'textarea'
+        type: 'textarea',
+        required: true
       }, {
         title: '证书模版',
         field: 'certificateTemplate',
         _keys: ['company', 'certificateTemplate'],
         type: 'img',
-        single: true
+        single: true,
+        required: true
       }]);
-    }
+    // }
     fields = fields.concat([{
       title: '备注',
-      field: 'remark',
-      readonly: !this.check
+      field: 'remark'
     }]);
     let config = {
       fields,
@@ -99,7 +100,8 @@ class PropertyAddEdit extends DetailUtil {
       code: this.code,
       view: this.view,
       detailCode: 630067,
-      addCode: 630063
+      addCode: 630063,
+      editCode: 630080
     };
     if (this.check) {
       config.buttons = [{

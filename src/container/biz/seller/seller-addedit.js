@@ -74,8 +74,7 @@ class SellerAddedit extends DetailUtil {
       _keys: ['company', 'organizationCode']
     }, {
       title: '备注',
-      field: 'remark',
-      readonly: !this.check
+      field: 'remark'
     }];
     // if (this.view && !this.check) {
     //   fields = fields.concat([{
@@ -97,7 +96,8 @@ class SellerAddedit extends DetailUtil {
       code: this.code,
       view: this.view,
       detailCode: 630067,
-      addCode: 630063
+      addCode: 630063,
+      editCode: 630080
     };
     if (this.check) {
       config.buttons = [{

@@ -74,6 +74,7 @@ export function login({ loginName, loginPwd, type = 'P' }) {
       loginName,
       loginPwd,
       type: getKindByUrl()
+      // type: 'A'
     }).then(data => {
       setUser(data);
       dispatch(loginSuccess());

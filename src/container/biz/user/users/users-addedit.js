@@ -37,7 +37,6 @@ class UsersAddEdit extends DetailUtil {
       field: 'createDatetime',
       type: 'datetime',
       onChange: (v) => {
-        console.log(this.state.pageData);
         if(this.state.pageData.userExt.authStatus) {
           this.setState({ auth: true });
         }
@@ -76,12 +75,18 @@ class UsersAddEdit extends DetailUtil {
       _keys: ['userExt', 'introduce'],
       hidden: !this.state.auth || this.state.companyAuthStatusFlag
     }, {
-      title: '身份证照',
+      title: '身份证正面照',
       field: 'idPic',
       _keys: ['userExt', 'idPic'],
       type: 'img',
       hidden: !this.state.auth || this.state.companyAuthStatusFlag
     }, {
+      title: '身份证反面照',
+      field: 'backIdPic',
+      _keys: ['userExt', 'backIdPic'],
+      type: 'img',
+      hidden: !this.state.auth || this.state.companyAuthStatusFlag
+  }, {
       title: '认证类型',
       field: 'companyAuthStatus',
       value: '企业认证',
@@ -92,7 +97,52 @@ class UsersAddEdit extends DetailUtil {
       _keys: ['userExt', 'companyName'],
       hidden: !this.state.auth || this.state.personAuthStatusFlag
     }, {
-      title: '营业执照号',
+      title: '企业地址',
+      field: 'companyAddress',
+      _keys: ['userExt', 'companyAddress'],
+      hidden: !this.state.auth || this.state.personAuthStatusFlag
+    }, {
+      title: '企业法人姓名',
+      field: 'companyChargerName',
+      _keys: ['userExt', 'companyChargerName'],
+      hidden: !this.state.auth || this.state.personAuthStatusFlag
+    }, {
+      title: '企业法人联系方式',
+      field: 'companyChargerMobile',
+      _keys: ['userExt', 'companyChargerMobile'],
+      hidden: !this.state.auth || this.state.personAuthStatusFlag
+    }, {
+      title: '企业法人身份证',
+      field: 'companyChargerIdNo',
+      _keys: ['userExt', 'companyChargerIdNo'],
+      hidden: !this.state.auth || this.state.personAuthStatusFlag
+    }, {
+      title: '企业联系人',
+      field: 'companyContactName',
+      _keys: ['userExt', 'companyContactName'],
+      hidden: !this.state.auth || this.state.personAuthStatusFlag
+    }, {
+      title: '企业联系人电话',
+      field: 'companyContactMobile',
+      _keys: ['userExt', 'companyContactMobile'],
+      hidden: !this.state.auth || this.state.personAuthStatusFlag
+    }, {
+      title: '企业联系人地址',
+      field: 'companyContactAddress',
+      _keys: ['userExt', 'companyContactAddress'],
+      hidden: !this.state.auth || this.state.personAuthStatusFlag
+    }, {
+      title: '企业开户行',
+      field: 'companyBank',
+      _keys: ['userExt', 'companyBank'],
+      hidden: !this.state.auth || this.state.personAuthStatusFlag
+    }, {
+      title: '企业开户账号',
+      field: 'companyBankNumber',
+      _keys: ['userExt', 'companyBankNumber'],
+      hidden: !this.state.auth || this.state.personAuthStatusFlag
+    }, {
+      title: '企业注册统一码',
       field: 'bussinessLicenseId',
       _keys: ['userExt', 'bussinessLicenseId'],
       hidden: !this.state.auth || this.state.personAuthStatusFlag
@@ -100,6 +150,18 @@ class UsersAddEdit extends DetailUtil {
       title: '简介',
       field: 'companyIntroduce',
       _keys: ['userExt', 'companyIntroduce'],
+      hidden: !this.state.auth || this.state.personAuthStatusFlag
+    }, {
+      title: '身份证正面照片',
+      field: 'companyChargerIdPic',
+      _keys: ['userExt', 'companyChargerIdPic'],
+      type: 'img',
+      hidden: !this.state.auth || this.state.personAuthStatusFlag
+    }, {
+      title: '身份证反面照片',
+      field: 'companyChargerBackIdPic',
+      _keys: ['userExt', 'companyChargerBackIdPic'],
+      type: 'img',
       hidden: !this.state.auth || this.state.personAuthStatusFlag
     }, {
       title: '营业执照照片',

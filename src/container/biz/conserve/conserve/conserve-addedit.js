@@ -76,8 +76,7 @@ class ConserveAddEdit extends DetailUtil {
     }, {
       title: '备注',
       field: 'remark',
-      maxlength: 250,
-      readonly: !this.check
+      maxlength: 250
     }];
     let config = {
       fields,
@@ -85,7 +84,8 @@ class ConserveAddEdit extends DetailUtil {
       code: this.code,
       view: this.view,
       detailCode: 630067,
-      addCode: 630063
+      addCode: 630063,
+      editCode: 630080
     };
     if (this.check) {
       config.buttons = [{

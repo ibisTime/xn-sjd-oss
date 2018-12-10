@@ -23,7 +23,6 @@ export default class Home extends React.Component {
   }
   componentDidMount() {
     let bizCode = getKindByUrl() === 'A' ? 730086 : 630067;
-    // let bizCode = this.kind === 'A' ? 730086 : 630067;
     fetch(bizCode, { userId: getUserId() }).then(data => {
       let url = judgeStatus(data.status);
       console.log(url);

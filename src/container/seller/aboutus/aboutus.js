@@ -12,75 +12,76 @@ class sellerAboutus extends DetailUtil {
     }
     render() {
         const fields = [{
-            title: '名称',
-            field: 'companyName',
-            _keys: ['company', 'name'],
-            readonly: true
+          field: 'kind',
+          value: 'B',
+          hidden: true
         }, {
-            title: '负责人',
-            field: 'companyCharger',
-            _keys: ['company', 'charger'],
-            readonly: true
+          title: '手机号',
+          field: 'mobile',
+          required: true,
+          mobile: true
         }, {
-            title: '联系方式',
-            field: 'chargerMobile',
-            _keys: ['company', 'chargeMobile'],
-            mobile: true,
-            readonly: true
+          title: '店铺名称',
+          field: 'companyName',
+          _keys: ['company', 'name'],
+          required: true
         }, {
-            title: '地址',
-            field: 'companyAddress',
-            _keys: ['company', 'address'],
-            readonly: true
+          title: '负责人',
+          field: 'companyCharger',
+          _keys: ['company', 'charger'],
+          required: true
         }, {
-            title: '简介',
-            field: 'description',
-            _keys: ['company', 'description'],
-            type: 'textarea',
-            normalArea: true,
-            readonly: true
+          title: '负责人联系方式',
+          field: 'chargerMobile',
+          _keys: ['company', 'chargeMobile'],
+          mobile: true,
+          required: true
         }, {
-            title: '营业执照',
-            field: 'bussinessLicense',
-            _keys: ['company', 'bussinessLicense'],
-            type: 'img',
-            single: true
+          title: '地址',
+          field: 'companyAddress',
+          _keys: ['company', 'address'],
+          required: true
         }, {
-            title: '组织机构代码',
-            field: 'organizationCode',
-            _keys: ['company', 'organizationCode'],
-            required: true,
-            readonly: true
+          title: '简介',
+          field: 'description',
+          _keys: ['company', 'description'],
+          type: 'textarea',
+          normalArea: true,
+          maxlength: 200,
+          required: true
         }, {
-            title: '合同模版',
-            field: 'contractTemplate',
-            _keys: ['company', 'contractTemplate'],
-            type: 'textarea',
-            required: true
+          title: '营业执照',
+          field: 'bussinessLicense',
+          _keys: ['company', 'bussinessLicense'],
+          type: 'img',
+          single: true
         }, {
-            title: '证书模版',
-            field: 'certificateTemplate',
-            _keys: ['company', 'certificateTemplate'],
-            type: 'img',
-            single: true,
-            required: true
+          title: '组织机构代码',
+          field: 'organizationCode',
+          _keys: ['company', 'organizationCode']
+        }, {
+          title: '备注',
+          field: 'remark'
         }];
         return this.buildDetail({
-            fields,
-            key: 'userId',
-            code: this.code,
-            detailCode: 630067,
-            buttons: [{
-                title: '保存',
-                check: true,
-                handler: (params) => {
-                    this.doFetching();
-                    fetch(630064, params).then(() => {
-                        this.cancelFetching();
-                        showSucMsg('操作成功');
-                    }).catch(this.cancelFetching);
-                }
-            }]
+          fields,
+          key: 'userId',
+          code: this.code,
+          view: true,
+          detailCode: 630067,
+          buttons: [
+          //   {
+          //     title: '保存',
+          //     check: true,
+          //     handler: (params) => {
+          //         this.doFetching();
+          //         fetch(630064, params).then(() => {
+          //             this.cancelFetching();
+          //             showSucMsg('操作成功');
+          //         }).catch(this.cancelFetching);
+          //     }
+          // }
+          ]
         });
     }
 }

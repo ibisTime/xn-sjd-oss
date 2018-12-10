@@ -12,28 +12,44 @@ class Aboutus extends DetailUtil {
   }
   render() {
     const fields = [{
-      title: '名称',
+      field: 'kind',
+      value: 'M',
+      hidden: true
+    }, {
+      title: '手机号',
+      field: 'mobile',
+      required: true,
+      mobile: true
+    }, {
+      title: '公司/组织名称',
       field: 'companyName',
-      _keys: ['company', 'name']
+      _keys: ['company', 'name'],
+      placeholder: '若是个人请直接填写姓名',
+      required: true
     }, {
       title: '负责人',
       field: 'companyCharger',
-      _keys: ['company', 'charger']
+      _keys: ['company', 'charger'],
+      required: true
     }, {
-      title: '联系方式',
+      title: '负责人联系方式',
       field: 'chargerMobile',
       _keys: ['company', 'chargeMobile'],
-      mobile: true
+      mobile: true,
+      required: true
     }, {
       title: '地址',
       field: 'companyAddress',
-      _keys: ['company', 'address']
+      _keys: ['company', 'address'],
+      required: true
     }, {
       title: '简介',
       field: 'description',
       _keys: ['company', 'description'],
       type: 'textarea',
-      normalArea: true
+      normalArea: true,
+      maxlength: 200,
+      required: true
     }, {
       title: '营业执照',
       field: 'bussinessLicense',
@@ -43,8 +59,11 @@ class Aboutus extends DetailUtil {
     }, {
       title: '组织机构代码',
       field: 'organizationCode',
-      _keys: ['company', 'organizationCode'],
-      required: true
+      _keys: ['company', 'organizationCode']
+    }, {
+      title: '备注',
+      field: 'remark',
+      maxlength: 250
     }];
     return this.buildDetail({
       fields,

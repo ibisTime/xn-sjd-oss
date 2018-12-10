@@ -121,8 +121,7 @@ class AgentsAddEdit extends DetailUtil {
       _keys: ['company', 'organizationCode']
     }, {
       title: '备注',
-      field: 'remark',
-      readonly: !this.check
+      field: 'remark'
     }];
     let config = {
       fields,

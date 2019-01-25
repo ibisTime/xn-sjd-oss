@@ -48,20 +48,23 @@ class sellerProducts extends React.Component {
       title: '名称',
       field: 'name'
     }, {
-      title: '产品分类',
-      field: 'parentCategoryCode',
-      type: 'select',
-      listCode: '629007',
-      params: {level: '1', type: '2'},
-      keyName: 'code',
-      valueName: 'name',
-      search: true
+      title: '产地',
+      field: 'originalPlace'
     }, {
       title: '小类',
       field: 'categoryCode',
       type: 'select',
       listCode: '629007',
       params: {level: '2', type: '2'},
+      keyName: 'code',
+      valueName: 'name',
+      search: true
+    }, {
+      title: '产品分类',
+      field: 'parentCategoryCode',
+      type: 'select',
+      listCode: '629007',
+      params: {level: '1', type: '2'},
       keyName: 'code',
       valueName: 'name',
       search: true

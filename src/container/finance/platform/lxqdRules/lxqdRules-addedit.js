@@ -20,9 +20,9 @@ class LxqdRulesAddedit extends DetailUtil {
       _keys: ['remark'],
       readonly: true
     }, {
-      title: '数值(%)',
-      field: 'cvalue',
-      formatter: (v) => (v * 100).toFixed(2)
+      title: '参数值',
+      field: 'cvalue'
+      // formatter: (v) => (v * 100).toFixed(2)
     }, {
       title: '最近修改时间',
       field: 'updateDatetime',

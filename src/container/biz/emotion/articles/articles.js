@@ -63,12 +63,13 @@ class Articles extends React.Component {
       title: '关联古树',
       field: 'treeNo'
     },
-      // {
-      // title: '公开程度',
-      // field: 'openLevel',
-      // type: 'select',
-      // key: 'article_open_level',
-      // search: true
+        {
+            title: '公开程度',
+            field: 'openLevel',
+            type: 'select',
+            key: 'article_open_level',
+            search: true
+        },
      {
       title: '发布时间',
       field: 'publishDatetime',
@@ -107,9 +108,6 @@ class Articles extends React.Component {
       title: 'UI次序',
       field: 'orderNo'
     }, {
-        title: '是否置顶',
-        field: 'isTop'
-      }, {
       title: '收藏总数',
       field: 'collectCount'
     }, {

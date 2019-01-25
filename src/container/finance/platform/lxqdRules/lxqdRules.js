@@ -23,9 +23,9 @@ class LxqdRules extends React.Component {
   render() {
     const fields = [
      {
-      title: '数值(%)',
-      field: 'cvalue',
-      render: (v) => (v * 100).toFixed(2)
+      title: '参数值',
+      field: 'cvalue'
+      // render: (v) => (v * 100).toFixed(2)
     }, {
       title: '备注',
       field: 'remark'

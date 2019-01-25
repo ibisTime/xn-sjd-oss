@@ -24,6 +24,7 @@ class Aboutus extends DetailUtil {
             field: 'cvalue',
             type: 'img',
             single: true,
+            help: '690*300',
             required: true
         }]);
         fields = fields.concat([{

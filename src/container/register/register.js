@@ -20,7 +20,7 @@ class Register extends React.Component {
     };
    this.kind = getKindByUrl();
    // this.kind = 'O';
-   //  this.kind = 'B';
+   // this.kind = 'B';
   }
   componentWillUnmount() {
     if (this.timer) {

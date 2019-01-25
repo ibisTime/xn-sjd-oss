@@ -23,6 +23,7 @@ class ActivityPage extends DetailUtil {
             title: '商城活动页管理',
             field: 'cvalue',
             type: 'img',
+            help: '690*300',
             single: true,
             required: true
         }]);

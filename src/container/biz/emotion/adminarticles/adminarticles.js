@@ -60,12 +60,6 @@ class Adminarticles extends React.Component {
       title: '标题',
       field: 'title'
     }, {
-      title: '公开程度',
-      field: 'openLevel',
-      type: 'select',
-      key: 'article_open_level',
-      search: true
-    }, {
       title: '发布时间',
       field: 'publishDatetime',
       type: 'date',
@@ -103,6 +97,19 @@ class Adminarticles extends React.Component {
       title: 'UI次序',
       field: 'orderNo'
     }, {
+         title: '是否置顶',
+        field: 'isTop',
+        type: 'select',
+        keyName: 'dkey',
+        valueName: 'dvalue',
+        data: [{
+          dkey: '0',
+          dvalue: '否'
+    }, {
+          dkey: '1',
+          dvalue: '是'
+    }]
+  }, {
       title: '收藏总数',
       field: 'collectCount'
     }, {

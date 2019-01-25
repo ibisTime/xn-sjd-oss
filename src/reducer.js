@@ -99,6 +99,8 @@ import { propBuyRecords } from './redux/biz/prop/buyRecords';
 import { propUseRecords } from './redux/biz/prop/useRecords';
 // 认养预售--弹幕管理
 import { danmuDanmu } from './redux/biz/danmu/danmu';
+// 认养预售--公章管理
+import { officialSeal } from './redux/biz/officialseal/officialseal';
 // 业务管理--业务规则
 import { rulesWeight } from './redux/biz/rules/weight';
 // 代理管理--代理商管理
@@ -289,5 +291,6 @@ export default combineReducers({
   sellerNotices,
   sellerBanner,
   publicTweets,
-  publicAuditNotice
+  publicAuditNotice,
+  officialSeal
 });

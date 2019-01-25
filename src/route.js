@@ -837,6 +837,16 @@ const ROUTES = [
     path: '/danmu/danmu/addedit',
     component: asyncComponent(() => import('container/biz/danmu/danmu-addedit'))
   },
+  // 认养预售 -- 公章管理 -- 公章管理
+  {
+    path: '/officialseal/officialseal',
+    component: asyncComponent(() => import('container/biz/officialseal/officialseal'))
+  },
+  // 认养预售 -- 公章管理 -- 公章管理添加
+  {
+    path: '/officialseal/officialseal/addedit',
+    component: asyncComponent(() => import('container/biz/officialseal/officialseal-addedit'))
+  },
   // 业务管理 -- 业务规则 -- 好友排行权重设置
   {
     path: '/rules/weight',

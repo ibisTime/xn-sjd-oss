@@ -173,6 +173,12 @@ class ProductEdit extends DetailUtil {
       required: true,
       maxlength: 30
     }, {
+      title: '树龄',
+      field: 'age',
+      required: true,
+      number: true,
+      maxlength: 30
+    }, {
       title: '古树产地',
       field: 'originPlace',
       required: true,
@@ -202,7 +208,7 @@ class ProductEdit extends DetailUtil {
       title: '认养分类',
       field: 'sellType',
       type: 'select',
-      key: 'sell_type',
+      key: 'yl_sell_type',
       required: true,
       onChange: (v) => {
         // let direct = v === '2';

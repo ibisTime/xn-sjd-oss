@@ -120,11 +120,12 @@ class Account extends React.Component {
             </Col>
           </Row>
           <Row gutter={{ xs: 6, sm: 12, md: 24, lg: 32 }}>
-            <Col span={6} style={{marginBottom: '20px'}}>
+           /* <Col span={6} style={{marginBottom: '20px'}}>
               <Card title="分销商总余额" extra={
                 <Button onClick={() => this.goAccounts(aClientAccount.type)} type="primary">资金分布</Button>
               }>¥{moneyFormat(aClientAccount.amount || 0)}</Card>
             </Col>
+            */
             <Col span={6} style={{marginBottom: '20px'}}>
               <Card title="产权方总余额" extra={
                 <Button onClick={() => this.goAccounts(oClientAccount.type)} type="primary">资金分布</Button>

@@ -150,6 +150,11 @@ class sellerProductEdit extends DetailUtil {
       required: true,
       maxlength: 100
     }, {
+      title: '产地',
+      field: 'originalPlace',
+      required: true,
+      maxlength: 100
+    }, {
       title: '发货地',
       field: 'deliverPlace',
       type: this.view ? '' : 'provSelect',

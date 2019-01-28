@@ -69,7 +69,8 @@ class TypesAddEdit extends DetailUtil {
       field: 'pic',
       type: 'img',
       single: true,
-      required: this.state.isTop
+      required: true
+      // required: this.state.isTop
     }, {
       title: '次序',
       field: 'orderNo',

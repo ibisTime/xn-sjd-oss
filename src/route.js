@@ -467,6 +467,11 @@ const ROUTES = [
     path: '/seller/biz-flows',
     component: asyncComponent(() => import('container/biz/seller/flows/flows'))
   },
+  // 商城管理 -- 商城管理 -- 账户查询 -- 流水查询 --详情
+  {
+    path: '/seller/biz-accounts/flows/addedit',
+    component: asyncComponent(() => import('container/finance/flows-addedit/flows-addedit'))
+  },
   // 商城管理 -- 商城管理 -- 流水查询 -- 详情
   {
     path: '/seller/biz-flows/addedit',

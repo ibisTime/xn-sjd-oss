@@ -80,6 +80,7 @@ class Aboutus extends DetailUtil {
           field: 'commonSeal',
           _keys: ['company', 'commonSeal'],
           type: 'img',
+          required: true,
           single: true
     }]);
     // }

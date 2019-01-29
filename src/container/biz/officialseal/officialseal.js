@@ -32,12 +32,15 @@ class officialSeal extends React.Component {
       title: '区',
       field: 'area'
     }, {
-      title: '部门名称',
+      title: '部门',
       field: 'department'
     }, {
       title: '公章',
       field: 'pic',
       type: 'img'
+    }, {
+        title: '备注',
+         field: 'remark'
     }];
     return this.props.buildList({
       fields,

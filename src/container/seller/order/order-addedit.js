@@ -111,10 +111,12 @@ class SellerOrderAddEdit extends DetailUtil {
       title: '物流公司',
       field: 'logisticsCompany',
       type: 'select',
+      required: true,
       key: 'logistics_company',
       readonly: !this.fahuo
     }, {
       title: '物流单号',
+      required: true,
       field: 'logisticsNumber',
       readonly: !this.fahuo
     }];

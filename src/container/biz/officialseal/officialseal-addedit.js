@@ -17,7 +17,7 @@ class TppOrdersAddEdit extends DetailUtil {
       type: 'citySelect',
       required: true
     }, {
-      title: '部门名称 ',
+      title: '部门',
       field: 'department',
       required: true
     }, {
@@ -26,19 +26,10 @@ class TppOrdersAddEdit extends DetailUtil {
       type: 'img',
       single: true,
       required: true
+    }, {
+          title: '备注',
+          field: 'remark'
     }];
-    if (this.view) {
-      fields = fields.concat([{
-        title: '状态',
-        field: 'status',
-        type: 'select',
-        key: 'barrage_status',
-        search: true
-      }, {
-        title: 'UI次序',
-        field: 'orderNo'
-      }]);
-    }
     return this.buildDetail({
       fields,
       code: this.code,

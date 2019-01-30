@@ -687,6 +687,31 @@ const ROUTES = [
     path: '/claim/rights',
     component: asyncComponent(() => import('container/biz/claim/rights/rights'))
   },
+    // 业务管理 -- 氧圈管理 -- 认养权查询
+    {
+        path: '/claim/right',
+        component: asyncComponent(() => import('container/biz/claim/rights/rights'))
+    },
+    // 氧圈管理 -- 礼物管理 -- 礼物赠送
+    {
+        path: '/claim/gift',
+        component: asyncComponent(() => import('container/biz/claim/rights/rights'))
+    },
+    // 氧圈管理 -- 礼物管理 -- 礼物订单
+    {
+        path: '/claim/giftOrder',
+        component: asyncComponent(() => import('container/biz/claim/rights/rights'))
+    },
+    // 氧圈管理 -- 氧圈管理 -- 来访人查询
+    {
+        path: '/claim/visit',
+        component: asyncComponent(() => import('container/biz/visit/visit-query'))
+    },
+    // 氧圈管理 -- 氧圈管理 -- 来访人查询
+    {
+        path: '/claim/rights/visit',
+        component: asyncComponent(() => import('container/biz/visit/visit'))
+    },
   // 业务管理 -- 认养管理 -- 认养权查询 -- 日志查看
   {
     path: '/claim/rights/logs',

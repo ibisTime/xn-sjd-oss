@@ -86,10 +86,6 @@ class RightsTppOrders extends React.Component {
             this.props.history.push(`/claim/rights/tppOrders/addedit?code=${keys[0]}&v=1`);
           }
         }
-      }, {
-        name: '返回',
-        code: 'back',
-        handler: () => this.props.history.go(-1)
       }]
     });
   }

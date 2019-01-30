@@ -72,6 +72,16 @@ class Rights extends React.Component {
             this.props.history.push(`/claim/rights/giveGift?adopt=${keys[0]}`);
           }
         },
+        // 来访人查询
+        visit: (keys, items) => {
+      if (!keys.length) {
+        showWarnMsg('请选择记录');
+      } else if (keys.length > 1) {
+        showWarnMsg('请选择一条记录');
+      } else {
+        this.props.history.push(`/claim/rights/visit?userId=${keys[0]}`);
+      }
+    },
         // 礼物订单
         giftOrders: (keys, items) => {
           if (!keys.length) {

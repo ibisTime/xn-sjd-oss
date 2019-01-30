@@ -28,7 +28,14 @@ class RightsLogs extends React.Component {
     const fields = [{
       title: '操作人',
       field: 'userId',
-      render: (v, d) => d.userInfo ? d.userInfo.mobile : ''
+      render: (v, d) => {
+        if (d.userInfo.kind) {
+          return `${d.userInfo.mobile}`;
+        } else {
+          return `${d.userInfo.loginName}`;
+        }
+      }
+      // render: (v, d) => d.userInfo ? d.userInfo.mobile : ''
     }, {
       title: '类型',
       field: 'type',
@@ -49,12 +56,12 @@ class RightsLogs extends React.Component {
       pageCode: 629305,
       searchParams: {
         adoptTreeCode: this.code
-      },
-      buttons: [{
-        name: '返回',
-        code: 'back',
-        handler: () => this.props.history.go(-1)
-      }]
+      }
+      // buttons: [{
+      //   name: '返回',
+      //   code: 'back',
+      //   handler: () => this.props.history.go(-1)
+      // }]
     });
   }
 }

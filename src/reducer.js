@@ -73,6 +73,7 @@ import { userUsers } from './redux/biz/user/users';
 import { userUserAccounts } from './redux/biz/user/user-accounts';
 import { userSignIn } from './redux/biz/user/signIn';
 import { userShares } from './redux/biz/user/shares';
+import { Visit } from './redux/biz/user/visit';
 import { userGives } from './redux/biz/user/gives';
 import { userAccounts } from './redux/biz/user/accounts';
 import { userAccountFlows } from './redux/biz/user/account-flows';
@@ -223,6 +224,7 @@ export default combineReducers({
   userUserAccounts,
   userSignIn,
   userShares,
+  Visit,
   userGives,
   userAccounts,
   userAccountFlows,

@@ -119,35 +119,29 @@ class Account extends React.Component {
               }>¥{moneyFormat(offAccount.amount || 0)}</Card>
             </Col>
           </Row>
-          <Row gutter={{ xs: 6, sm: 12, md: 24, lg: 32 }}>
-           /* <Col span={6} style={{marginBottom: '20px'}}>
-              <Card title="分销商总余额" extra={
-                <Button onClick={() => this.goAccounts(aClientAccount.type)} type="primary">资金分布</Button>
-              }>¥{moneyFormat(aClientAccount.amount || 0)}</Card>
-            </Col>
-            */
-            <Col span={6} style={{marginBottom: '20px'}}>
+          <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            <Col span={8} style={{marginBottom: '20px'}}>
               <Card title="产权方总余额" extra={
                 <Button onClick={() => this.goAccounts(oClientAccount.type)} type="primary">资金分布</Button>
               }>¥{moneyFormat(oClientAccount.amount || 0)}</Card>
             </Col>
-            <Col span={6} style={{marginBottom: '20px'}}>
+            <Col span={8} style={{marginBottom: '20px'}}>
               <Card title="养护方总余额" extra={
                 <Button onClick={() => this.goAccounts(mClientAccount.type)} type="primary">资金分布</Button>
               }>¥{moneyFormat(mClientAccount.amount || 0)}</Card>
             </Col>
-            <Col span={6} style={{marginBottom: '20px'}}>
+            <Col span={8} style={{marginBottom: '20px'}}>
               <Card title="商家总余额" extra={
                 <Button onClick={() => this.goAccounts(bClientAccount.type)} type="primary">资金分布</Button>
               }>¥{moneyFormat(bClientAccount.amount || 0)}</Card>
             </Col>
-            <Col span={6} style={{marginBottom: '20px'}}>
+          </Row>
+          <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            <Col span={8} style={{marginBottom: '20px'}}>
               <Card title="用户总余额" extra={
                 <Button onClick={() => this.goAccounts(cClientAccount.type)} type="primary">资金分布</Button>
               }>¥{moneyFormat(cClientAccount.amount || 0)}</Card>
             </Col>
-          </Row>
-          <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col span={8} style={{marginBottom: '20px'}}>
               <Card title="平台余额" extra={
                 <Button onClick={() => this.goFlow(cnyAccount.accountNumber)} type="primary">资金流水</Button>

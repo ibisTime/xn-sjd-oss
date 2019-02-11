@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'antd';
 // import { getQueryString, showSucMsg, getUserId } from 'common/js/util';
-import DetailUtil from 'common/js/build-detail';
+import DetailUtil from 'common/js/build-detail-withO2M';
 import fetch from 'common/js/fetch';
 import XLSX from 'xlsx';
 import { getQueryString, showWarnMsg, showSucMsg, formatDate, getUserName, isUndefined, getUserId, moneyFormat } from 'common/js/util';

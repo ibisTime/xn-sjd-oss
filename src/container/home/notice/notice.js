@@ -25,7 +25,8 @@ export default class Notice extends React.Component {
           columns={columns}
           onRowClick={this.props.goNotice}
           dataSource={this.props.data}
-          pagination={false} />
+          pagination={false}
+          locale={{emptyText: '暂无数据'}}/>
       </div>
     );
   }

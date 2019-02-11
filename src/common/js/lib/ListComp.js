@@ -470,6 +470,7 @@ export default class ListComponent extends React.Component {
                         loading={this.props.fetching}
                         onChange={this.handleTableChange}
                         onRowClick={this.handleRowClick}
+                        locale={{emptyText: '暂无数据'}}
                     />
                 </div>
             </div>

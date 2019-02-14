@@ -23,7 +23,7 @@ import { getUserId, moneyFormat } from 'common/js/util';
 class CuringOwns extends React.Component {
   render() {
     const fields = [{
-      title: '账号',
+      title: '产权方名称',
       field: 'ownerId',
       search: true
     }, {

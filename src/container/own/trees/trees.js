@@ -55,6 +55,19 @@ class Trees extends React.Component {
       searchParams: {
         ownerId: getUserId(),
         productCode: this.productCode || ''
+      },
+      btnEvent: {
+        // 编辑
+        // 树木查看
+        ryqck: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/own/trees/ryqck?&treeNumber=${items[0].treeNumber}`);
+          }
+        }
       }
     };
     if(this.productCode) {

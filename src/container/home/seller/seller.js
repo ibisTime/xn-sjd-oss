@@ -109,8 +109,8 @@ export default class CuringComp extends React.Component {
                                 account2={account2}/>
                         </Col>
                     </Row>
-                    <Row gutter={{ xs: 12, sm: 24, md: 24, lg: 32 }}>
-                        <Col span={12}>
+                    <Row style={{marginTop: 20}} gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                        <Col span={24} style={{marginBottom: '20px'}}>
                             <Notice
                                 data={this.state.data}
                                 goNotice={this.goNotice}

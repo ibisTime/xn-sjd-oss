@@ -11,7 +11,7 @@ import {
   setSearchData
 } from '@redux/own/claimOrders';
 import { listWrapper } from 'common/js/build-list';
-import { getUserId } from 'common/js/util';
+import { getUserId, getQueryString, showWarnMsg } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -22,14 +22,19 @@ import { getUserId } from 'common/js/util';
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
 class ClaimOrders extends React.Component {
+  constructor(props) {
+    super(props);
+    this.treeNumber = getQueryString('treeNumber', this.props.location.search);
+    this.view = !!getQueryString('v', this.props.location.search);
+  }
   render() {
     const fields = [{
       title: '认养订单编号',
-      field: 'orderCode',
-      search: true
+      field: 'orderCode'
     }, {
       title: '树木编号',
-      field: 'treeNumber'
+      field: 'treeNumber',
+      search: true
     }, {
       title: '当前持有人',
       field: 'currentHolder',
@@ -53,13 +58,34 @@ class ClaimOrders extends React.Component {
       key: 'adopt_order_tree_status',
       search: true
     }];
-    return this.props.buildList({
+    let config = {
       fields,
       pageCode: 629205,
       searchParams: {
-        ownerId: getUserId()
+        ownerId: getUserId(),
+        treeNumber: this.treeNumber || ''
       }
-    });
+    };
+    if(this.treeNumber) {
+      config.buttons = [{
+        name: '详情',
+        code: 'detail',
+        handler: (keys, items) => {
+          if (!keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`${this.props.location.pathname}/addedit?code=${keys[0]}&v=1`);
+          }
+        }
+      }, {
+        name: '返回',
+        code: 'back',
+        handler: () => this.props.history.go(-1)
+      }];
+    }
+    return this.props.buildList(config);
   }
 }
 

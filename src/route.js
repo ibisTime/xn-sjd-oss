@@ -707,7 +707,12 @@ const ROUTES = [
         path: '/claim/visit',
         component: asyncComponent(() => import('container/biz/visit/visit-query'))
     },
-    // 氧圈管理 -- 氧圈管理 -- 来访人查询
+  // 氧圈管理 -- 氧圈管理 -- 来访人查询 --详情
+  {
+    path: '/claim/visit/addedit',
+    component: asyncComponent(() => import('container/biz/visit/visit-addedit'))
+  },
+    // 氧圈管理 -- 认养权查询 -- 来访人查询
     {
         path: '/claim/rights/visit',
         component: asyncComponent(() => import('container/biz/visit/visit'))
@@ -1016,6 +1021,16 @@ const ROUTES = [
   {
     path: '/own/trees',
     component: asyncComponent(() => import('container/own/trees/trees'))
+  },
+  // 产权端管理 -- 树木查看 -- 认养权管理
+  {
+    path: '/own/trees/ryqck',
+    component: asyncComponent(() => import('container/own/claimOrders/claimOrders'))
+  },
+  // 产权端管理 -- 树木查看 -- 认养权管理 -- 详情
+  {
+    path: '/own/trees/ryqck/addedit',
+    component: asyncComponent(() => import('container/own/claimOrders/claimOrders-addedit'))
   },
   // 产权端管理 -- 业务管理 -- 产品管理 -- 编辑/详情
   {

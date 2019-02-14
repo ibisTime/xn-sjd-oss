@@ -77,6 +77,7 @@ class PropertyAddEdit extends DetailUtil {
     // if (this.view && !this.check) {
       fields = fields.concat([{
         title: '合同模版',
+        help: '##后面是填写的数据模板，例如：##甲方名称## 等同于所填姓名“张三”',
         field: 'contractTemplate',
         _keys: ['company', 'contractTemplate'],
         type: 'textarea',
@@ -93,7 +94,8 @@ class PropertyAddEdit extends DetailUtil {
         field: 'commonSeal',
         _keys: ['company', 'commonSeal'],
         type: 'img',
-        single: true
+        single: true,
+        required: true
       }]);
     // }
     fields = fields.concat([{

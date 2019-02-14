@@ -34,11 +34,9 @@ class Shares extends React.Component {
             title: '来访人id',
             field: 'userId'
         }, {
-            title: '来访开始时间',
-            field: 'createDatetimeStart'
-        }, {
-            title: '来访结束时间',
-            field: 'createDatetimeEnd'
+            title: '来访时间',
+            field: 'createDatetime',
+            type: 'datetime'
         }];
         return this.props.buildList({
             fields,

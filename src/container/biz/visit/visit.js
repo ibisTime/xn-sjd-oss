@@ -9,22 +9,25 @@ import {
     cancelFetching,
     setSearchData
 } from '@redux/biz/user/visit';
-import { listWrapper } from 'common/js/build-list';
-import { dateTimeFormat, showWarnMsg, getQueryString } from 'common/js/util';
+import {listWrapper} from 'common/js/build-list';
+import {dateTimeFormat, showWarnMsg, getQueryString} from 'common/js/util';
 
 @listWrapper(
     state => ({
         ...state.Visit,
         parentCode: state.menu.subMenuCode
     }),
-    { setTableData, clearSearchParam, doFetching, setBtnList,
-        cancelFetching, setPagination, setSearchParam, setSearchData }
+    {
+        setTableData, clearSearchParam, doFetching, setBtnList,
+        cancelFetching, setPagination, setSearchParam, setSearchData
+    }
 )
 class Shares extends React.Component {
     constructor(props) {
         super(props);
         this.userId = getQueryString('userId', this.props.location.search);
     }
+
     render() {
         const fields = [{
             title: '认养权编号',
@@ -33,16 +36,19 @@ class Shares extends React.Component {
             title: '来访人id',
             field: 'userId'
         }, {
-            title: '来访开始时间',
-            field: 'createDatetimeStart'
-        }, {
-            title: '来访结束时间',
-            field: 'createDatetimeEnd'
+            title: '来访时间',
+            field: 'createDatetime',
+            type: 'datetime'
         }];
         return this.props.buildList({
             fields,
             pageCode: 629315,
-            buttons: [],
+            noSelect: true,
+            buttons: [{
+                name: '返回',
+                code: 'back',
+                handler: () => this.props.history.go(-1)
+            }],
             searchParams: {
                 adoptTreeCode: this.userId
             }

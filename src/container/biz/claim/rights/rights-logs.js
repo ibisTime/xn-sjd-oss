@@ -54,6 +54,7 @@ class RightsLogs extends React.Component {
       fields,
       rowKey: 'id',
       pageCode: 629305,
+      noSelect: true,
       searchParams: {
         adoptTreeCode: this.code
       }

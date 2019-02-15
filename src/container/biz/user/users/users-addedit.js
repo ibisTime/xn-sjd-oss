@@ -22,7 +22,6 @@ class UsersAddEdit extends DetailUtil {
       field: 'mobile'
     }, {
       title: '推荐人',
-      field: 'mobile',
       formatter: (v, d) => d.refereeUser ? d.refereeUser.mobile : ''
     }, {
       title: '昵称',
@@ -53,7 +52,7 @@ class UsersAddEdit extends DetailUtil {
       hidden: !this.state.auth
     }, {
       title: '认证状态',
-      field: 'authStatus',
+      // field: 'authStatus',
       value: '未认证',
       hidden: this.state.auth
     }, {

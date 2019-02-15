@@ -78,7 +78,7 @@ class PropertyAddEdit extends DetailUtil {
       title: '合同模板填写示例',
       formatter() {
           return (
-              <div className="fbdsdzz-content" style={{ width: '80%' }}>
+              <div className="fbdsdzz-content" style={{ width: '80%', height: '50%' }}>
                   <img src={t1}/>
               </div>
           );

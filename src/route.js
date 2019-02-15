@@ -687,6 +687,11 @@ const ROUTES = [
     path: '/claim/rights',
     component: asyncComponent(() => import('container/biz/claim/rights/rights'))
   },
+  // 业务管理 -- 认养管理 -- 认养权查询 -- 合同查看
+  {
+    path: '/claim/rights/htck',
+    component: asyncComponent(() => import('container/biz/claim/rights/right-htck'))
+  },
     // 业务管理 -- 氧圈管理 -- 认养权查询
     {
         path: '/claim/right',

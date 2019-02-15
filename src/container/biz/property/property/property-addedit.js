@@ -3,6 +3,7 @@ import { Form } from 'antd';
 import { getQueryString, showSucMsg, getUserId } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 import fetch from 'common/js/fetch';
+import t1 from '../../../home/fbdsdzz/t1.png';
 
 @Form.create()
 class PropertyAddEdit extends DetailUtil {
@@ -73,6 +74,16 @@ class PropertyAddEdit extends DetailUtil {
       title: '组织机构代码',
       field: 'organizationCode',
       _keys: ['company', 'organizationCode']
+    }, {
+      title: '合同模板填写示例',
+      formatter() {
+          return (
+              <div className="fbdsdzz-content" style={{ width: '60%', height: '50%' }}>
+                  <img src={t1}/>
+              </div>
+          );
+      },
+      readonly: true
     }];
     // if (this.view && !this.check) {
       fields = fields.concat([{

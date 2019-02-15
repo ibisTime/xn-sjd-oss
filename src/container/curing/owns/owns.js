@@ -24,8 +24,9 @@ class CuringOwns extends React.Component {
   render() {
     const fields = [{
       title: '产权方名称',
-      field: 'ownerId',
-      search: true
+      field: 'ownerCompanyName',
+      search: true,
+      render: (v, d) => d.ownerUser.company ? d.ownerUser.company.name : ''
     }, {
       title: '联系方式',
       field: 'mobile',

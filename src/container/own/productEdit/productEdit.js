@@ -109,50 +109,6 @@ class ProductEdit extends DetailUtil {
   }
   render() {
     let fields = [{
-      title: '产品分类',
-      field: 'parentCategoryCode',
-      type: 'select',
-      listCode: '629007',
-      params: {
-        status: '1',
-        level: '1',
-        orderColumn: 'order_no',
-        orderDir: 'asc',
-        type: '0'
-      },
-      keyName: 'code',
-      valueName: 'name',
-      onChange: (v) => {
-        this.setState({
-          selectData: { ...this.state.selectData, categoryCode: [] }
-        });
-        this.props.form.resetFields(['categoryCode']);
-        fetch(629007, {
-          parentCode: v,
-          status: '1',
-          level: '2',
-          orderColumn: 'order_no',
-          orderDir: 'asc'
-        }).then((data) => {
-          this.setState({
-            selectData: {
-              ...this.state.selectData,
-              categoryCode: data
-            }
-          });
-        }).catch(() => {});
-      },
-      required: true
-    }, {
-      title: '小类',
-      field: 'categoryCode',
-      type: 'select',
-      listCode: '629007',
-      params: { status: '1', level: '2' },
-      keyName: 'code',
-      valueName: 'name',
-      required: true
-    }, {
       title: '名称',
       field: 'name',
       required: true,
@@ -174,10 +130,12 @@ class ProductEdit extends DetailUtil {
       maxlength: 30
     }, {
       title: '树龄',
-      field: 'age',
+        field: 'age',
+      formatter: (v, d) => {
+        return d.treeList ? d.treeList[0].age : '';
+      },
       required: true,
-      number: true,
-      maxlength: 30
+      number: true
     }, {
       title: '古树产地',
       field: 'originPlace',
@@ -427,7 +385,7 @@ class ProductEdit extends DetailUtil {
       view: this.view,
       detailCode: 629026,
       addCode: 629010,
-      editCode: 629016,
+      editCode: 629011,
       beforeSubmit: (params) => {
         params.ownerId = getUserId();
         // 如果销售类型选择定向

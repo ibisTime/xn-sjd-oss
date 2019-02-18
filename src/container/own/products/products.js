@@ -74,6 +74,12 @@ class Products extends React.Component {
         return d.treeList ? d.treeList[0].originPlace : '';
       }
       }, {
+      title: '树龄',
+      field: 'age',
+      render: (v, d) => {
+        return d.treeList ? d.treeList[0].age : '';
+      }
+    }, {
       title: '认养分类',
       field: 'sellType',
       type: 'select',
@@ -130,6 +136,16 @@ class Products extends React.Component {
             showWarnMsg('该记录不是待上架状态');
           } else {
             this.upDown(keys[0]);
+          }
+        },
+        // 产品分类修改
+        productEdit: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/own/products/productEdit?v=1&code=${keys[0]}`);
           }
         },
         detail: (keys, items) => {

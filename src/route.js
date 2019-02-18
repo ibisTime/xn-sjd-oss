@@ -992,6 +992,11 @@ const ROUTES = [
     path: '/own/products/addedit',
     component: asyncComponent(() => import('container/own/productEdit/productEdit'))
   },
+  // 产权端管理 -- 业务管理 -- 产品列表-- 修改产品分类
+  {
+    path: '/own/products/productEdit',
+    component: asyncComponent(() => import('container/own/products/productEdit'))
+  },
   // 产权端管理 -- 业务管理 -- 产品管理 -- 详情
   {
     path: '/own/products/detail',
@@ -1000,7 +1005,7 @@ const ROUTES = [
   // 产权端管理 -- 业务管理 -- 产品管理 -- 树木查看
   {
     path: '/own/products/viewTrees',
-    component: asyncComponent(() => import('container/own/trees/trees'))
+    component: asyncComponent(() => import('container/own/products/trees'))
   },
   // 产权端管理 -- 业务管理 -- 产品管理 -- 树木查看 -- 详情
   {

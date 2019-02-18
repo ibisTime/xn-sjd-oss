@@ -4,7 +4,7 @@ import DetailComp from 'common/js/lib/DetailComp';
 import CO2M from 'component/cO2M/cO2M';
 
 const { Item: FormItem } = Form;
-
+console.log(1);
 export default class DetailUtil extends DetailComp {
   // o2m选择一行数据的回调
   setO2MSelect = (field, selectedRowKeys) => {

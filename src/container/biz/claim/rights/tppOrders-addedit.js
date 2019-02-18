@@ -13,7 +13,8 @@ class TppOrdersAddEdit extends DetailUtil {
   render() {
     const fields = [{
       title: '碳泡泡数量',
-      field: 'quantity'
+      field: 'quantity',
+      amount: true
     }, {
       title: '生成时间',
       field: 'createDatetime',

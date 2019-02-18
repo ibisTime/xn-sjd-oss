@@ -153,7 +153,7 @@ class sellerProductEdit extends DetailUtil {
     }, {
       title: '产地',
       field: 'originalPlace',
-      required: true,
+      // required: true,
       maxlength: 100
     }, {
       title: '发货地',

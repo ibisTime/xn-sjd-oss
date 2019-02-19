@@ -4,7 +4,7 @@ import { getQueryString, showSucMsg, getUserId } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 import fetch from 'common/js/fetch';
 import t1 from '../../../home/fbdsdzz/t1.png';
-
+import Zmage from 'react-zmage';
 @Form.create()
 class PropertyAddEdit extends DetailUtil {
   constructor(props) {
@@ -78,8 +78,8 @@ class PropertyAddEdit extends DetailUtil {
       title: '合同模板填写示例',
       formatter() {
           return (
-              <div className="fbdsdzz-content" style={{ width: '80%', height: '50%' }}>
-                  <img src={t1}/>
+              <div className="fbdsdzz-content" style={{ width: '120px', height: '120px' }}>
+                  <Zmage src={t1}/>
               </div>
           );
       },

@@ -70,15 +70,15 @@ class sellerOrder extends React.Component {
       title: '实际支付金额',
       field: 'payAmount',
       amount: true
-    }, {
-      title: '抵扣的人民币',
-      field: 'cnyDeductAmount',
-      amount: true
-    }, {
-      title: '使用积分数量',
-      field: 'jfDeductAmount',
-      amount: true
-    }, {
+    },
+    //   title: '抵扣的人民币',
+    //   field: 'cnyDeductAmount',
+    //   amount: true
+    // }, {
+    //   title: '使用积分数量',
+    //   field: 'jfDeductAmount',
+    //   amount: true
+     {
       title: '邮费',
       field: 'postalFee',
       amount: true

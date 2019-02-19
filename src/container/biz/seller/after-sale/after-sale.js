@@ -23,7 +23,7 @@ class sellerAfterSale extends React.Component {
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'code'
+      field: 'orderDetailCode'
     }, {
       title: '商品名称',
       field: 'commodityName',

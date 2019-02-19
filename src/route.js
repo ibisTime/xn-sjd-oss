@@ -882,10 +882,20 @@ const ROUTES = [
     path: '/officialseal/officialseal',
     component: asyncComponent(() => import('container/biz/officialseal/officialseal'))
   },
-  // 认养预售 -- 公章管理 -- 公章管理添加
+  // 认养管理 -- 公章管理 -- 公章管理添加
   {
     path: '/officialseal/officialseal/addedit',
     component: asyncComponent(() => import('container/biz/officialseal/officialseal-addedit'))
+  },
+  // 认养管理 -- 规则设置 -- 实名认证
+  {
+    path: '/realname/realname',
+    component: asyncComponent(() => import('container/biz/rules/realname/realname'))
+  },
+  // 认养管理 -- 规则设置 -- 实名认证-- 修改
+  {
+    path: '/realname/realname/addedit',
+    component: asyncComponent(() => import('container/biz/rules/realname/realname-addedit'))
   },
   // 业务管理 -- 业务规则 -- 好友排行权重设置
   {

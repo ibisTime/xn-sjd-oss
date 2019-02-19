@@ -120,7 +120,11 @@ class SellerOrderAddEdit extends DetailUtil {
       required: true,
       field: 'logisticsNumber',
       readonly: !this.fahuo
-    }];
+    }, {
+        title: '买家留言',
+        required: true,
+        field: 'applyNote'
+      }];
     let config = {
       fields,
       code: this.code,

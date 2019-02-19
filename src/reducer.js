@@ -104,6 +104,8 @@ import { danmuDanmu } from './redux/biz/danmu/danmu';
 import { officialSeal } from './redux/biz/officialseal/officialseal';
 // 业务管理--业务规则
 import { rulesWeight } from './redux/biz/rules/weight';
+// 业务管理--实名认证
+import { rulesRealname } from './redux/biz/rules/realname';
 // 代理管理--代理商管理
 import { agentAgents } from './redux/agent/agents';
 import { agentAgentsAccounts } from './redux/agent/agents-accounts';
@@ -294,5 +296,6 @@ export default combineReducers({
   sellerBanner,
   publicTweets,
   publicAuditNotice,
-  officialSeal
+  officialSeal,
+  rulesRealname
 });

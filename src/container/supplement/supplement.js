@@ -171,6 +171,12 @@ class Supplement extends DetailUtil {
       normalArea: true,
       required: true
     }, {
+      title: '头像',
+      field: 'photo',
+      _keys: ['company', 'photo'],
+      type: 'img',
+      single: true
+    }, {
       title: '营业执照',
       field: 'bussinessLicense',
       _keys: ['company', 'bussinessLicense'],

@@ -105,6 +105,11 @@ const ROUTES = [
     path: '/public/activitypage',
     component: asyncComponent(() => import('container/public/activitypage/activitypage'))
   },
+  // 系统管理 -- 广告位管理-- 商城活动内页管理
+  {
+    path: '/public/activitypages',
+    component: asyncComponent(() => import('container/public/activitypages/activitypages'))
+  },
   // 财务管理 -- 平台账户 -- 分销规则设置
   {
     path: '/platform/distributionRules',

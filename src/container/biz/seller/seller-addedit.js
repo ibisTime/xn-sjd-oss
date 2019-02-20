@@ -69,6 +69,12 @@ class SellerAddedit extends DetailUtil {
       type: 'img',
       single: true
     }, {
+        title: '头像',
+        field: 'photo',
+        _keys: ['company', 'photo'],
+        type: 'img',
+        single: true
+    }, {
       title: '组织机构代码',
       field: 'organizationCode',
       _keys: ['company', 'organizationCode']

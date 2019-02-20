@@ -67,7 +67,6 @@ class PropertyAddEdit extends DetailUtil {
     }, {
       title: '头像',
       field: 'photo',
-      _keys: ['company', 'photo'],
       type: 'img',
       single: true
     }, {

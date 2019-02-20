@@ -109,6 +109,56 @@ class ProductEdit extends DetailUtil {
   }
   render() {
     let fields = [{
+      field: 'kind',
+      value: 'O',
+      hidden: true
+    },
+      {
+        title: '产品分类',
+        field: 'parentCategoryCode',
+        type: 'select',
+        listCode: '629007',
+        params: {
+          status: '1',
+          level: '1',
+          orderColumn: 'order_no',
+          orderDir: 'asc',
+          type: '0'
+        },
+        keyName: 'code',
+        valueName: 'name',
+        onChange: (v) => {
+          this.setState({
+            selectData: {...this.state.selectData, categoryCode: []}
+          });
+          this.props.form.resetFields(['categoryCode']);
+          fetch(629007, {
+            parentCode: v,
+            status: '1',
+            level: '2',
+            orderColumn: 'order_no',
+            orderDir: 'asc'
+          }).then((data) => {
+            this.setState({
+              selectData: {
+                ...this.state.selectData,
+                categoryCode: data
+              }
+            });
+          }).catch(() => {
+          });
+        },
+        required: true
+      }, {
+        title: '小类',
+        field: 'categoryCode',
+        type: 'select',
+        listCode: '629007',
+        params: {status: '1', level: '2'},
+        keyName: 'code',
+        valueName: 'name',
+        required: true
+      }, {
       title: '名称',
       field: 'name',
       required: true,

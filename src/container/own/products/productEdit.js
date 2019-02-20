@@ -63,7 +63,7 @@ class Aboutus extends DetailUtil {
                 field: 'categoryCode',
                 type: 'select',
                 listCode: '629007',
-                params: { status: '1', level: '2' },
+                params: {status: '1', level: '2'},
                 keyName: 'code',
                 valueName: 'name',
                 required: true
@@ -71,8 +71,8 @@ class Aboutus extends DetailUtil {
         return this.buildDetail({
             fields,
             pageCode: 629025,
-       //     view: this.view,
-                code: this.code,
+            //     view: this.view,
+            code: this.code,
             detailCode: 629026,
             buttons: [
                 {
@@ -83,6 +83,9 @@ class Aboutus extends DetailUtil {
                         fetch(629016, params).then(() => {
                             this.cancelFetching();
                             showSucMsg('操作成功');
+                            setTimeout(() => {
+                                this.props.history.go(-1);
+                            }, 1000);
                         }).catch(this.cancelFetching);
                     }
                 }

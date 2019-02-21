@@ -124,7 +124,7 @@ class sellerProducts extends React.Component {
                     } else if (items[0].status !== '0' && items[0].status !== '2' && items[0].status !== '5') {
                         showWarnMsg('该记录不可编辑');
                     } else {
-                        this.props.history.push(`/seller/products/addedit?code=${keys[0]}`);
+                        this.props.history.push(`/seller/products/edit?code=${keys[0]}`);
                     }
                 },
                 // 上架申请

@@ -217,7 +217,7 @@ class sellerProductEdit extends DetailUtil {
       type: 'textarea',
       required: true
     }, {
-      title: '备注',
+      title: '商家备注',
       field: 'remark'
     }];
     let config = {

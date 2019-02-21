@@ -41,13 +41,15 @@ class GiftOrders extends React.Component {
       type: 'select',
       key: 'gift_order_status',
       search: true
-    }, {
-      title: '收货地址',
-      field: 'province',
-      render: (v, d) => {
-        return `${d.province} ${d.city} ${d.area} ${d.reAddress}`;
-      }
-    }, {
+    },
+    //   {
+    //   title: '收货地址',
+    //   field: 'province',
+    //   render: (v, d) => {
+    //     return `${d.province} ${d.city} ${d.area} ${d.reAddress}`;
+    //   }
+    // },
+      {
       title: '发放时间',
       field: 'createDatetime',
       type: 'datetime'

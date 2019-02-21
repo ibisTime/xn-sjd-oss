@@ -1392,6 +1392,11 @@ const ROUTES = [
     path: '/seller/products/addedit',
     component: asyncComponent(() => import('container/seller/productEdit/productEdit'))
   },
+  // 商家端 -- 业务管理 -- 商品列表-- 编辑
+  {
+    path: '/seller/products/edit',
+    component: asyncComponent(() => import('container/seller/productEdit/edit'))
+  },
   // 商家端 -- 业务管理 -- 订单管理
   {
     path: '/seller/order',

@@ -66,11 +66,12 @@ class sellerOrder extends React.Component {
       formatter(v, s) {
         console.log(v);
       }
-    }, {
-      title: '实际支付金额',
-      field: 'payAmount',
-      amount: true
     },
+    //   {
+    //   title: '实际支付金额',
+    //   field: 'payAmount',
+    //   amount: true
+    // },
     //   title: '抵扣的人民币',
     //   field: 'cnyDeductAmount',
     //   amount: true

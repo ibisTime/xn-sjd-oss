@@ -61,7 +61,8 @@ class sellerShouhouOrder extends React.Component {
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'orderDetailCode',
+      field: 'orderCode',
+      render: (v, d) => d.orderDetail ? d.orderDetail.orderCode : '',
       search: true
     }, {
       title: '商品名称',

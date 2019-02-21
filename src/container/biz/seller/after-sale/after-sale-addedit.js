@@ -26,12 +26,15 @@ class SellerOrderAddEdit extends DetailUtil {
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'orderDetailCode',
-      search: true
+      formatter: (v, d) => d.orderDetail ? d.orderDetail.orderCode : ''
     }, {
       title: '商品名称',
       field: 'commodityName',
       _keys: ['orderDetail', 'commodityName']
+    }, {
+      title: '商品链接',
+      formatter() {
+      }
     }, {
       title: '规格名称',
       field: 'specsName',

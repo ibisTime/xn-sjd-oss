@@ -681,8 +681,8 @@ export function getKindByUrl() {
         return 'P';
     }
     // 产权
-   //  if (location.origin === 'http://sjd.owner.hichengdai.com' || location.origin === 'http://owner.o2lin.com' || location.origin === 'http://47.99.147.67:2912') {
-         if (location.origin === 'http://localhost:3001') {
+   if (location.origin === 'http://sjd.owner.hichengdai.com' || location.origin === 'http://owner.o2lin.com' || location.origin === 'http://47.99.147.67:2912') {
+        // if (location.origin === 'http://localhost:3001') {
         return 'O';
     }
     // 养护
@@ -697,9 +697,9 @@ export function getKindByUrl() {
         return 'A';
     }
     // 商家
-    if (location.origin === 'http://sjd.sell.hichengdai.com' || location.origin === 'http://sell.o2lin.com' || location.origin === 'http://47.99.147.67:2910') {
-       // if (location.origin === 'http://localhost:3001') {
-            // if (location.origin === 'http://47.99.147.67:2909') {
+      if (location.origin === 'http://sjd.sell.hichengdai.com' || location.origin === 'http://sell.o2lin.com' || location.origin === 'http://47.99.147.67:2910') {
+       //  if (location.origin === 'http://localhost:3001') {
+          //   if (location.origin === 'http://47.99.147.67:2909') {
             return 'B';
         }
     }

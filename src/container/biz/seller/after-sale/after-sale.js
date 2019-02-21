@@ -23,7 +23,9 @@ class sellerAfterSale extends React.Component {
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'orderDetailCode'
+      field: 'orderCode',
+      search: true,
+      render: (v, d) => d.orderDetail ? d.orderDetail.orderCode : ''
     }, {
       title: '商品名称',
       field: 'commodityName',

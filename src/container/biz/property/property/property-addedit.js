@@ -65,11 +65,6 @@ class PropertyAddEdit extends DetailUtil {
       maxlength: 200,
       required: true
     }, {
-      title: '头像',
-      field: 'photo',
-      type: 'img',
-      single: true
-    }, {
       title: '营业执照',
       field: 'bussinessLicense',
       _keys: ['company', 'bussinessLicense'],

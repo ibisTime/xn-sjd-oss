@@ -18,8 +18,8 @@ export default class Home extends React.Component {
         this.state = {
             cnyAccount: {}
         };
-      // this.kind = getKindByUrl();
-  this.kind = 'O';
+        this.kind = getKindByUrl();
+        // this.kind = 'B';
     }
 
     componentDidMount() {

@@ -174,18 +174,18 @@ class ProductEdit extends DetailUtil {
       required: true,
       maxlength: 30
     }, {
+        title: '树龄',
+        field: 'age',
+        formatter: (v, d) => {
+          return d.treeList ? d.treeList[0].age : '';
+        },
+        required: true,
+        number: true
+      }, {
       title: '品种',
       field: 'variety',
       required: true,
       maxlength: 30
-    }, {
-      title: '树龄',
-        field: 'age',
-      formatter: (v, d) => {
-        return d.treeList ? d.treeList[0].age : '';
-      },
-      required: true,
-      number: true
     }, {
       title: '古树产地',
       field: 'originPlace',

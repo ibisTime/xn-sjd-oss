@@ -143,8 +143,13 @@ class ProductsAddEdit extends DetailUtil {
       type: 'textarea',
       required: true
     }, {
-      title: '备注',
+      title: '买家备注',
       field: 'remark',
+      required: true
+      // readonly: !this.check
+    }, {
+      title: '审核说明',
+      field: 'approveNote',
       readonly: !this.check
     }];
     fields = fields.concat([]);

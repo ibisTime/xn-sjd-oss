@@ -491,6 +491,24 @@ export const getRules = (item) => {
             message: '请输入合法的数字'
         });
     }
+    if (item.number1) {
+        rules.push({
+            pattern: /^5[1-9]{1}\d{1}|^5\d{1}[1-9]{1}|^[1-9]\d{3,}|^[6-9]{1}\d{2}$/,
+            message: '请输入大于500的数字'
+        });
+    }
+    if (item.number2) {
+        rules.push({
+            pattern: /^3\d{2}$|^4\d{2}$|^5[0]{2}$/,
+            message: '请输入300-500的数字'
+        });
+    }
+    if (item.number3) {
+        rules.push({
+            pattern: /^1\d{2}$|^2\d{2}$|^3[0]{2}$/,
+            message: '请输入100-300的数字'
+        });
+    }
     if (item.positive) {
         rules.push({
             pattern: /^\d+(\.\d+)?$/,
@@ -681,7 +699,7 @@ export function getKindByUrl() {
         return 'P';
     }
     // 产权
-   if (location.origin === 'http://sjd.owner.hichengdai.com' || location.origin === 'http://owner.o2lin.com' || location.origin === 'http://47.99.147.67:2912') {
+    if (location.origin === 'http://sjd.owner.hichengdai.com' || location.origin === 'http://owner.o2lin.com' || location.origin === 'http://47.99.147.67:2912') {
         // if (location.origin === 'http://localhost:3001') {
         return 'O';
     }

@@ -75,10 +75,10 @@ class Products extends React.Component {
       }
       }, {
       title: '树龄',
-      field: 'age',
-      render: (v, d) => {
-        return d.treeList ? d.treeList[0].age : '';
-      }
+      field: 'age'
+      // render: (v, d) => {
+      //   return d.treeList ? d.treeList[0].age : '';
+      // }
     }, {
       title: '认养分类',
       field: 'sellType',

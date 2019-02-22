@@ -37,7 +37,9 @@ class SellerOrderAddEdit extends DetailUtil {
       title: '商品链接',
       field: 'specsName',
       formatter: (v, d) => {
-        return window.location.host + '/seller/products/addedit?v=1&code' + '=' + d.orderDetail.commodityCode;
+        return <a href="javascript:void(0);" onClick={() => {
+          window.location.href = '/seller/products/addedit?v=1&code' + '=' + d.orderDetail.commodityCode;
+        }}>跳转</a>;
       }
     }, {
       title: '规格名称',

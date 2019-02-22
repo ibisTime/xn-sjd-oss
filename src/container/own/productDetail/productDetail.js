@@ -115,6 +115,9 @@ class ProductDetail extends DetailUtil {
             required: true,
             maxlength: 30
         }, {
+            title: '树龄',
+            field: 'age'
+        }, {
             title: '品种',
             field: 'variety',
             required: true,

@@ -95,6 +95,10 @@ class ProductsAddEdit extends DetailUtil {
             required: true,
             maxlength: 30
         }, {
+            title: '树龄',
+            field: 'age'
+        },
+            {
             title: '古树产地',
             field: 'originPlace',
             required: true,
